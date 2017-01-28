@@ -31,7 +31,7 @@ local social = {
             textbottomedge =12   ,           
             items = { 
 
-                          aaa= {title = "State Auto Twitter", 
+                          aaa= {title = "NSPII Twitter", 
                               pic="twitter.png",
                               text="State Auto Twitter Feed",
                               doublewide=true,
@@ -42,7 +42,7 @@ local social = {
                                  },},
                                 
                                 },
-                          bbb= {title = "State Auto Facebook", 
+                          bbb= {title = "NSPII Facebook", 
                               pic="facebook.png",
                               text="State Auto Facebook Page",
                               doublewide=true,
@@ -53,7 +53,7 @@ local social = {
                                  },},
                                 
                                 },
-                           ccc= {title = "State Auto Youtube", 
+                           ccc= {title = "NSPII Youtube", 
                               pic="youtube.png",
                               text="State Auto Youtube Channel",
                               doublewide=true,
