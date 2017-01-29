@@ -7,7 +7,7 @@ local tabs = {
         tabbtnw = 32,tabbtnh = 32, tabBarHeight = 50,frameWidth = 20,launchkey = "ahome", transitiontime = 200,
         btns = {
             ahome = {
-                        label="Home", title="State Auto" ,def="saicon.png",over="saicon-down.png",
+                        label="Home", title="NSPII" ,def="nspii.png",over="nspii-down.png",
                         sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="homepage" , navigate = "mainscene"},

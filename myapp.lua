@@ -57,7 +57,7 @@ local M = {
             sceneBackgroundcolor = { r=241/255, g=242/255, b=243/255, a=1 },
             sceneBackgroundmorecolor = { r=25/255, g=75/255, b=150/255, a=1 },
             scenemaskFile = "",
-            splash = {image = "splash.jpg", delay = 150, },
+            splash = {image = "splash.png", delay = 150, },
             promptforphonecalls = true,
 
 
