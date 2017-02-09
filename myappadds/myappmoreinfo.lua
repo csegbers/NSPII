@@ -73,7 +73,7 @@ local moreinfo = {
                                       },
 
                                bb31 = {
-                                          title = "Contact State Auto", 
+                                          title = "Contact NSPII", 
                                           pic="truck.png",
                                           backtext = "<",
                                           sceneinfo = { 

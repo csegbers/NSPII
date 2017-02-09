@@ -1,6 +1,7 @@
 local myApp = require( "myapp" )
 local socket = require( "socket" )
 local json = require("json")
+print "In common.lua"
 -------------------------------------------------------
 -- common functions used in any app
 -------------------------------------------------------

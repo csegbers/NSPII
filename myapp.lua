@@ -55,7 +55,7 @@ local M = {
             sceneHeight = 0,     -- set elsewhere
             sceneWidth = 0,     -- set elsewhere
             sceneBackgroundcolor = { r=241/255, g=242/255, b=243/255, a=1 },
-            sceneBackgroundmorecolor = { r=25/255, g=75/255, b=150/255, a=1 },
+            sceneBackgroundmorecolor = { r=56/255, g=106/255, b=76/255, a=1 },
             scenemaskFile = "",
             splash = {image = "splash.png", delay = 150, },
             promptforphonecalls = true,
@@ -265,8 +265,8 @@ local M = {
 
             titleGradient = {
                     type = 'gradient',
-                    color1 = { 189/255, 203/255, 220/255, 1 }, 
-                    color2 = { 89/255, 116/255, 152/255, 1 },
+                    color1 = { 43/255, 143/255, 82/255, 1 }, 
+                    color2 = { 161/255, 200/255, 177/255, 1 },
                     direction = "down"
              },
             icons = "",
