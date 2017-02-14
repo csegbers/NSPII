@@ -292,11 +292,11 @@ local M = {
                                          {
                                            a = {name = "Host",value="cognito-idp.us-east-1.amazonaws.com"},
                                            b = {name = "Content-Type", value = "application/x-amz-json-1.1"},
-                                           c = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService"}
+                                           c = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService.{actionname}"}
                                          },
   
                                 Actions = {
-                                             SignUp = "SignUp",
+                                             SignUp = {name = "SignUp", httpaction="POST"}
                                           },
                               },
 

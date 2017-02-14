@@ -47,6 +47,17 @@ function _M.new(self, config)
   return setmetatable(_M, mt)
 end
 
+
+
+
+
+
+
+
+
+
+
+
 ---Clears the Parse sessionToken.
 --
 -- NOTE: This does not clear or reset a user session with Parse, it only clears the sessionToken internally, in case you need to apply a new sessionToken.
@@ -57,15 +68,40 @@ function _M.clearSessionToken(self)
   sessionToken = nil
 end
 
-function _M.sendRequest( self, uri, requestParamsTbl, action, awsAction, _callback )
-print ("awsaction  " .. awsAction)
- --[[ local requestParams = self:buildRequestParams( requestParamsTbl, masterKey )
-  
-  requestType = requestType or Parse.NIL
-  action = action or Parse.POST
 
-  local q = { 
-    requestId = network.request( uri, action, function(e) Parse:onResponse(e); end, requestParams ),
+function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAction)
+  --set up headers
+  local headers = {}
+  local k,v
+  for k,v in pairs(objMetaTable[objMetaTableKey].headers) do 
+    headers[v.name] = string.gsub( v.value, "{actionname}", objMetaTable[objMetaTableKey].Actions[awsAction].name)
+    
+  end  
+
+
+  --populate parameters for the network call
+  local requestParams = {}
+  requestParams.headers = headers
+  requestParams.body = bodyData
+
+  return requestParams
+end
+
+function _M.buildRequestParams(self, objMetaTable, objMetaTableKey, withDataTable,awsAction)
+  local postData = json.encode( withDataTable )
+  return self:newRequestParams(objMetaTable, objMetaTableKey, postData,awsAction) --for use in a network request
+end
+
+
+function _M.sendRequest( self, objMetaTable, objMetaTableKey, requestParamsTbl,  awsAction, _callback )
+  print ("awsaction  " .. awsAction)
+  local requestParams = self:buildRequestParams(objMetaTable,objMetaTableKey ,requestParamsTbl,awsAction)
+  
+  requestId = network.request( objMetaTable[objMetaTableKey].url, objMetaTable[objMetaTableKey].Actions[awsAction].httpaction, _callback, requestParams )
+  return  requestId
+
+ --[[ local q = { 
+    requestId = network.request( objMetaTable[objMetaTableKey].url, objMetaTable[objMetaTableKey].Actions[awsAction].httpaction, function(e) Parse:onResponse(e); end, requestParams ),
     requestType = requestType,
     _callback = _callback,
   }
@@ -74,9 +110,24 @@ print ("awsaction  " .. awsAction)
   return q.requestId--]]
 end
 
+
+
 function _M.signUp( self, objMetaTable, objDataTable, _callback )
-  return self:sendRequest( objMetaTable.IDP.url, objDataTable,  "POST", objMetaTable.IDP.Actions["SignUp"], _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable,   "SignUp", _callback )
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- generate sha256 from the given string
 function _M.get_sha256_digest(self, s)

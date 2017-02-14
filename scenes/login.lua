@@ -174,24 +174,37 @@ function scene:show( event )
                                            -- userDataTable.Username = inputemail
                                            -- userDataTable.UserAttributes = {}
 
-                                            local jstr = '{"ClientId": "' .. myApp.aws.ClientId .. '","Password": "' .. inputpwd .. '","Username": "' .. inputemail .. '",'
-                                            jstr = jstr .. '"UserAttributes": [{"Name": "email","Value": "' .. inputemail .. '"  }]}'
-                                            local userDataTable = json.decode(jstr)
-                                             print (json.encode(userDataTable))
+                                           -- local jstr = '{"ClientId": "' .. myApp.aws.ClientId .. '","Password": "' .. inputpwd .. '","Username": "' .. inputemail .. '",'
+                                          --  jstr = jstr .. '"UserAttributes": [{"Name": "email","Value": "' .. inputemail .. '"  }]}'
+                                          --  local userDataTable = json.decode(jstr)
+                                           -- print (json.encode(userDataTable))
                                             --parse:clearSessionToken ()
+
+                                            
+                                            local userDataTable = {}
+                                            userDataTable.ClientId = myApp.aws.ClientId
+                                            userDataTable.Password = inputpwd
+                                            userDataTable.Username = inputemail
+                                            userDataTable.UserAttributes = {}
+                                            local userDataTableEmail = {}
+                                            userDataTableEmail.Name = "email"
+                                            userDataTableEmail.Value = inputemail
+                                            table.insert (userDataTable.UserAttributes,userDataTableEmail)
+                                            print ("signUp  -  " .. json.encode(userDataTable))
+
                                             aws:clearSessionToken()
                                             aws:signUp(       myApp.aws,
                                                               userDataTable,  
                                                               function(event)
                                                                    native.setActivityIndicator( false )
-                                                                   if (event.response.error or "" ) == "" then 
+                                                                   if (event.status ) == 200 then 
                                                                      myApp.fncPutUD("email",inputemail)
                                                                      myApp.fncUserLogInfo(event.response)
                                                                      native.showAlert( sceneinfo.btncreatemessage.successtitle, sceneinfo.btncreatemessage.successmessage, { "Okay" } )
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                    else
-                                                                     native.showAlert( sceneinfo.btncreatemessage.failuretitle, (event.response.error or "Unknown"), { "Okay" } )
+                                                                     native.showAlert( sceneinfo.btncreatemessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
                                                                    end
                                                               end    --- return function from parse
                                                              )   -- end of parse
