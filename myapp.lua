@@ -282,6 +282,43 @@ local M = {
                         sheet = "ios7icons.png",
                 },
             ------------------------------
+            -- aws
+            ------------------------------            
+           aws = {
+                        ClientId = '1br0l7moqel6h915ceimtohsju',
+                        IDP = {
+                                url = "https://cognito-idp.us-east-1.amazonaws.com/",
+                                headers =
+                                         {
+                                           a = {name = "Host",value="cognito-idp.us-east-1.amazonaws.com"},
+                                           b = {name = "Content-Type", value = "application/x-amz-json-1.1"},
+                                           c = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService"}
+                                         },
+  
+                                Actions = {
+                                             SignUp = "SignUp",
+                                          },
+                              },
+
+                        -- endpoints = {
+                        --                 config  = {
+                        --                              endpoint = "/config",
+                        --                              verb = "GET",
+                        --                           },
+                                 
+                        --                 appopened  = {
+                        --                              endpoint = "/events/AppOpened",
+                        --                              verb = "POST",
+                        --                           },
+                        --                 customevent  = {
+                        --                              endpoint = "/events",    -- pass in actual eventname
+                        --                              verb = "POST",
+                        --                           },
+
+
+                        --           },
+                    },
+            ------------------------------
             -- parse
             ------------------------------            
            parse = {
@@ -314,6 +351,7 @@ local M = {
             deviceinfo = {
                             infoname = {name="name",title="Name"},
                             infoenvironment = {name="environment",title="Environment"},
+                            infoplatform = {name="platform",title="PlatForm"},
                             infoplatformName = {name="platformName",title="Plat Name"},
                             infoplatformVersion = {name="platformVersion",title="Plat Version"},
                             infoversion = {name="version",title="Version"},

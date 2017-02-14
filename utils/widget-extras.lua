@@ -407,7 +407,9 @@ function widget.newTextField(options)
         if field and field.textField then 
             field.textField.x = field.x + labelPadding
             field.textField.y = field.y
-            field.textField.alpha = field.alpha
+            if system.getInfo( "platformName" ) ~= "Win" then
+               field.textField.alpha = field.alpha
+            end
             if not field.isVisible then
                 -- move the text field off screen when the display field is hidden
                 field.textField.y = field.textField.y * -1 

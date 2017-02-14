@@ -2,6 +2,8 @@
 -- Login Overlay scene
 ---------------------------------------------------------------------------------------
 local myApp = require( "myapp" ) 
+local aws = require( myApp.utilsfld .. "aws_auth" )
+local json = require("json")  
 
 local composer = require( "composer" )
 local scene = composer.newScene()
@@ -165,9 +167,20 @@ function scene:show( event )
                                            native.showAlert( sceneinfo.btncreatemessage.errortitle, sceneinfo.btncreatemessage.errormessage, { "Okay" } )
                                         else
                                             native.setActivityIndicator( true )
-                                            local userDataTable = { ["username"] = inputemail, ["email"] = inputemail, ["password"] = inputpwd }
-                                            parse:clearSessionToken ()
-                                            parse:createUser( 
+                                           -- local userDataTable = { ["username"] = inputemail, ["email"] = inputemail, ["password"] = inputpwd }
+                                          --  local userDataTable = {}
+                                          --  userDataTable.ClientId = myapp.aws.ClientId
+                                           -- userDataTable.Password = inputpwd
+                                           -- userDataTable.Username = inputemail
+                                           -- userDataTable.UserAttributes = {}
+
+                                            local jstr = '{"ClientId": "' .. myApp.aws.ClientId .. '","Password": "' .. inputpwd .. '","Username": "' .. inputemail .. '",'
+                                            jstr = jstr .. '"UserAttributes": [{"Name": "email","Value": "' .. inputemail .. '"  }]}'
+                                            local userDataTable = json.decode(jstr)
+                                             print (json.encode(userDataTable))
+                                            --parse:clearSessionToken ()
+                                            aws:clearSessionToken()
+                                            aws:signUp(       myApp.aws,
                                                               userDataTable,  
                                                               function(event)
                                                                    native.setActivityIndicator( false )
