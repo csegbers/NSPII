@@ -111,7 +111,6 @@ function _M.sendRequest( self, objMetaTable, objMetaTableKey, requestParamsTbl, 
 end
 
 
-
 function _M.signUp( self, objMetaTable, objDataTable, _callback )
   return self:sendRequest( objMetaTable,"IDP", objDataTable,   "SignUp", _callback )
 end

@@ -31,18 +31,30 @@ local social = {
             textbottomedge =12   ,           
             items = { 
 
-                          aaa= {title = "NSPII Twitter", 
-                              pic="twitter.png",
-                              text="State Auto Twitter Feed",
+                          aaa= {title = "NSPII LlinkedIn", 
+                              pic="linkedin_icon.png",
+                              text="Search NSPII On LinkedIn",
                               doublewide=true,
                               backtext = "<",
                              navigation = { app = {
-                                    url="twitter://user?screen_name=StateAuto",
-                                    urlfallback = "https://www.twitter.com/stateauto",
+                                    --url="twitter://user?screen_name=StateAuto",
+                                    urlfallback = "http://www.linkedin.com/groups?gid=3733613&sik=1364930442625&viewmember",
                                  },},
                                 
                                 },
-                          bbb= {title = "NSPII Facebook", 
+
+                          bbb= {title = "NSPII Twitter", 
+                              pic="twitter.png",
+                              text="Search NSPII On Twitter",
+                              doublewide=true,
+                              backtext = "<",
+                             navigation = { app = {
+                                    --url="twitter://user?screen_name=StateAuto",
+                                    urlfallback = "https://twitter.com/search?q=nspii",
+                                 },},
+                                
+                                },
+                         --[[ bbb= {title = "NSPII Facebook", 
                               pic="facebook.png",
                               text="State Auto Facebook Page",
                               doublewide=true,
@@ -52,8 +64,8 @@ local social = {
                                     urlfallback = "https://www.facebook.com/stateauto",
                                  },},
                                 
-                                },
-                           ccc= {title = "NSPII Youtube", 
+                                },  --]]
+                          --[[ ccc= {title = "NSPII Youtube", 
                               pic="youtube.png",
                               text="State Auto Youtube Channel",
                               doublewide=true,
@@ -62,7 +74,7 @@ local social = {
                                     url="https://www.youtube.com/StateAutoInsurance",
                                  },},
                                 
-                                },
+                                },  --]]
             },
 
             

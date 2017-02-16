@@ -144,26 +144,26 @@ local homepage = {
                          --       navigation = { popup = { type="mail", options= {to="nobody@mycompany.com", subject="hi there"},},},
                          --         },
                          ggggg= {
-                                          title = "Contact State Auto", 
-                                          pic="saicon-down.png",
-                                          doublewide = true,
-                                          backtext = "<",
-                                           text="Contact Options For State Auto",
-                                           textfontsize=18   ,
+                                           title = "Contact NSPII", 
+                                           pic="nspii-down.png",
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="Contact The National Society of Professional Insurance Investigators",
+                                           textfontsize=16   ,
                                            groupheaderheight = 30, 
                                            headerfontsize = 16,
                                     groupheaderstyle = {
                                       type = 'gradient',
-                                      color1 = { 189/255, 203/255, 220/255, 1 }, 
-                                      color2 = { 89/255, 116/255, 152/255, 1 },
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
                                       direction = "down"
                                },
-                                          groupbackgroundstyle = {
-                                      type = 'gradient',
-                                      color1 = { 189/255, 203/255, 220/255, 1 }, 
-                                      color2 = { 89/255, 116/255, 152/255, 1 },
-                                      direction = "down"
-                               },
+                                     --     groupbackgroundstyle = {
+                                      --type = 'gradient',
+                                     -- color1 = { 150/255, 186/255, 164/255, 1 }, 
+                                     -- color2 = { 196/255, 2221/255, 206/255, 1 },
+                                    -- direction = "down"
+                              -- },
                                           sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="contactus" , navigate = "subscene"},

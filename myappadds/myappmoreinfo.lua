@@ -68,23 +68,57 @@ local moreinfo = {
                                        },
 
                                bb0head = {
-                                   title = "Support", 
+                                   title = "About", 
                                    isCategory = true,
                                       },
+                               bb1 = {title = "Mission", 
+                                           pic="xx.png",
+                                           text="xx",
+                                           backtext = "<",
 
-                               bb31 = {
-                                          title = "Contact NSPII", 
-                                          pic="truck.png",
-                                          backtext = "<",
                                           sceneinfo = { 
-                                               htmlinfo = {},
-                                               scrollblockinfo = { object="contactus" , navigate = "subscene"},
+                                                htmlinfo = {
+                                                    htmlfile="mission.html" ,
+                                                    dir = system.ResourceDirectory ,
+                                                },
+                                               scrollblockinfo = { },
                                              },
-                                          navigation = { composer = { id = "contactus",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
+                                          navigation = { composer = {
+                                               id = "mission",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                         },
+
+
+                                   bb2= {title = "Antitrust", 
+                                    
+                                    pic="xx.png",
+                                    text="xx",
+                                    backtext = "<",
+                                          sceneinfo = { 
+                                                htmlinfo = {
+                                                    htmlfile="antitrust.html" ,
+                                                    dir = system.ResourceDirectory ,
+                                                },
+                                               scrollblockinfo = { },
+                                             },
+                                          navigation = { composer = {
+                                               id = "antitrust",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                            
                                       },
 
+
  
-                               bb4 = {title = "Help", 
+                               bb3 = {title = "Help", 
+
                                            pic="truck.png",
                                            text="Flat tire, out of gas ? We can help",
                                            backtext = "<",
@@ -104,51 +138,18 @@ local moreinfo = {
                                                effectback="slideRight",
                                             },},
                                          },
-                               bb5 = {title = "Terms", 
-                                           pic="truck.png",
-                                           text="Flat tire, out of gas ? We can help",
-                                           backtext = "<",
-
-                                          sceneinfo = { 
-                                                htmlinfo = {
-                                                    htmlfile="terms.html" ,
-                                                    dir = system.ResourceDirectory ,
-                                                },
-                                               scrollblockinfo = { },
-                                             },
-                                          navigation = { composer = {
-                                               id = "term",
-                                               lua="webview",
-                                               time=250, 
-                                               effect="slideLeft",
-                                               effectback="slideRight",
-                                            },},
-                                         },
-
-
-                                   dtt= {title = "Privacy", 
-                                    includeline  = false,
-                                    pic="truck.png",
-                                    text="Sample web page",
-                                    backtext = "<",
+                                 bb4 = {
+                                       includeline  = false,
+                                          title = "Contact NSPII", 
                                           pic="truck.png",
-
-                                            sceneinfo = { 
-                                                htmlinfo = {
-                                                    htmlfile="privacy.html" ,
-                                                    dir = system.ResourceDirectory ,
-                                                },
-                                               scrollblockinfo = { },
+                                          backtext = "<",
+                                          sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="contactus" , navigate = "subscene"},
                                              },
-                                          navigation = { composer = {
-                                               id = "yahooweb6",
-                                               lua="webview",
-                                               time=250, 
-                                               effect="slideLeft",
-                                               effectback="slideRight",
-                                            },},
-                                            
+                                          navigation = { composer = { id = "contactus",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
                                       },
+
                                xx0 = {
                                    title = "Settings", 
                                    isCategory = true,
@@ -175,12 +176,12 @@ local moreinfo = {
                                    isCategory = true,
                                       },
 
-                               zz1 = {title = "Where Am I ?"  ,
+                              --[[ zz1 = {title = "Where Am I ?"  ,
                                      backtext = "<",
                                      navigation = { composer = {
                                                otherscenes = "whereami",
                                             },},
-                                 },
+                                 },--]]
                                  zz3 = {
                                           title = "Social Media", 
                                           backtext = "<",

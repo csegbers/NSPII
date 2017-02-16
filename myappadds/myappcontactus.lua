@@ -50,67 +50,27 @@ local contactus = {
                                --                 effectback="slideRight",
                                --              },},
                                --           },
-                     aaa = {title = "Call State Auto", pic="phone.png",text="State Auto Main Phone Line" ,
+                     aaa = {title = "Call NSPII", pic="phone.png",text="NSPII Phone Line 888-677-4498" ,
                              doublewide=true, 
                              textfontsize=18   ,   
                              groupheaderheight = 30, 
-                              groupheaderstyle = {
+                             groupheaderstyle = {
                                       type = 'gradient',
-                                      color1 = { 189/255, 203/255, 220/255, 1 }, 
-                                      color2 = { 89/255, 116/255, 152/255, 1 },
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
                                       direction = "down"
                                },
                              headerfontsize = 16 ,
-                             navigation = { systemurl = { url="tel:614-464-5000"},},
+                             navigation = { systemurl = { url="tel:888-677-4498"},},
                                     
                                 },
 
-                      bbb = {title = "Live Chat", 
-                              pic="livechat.png",
-                              text="Chat live with a State Auto representative",
-                              backtext = "<",
-                             -- forwardtext = ">",
 
-                             sceneinfo = { 
-                                  htmlinfo = {     url="https://stateauto.webex.com/stateauto/supportcenter/webacd.wbx?WQID=e29ea21658790f784c1ca0a97c85bbf8" , },
-                                 scrollblockinfo = { },
-                                             },
-                              navigation = { composer = {
-                                   id = "stateautochat",
-                                   lua="webview",
-                                   time=250, 
-                                   effect="slideLeft",
-                                   effectback="slideRight",
-                                },},
-                                
-                                },
-                      ccc = {title = "Billing Questions", pic="billing.png",text="Call for billing questions" ,
-                               navigation = { systemurl = { url="tel:800-444-9950"},},
-                                      
-                                  },
-
-
-                     ddd = {title = "Report A Claim", pic="claim.png",text="Call The 24 Hour Claim Contact Center" ,
-                               --doublewide=true,
-                               groupheader = { r=1/255, g=1/255, b=1/255, a=1 },
-                               navigation = { systemurl = { url="tel:800-766-1853"},},
-                                      
-                                  },
-                    eee = {title = "Report A Glass Claim", pic="claimglass.png",text="For Auto Glass Only Claims" ,
-                               groupheader = { r=1/255, g=1/255, b=1/255, a=1 },
-                               navigation = { systemurl = { url="tel:888-504-4527"},},
-                                      
-                                  },
-                       fff = {title = "Report Fraud", pic="fraud.png",text="Anonomously call to report fraud" ,
-                               groupheader = { r=1/255, g=1/255, b=1/255, a=1 },
-                               navigation = { systemurl = { url="tel:888-999-8037"},},
-                                      
-                                  },
                      ggg = {
                                   title = "Social Media", 
                                   --doublewide=true,
                                   pic="socialmedia.png",
-                                  text="State Auto On Social Media",
+                                  text="NSPII On Social Media",
                                   iconwidth = 90,      -- height will be scaled appropriately
                                   groupheader = { r=90/255, g=50/255, b=90/255, a=1 },
                                   backtext = "<",
@@ -121,18 +81,18 @@ local contactus = {
                                   navigation = { composer = { id = "social",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
                               },   
 
-                       hhh = {title = "State Auto Web", 
+                       hhh = {title = "NSPII Web", 
                               pic="web.png",
-                              text="State Auto Main Website",
+                              text="NSPII Main Website",
                               backtext = "<",
                               forwardtext = ">",
 
                              sceneinfo = { 
-                                  htmlinfo = {     url="http://www.stateauto.com/" , },
+                                  htmlinfo = {     url="http://www.nspii.com/" , },
                                  scrollblockinfo = { },
                                              },
                               navigation = { composer = {
-                                   id = "stateautoweb",
+                                   id = "nspiiweb",
                                    lua="webview",
                                    time=250, 
                                    effect="slideLeft",
@@ -156,17 +116,13 @@ local contactus = {
                           --      navigation = { search = { q="Gas Station" },},
                                       
                           --         },
-                         iii = {title = "Email State Auto", pic="email.png",text="Email State Auto your question", 
+                         iii = {title = "Email NSPII", pic="email.png",text="Email NSPII your question", 
                                navigation = { popup = { type="mail", options= {to="webmaster@stateauto.com", subject="General Question"},},},
                                  },
 
-                          jjj= {title = "Text", pic="sms.png",text="Text State Auto your question" ,
-                               navigation = { popup = { type="sms",options= {to="614-464-5000"},},},
-                                      
-                                  },
 
-                          kkk = {title = "Directions - State Auto", pic="map.png",text="Get Directions To The State Auto Home Office" ,
-                               navigation = { directions = { address="518 E Broad St Columbus Ohio 43215" },},
+                          kkk = {title = "Mailing Address", pic="map.png",text="P.O. BOX 88 Delaware,Ohio 43015" ,
+                               navigation = { directions = { address="P.O. BOX 88 Delaware,Ohio 43015" },},
                                       
                                   },
                      },   --items
