@@ -173,6 +173,59 @@ local homepage = {
                                           ---------------------------
                                           navigation = { composer = { id = "contactus",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
                                       },
+                         zzzzz= {
+                                           title = "NSPII RSS Feed", 
+                                           pic="nspii-down.png",
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="Contact The National Society of Professional Insurance Investigators",
+                                           textfontsize=16   ,
+                                           groupheaderheight = 30, 
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"
+                                       },
+                                     --     groupbackgroundstyle = {
+                                      --type = 'gradient',
+                                     -- color1 = { 150/255, 186/255, 164/255, 1 }, 
+                                     -- color2 = { 196/255, 2221/255, 206/255, 1 },
+                                    -- direction = "down"
+                              -- },
+                                          sceneinfo = { 
+                                               feedName = "rss.xml",
+                                               feedURL = "http://www.nspii.com/pages/news-and-events/rss.xml",
+                                                --   feedName = "corona.rss",
+                                               --feedURL = "https://www.coronalabs.com/feed/",
+                                               icons = "fixed",
+                                               htmlinfo = {url="http://www.nspii.com" ,},
+                                               scrollblockinfo = { },
+                                               reachablemsg = {
+                                                 errortitle = "No Feed", 
+                                                 errormessage = "Feed temporarily unavaialble." ,
+                                               } ,
+                                             },
+                                             child={
+                                                 sceneinfo = { 
+                                                   htmlinfo = {url="http://www.nspii.com" ,},
+                                                   scrollblockinfo = { },
+                                                 },
+                                                 navigation = { composer = {
+                                                     id = "xx",
+                                                     lua="webview",
+                                                     time=250, 
+                                                     effect="slideLeft",
+                                                     effectback="slideRight",
+                                                  },},
+                                             },
+
+                                          ---------------------------
+                                          -- note if calling same lua from same lua... effect wont do much of course
+                                          ---------------------------
+                                          navigation = { composer = { id = "nspiinewsfeed",lua="feed" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+                                      },
 
                      },   --items
             }

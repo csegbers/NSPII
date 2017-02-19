@@ -151,22 +151,44 @@ local moreinfo = {
                                       },
 
                                xx0 = {
-                                   title = "Settings", 
+                                   title = "Foundation", 
                                    isCategory = true,
                                       },
                                xx1 = {
-                                   includeline  = false,       -- needed if prior is header otherwise it looks bad 
-                                   title = "My Settings", 
+                                   title = "NSPII Foundation", 
                                    backtext = "<",
                                   -- groupheader = { r=15/255, g=75/255, b=100/255, a=1 },   -- can override
-                                  sceneinfo = { 
-                                                htmlinfo = { },
+                                   sceneinfo = { 
+                                                htmlinfo = {
+                                                    htmlfile="foundation.html" ,
+                                                    dir = system.ResourceDirectory ,
+                                                },
                                                scrollblockinfo = { },
                                              },
-                                   navigation = { composer = {
-                                               id = "mysettings",
-                                               lua="settings",
-                                               time=500, 
+                                          navigation = { composer = {
+                                               id = "foundation",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },
+                               xx2 = {
+                                   includeline  = false,       -- needed if prior is header otherwise it looks bad 
+                                   title = "Past Award Recipients", 
+                                   backtext = "<",
+                                  -- groupheader = { r=15/255, g=75/255, b=100/255, a=1 },   -- can override
+                                   sceneinfo = { 
+                                                htmlinfo = {
+                                                    htmlfile="pastawards.html" ,
+                                                    dir = system.ResourceDirectory ,
+                                                },
+                                               scrollblockinfo = { },
+                                             },
+                                          navigation = { composer = {
+                                               id = "pastawards",
+                                               lua="webview",
+                                               time=250, 
                                                effect="slideLeft",
                                                effectback="slideRight",
                                             },},
