@@ -197,23 +197,15 @@ local homepage = {
                                           sceneinfo = { 
                                                feedName = "rss.xml",
                                                feedURL = "http://www.nspii.com/pages/news-and-events/rss.xml",
-                                                --   feedName = "corona.rss",
-                                               --feedURL = "https://www.coronalabs.com/feed/",
                                                icons = "fixed",
-                                               htmlinfo = {url="http://www.nspii.com" ,},
-                                               scrollblockinfo = { },
                                                reachablemsg = {
-                                                 errortitle = "No Feed", 
-                                                 errormessage = "Feed temporarily unavaialble." ,
-                                               } ,
-                                             },
+                                                      errortitle = "No Feed", 
+                                                      errormessage = "Feed temporarily unavaialble." ,
+                                                   } ,
+                                              },
                                              child={
-                                                 sceneinfo = { 
-                                                   htmlinfo = {url="http://www.nspii.com" ,},
-                                                   scrollblockinfo = { },
-                                                 },
                                                  navigation = { composer = {
-                                                     id = "xx",
+                                                     id = "xx",    -- dynamiclaly changed
                                                      lua="webview",
                                                      time=250, 
                                                      effect="slideLeft",

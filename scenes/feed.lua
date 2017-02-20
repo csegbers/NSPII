@@ -52,16 +52,29 @@ end
 local onRowTouch = function( event )
     if event.phase == "release" then
         
-        local id = event.row.index
-        local story = event.target.params.story
-        local params = {
-            story = story
-        }
+       local id = event.row.index
+       local story = event.target.params.story
+       local locatelaunch = {  
+                         title = story.title, --sceneparams.title, 
+                         sceneinfo = { htmlinfo = {url=story.link ,}, },
+                         navigation = { 
+                               composer = {
+                                             id = story.link,
+                                             lua=sceneparams.child.navigation.composer.lua,
+                                             time=sceneparams.child.navigation.composer.time, 
+                                             effect=sceneparams.child.navigation.composer.effect,
+                                             effectback=sceneparams.child.navigation.composer.effectback,
+                                          },
+                                     },
+                 }      
 
-       -- composer.showOverlay(displayMode, options)
-       myApp.navigationCommon(sceneparams.child)
+         local parentinfo =  sceneparams 
+         locatelaunch.callBack = function() myApp.showSubScreen({instructions=parentinfo,effectback="slideRight"}) end
+         myApp.showSubScreen ({instructions=locatelaunch})
+
     end
     return true
+
 end
 
 -- 
