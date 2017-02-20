@@ -14,8 +14,8 @@ local tabs = {
                                              },
                         navigation = { composer = { id = "home",lua="scrollblocks" ,time=250, effect="crossFade" },},
                     },
-          bagent = {
-                        label="My Agent" ,title="My Agent" ,def="myagent.png",over="myagent-down.png",
+          bnews = {
+                        label="News & Events" ,title="News & Events" ,def="myagent.png",over="myagent-down.png",
                         objecttype = "Agency",
                         objectexisting = "myagent",
                         sceneinfo = { 
@@ -27,7 +27,18 @@ local tabs = {
                         navigation = { composer = {id = "myagent", lua="locatedetails" ,time=250, effect="crossFade" },},
                                 
                     },
-          caccount = {
+          cchapters = {
+                        label="Chapters",  title="Chapters" ,def="account.png",over="account-down.png",
+                         objecttype = "",  -- not used
+                         objectexisting = "myaccount",
+                         sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { },
+                                               usage = { navigate = "mainscene"},
+                                             },
+                        navigation = { composer = { id = "myaccount",lua="account" ,time=250, effect="crossFade" },},
+                    },
+          daccount = {
                         label="My Account",  title="My Account" ,def="account.png",over="account-down.png",
                          objecttype = "",  -- not used
                          objectexisting = "myaccount",

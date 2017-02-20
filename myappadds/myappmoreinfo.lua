@@ -215,13 +215,13 @@ local moreinfo = {
                                       },                                    
                                    
                                  zz4 = {
-                                          title = "Other Extras", 
+                                          title = "Awards", 
                                           backtext = "<",
                                           sceneinfo = { 
                                                htmlinfo = {},
-                                               scrollblockinfo = { object="extras" , navigate = "subscene"},
+                                               scrollblockinfo = { object="awards" , navigate = "subscene"},
                                              },
-                                          navigation = { composer = { id = "extras",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
+                                          navigation = { composer = { id = "awards",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
                                       },
                               -- zz5 = {title = "Home page"  ,
                               --        backtext = "<",

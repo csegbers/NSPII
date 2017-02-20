@@ -375,6 +375,7 @@ M.moreinfo = require( M.myappadds .. "myappmoreinfo" )
 M.homepage = require( M.myappadds .. "myapphomepage" )  
 M.contactus = require( M.myappadds .. "myappcontactus" )  
 M.extras = require( M.myappadds .. "myappextras" )  
+M.awards = require( M.myappadds .. "myappawards" )  
 M.social = require( M.myappadds .. "myappsocial" )  
 M.mappings = require( M.myappadds .. "myappmappings" )  
 M.locate = require( M.myappadds .. "myapplocate" ).locate 
