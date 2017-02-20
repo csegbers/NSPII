@@ -55,7 +55,7 @@ local onRowTouch = function( event )
        local id = event.row.index
        local story = event.target.params.story
        local locatelaunch = {  
-                         title = story.title, --sceneparams.title, 
+                         title = sceneparams.title ,   --story.title,  
                          sceneinfo = { htmlinfo = {url=story.link ,}, },
                          navigation = { 
                                composer = {
