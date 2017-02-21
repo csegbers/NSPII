@@ -95,7 +95,7 @@ local function onRowRender(event)
     --
     if id > #stories then return true end
 
-    row.bg = display.newRect(0, 0, display.contentWidth, 60)
+    row.bg = display.newRect(0, 0, display.contentWidth, 80)
     row.bg.anchorX = 0
     row.bg.anchorY = 0
     row.bg:setFillColor( 1, 1, 1 )
@@ -198,14 +198,21 @@ local function onRowRender(event)
     --
     local myTitle = story.title
     if utf8.len(myTitle) > titleLength then
-        myTitle = utf8.sub(myTitle, 1, titleLength) .. "..."
+       -- myTitle = utf8.sub(myTitle, 1, titleLength) .. "..."
     end
-    row.title = display.newText( myTitle, 12, 0, myApp.fontBold, 18 )
-    row.title.anchorX = 0
+    row.title = display.newText( myTitle, 12, 0, display.contentWidth-60,40,myApp.fontBold, 18 )
+    --row.title = display.newText( myTitle, 12, 0, myApp.fontBold, 18 )
+    row.title.anchorX = 0 
     row.title.anchorY = 0.5
     row.title:setFillColor( 0 )
 
-    row.title.y = 22
+    local titleyadjust = 0
+    local subtitleyadjust = 0
+    if utf8.len(myTitle) <= math.floor(display.contentWidth / 11) then
+       titleyadjust = 15
+       subtitleyadjust = 8
+    end
+    row.title.y = 30 + titleyadjust  
     row.title.x = 42
 
     
@@ -216,7 +223,7 @@ local function onRowRender(event)
     row.subtitle = display.newText( timeStamp, 12, 0, myApp.font, 14)
     row.subtitle.anchorX = 0
     row.subtitle:setFillColor( 0.375, 0.375, 0.375 )
-    row.subtitle.y = row.height - 18
+    row.subtitle.y = row.height - 18 - titleyadjust  + subtitleyadjust
     row.subtitle.x = 42
 
     --
@@ -251,7 +258,7 @@ local function showTableView()
         print("insert row:  " .. i .. " [" .. stories[i].title .. "]")
         
         myList:insertRow{
-            rowHeight = 60,
+            rowHeight = 80,
             isCategory = false,
             rowColor = { 1, 1, 1 },
             lineColor = { 0.90, 0.90, 0.90 },
