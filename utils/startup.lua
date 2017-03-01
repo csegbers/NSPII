@@ -89,8 +89,8 @@ myApp.moreinfo.direction = "left"
 if (display.pixelHeight/display.pixelWidth) > 1.5 then  myApp.isTall = true end
 if display.contentWidth > 320 then myApp.is_iPad = true end
 
-myApp.saColor = { 0/myApp.colorDivisor, 104/myApp.colorDivisor, 167/myApp.colorDivisor } 
-myApp.saColorTrans = { 0/myApp.colorDivisor, 104/myApp.colorDivisor, 167/myApp.colorDivisor, .75 }
+myApp.saColor = { 56/myApp.colorDivisor, 106/myApp.colorDivisor, 76/myApp.colorDivisor } 
+myApp.saColorTrans = {  56/myApp.colorDivisor, 106/myApp.colorDivisor, 76/myApp.colorDivisor , .75 }
 myApp.colorGray = { 83/myApp.colorDivisor, 83/myApp.colorDivisor, 83/myApp.colorDivisor }
 myApp.icons = graphics.newImageSheet(myApp.imgfld.. myApp.iconinfo.sheet,myApp.iconinfo.icondimensions)
 

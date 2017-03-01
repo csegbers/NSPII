@@ -25,7 +25,7 @@ local homepage = {
             textfontsize=12   ,       
             textbottomedge =12   ,           
             items = {
-                        aaaaa = {
+                       --[[ aaaaa = {
                              title = "Locate An Agent", 
                               
                              pic="trustedchoice.png",
@@ -52,8 +52,8 @@ local homepage = {
                                          effect="slideLeft",
                                          effectback="slideRight",
                                       },},
-                                 },
-                         bbbbb = {title = "Certified Repair Shops", 
+                                 },   ]]
+                       --[[   bbbbb = {title = "Certified Repair Shops", 
                                      pic="qsg.png",
                                       
                                      text="Locate certified repair shops nearby",
@@ -74,8 +74,8 @@ local homepage = {
                                          effect="slideLeft",
                                          effectback="slideRight",
                                       },},
-                                   },
-                         ccccc = {title = "Emergency" , pic="emergency.png",text="Click here for location services and to dial 911" ,
+                                   },    ]]
+                       --[[   ccccc = {title = "Emergency" , pic="emergency.png",text="Click here for location services and to dial 911" ,
                                      backtext = "<",
                                     
                                      groupheader = { r=255/255, g=0/255, b=0/255, a=1 },
@@ -88,8 +88,8 @@ local homepage = {
                                             },},
 
                                       
-                                  },
-                          ddddd = {title = "State Auto Website", 
+                                  },    ]]
+                         --[[  ddddd = {title = "State Auto Website", 
                               pic="web.png",
                               text="Go to State Auto's website",
                               backtext = "<",
@@ -106,7 +106,7 @@ local homepage = {
                                    effectback="slideRight",
                                 },},
                                 
-                                },
+                                },    ]]
                             -- dtt= {title = "Get A Quote", 
                             --   pic="web.png",
                             --   text="Get A Quote For Your Personal Insurance",
@@ -178,7 +178,7 @@ local homepage = {
                                            pic="nspii-down.png",
                                            doublewide = true,
                                            backtext = "<",
-                                           text="Contact The National Society of Professional Insurance Investigators",
+                                           text=".....feeds",
                                            textfontsize=16   ,
                                            groupheaderheight = 30, 
                                            headerfontsize = 16,

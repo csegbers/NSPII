@@ -4,7 +4,7 @@
 -------------------------------------------------------
 local tabs = { 
   
-        tabbtnw = 32,tabbtnh = 32, tabBarHeight = 50,frameWidth = 20,launchkey = "ahome", transitiontime = 200,
+        tabbtnw = 28,tabbtnh = 28, tabBarHeight = 50,frameWidth = 20,launchkey = "ahome", transitiontime = 200,
         btns = {
             ahome = {
                         label="Home", title="NSPII" ,def="nspii.png",over="nspii-down.png",
@@ -15,7 +15,7 @@ local tabs = {
                         navigation = { composer = { id = "home",lua="scrollblocks" ,time=250, effect="crossFade" },},
                     },
           bnews = {
-                        label="News & Events" ,title="News & Events" ,def="myagent.png",over="myagent-down.png",
+                        label="News & Events" ,title="News & Events" ,def="news.png",over="news-down.png",
                         objecttype = "Agency",
                         objectexisting = "myagent",
                         sceneinfo = { 
@@ -28,7 +28,7 @@ local tabs = {
                                 
                     },
           cchapters = {
-                        label="Chapters",  title="Chapters" ,def="account.png",over="account-down.png",
+                        label="Chapters",  title="Chapters" ,def="chapter.png",over="chapter-down.png",
                          objecttype = "",  -- not used
                          objectexisting = "myaccount",
                          sceneinfo = { 
@@ -39,7 +39,7 @@ local tabs = {
                         navigation = { composer = { id = "myaccount",lua="account" ,time=250, effect="crossFade" },},
                     },
           daccount = {
-                        label="My Account",  title="My Account" ,def="account.png",over="account-down.png",
+                        label="My Account",  title="My Account" ,def="myaccount.png",over="myaccount-down.png",
                          objecttype = "",  -- not used
                          objectexisting = "myaccount",
                          sceneinfo = { 
