@@ -75,7 +75,13 @@ settings =
             { name = "android.hardware.location.gps", required = false },
             { name = "android.hardware.location.network", required = false },
         },
-   }
+   },
+    plugins =
+    {
+        ["plugin.utf8"] =
+        {
+            publisherId = "com.coronalabs"
+        },
+    },
 }
 
- 
