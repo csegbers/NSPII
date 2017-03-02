@@ -4,6 +4,18 @@ settings =
     {
         plist=
 	   {
+
+         NSAppTransportSecurity =
+            {
+                NSExceptionDomains =
+                {
+                    ["nspii.com"] =
+                    {
+                        NSIncludesSubdomains = true,
+                        NSThirdPartyExceptionAllowsInsecureHTTPLoads = true,
+                    },
+                },
+            },     
             CFBundleURLTypes =
                 {
                     {

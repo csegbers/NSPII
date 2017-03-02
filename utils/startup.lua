@@ -109,7 +109,7 @@ end
 -------------------------------------------------------
 --  Start Parse
 -------------------------------------------------------
-parse:init({ appId = myApp.parse.appId , apiKey = myApp.parse.restApikey,})
+--[[parse:init({ appId = myApp.parse.appId , apiKey = myApp.parse.restApikey,})
 parse.showStatus =  myApp.debugMode-- outputs response info in the console
 --parse.showAlert = myApp.debugMode -- show a native pop-up with error and result codes
 parse.showJSON = myApp.debugMode -- output the raw JSON response in the console 
@@ -126,7 +126,7 @@ parse:getConfig(
           end 
       end )
 --parse:logEvent( "MyCustomEvent", { ["x"] = "modparse" ,["y"] = "ccc"}, function (e) print ("return from home logevent") print (e.requestType)   end )
-
+--]]
 ----------------------------------------
 -- Was the scene laucnhed as a main tabbar sceene ?
 ----------------------------------------

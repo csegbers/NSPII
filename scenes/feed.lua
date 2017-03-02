@@ -328,8 +328,9 @@ function displayFeed(feedName, feedURL)
     local networkListener = function( event )
        
         if ( event.isError ) then
-            local alert = native.showAlert( sceneinfo.reachablemsg.errortitle, sceneinfo.reachablemsg.errormessage, { "Okay" } , onAlertComplete)
-        else
+            --local alert = native.showAlert( sceneinfo.reachablemsg.errortitle, sceneinfo.reachablemsg.errormessage, { "Okay" } , onAlertComplete)
+             local alert = native.showAlert( "segbersxxxx", event.response, { "Okay" } , onAlertComplete)
+       else
             print("calling processRSSFeed because the feed is avaialble")
             processRSSFeed(feedName, system.CachesDirectory)
         end
@@ -365,7 +366,8 @@ function displayFeed(feedName, feedURL)
             print("calling processRSSfeed because the network isn't reachable")
             processRSSFeed(feedName, system.CachesDirectory)
         else
-            local alert = native.showAlert( sceneinfo.reachablemsg.errortitle, sceneinfo.reachablemsg.errormessage, { "Okay" } , onAlertComplete)
+            --local alert = native.showAlert( sceneinfo.reachablemsg.errortitle, sceneinfo.reachablemsg.errormessage, { "Okay" } , onAlertComplete)
+            local alert = native.showAlert( "SEGBERS" ,sceneinfo.reachablemsg.errormessage, { "Okay" } , onAlertComplete)
 
         end
     end
