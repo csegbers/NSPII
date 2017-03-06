@@ -1,8 +1,7 @@
-
 -------------------------------------------------------
 -- Store variables used across the entire app 
 -------------------------------------------------------
-local contactus = { 
+local news = { 
 
 --------------------------------------------------------
 -- note: physical order of items does not matter. 
@@ -113,45 +112,8 @@ local contactus = {
                                 
                                 },
 
-                            -- dtt= {title = "CNN Launch separate", 
-                            --   pic="web.png",
-                            --   text="Sample web page",
-                            --   backtext = "<",
-                            --   navigation = { systemurl = {
-                            --        url="http://www.cnn.com/"
-                            --     },},
-                                      
-                            --     },
 
-
-                          -- eb44 = {title = "Nearby gas stations", pic="gas.png",text="Locate nearby gas stations" ,
-                          --      navigation = { search = { q="Gas Station" },},
-                                      
-                          --         },
-                         iii = {title = "Email NSPII", pic="email.png",text="Email NSPII your question", 
-                                 groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                  },
-
-                               navigation = { popup = { type="mail", options= {to="webmaster@stateauto.com", subject="General Question"},},},
-                                 },
-
-
-                          kkk = {title = "Mailing Address", pic="map.png",text="P.O. BOX 88 Delaware,Ohio 43015" ,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                  },
-
-                               navigation = { directions = { address="P.O. BOX 88 Delaware,Ohio 43015" },},
-                                      
-                                  },
                      },   --items
             }
       
-return contactus
+return news

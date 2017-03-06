@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = false,
+            debugMode = true,
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
@@ -62,7 +62,7 @@ local M = {
 
 
             composer = {
-                          recycleOnSceneChange = false,
+                          recycleOnSceneChange = false,      --- if true then scenes are destoyed
                           inoverlay = false,        -- our internal tracker
                        },
 
@@ -253,6 +253,7 @@ local M = {
             ------------------------------            
             authentication = {
                                   loggedin = false,
+                                  launchonstart = true,
                                   email="",
                                   emailVerified = false,
                                   username = "",
@@ -373,6 +374,7 @@ local M = {
 M.tabs     = require( M.myappadds .. "myapptabs" )  
 M.moreinfo = require( M.myappadds .. "myappmoreinfo" )  
 M.homepage = require( M.myappadds .. "myapphomepage" )  
+M.news = require( M.myappadds .. "myappnews" )  
 M.contactus = require( M.myappadds .. "myappcontactus" )  
 M.extras = require( M.myappadds .. "myappextras" )  
 M.awards = require( M.myappadds .. "myappawards" ) 

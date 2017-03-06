@@ -337,8 +337,9 @@ function scene:show( event )
 
          if myApp.authentication.loggedin == false and myApp.justLaunched == true then
             myApp.justLaunched = false
-            timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login}))  --- cant just launch if we recycle composer for some reason
-
+            if myApp.authentication.launchonstart then
+               timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login}))  --- cant just launch if we recycle composer for some reason
+            end
          end
          justcreated = false
     end

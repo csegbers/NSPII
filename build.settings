@@ -5,26 +5,27 @@ settings =
         plist=
 	   {
 
-         NSAppTransportSecurity =
-            {
-                NSExceptionDomains =
-                {
+           NSAppTransportSecurity =
+              {
+                 NSExceptionDomains =
+                 {
                     ["nspii.com"] =
                     {
                         NSIncludesSubdomains = true,
                         NSThirdPartyExceptionAllowsInsecureHTTPLoads = true,
                     },
-                },
-            },     
+                 },
+              },     
             CFBundleURLTypes =
                 {
                     {
-                    CFBundleURLSchemes =
+                       CFBundleURLSchemes =
                         {
-                        "nspiiapp",  
+                          "nspiiapp",  
                         },
+                    },
                 },
-            },
+
             CoronaWindowMovesWhenKeyboardAppears = true,
             NSLocationWhenInUseUsageDescription = "This app uses maps for a variety of features.",
             UIApplicationExitsOnSuspend = false,
@@ -34,22 +35,23 @@ settings =
             CFBundleName = "NSPII App",
             MinimumOSVersion = "6.0",
             
-            CFBundleIconFiles = {
-                "Icon.png", 
-                "Icon@2x.png", 
-                "Icon-60.png",
-                "Icon-60@2x.png",
-                "Icon-72.png", 
-                "Icon-72@2x.png",
-                "Icon-76.png",
-                "Icon-76@2x.png", 
-                "Icon-Small.png", 
-                "Icon-Small@2x.png",
-                "Icon-Small-40.png",
-                "Icon-Small-40@2x.png",
-                "Icon-Small-50.png", 
-                "Icon-Small-50@2x.png", 
-            },
+            CFBundleIconFiles = 
+               {
+                    "Icon.png", 
+                    "Icon@2x.png", 
+                    "Icon-60.png",
+                    "Icon-60@2x.png",
+                    "Icon-72.png", 
+                    "Icon-72@2x.png",
+                    "Icon-76.png",
+                    "Icon-76@2x.png", 
+                    "Icon-Small.png", 
+                    "Icon-Small@2x.png",
+                    "Icon-Small-40.png",
+                    "Icon-Small-40@2x.png",
+                    "Icon-Small-50.png", 
+                    "Icon-Small-50@2x.png", 
+                },
         },
    },
    orientation =

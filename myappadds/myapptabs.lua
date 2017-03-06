@@ -14,7 +14,7 @@ local tabs = {
                                              },
                         navigation = { composer = { id = "home",lua="scrollblocks" ,time=250, effect="crossFade" },},
                     },
-          bnews = {
+           --[[ bnews = {
                         label="News & Events" ,title="News & Events" ,def="news.png",over="news-down.png",
                         objecttype = "Agency",
                         objectexisting = "myagent",
@@ -26,8 +26,8 @@ local tabs = {
                                              },
                         navigation = { composer = {id = "myagent", lua="locatedetails" ,time=250, effect="crossFade" },},
                                 
-                    },
-          cchapters = {
+                    },]]
+            cchapters = {
                         label="Chapters",  title="Chapters" ,def="chapter.png",over="chapter-down.png",
                          objecttype = "",  -- not used
                          objectexisting = "myaccount",
@@ -38,7 +38,7 @@ local tabs = {
                                              },
                         navigation = { composer = { id = "myaccount",lua="account" ,time=250, effect="crossFade" },},
                     },
-          daccount = {
+            daccount = {
                         label="My Account",  title="My Account" ,def="myaccount.png",over="myaccount-down.png",
                          objecttype = "",  -- not used
                          objectexisting = "myaccount",
@@ -50,8 +50,8 @@ local tabs = {
                         navigation = { composer = { id = "myaccount",lua="account" ,time=250, effect="crossFade" },},
                     },
 
-          zdebug = {
-                     label="Debug" ,title="Debug" ,def="tabbaricon.png",over="tabbaricon-down.png" ,showonlyindebugMode=true,
+            zdebug = {
+                     label="Debug" ,title="Debug" ,def="nspii.png",over="nspii-down.png" ,showonlyindebugMode=true,
                      sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { },
