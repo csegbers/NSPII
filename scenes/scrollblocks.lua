@@ -285,6 +285,8 @@ function scene:show( event )
                          myIcon.x = startX - iconhorizontaladjust
                          myIcon.y = startYother + itemGrp.height/2 - iconverticaladjust --- sbi.iconwidth
                          itemGrp:insert(myIcon)
+                     else
+                        textxadjust = textxadjust - cellgroupwidth/2
                      end
 
                      -------------------------------------------------

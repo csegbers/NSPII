@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = true,
+            debugMode = false,
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
@@ -379,6 +379,7 @@ M.contactus = require( M.myappadds .. "myappcontactus" )
 M.extras = require( M.myappadds .. "myappextras" )  
 M.awards = require( M.myappadds .. "myappawards" ) 
 M.awardsnational = require( M.myappadds .. "myappawardsnational" ) 
+M.resources = require( M.myappadds .. "myappresources" )  
 M.social = require( M.myappadds .. "myappsocial" )  
 M.mappings = require( M.myappadds .. "myappmappings" )  
 M.locate = require( M.myappadds .. "myapplocate" ).locate 

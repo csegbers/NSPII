@@ -143,68 +143,7 @@ local homepage = {
                          -- fttt = {title = "Mail", pic="email.png",text="Flat tire, out of gas ? We can help", 
                          --       navigation = { popup = { type="mail", options= {to="nobody@mycompany.com", subject="hi there"},},},
                          --         },
-                         acontact= {
-                                           title = "Contact NSPII", 
-                                           pic="contact-us.png",
-                                           doublewide = true,
-                                           backtext = "<",
-                                           text="Contact The National Society of Professional Insurance Investigators",
-                                           textfontsize=16   ,
-                                           groupheaderheight = 30, 
-                                           headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                               },
-                                     --     groupbackgroundstyle = {
-                                      --type = 'gradient',
-                                     -- color1 = { 150/255, 186/255, 164/255, 1 }, 
-                                     -- color2 = { 196/255, 2221/255, 206/255, 1 },
-                                    -- direction = "down"
-                              -- },
-                                          sceneinfo = { 
-                                               htmlinfo = {},
-                                               scrollblockinfo = { object="contactus" , navigate = "subscene"},
-                                             },
-                                          ---------------------------
-                                          -- note if calling same lua from same lua... effect wont do much of course
-                                          ---------------------------
-                                          navigation = { composer = { id = "contactus",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
-                                      },
-                         bnews= {
-                                           title = "News and Events", 
-                                           pic="news-events.png",
-                                           doublewide = true,
-                                           backtext = "<",
-                                           text="Check out the latest news and upcoming events from the National Society of Professional Insurance Investigators",
-                                           textfontsize=14   ,
-                                           groupheaderheight = 30, 
-                                           headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                      },
-
-                                     --     groupbackgroundstyle = {
-                                      --type = 'gradient',
-                                     -- color1 = { 150/255, 186/255, 164/255, 1 }, 
-                                     -- color2 = { 196/255, 2221/255, 206/255, 1 },
-                                    -- direction = "down"
-                              -- },
-                                          sceneinfo = { 
-                                               htmlinfo = {},
-                                               scrollblockinfo = { object="news" , navigate = "subscene"},
-                                             },
-                                          ---------------------------
-                                          -- note if calling same lua from same lua... effect wont do much of course
-                                          ---------------------------
-                                          navigation = { composer = { id = "news",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
-                                      },
-                         cwelcome= {
+                         awelcome= {
                                            title = "Welcome", 
                                            pic="nspii-down.png",
                                            doublewide = true,
@@ -236,7 +175,69 @@ local homepage = {
                                                effectback="slideRight",
                                             },},
                                        },
-                         --[[znewsevent= {
+                         bcontact= {
+                                           title = "Contact NSPII", 
+                                           pic="contact-us.png",
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="Contact The National Society of Professional Insurance Investigators",
+                                           textfontsize=16   ,
+                                           groupheaderheight = 30, 
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"
+                               },
+                                     --     groupbackgroundstyle = {
+                                      --type = 'gradient',
+                                     -- color1 = { 150/255, 186/255, 164/255, 1 }, 
+                                     -- color2 = { 196/255, 2221/255, 206/255, 1 },
+                                    -- direction = "down"
+                              -- },
+                                          sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="contactus" , navigate = "subscene"},
+                                             },
+                                          ---------------------------
+                                          -- note if calling same lua from same lua... effect wont do much of course
+                                          ---------------------------
+                                          navigation = { composer = { id = "contactus",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+                                      },
+                         cnews= {
+                                           title = "News and Events", 
+                                           pic="news-events.png",
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="Check out the latest news, upcoming events and seminars from the National Society of Professional Insurance Investigators",
+                                           textfontsize=14   ,
+                                           groupheaderheight = 30, 
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"
+                                      },
+
+                                     --     groupbackgroundstyle = {
+                                      --type = 'gradient',
+                                     -- color1 = { 150/255, 186/255, 164/255, 1 }, 
+                                     -- color2 = { 196/255, 2221/255, 206/255, 1 },
+                                    -- direction = "down"
+                              -- },
+                                          sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="news" , navigate = "subscene"},
+                                             },
+                                          ---------------------------
+                                          -- note if calling same lua from same lua... effect wont do much of course
+                                          ---------------------------
+                                          navigation = { composer = { id = "news",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+                                      },
+
+                          znewsevent= {
                                            title = "NSPII rss feed", 
                                            pic="nspii-down.png",
                                            doublewide = true,
@@ -274,7 +275,7 @@ local homepage = {
                                           -- note if calling same lua from same lua... effect wont do much of course
                                           ---------------------------
                                           navigation = { composer = { id = "nspiinewsfeed",lua="feed" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
-                                      },]]
+                                      }, 
 
                      },   --items
             }

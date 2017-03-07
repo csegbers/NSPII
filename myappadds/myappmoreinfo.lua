@@ -204,6 +204,16 @@ local moreinfo = {
                                                otherscenes = "whereami",
                                             },},
                                  },--]]
+                                zz2 = {
+                                          title = "Resources", 
+                                          backtext = "<",
+                                          sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="resources" , navigate = "subscene"},
+                                             },
+                                          navigation = { composer = { id = "resources",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
+                                      },                                    
+  
                                  zz3 = {
                                           title = "Social Media", 
                                           backtext = "<",
