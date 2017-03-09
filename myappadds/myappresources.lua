@@ -12,7 +12,7 @@ local resources = {
             groupwidth = 120,
             groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
             groupheight = 140,
-            groupheaderheight = 20,
+            groupheaderheight = 30,
             groupbetween = 10,
             groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
             groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
@@ -24,36 +24,13 @@ local resources = {
             textfontsize=12   ,       
             textbottomedge =12   ,           
             items = {
-
-                          -- ccc = {title = "Roadside Assistance", pic="towing.png",text="Locate nearby towing services" ,
-                          --      navigation = { search = { q="Towing" },},
-                                      
-                          --         },
-
-
-                               -- bb5 = {title = "video", 
-                               --             pic="video.png",
-                               --             text="Flat tire, out of gas ? We can help",
-                               --             backtext = "<",
-
-                               --            sceneinfo = { 
-                               --                  htmlinfo = {
-                               --                      youtubeid="6EKIB8vhki8" ,
-                               --                  },
-                               --                 scrollblockinfo = { },
-                               --               },
-                               --            navigation = { composer = {
-                               --                 id = "term",
-                               --                 lua="webview",
-                               --                 time=250, 
-                               --                 effect="slideLeft",
-                               --                 effectback="slideRight",
-                               --              },},
-                               --           },
-                     aaa = {title = "PSA Videos", picx="phone.png",text="In conjunction with CAIF, NSPII provides videos involving Insurance Fraud" ,
+ 
+                     avid= {title = "PSA Videos", 
+                             picx="phone.png",
+                             text="In conjunction with CAIF, NSPII provides videos involving Insurance Fraud" ,
                              doublewide=true, 
                              textfontsize=18   ,   
-                             groupheaderheight = 30, 
+                             groupheight = 110, 
                              groupheaderstyle = {
                                       type = 'gradient',
                                       color1 = { 43/255, 143/255, 82/255, 1 }, 
@@ -61,9 +38,123 @@ local resources = {
                                       direction = "down"
                                },
                              headerfontsize = 16 ,
-                             navigation = { systemurl = { url="tel:888-677-4498"},},
+                             sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="respsa" , navigate = "subscene"},
+                                             },
+                                      navigation = { composer = { id = "respsa",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
                                     
                                 },
+
+
+                     bref= {
+                                           title = "Insurance References", 
+                                           groupheight = 25, 
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="",
+                                           textfontsize=16   ,
+                                            
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"},
+                                       sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="resref" , navigate = "subscene"},
+                                             },
+                                      navigation = { composer = { id = "resref",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+                               },
+
+                     cfraud= {
+                                           title = "Insurance Fraud Links", 
+                                           groupheight = 25, 
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="",
+                                           textfontsize=16   ,
+                                            
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"},
+                                        sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="resfraud" , navigate = "subscene"},
+                                             },
+                                      navigation = { composer = { id = "resfraud",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+
+                               },
+                     dtools ={
+                                           title = "Investigation Tools", 
+                                           groupheight = 90, 
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="",
+                                           textfontsize=18   ,
+                                            text="Insurance Investigation Tools and References" ,
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"},
+                                      sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="restools" , navigate = "subscene"},
+                                             },
+                                      navigation = { composer = { id = "restools",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+
+                               },
+
+                     enews = {
+                                           title = "Insurance News Sources", 
+                                           groupheight = 25, 
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="",
+                                           textfontsize=16   ,
+                                            
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"},
+                                        sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="resnews" , navigate = "subscene"},
+                                             },
+                                      navigation = { composer = { id = "resnews",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+
+                               },
+                     flegal= {
+                                           title = "National Legal Links", 
+                                           groupheight = 25, 
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="",
+                                           textfontsize=16   ,
+                                            
+                                           headerfontsize = 16,
+                                    groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"},
+                                        sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="reslegal" , navigate = "subscene"},
+                                             },
+                                      navigation = { composer = { id = "reslegal",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+
+                               },
+
+
 
 
                      },   --items

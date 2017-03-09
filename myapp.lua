@@ -379,13 +379,23 @@ M.contactus = require( M.myappadds .. "myappcontactus" )
 M.extras = require( M.myappadds .. "myappextras" )  
 M.awards = require( M.myappadds .. "myappawards" ) 
 M.awardsnational = require( M.myappadds .. "myappawardsnational" ) 
-M.resources = require( M.myappadds .. "myappresources" )  
 M.social = require( M.myappadds .. "myappsocial" )  
 M.mappings = require( M.myappadds .. "myappmappings" )  
+M.otherscenes = require( M.myappadds .. "myappotherscenes" ) 
 M.locate = require( M.myappadds .. "myapplocate" ).locate 
 M.locatepre = require( M.myappadds .. "myapplocate" ).locatepre
 M.locatedetails = require( M.myappadds .. "myapplocate" ).locatedetails
-M.otherscenes = require( M.myappadds .. "myappotherscenes" ) 
+
+
+
+M.resources = require( M.myappadds .. "myappresources" ) 
+M.respsa = require( M.myappadds .. "myappresourcedetails" ).respsa
+M.resref = require( M.myappadds .. "myappresourcedetails" ).resref
+M.resfraud = require( M.myappadds .. "myappresourcedetails" ).resfraud
+M.restools = require( M.myappadds .. "myappresourcedetails" ).restools
+M.resnews = require( M.myappadds .. "myappresourcedetails" ).resnews
+M.reslegal = require( M.myappadds .. "myappresourcedetails" ).reslegal
+
 
  
 return M

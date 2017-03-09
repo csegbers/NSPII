@@ -132,6 +132,7 @@ function scene:show( event )
              end
 
              local groupheight = sbi.groupheight
+             local runningheight = 0
              local groupwidth = sbi.groupwidth                                -- starting width of the selection box
              local workingScreenWidth = myApp.sceneWidth - sbi.groupbetween   -- screen widh - the left edge (since each box would have 1 right edge)
              local workingGroupWidth = groupwidth + sbi.groupbetween          -- group width plus the right edge
@@ -180,6 +181,12 @@ function scene:show( event )
                  -- if (v.showonlyindebugMode and myApp.debugMode == false) then showbtn = false end
                  -- if (v.showonlyinloggedin and myApp.authentication.loggedin == false) then showbtn = false  end
                  local showbtn = common.appCondition(v)
+                 if v.groupheight then 
+                    groupheight = v.groupheight
+                 end
+                 if row ==  1 and col == 1 then
+                    runningheight =  groupheight
+                 end
 
                  if showbtn then
                      --------------------------------------
@@ -187,6 +194,7 @@ function scene:show( event )
                      --------------------------------------
                      if col > groupsPerRow then
                           row = row + 1
+                          runningheight = runningheight + groupheight
                           col = 1
                      end
 
@@ -197,6 +205,7 @@ function scene:show( event )
                      local textwidthadjust = 0
                      local textxadjust = 0
                      local blnadjusttexty = false  
+                     local grouptextwidth
                      if v.doublewide then 
                         iconverticaladjust = 0
                         cellworkingGroupWidth = cellworkingGroupWidth * 2  
@@ -208,6 +217,7 @@ function scene:show( event )
                         --col = col + 1
                         if col == groupsPerRow then
                           row = row + 1
+                          runningheight = runningheight + groupheight
                            col = 1
                          end
                      end
@@ -218,7 +228,8 @@ function scene:show( event )
                      local itemGrp = display.newGroup(  )
                      itemGrp.id = k
                      local startX = cellworkingGroupWidth*(col-1) + leftY + cellgroupwidth/2
-                     local startY = (groupheight/2 +sbi.groupbetween*row) + (row-1)* groupheight
+                     --local startY = (groupheight/2 +sbi.groupbetween*row) + (row-1)* groupheight
+                     local startY = (groupheight/2 +sbi.groupbetween*row) + runningheight- groupheight
                      
                      -------------------------------------------------
                      -- Background
@@ -285,15 +296,17 @@ function scene:show( event )
                          myIcon.x = startX - iconhorizontaladjust
                          myIcon.y = startYother + itemGrp.height/2 - iconverticaladjust --- sbi.iconwidth
                          itemGrp:insert(myIcon)
-                     else
-                        textxadjust = textxadjust - cellgroupwidth/2
+                         grouptextwidth = cellgroupwidth-5 - textwidthadjust
+                     else 
+                        textxadjust = 0
+                        grouptextwidth = cellgroupwidth -5  
                      end
 
                      -------------------------------------------------
                      -- Desc text
                      -------------------------------------------------
                      local textfontsize = v.textfontsize or sbi.textfontsize
-                     local myDesc = display.newText( {text=(v.text or ""), x=startX +   textxadjust, y=0, height=0,width=cellgroupwidth-5 - textwidthadjust ,font= myApp.fontBold, fontSize= textfontsize,align="center" })
+                     local myDesc = display.newText( {text=(v.text or ""), x=startX +   textxadjust, y=0, height=0,width=grouptextwidth,font= myApp.fontBold, fontSize= textfontsize,align="center" })
                      myDesc.y=startYother+groupheight - (myDesc.height/2) - sbi.textbottomedge  
                      if blnadjusttexty then
                         myDesc.y=startYother + itemGrp.height/2
@@ -324,7 +337,9 @@ function scene:show( event )
               ---------------------------------------------
               -- stick in a buffer for the scroll
               ----------------------------------------------
-               scrollView:insert(display.newRoundedRect(1, (sbi.groupbetween*(row+1)) + row*sbi.groupheight ,1, sbi.groupbetween, 1 ))
+              -- scrollView:insert(display.newRoundedRect(1, (sbi.groupbetween*(row+1)) + row*sbi.groupheight ,1, sbi.groupbetween, 1 ))
+               scrollView:insert(display.newRoundedRect(1, (sbi.groupbetween*(row+1)) + runningheight ,1, sbi.groupbetween, 1 ))
+             
                print ("end of will show")
         end -- runit ?
        
