@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------
--- locateagent scene
+-- webview scene
 ---------------------------------------------------------------------------------------
 
 local composer = require( "composer" )
@@ -73,7 +73,7 @@ function scene:show( event )
                 webView:request( url )
             elseif  sceneparams.sceneinfo.htmlinfo.htmlfile then
                 webView:request( myApp.htmlfld .. sceneparams.sceneinfo.htmlinfo.htmlfile , sceneparams.sceneinfo.htmlinfo.dir )
-            elseif sceneparams.sceneinfo.htmlinfo.youtubeid then
+            elseif sceneparams.sceneinfo.htmlinfo.youtubeid   then
 
                      local temphtml = "youtube.html"
                      local temphtmlpath  = system.pathForFile( temphtml, system.TemporaryDirectory )
@@ -81,9 +81,19 @@ function scene:show( event )
  
                      if fh then
                         print( "Created file" )
-                        fh:write("<!DOCTYPE html><html><body>")
-                        fh:write([[<iframe id="ytplayer" type="text/html" width="]] ..  myApp.sceneWidth .. [[" height="]] .. myApp.sceneHeight .. [[" src="http://www.youtube.com/embed/]] .. sceneparams.sceneinfo.htmlinfo.youtubeid  .. [[?rel=0&autoplay=1" allowfullscreen frameborder="0"/>]])
-                        fh:write("</body></html>")
+                        fh:write("<!doctype html>\n<html>\n<head>\n<meta charset=\"utf-8\">")
+                        fh:write("<meta name=\"viewport\" content=\"width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;\"/>\n")
+                        fh:write("<style type=\"text/css\">\n html { -webkit-text-size-adjust: none; font-family: HelveticaNeue-Light, Helvetica, Droid-Sans, Arial, san-serif; font-size: 1.0em; } h1 {font-size:1.25em;} p {font-size:0.9em; } </style>")
+                         fh:write("</head>\n<body>\n")
+                        if sceneparams.title then
+                           fh:write("<h1>" .. sceneparams.title .. "</h1>\n")
+                        end
+                        fh:write([[<iframe width="100%" height="]] .. math.floor(display.contentWidth / 16 * 9) .. [[" src="http://www.youtube.com/embed/]] .. sceneparams.sceneinfo.htmlinfo.youtubeid .. [[?html5=1" frameborder="0" allowfullscreen></iframe>]])
+                      --   fh:write([[<iframe width="100%" height="]] .. math.floor(display.contentWidth / 16 * 9) .. [[" src="http://www.youtube.com/embed/]] .. sceneparams.sceneinfo.htmlinfo.youtubeid  .. [[?rel=0&autoplay=1" allowfullscreen frameborder="0"/>]])
+                        if sceneparams.text then
+                           fh:write( "<h5>" .. sceneparams.text .. "</h5>\n" )
+                        end                     
+                         fh:write("</body></html>")
                         io.close( fh )
                      else
                          print( "Create file failed!" )

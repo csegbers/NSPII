@@ -597,8 +597,7 @@ local M = {
                       textfontsize=12   ,       
                       textbottomedge =12   ,          
                       items = {
-
-                          a= {
+                          a1= {
                                          title = "American Bar Association Network", titlealt="ABANET",
                                           text="American Bar Association Network", 
                                          groupheight = 90, 
@@ -611,11 +610,62 @@ local M = {
                                          headerfontsize = 16,
                                          sceneinfo = { 
                                               htmlinfo = {     url="http://www.abanet.org/" , },
+
                                              scrollblockinfo = { },
                                                          },
                                           navigation = { composer = {
                                                id = "abanet",
                                                lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item                     
+                          a2= {
+                                         title = "craig test youtube", titlealt="ABANET",
+                                          text="American Bar Association Network", 
+                                         groupheight = 90, 
+                                         pic="web.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  youtubeid ="CV3xHLN5ErA"},--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "abanet",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+                          a3= {
+                                         title = "craig test video", titlealt="ABANET",
+                                          text="American Bar Association Network", 
+                                         groupheight = 90, 
+                                         pic="web.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  video ="Big Screen.m4v",
+                                                            dir = system.ResourceDirectory ,
+                                                          },--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "abanet",
+                                               lua="videoview",
                                                time=250, 
                                                effect="slideLeft",
                                                effectback="slideRight",

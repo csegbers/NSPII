@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = false,
+            debugMode = true,
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
@@ -32,6 +32,7 @@ local M = {
             ------------------------------
             imgfld = "images/",
             htmlfld = "html/",
+            videofld = "videos/",
             myappadds = "myappadds.",
             scenesfld = "scenes.",
             utilsfld = "utils.",
