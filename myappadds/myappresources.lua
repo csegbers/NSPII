@@ -15,7 +15,13 @@ local resources = {
             groupheaderheight = 30,
             groupbetween = 10,
             groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-            groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
+            --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
+            groupheaderstyle = {
+                                      type = 'gradient',
+                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                      color2 = { 161/255, 200/255, 177/255, 1 },
+                                      direction = "down"
+                               },           
             iconwidth = 60,    -- can be overidden in item
             iconheight = 60,   -- can be overidden in item
             headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
@@ -31,12 +37,7 @@ local resources = {
                              doublewide=true, 
                              textfontsize=18   ,   
                              groupheight = 110, 
-                             groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                               },
+
                              headerfontsize = 16 ,
                              sceneinfo = { 
                                                htmlinfo = {},
@@ -56,11 +57,7 @@ local resources = {
                                            textfontsize=16   ,
                                             
                                            headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"},
+
                                        sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="resref" , navigate = "subscene"},
@@ -77,11 +74,7 @@ local resources = {
                                            textfontsize=16   ,
                                             
                                            headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"},
+
                                         sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="resfraud" , navigate = "subscene"},
@@ -98,11 +91,7 @@ local resources = {
                                            textfontsize=18   ,
                                             text="Insurance Investigation Tools and References" ,
                                            headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"},
+
                                       sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="restools" , navigate = "subscene"},
@@ -120,11 +109,7 @@ local resources = {
                                            textfontsize=16   ,
                                             
                                            headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"},
+
                                         sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="resnews" , navigate = "subscene"},
@@ -141,11 +126,7 @@ local resources = {
                                            textfontsize=16   ,
                                             
                                            headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"},
+
                                         sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="reslegal" , navigate = "subscene"},

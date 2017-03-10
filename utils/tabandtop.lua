@@ -291,7 +291,7 @@ function myApp.showScreen(parms)
                 --   Change the title in the status bar and launch new screen
                 ----------------------------------------------------------
                 if parms.firsttime  then
-                    myApp.TitleGroup.titleText.text = tnt.title
+                    myApp.TitleGroup.titleText.text = tnt.titlealt or tnt.title
                     myApp.showScreenIcon(myApp.imgfld .. parms.instructions.over)
                 else
                     ---------------------------------------------------
@@ -384,7 +384,7 @@ function myApp.showSubScreenRegular(parms)
         transition.to( myApp.TitleGroup.titleText, 
             { 
                time=myApp.tabs.transitiontime, alpha=.2,x = myApp.TitleGroup.titleText.x*xendpoint,
-               onComplete= function () myApp.TitleGroup.titleText.text = tnt.title; myApp.TitleGroup.titleText.x = myApp.cCx*xstartpoint;  transition.to( myApp.TitleGroup.titleText, {alpha=1,x = myApp.cCx,   transition=easing.outQuint, time=myApp.tabs.transitiontime }) end
+               onComplete= function () myApp.TitleGroup.titleText.text = tnt.titlealt or tnt.title; myApp.TitleGroup.titleText.x = myApp.cCx*xstartpoint;  transition.to( myApp.TitleGroup.titleText, {alpha=1,x = myApp.cCx,   transition=easing.outQuint, time=myApp.tabs.transitiontime }) end
              } )
 
         --------------------------------------------
