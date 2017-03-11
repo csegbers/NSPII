@@ -58,7 +58,7 @@ function scene:show( event )
             --debugpopup(sceneparams.htmlinfo.url )
 
             if sceneparams.sceneinfo.htmlinfo.video and sceneparams.sceneinfo.htmlinfo.dir then
-                videoView:load( myApp.htmlfld .. sceneparams.sceneinfo.htmlinfo.video, sceneparams.sceneinfo.htmlinfo.dir )
+                videoView:load( myApp.videofld .. sceneparams.sceneinfo.htmlinfo.video, sceneparams.sceneinfo.htmlinfo.dir )
                 videoView:addEventListener( "video", viewListener )
                 videoView.isVisible = true
                 videoView:play()

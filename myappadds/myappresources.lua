@@ -134,7 +134,23 @@ local resources = {
                                       navigation = { composer = { id = "reslegal",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
 
                                },
+                     fyoutube= {
+                                           title = "YouTube Videos", 
+                                           groupheight = 25, 
+                                           doublewide = true,
+                                           backtext = "<",
+                                           text="",
+                                           textfontsize=16   ,
+                                            
+                                           headerfontsize = 16,
 
+                                        sceneinfo = { 
+                                               htmlinfo = {},
+                                               scrollblockinfo = { object="resyoutube" , navigate = "subscene"},
+                                             },
+                                      navigation = { composer = { id = "resyoutube",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+
+                               },
 
 
 

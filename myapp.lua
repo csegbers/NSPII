@@ -396,6 +396,7 @@ M.resfraud = require( M.myappadds .. "myappresourcedetails" ).resfraud
 M.restools = require( M.myappadds .. "myappresourcedetails" ).restools
 M.resnews = require( M.myappadds .. "myappresourcedetails" ).resnews
 M.reslegal = require( M.myappadds .. "myappresourcedetails" ).reslegal
+M.resyoutube = require( M.myappadds .. "myappresourcedetails" ).resyoutube
 
 
  

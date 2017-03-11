@@ -27,26 +27,138 @@ local M = {
                       textbottomedge =12   ,           
                       items = {
 
-                      aa = {title = "NSPII Web", 
-                              pic="web.png",
-                              text="NSPII Main Website",
-                              backtext = "<",
-                              forwardtext = ">",
 
+                       aa= {
+                                         title = "Hitting The Roof",  
+                                          text="Hitting The Roof", 
+                                         groupheight = 100, 
+                                         pic="video.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  video ="Hitting the Roof.m4v",
+                                                            dir = system.ResourceDirectory ,
+                                                          },--   url="http://www.abanet.org/" , },
 
-                             sceneinfo = { 
-                                  htmlinfo = {     url="http://www.nspii.com/" , },
-                                 scrollblockinfo = { },
-                                             },
-                              navigation = { composer = {
-                                   id = "nspiiweb",
-                                   lua="webview",
-                                   time=250, 
-                                   effect="slideLeft",
-                                   effectback="slideRight",
-                                },},
-                                
-                                },
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "videroof",
+                                               lua="videoview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+                        bb= {
+                                         title = "Lost & Found",  
+                                          text="Lost & Found", 
+                                         groupheight = 100, 
+                                         pic="video.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  video ="Lost and Found.m4v",
+                                                            dir = system.ResourceDirectory ,
+                                                          },--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "videolost",
+                                               lua="videoview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+                         cc= {
+                                         title = "Bigger Screen TV",  
+                                          text="Bigger Screen TV", 
+                                         groupheight = 100, 
+                                         pic="video.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  video ="Big Screen.m4v",
+                                                            dir = system.ResourceDirectory ,
+                                                          },--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "videotv",
+                                               lua="videoview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+                         dd= {
+                                         title = "Weekend Warrior",  
+                                          text="Weekend Warrior", 
+                                         groupheight = 100, 
+                                         pic="video.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  video ="Weekend Warrior.m4v",
+                                                            dir = system.ResourceDirectory ,
+                                                          },--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "videoweekend",
+                                               lua="videoview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+                       ee= {
+                                         title = "Asking for Trouble",  
+                                          text="Asking for Trouble", 
+                                         groupheight = 100, 
+                                         pic="video.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  video ="Asking for Trouble.m4v",
+                                                            dir = system.ResourceDirectory ,
+                                                          },--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "videotroub",
+                                               lua="videoview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+
                           },
                                  
                        },
@@ -621,56 +733,7 @@ local M = {
                                                effectback="slideRight",
                                             },},
                                        },   -- end item                     
-                          a2= {
-                                         title = "craig test youtube", titlealt="ABANET",
-                                          text="American Bar Association Network", 
-                                         groupheight = 90, 
-                                         pic="web.png",
-                                         doublewide = true,
-                                         backtext = "<",
-                                         
-                                         textfontsize=16   ,
-                                          
-                                         headerfontsize = 16,
-                                         sceneinfo = { 
-                                              htmlinfo = {  youtubeid ="CV3xHLN5ErA"},--   url="http://www.abanet.org/" , },
 
-                                             scrollblockinfo = { },
-                                                         },
-                                          navigation = { composer = {
-                                               id = "abanet",
-                                               lua="webview",
-                                               time=250, 
-                                               effect="slideLeft",
-                                               effectback="slideRight",
-                                            },},
-                                       },   -- end item
-                          a3= {
-                                         title = "craig test video", titlealt="ABANET",
-                                          text="American Bar Association Network", 
-                                         groupheight = 90, 
-                                         pic="web.png",
-                                         doublewide = true,
-                                         backtext = "<",
-                                         
-                                         textfontsize=16   ,
-                                          
-                                         headerfontsize = 16,
-                                         sceneinfo = { 
-                                              htmlinfo = {  video ="Big Screen.m4v",
-                                                            dir = system.ResourceDirectory ,
-                                                          },--   url="http://www.abanet.org/" , },
-
-                                             scrollblockinfo = { },
-                                                         },
-                                          navigation = { composer = {
-                                               id = "abanet",
-                                               lua="videoview",
-                                               time=250, 
-                                               effect="slideLeft",
-                                               effectback="slideRight",
-                                            },},
-                                       },   -- end item
                            b= {
                                          title = "KuesterLaw", 
                                            text="Jeff Kuester's Technology Comprehensive Law List", 
@@ -745,6 +808,83 @@ local M = {
                                  
                        },
 
+             resyoutube= {    
+                          
+                      groupwidth = 120,
+                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
+                      groupheight = 140,
+                      groupheaderheight = 30,
+                      groupbetween = 10,
+                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
+                      --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
+                      groupheaderstyle = {
+                                                type = 'gradient',
+                                                color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                                color2 = { 161/255, 200/255, 177/255, 1 },
+                                                direction = "down"
+                                         },           
+                      iconwidth = 60,    -- can be overidden in item
+                      iconheight = 60,   -- can be overidden in item
+                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
+                      headerfontsize = 13,  
+                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
+                      textfontsize=12   ,       
+                      textbottomedge =12   ,          
+                      items = {
+                   
+                          a2= {
+                                         title = "ABC News", 
+                                          text="Florida Authorities: Insurance Fraud, a Booming Crime Ring", 
+                                         groupheight = 120, 
+                                         pic="youtube.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  youtubeid ="B5dybSC8UG8"},--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "B5dybSC8UG8",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+
+                          b2= {
+                                         title = "ABC News", 
+                                          text="Local driver believes incident caught on dashcam was insurance scam", 
+                                         groupheight = 120, 
+                                         pic="youtube.png",
+                                         doublewide = true,
+                                         backtext = "<",
+                                         
+                                         textfontsize=16   ,
+                                          
+                                         headerfontsize = 16,
+                                         sceneinfo = { 
+                                              htmlinfo = {  youtubeid ="EY1mMvYAhLM"},--   url="http://www.abanet.org/" , },
+
+                                             scrollblockinfo = { },
+                                                         },
+                                          navigation = { composer = {
+                                               id = "EY1mMvYAhLM",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
+                                       },   -- end item
+
+                          },
+                                 
+                       },
 
 
      }
