@@ -104,7 +104,7 @@ function scene:show( event )
              -- Tcouhed an object - go do something
              ----------------------------------------------
              local function onObjectTouch( event )
-                print ("sceneparams " .. sbi.groupwidth)
+                print ("sceneparams " .. (sbi.groupwidth or myApp.scrollblocks.groupwidth))
                 local homepageitem = sbi.items[event.target.id] 
             --    local homepageitem = sbi.items[event.target.id] 
                 -------------------------------------------
@@ -131,15 +131,16 @@ function scene:show( event )
                 transition.to( event.target, { time=100, x=5,y=5,  delta=true , transition=easing.continuousLoop, onComplete=onObjectTouchAction } )  
              end
 
-             local groupheight = sbi.groupheight
+             local groupbetween = sbi.groupbetween or myApp.scrollblocks.groupbetween  
+             local groupheight = sbi.groupheight or myApp.scrollblocks.groupheight  
              local runningheight = 0
-             local groupwidth = sbi.groupwidth                                -- starting width of the selection box
-             local workingScreenWidth = myApp.sceneWidth - sbi.groupbetween   -- screen widh - the left edge (since each box would have 1 right edge)
-             local workingGroupWidth = groupwidth + sbi.groupbetween          -- group width plus the right edge
+             local groupwidth = sbi.groupwidth  or myApp.scrollblocks.groupwidth                               -- starting width of the selection box
+             local workingScreenWidth = myApp.sceneWidth - groupbetween   -- screen widh - the left edge (since each box would have 1 right edge)
+             local workingGroupWidth = groupwidth + groupbetween          -- group width plus the right edge
              local groupsPerRow = math.floor(workingScreenWidth / workingGroupWidth )    -- how many across can we fit
              local leftWidth = myApp.sceneWidth - (workingGroupWidth*groupsPerRow )      -- width of the left edige
-             local leftY = (leftWidth) / 2 + (sbi.groupbetween / 2 )          -- starting point of left box
-             local dumText = display.newText( {text="X",font= myApp.fontBold, fontSize=sbi.textfontsize})
+             local leftY = (leftWidth) / 2 + (groupbetween / 2 )          -- starting point of left box
+             local dumText = display.newText( {text="X",font= myApp.fontBold, fontSize=sbi.textfontsize or myApp.scrollblocks.textfontsize})
              local textHeightSingleLine = dumText.height
              display.remove( dumText )
              dumText=nil
@@ -148,16 +149,16 @@ function scene:show( event )
              -- lots of extra edging ? edging > space in between ?
              -- expand the boxes but not beyond their max size
              -------------------------------------------
-             if leftWidth > sbi.groupbetween then
+             if leftWidth > groupbetween then
                 local origgroupwidth = groupwidth
-                groupwidth = groupwidth + ((leftWidth - sbi.groupbetween) / groupsPerRow)   -- calcualte new group width
-                if groupwidth > sbi.groupmaxwidth then                                      -- gone too far ? push back
-                    groupwidth = sbi.groupmaxwidth 
+                groupwidth = groupwidth + ((leftWidth - groupbetween) / groupsPerRow)   -- calcualte new group width
+                if groupwidth > (sbi.groupmaxwidth or myApp.scrollblocks.groupmaxwidth) then                                      -- gone too far ? push back
+                    groupwidth = sbi.groupmaxwidth or myApp.scrollblocks.groupmaxwidth
                     if groupwidth < origgroupwidth then groupwidth = origgroupwidth end                -- just incase someone puts the max > than original
                 end
-                workingGroupWidth = groupwidth +  sbi.groupbetween                          -- calcualt enew total group width _ spacing
+                workingGroupWidth = groupwidth +  groupbetween                          -- calcualt enew total group width _ spacing
                 leftWidth = myApp.sceneWidth - (workingGroupWidth*groupsPerRow )                       -- recalce leftwdith and left starting point
-                leftY = (leftWidth) / 2 + (sbi.groupbetween / 2 )
+                leftY = (leftWidth) / 2 + (groupbetween / 2 )
              end
 
              -----------------------------------------------
@@ -209,7 +210,7 @@ function scene:show( event )
                      if v.doublewide then 
                         iconverticaladjust = 0
                         cellworkingGroupWidth = cellworkingGroupWidth * 2  
-                        cellgroupwidth = cellgroupwidth * 2 + sbi.groupbetween
+                        cellgroupwidth = cellgroupwidth * 2 + groupbetween
                         iconhorizontaladjust = cellgroupwidth / 3
                         textwidthadjust =  cellgroupwidth   / 2   
                         textxadjust =   textwidthadjust /2 - 15
@@ -229,14 +230,14 @@ function scene:show( event )
                      itemGrp.id = k
                      local startX = cellworkingGroupWidth*(col-1) + leftY + cellgroupwidth/2
                      --local startY = (groupheight/2 +sbi.groupbetween*row) + (row-1)* groupheight
-                     local startY = (groupheight/2 +sbi.groupbetween*row) + runningheight- groupheight
+                     local startY = (groupheight/2 +groupbetween*row) + runningheight- groupheight
                      
                      -------------------------------------------------
                      -- Background
                      -------------------------------------------------
                      local myRoundedRect = display.newRoundedRect(startX, startY ,cellgroupwidth,  groupheight, 1 )
-                     local backcolor = v.groupbackground or sbi.groupbackground
-                     local backcolorstyle = v.groupbackgroundstyle or sbi.groupbackgroundstyle
+                     local backcolor = v.groupbackground or sbi.groupbackground or myApp.scrollblocks.groupbackground
+                     local backcolorstyle = v.groupbackgroundstyle or sbi.groupbackgroundstyle or myApp.scrollblocks.groupbackgroundstyle
                      -----------------------------
                      -- anything from sepfici item being used ? use it first
                      -----------------------------
@@ -257,11 +258,11 @@ function scene:show( event )
                      -------------------------------------------------
                      -- Header Background
                      -------------------------------------------------
-                     local startYother = startY- groupheight/2 + sbi.groupbetween
-                     local groupheaderheight = v.groupheaderheight or sbi.groupheaderheight
+                     local startYother = startY- groupheight/2 + groupbetween
+                     local groupheaderheight = v.groupheaderheight or sbi.groupheaderheight  or myApp.scrollblocks.groupheaderheight
                      local myRoundedTop = display.newRoundedRect(startX, startYother ,cellgroupwidth, groupheaderheight, 1 )
-                     local headcolor = v.groupheader or sbi.groupheader
-                     local headcolorstyle = v.groupheaderstyle or sbi.groupheaderstyle
+                     local headcolor = v.groupheader or sbi.groupheader or myApp.scrollblocks.groupheader
+                     local headcolorstyle = v.groupheaderstyle or sbi.groupheaderstyle or myApp.scrollblocks.groupheaderstyle
                      -----------------------------
                      -- anything from sepfici item being used ? use it first
                      -----------------------------
@@ -282,17 +283,21 @@ function scene:show( event )
                      -------------------------------------------------
                      -- Header text
                      -------------------------------------------------
-                     local headerfontsize = v.headerfontsize or sbi.headerfontsize
+                     local headerfontsize = v.headerfontsize or sbi.headerfontsize or myApp.scrollblocks.headerfontsize
                      local myText = display.newText( (v.title or ""), startX, startYother,  myApp.fontBold, headerfontsize )
-                     myText:setFillColor( sbi.headercolor.r,sbi.headercolor.g,sbi.headercolor.b,sbi.headercolor.a )
+                     if sbi.headercolor then
+                        myText:setFillColor( sbi.headercolor.r,sbi.headercolor.g,sbi.headercolor.b,sbi.headercolor.a )
+                     else
+                        myText:setFillColor( myApp.scrollblocks.headercolor.r,myApp.scrollblocks.headercolor.g,myApp.scrollblocks.headercolor.b,myApp.scrollblocks.headercolor.a )
+                     end
                      itemGrp:insert(myText)
 
                      -------------------------------------------------
                      -- Icon ?
                      -------------------------------------------------
                      if v.pic then
-                         local myIcon = display.newImageRect(myApp.imgfld .. v.pic, v.originaliconwidth or sbi.iconwidth ,v.originaliconheight or sbi.iconheight )
-                         common.fitImage( myIcon, v.iconwidth or sbi.iconwidth   )
+                         local myIcon = display.newImageRect(myApp.imgfld .. v.pic, v.originaliconwidth or sbi.iconwidth  or myApp.scrollblocks.iconwidth,v.originaliconheight or sbi.iconheight or myApp.scrollblocks.iconheight )
+                         common.fitImage( myIcon, v.iconwidth or sbi.iconwidth   or myApp.scrollblocks.iconwidth )
                          myIcon.x = startX - iconhorizontaladjust
                          myIcon.y = startYother + itemGrp.height/2 - iconverticaladjust --- sbi.iconwidth
                          itemGrp:insert(myIcon)
@@ -305,13 +310,17 @@ function scene:show( event )
                      -------------------------------------------------
                      -- Desc text
                      -------------------------------------------------
-                     local textfontsize = v.textfontsize or sbi.textfontsize
+                     local textfontsize = v.textfontsize or sbi.textfontsize or myApp.scrollblocks.textfontsize
                      local myDesc = display.newText( {text=(v.text or ""), x=startX +   textxadjust, y=0, height=0,width=grouptextwidth,font= myApp.fontBold, fontSize= textfontsize,align="center" })
-                     myDesc.y=startYother+groupheight - (myDesc.height/2) - sbi.textbottomedge  
+                     myDesc.y=startYother+groupheight - (myDesc.height/2) - (sbi.textbottomedge  or myApp.scrollblocks.textbottomedge )
                      if blnadjusttexty then
                         myDesc.y=startYother + itemGrp.height/2
                      end
-                     myDesc:setFillColor( sbi.textcolor.r,sbi.textcolor.g,sbi.textcolor.b,sbi.textcolor.a )
+                     if sbi.textcolor then
+                        myDesc:setFillColor( sbi.textcolor.r,sbi.textcolor.g,sbi.textcolor.b,sbi.textcolor.a )
+                     else
+                        myDesc:setFillColor( myApp.scrollblocks.textcolor.r,myApp.scrollblocks.textcolor.g,myApp.scrollblocks.textcolor.b,myApp.scrollblocks.textcolor.a )
+                     end
                      itemGrp:insert(myDesc)
 
                      -------------------------------------------------
@@ -338,7 +347,7 @@ function scene:show( event )
               -- stick in a buffer for the scroll
               ----------------------------------------------
               -- scrollView:insert(display.newRoundedRect(1, (sbi.groupbetween*(row+1)) + row*sbi.groupheight ,1, sbi.groupbetween, 1 ))
-               scrollView:insert(display.newRoundedRect(1, (sbi.groupbetween*(row+1)) + runningheight ,1, sbi.groupbetween, 1 ))
+               scrollView:insert(display.newRoundedRect(1, (groupbetween*(row+1)) + runningheight ,1, groupbetween, 1 ))
              
                print ("end of will show")
         end -- runit ?

@@ -5,26 +5,10 @@
 local M = { 
 
              respsa = {    
-                      groupwidth = 120,
-                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-                      groupheight = 140,
-                      groupheaderheight = 20,
-                      groupbetween = 10,
-                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-                      --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
-                      groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                  },
-                      iconwidth = 60,    -- can be overidden in item
-                      iconheight = 60,   -- can be overidden in item
-                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-                      headerfontsize = 13,  
-                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-                      textfontsize=12   ,       
-                      textbottomedge =12   ,           
+ 
+                      textfontsize=16   ,
+                      headerfontsize = 16,
+
                       items = {
 
 
@@ -36,9 +20,7 @@ local M = {
                                          doublewide = true,
                                          backtext = "<",
                                          
-                                         textfontsize=16   ,
-                                          
-                                         headerfontsize = 16,
+
                                          sceneinfo = { 
                                               htmlinfo = {  video ="Hitting the Roof.m4v",
                                                             dir = system.ResourceDirectory ,
@@ -61,10 +43,7 @@ local M = {
                                          pic="video.png",
                                          doublewide = true,
                                          backtext = "<",
-                                         
-                                         textfontsize=16   ,
-                                          
-                                         headerfontsize = 16,
+
                                          sceneinfo = { 
                                               htmlinfo = {  video ="Lost and Found.m4v",
                                                             dir = system.ResourceDirectory ,
@@ -87,10 +66,7 @@ local M = {
                                          pic="video.png",
                                          doublewide = true,
                                          backtext = "<",
-                                         
-                                         textfontsize=16   ,
-                                          
-                                         headerfontsize = 16,
+
                                          sceneinfo = { 
                                               htmlinfo = {  video ="Big Screen.m4v",
                                                             dir = system.ResourceDirectory ,
@@ -113,10 +89,7 @@ local M = {
                                          pic="video.png",
                                          doublewide = true,
                                          backtext = "<",
-                                         
-                                         textfontsize=16   ,
-                                          
-                                         headerfontsize = 16,
+
                                          sceneinfo = { 
                                               htmlinfo = {  video ="Weekend Warrior.m4v",
                                                             dir = system.ResourceDirectory ,
@@ -139,10 +112,7 @@ local M = {
                                          pic="video.png",
                                          doublewide = true,
                                          backtext = "<",
-                                         
-                                         textfontsize=16   ,
-                                          
-                                         headerfontsize = 16,
+
                                          sceneinfo = { 
                                               htmlinfo = {  video ="Asking for Trouble.m4v",
                                                             dir = system.ResourceDirectory ,
@@ -164,25 +134,11 @@ local M = {
                        },
              resref = {    
 
-                      groupwidth = 120,
-                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-                      groupheight = 120,
-                      groupheaderheight = 30,
-                      groupbetween = 10,
-                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-                      -- groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
-                      groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                  },                      iconwidth = 60,    -- can be overidden in item
-                      iconheight = 60,   -- can be overidden in item
-                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-                      headerfontsize = 16,  
-                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
+ 
+                      headerfontsize = 16,   
                       textfontsize=14   ,       
-                      textbottomedge =12   ,           
+  
+
                       items = {
 
                       aa = {title = "Resources", 
@@ -256,27 +212,8 @@ local M = {
                                  
                        }, 
              resfraud = {    
-                          
-                      groupwidth = 120,
-                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-                      groupheight = 140,
-                      groupheaderheight = 20,
-                      groupbetween = 10,
-                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-                      -- groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
-                      groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                  },
-                      iconwidth = 60,    -- can be overidden in item
-                      iconheight = 60,   -- can be overidden in item
-                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-                      headerfontsize = 13,  
-                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-                      textfontsize=12   ,       
-                      textbottomedge =12   ,           
+
+
                       items = {
 
                       aa = {title = "ACFE", 
@@ -475,33 +412,14 @@ local M = {
                                  
                        },
              restools = {    
-                          
-                      groupwidth = 120,
-                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-                      groupheight = 140,
-                      groupheaderheight = 20,
-                      groupbetween = 10,
-                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-                      -- groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
-                      groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                  },
-                      iconwidth = 60,    -- can be overidden in item
-                      iconheight = 60,   -- can be overidden in item
-                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-                      headerfontsize = 13,  
-                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-                      textfontsize=12   ,       
-                      textbottomedge =12   ,           
+
+
                       items = {
 
                       aa = {title = "Kelly Blue Book", 
                               pic="web.png",
                               doublewide=true, 
-                              groupheight = 80,
+                              groupheight = 85,
                               text="Check the current value of a vehicle for free! ",
                               backtext = "<",
                               forwardtext = ">",
@@ -523,7 +441,7 @@ local M = {
                       bb = {title = "NAIS Insurance Claims Resource Center",titlealt = "NAIS", 
                               pic="web.png",
                               doublewide=true, 
-                              groupheight = 80,
+                              groupheight = 85,
                               text="NAIS Insurance Claims Resource Center",
                               backtext = "<",
                               forwardtext = ">",
@@ -567,7 +485,7 @@ local M = {
                       dd = {title = "Surname, address & telephone search", titlealt="Switchboard",
                               pic="web.png",
                               doublewide=true, 
-                              groupheight = 140,
+                              groupheight = 145,
                               text="Search for surnames or look up addresses and telephone numbers using this free national telephone criss-cross directory.  It can also be used as a conventional telephone information source.",
                               backtext = "<",
                               forwardtext = ">",
@@ -591,26 +509,7 @@ local M = {
                        },
 
              resnews= {    
-                      groupwidth = 120,
-                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-                      groupheight = 140,
-                      groupheaderheight = 30,
-                      groupbetween = 10,
-                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-                      --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
-                      groupheaderstyle = {
-                                                type = 'gradient',
-                                                color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                                color2 = { 161/255, 200/255, 177/255, 1 },
-                                                direction = "down"
-                                         },           
-                      iconwidth = 60,    -- can be overidden in item
-                      iconheight = 60,   -- can be overidden in item
-                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-                      headerfontsize = 13,  
-                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-                      textfontsize=12   ,       
-                      textbottomedge =12   ,          
+        
                       items = {
                            a= {
                                          title = "A.M. Best", 
@@ -687,27 +586,7 @@ local M = {
                        },
 
              reslegal= {    
-                          
-                      groupwidth = 120,
-                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-                      groupheight = 140,
-                      groupheaderheight = 30,
-                      groupbetween = 10,
-                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-                      --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
-                      groupheaderstyle = {
-                                                type = 'gradient',
-                                                color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                                color2 = { 161/255, 200/255, 177/255, 1 },
-                                                direction = "down"
-                                         },           
-                      iconwidth = 60,    -- can be overidden in item
-                      iconheight = 60,   -- can be overidden in item
-                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-                      headerfontsize = 13,  
-                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-                      textfontsize=12   ,       
-                      textbottomedge =12   ,          
+         
                       items = {
                           a1= {
                                          title = "American Bar Association Network", titlealt="ABANET",
@@ -809,27 +688,7 @@ local M = {
                        },
 
              resyoutube= {    
-                          
-                      groupwidth = 120,
-                      groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-                      groupheight = 140,
-                      groupheaderheight = 30,
-                      groupbetween = 10,
-                      groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-                      --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
-                      groupheaderstyle = {
-                                                type = 'gradient',
-                                                color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                                color2 = { 161/255, 200/255, 177/255, 1 },
-                                                direction = "down"
-                                         },           
-                      iconwidth = 60,    -- can be overidden in item
-                      iconheight = 60,   -- can be overidden in item
-                      headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-                      headerfontsize = 13,  
-                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-                      textfontsize=12   ,       
-                      textbottomedge =12   ,          
+         
                       items = {
                    
                           a2= {

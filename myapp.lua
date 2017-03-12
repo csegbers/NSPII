@@ -57,6 +57,35 @@ local M = {
             sceneWidth = 0,     -- set elsewhere
             sceneBackgroundcolor = { r=241/255, g=242/255, b=243/255, a=1 },
             sceneBackgroundmorecolor = { r=56/255, g=106/255, b=76/255, a=1 },
+
+            ------------------------------
+            -- used by scrollblocks
+            ------------------------------ 
+            scrollblocks = { 
+                              groupwidth = 120,
+                              groupheight = 140,
+                              groupmaxwidth = 170, 
+                              groupheaderheight = 30,
+                              groupbetween = 10,
+                              --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
+                              groupheaderstyle = {
+                                                        type = 'gradient',
+                                                        color1 = { 43/255, 143/255, 82/255, 1 }, 
+                                                        color2 = { 161/255, 200/255, 177/255, 1 },
+                                                        direction = "down"
+                                                   },
+                                      
+                              groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
+                              --groupheaderstyle = {},
+                              headercolor = { r=255/255, g=255/255, b=255/255, a=1 },  
+                              headerfontsize = 13, 
+                              textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
+                              textfontsize=12   , 
+                              textbottomedge =12   ,  
+                              iconwidth = 60,    -- can be overidden in item
+                              iconheight = 60,   -- can be overidden in item
+                          },
+
             scenemaskFile = "",
             splash = {image = "splash.png", delay = 150, },
             promptforphonecalls = true,

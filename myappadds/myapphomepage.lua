@@ -4,26 +4,40 @@
 -------------------------------------------------------
 local homepage = { 
 
+           headerfontsize = 16,
+
 --------------------------------------------------------
 -- note: physical order of items does not matter. 
 -- Order is based on alphabetical based on key 
 --------------------------------------------------------
 
-            groupwidth = 120,
-            groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
-            groupheight = 140,
-            groupheaderheight = 20,
-            groupbetween = 10,
-            groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
-            groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
+            --groupwidth = 120,
+            --groupmaxwidth = 170,     -- we will allow to grow to fit better if there is extra edging. This would be max however
+            --groupheight = 140,
+            --groupheaderheight = 20,
+            --groupbetween = 10,
+           
+            -----------
+            -- use myApp default
+            -------------------
+            -- groupbackground = { r=255/255, g=255/255, b=255/255, a=1 },
+            --groupheader = { r=25/255, g=75/255, b=150/255, a=1 },
+            --groupheaderstyle = {
+               --                       type = 'gradient',
+                --                      color1 = { 43/255, 143/255, 82/255, 1 }, 
+                --                      color2 = { 161/255, 200/255, 177/255, 1 },
+                --                      direction = "down"
+               --                  },
 
-            iconwidth = 60,    -- can be overidden in item
-            iconheight = 60,   -- can be overidden in item
-            headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   
-            headerfontsize = 13,  
-            textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-            textfontsize=12   ,       
-            textbottomedge =12   ,           
+            --iconwidth = 60,    -- can be overidden in item   use default
+            --iconheight = 60,   -- can be overidden in item    use default
+            --headercolor = { r=255/255, g=255/255, b=255/255, a=1 },   use default
+            --headerfontsize = 13,     use deafule
+            --textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   use default
+            --textfontsize=12   ,    use default   
+            --textbottomedge =12   ,     use default 
+
+
             items = {
                        --[[ aaaaa = {
                              title = "Locate An Agent", 
@@ -150,14 +164,9 @@ local homepage = {
                                            backtext = "<",
                                            text="Welcome from the National Society of Professional Insurance Investigators",
                                            textfontsize=14   ,
-                                           groupheaderheight = 30, 
-                                           headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                      },
+
+                                     
+
 
 
                                sceneinfo = { 
@@ -182,14 +191,9 @@ local homepage = {
                                            backtext = "<",
                                            text="Contact The National Society of Professional Insurance Investigators",
                                            textfontsize=16   ,
-                                           groupheaderheight = 30, 
-                                           headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                               },
+
+                                         
+
                                      --     groupbackgroundstyle = {
                                       --type = 'gradient',
                                      -- color1 = { 150/255, 186/255, 164/255, 1 }, 
@@ -212,21 +216,9 @@ local homepage = {
                                            backtext = "<",
                                            text="Check out the latest news, upcoming events and seminars from NSPII",
                                            textfontsize=14   ,
-                                           groupheaderheight = 30, 
-                                           headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                      },
 
-                                     --     groupbackgroundstyle = {
-                                      --type = 'gradient',
-                                     -- color1 = { 150/255, 186/255, 164/255, 1 }, 
-                                     -- color2 = { 196/255, 2221/255, 206/255, 1 },
-                                    -- direction = "down"
-                              -- },
+                                          
+
                                           sceneinfo = { 
                                                htmlinfo = {},
                                                scrollblockinfo = { object="news" , navigate = "subscene"},
@@ -244,14 +236,9 @@ local homepage = {
                                            backtext = "<",
                                            text=".....feeds",
                                            textfontsize=16   ,
-                                           groupheaderheight = 30, 
-                                           headerfontsize = 16,
-                                    groupheaderstyle = {
-                                      type = 'gradient',
-                                      color1 = { 43/255, 143/255, 82/255, 1 }, 
-                                      color2 = { 161/255, 200/255, 177/255, 1 },
-                                      direction = "down"
-                                       },
+
+                                          
+
                                              sceneinfo = { 
                                                feedName = "rss.xml",
                                                feedURL = "http://www.nspii.com/pages/news-and-events/rss.xml",
