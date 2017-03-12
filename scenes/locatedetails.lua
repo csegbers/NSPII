@@ -222,69 +222,6 @@ function scene:create(event)
     local group = self.view
     sceneparams = event.params            
      
-     -- container  = common.SceneContainer()
-     -- group:insert(container )
-
-     -- ---------------------------------------------
-     -- -- Header group
-     -- -- text gets set in Show evvent
-     -- ---------------------------------------------
-
-     -- itemGrp = display.newGroup(  )
-     -- local startX = 0
-     -- local startY = 0 -myApp.cH/2 + myApp.locatedetails.groupheight/2  + myApp.sceneStartTop
-
-     -- local groupwidth = myApp.sceneWidth-myApp.locatedetails.edge
-     -- local dumText = display.newText( {text="X",font= myApp.fontBold, fontSize=myApp.locatedetails.textfontsize})
-
-     -- local textHeightSingleLine = dumText.height
-     
-     -- -------------------------------------------------
-     -- -- Background
-     -- -------------------------------------------------
-     -- local myRoundedRect = display.newRoundedRect(startX, startY , groupwidth-myApp.locatedetails.groupstrokewidth*2,myApp.locatedetails.groupheight, myApp.locatedetails.cornerradius )
-     -- myRoundedRect:setFillColor(myApp.locatedetails.groupbackground.r,myApp.locatedetails.groupbackground.g,myApp.locatedetails.groupbackground.b,myApp.locatedetails.groupbackground.a )
-     -- itemGrp:insert(myRoundedRect)
-
-     -- local startYother = startY- myApp.locatedetails.groupheight/2  
-
-     -- -------------------------------------------------
-     -- -- Name text - will be set in show
-     -- -------------------------------------------------
-     -- myName = display.newText( {text="", x=startX , y=0, height=0,width=groupwidth-myApp.locatedetails.edge*2 ,font= myApp.fontBold, fontSize=myApp.locatedetails.textfontsize,align="left" })
-     -- --myName.y=myRoundedRect.y --startYother+myApp.locatedetails.groupheight - (myName.height) -  myApp.locatedetails.textbottomedge
-     -- myName.anchorY = 0
-     -- myName.y = myRoundedRect.y - myRoundedRect.height/2 + myApp.locatedetails.edge/2
-     -- myName:setFillColor( myApp.locatedetails.textcolor.r,myApp.locatedetails.textcolor.g,myApp.locatedetails.textcolor.b,myApp.locatedetails.textcolor.a )
-     -- itemGrp:insert(myName)
-
-     -- -------------------------------------------------
-     -- -- address text - will be set in show
-     -- -------------------------------------------------
-     -- myAddress = display.newText( {text="", x=startX , y=0, height=0,width=groupwidth-myApp.locatedetails.edge*2 ,font= myApp.fontBold, fontSize=myApp.locatedetails.textfontsizeaddress,align="left" })
-     -- myAddress.anchorY = 0
-     -- myAddress.y = 0 -- myRoundedRect.y - myRoundedRect.height/2 + myApp.locatedetails.edge/2
-     -- myAddress:setFillColor( myApp.locatedetails.textcoloraddress.r,myApp.locatedetails.textcoloraddress.g,myApp.locatedetails.textcoloraddress.b,myApp.locatedetails.textcoloraddress.a )
-     -- itemGrp:insert(myAddress)
-
-     -- container:insert(itemGrp)
-
-     -- ------------------------------------------------------
-     -- -- Table View
-     -- ------------------------------------------------------
-     -- myList = widget.newTableView {
-     --       x=0,
-     --       y= myApp.cH/2 -  myApp.locatedetails.tableheight/2 - myApp.tabs.tabBarHeight-myApp.locatedetails.edge, 
-     --       width = myApp.sceneWidth-myApp.locatedetails.edge, 
-     --       height = myApp.locatedetails.tableheight,
-     --       onRowRender = onRowRender,
-     --       onRowTouch = onRowTouch,
-     --       listener = scrollListener,
-     --    }
-     -- container:insert(myList )
-
-
-
 
 end
 
