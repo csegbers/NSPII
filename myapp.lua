@@ -407,11 +407,15 @@ M.homepage = require( M.myappadds .. "myapphomepage" )
 M.news = require( M.myappadds .. "myappnews" )  
 M.contactus = require( M.myappadds .. "myappcontactus" )  
 M.extras = require( M.myappadds .. "myappextras" )  
+
 M.awards = require( M.myappadds .. "myappawards" ) 
-M.awardsnational = require( M.myappadds .. "myappawardsnational" ) 
+M.awardsnational = require( M.myappadds .. "myappawardsdetails" ).awardsnational
+M.awardsohio = require( M.myappadds .. "myappawardsdetails" ).awardsohio
+
 M.social = require( M.myappadds .. "myappsocial" )  
 M.mappings = require( M.myappadds .. "myappmappings" )  
 M.otherscenes = require( M.myappadds .. "myappotherscenes" ) 
+
 M.locate = require( M.myappadds .. "myapplocate" ).locate 
 M.locatepre = require( M.myappadds .. "myapplocate" ).locatepre
 M.locatedetails = require( M.myappadds .. "myapplocate" ).locatedetails

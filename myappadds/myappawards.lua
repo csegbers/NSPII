@@ -24,9 +24,7 @@ local awards = {
                                        scrollblockinfo = { object="awardsnational" , navigate = "subscene"},
                                      },
                                   navigation = { composer = { id = "awardsnational",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
- 
-
-                                
+                     
                                 },
 
                           bbb= {title = "Lifetime Members", 
@@ -36,21 +34,42 @@ local awards = {
                               text="Any member who has given continuous exemplary service to the Society for not less than 10 years may be recommended for Lifetime Membership",
                               doublewide=true,
                               backtext = "<",
-                             navigation = { app = {
-                                    --url="twitter://user?screen_name=StateAuto",
-                                    urlfallback = "https://twitter.com/search?q=nspii",
-                                 },},
+                               sceneinfo = { 
+                                                htmlinfo = {
+                                                    htmlfile="lifetimemembers.html" ,
+                                                    dir = system.ResourceDirectory ,
+                                                },
+                                               scrollblockinfo = { },
+                                             },
+                                          navigation = { composer = {
+                                               id = "lifetimemembers",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
                                 
                                 },
+                            
                           ccc= {title = "Indiana Chapter", 
                               pic="nspii-down.png",
                               text="Indiana Chapter",
                               --doublewide=true,
                               backtext = "<",
-                             navigation = { app = {
-                                    --url="twitter://user?screen_name=StateAuto",
-                                    urlfallback = "https://twitter.com/search?q=nspii",
-                                 },},
+                               sceneinfo = { 
+                                                htmlinfo = {
+                                                    htmlfile="indianaaward.html" ,
+                                                    dir = system.ResourceDirectory ,
+                                                },
+                                               scrollblockinfo = { },
+                                             },
+                                          navigation = { composer = {
+                                               id = "indianaaward",
+                                               lua="webview",
+                                               time=250, 
+                                               effect="slideLeft",
+                                               effectback="slideRight",
+                                            },},
                                 
                                 },
                           ddd= {title = "Ohio Chapter", 
@@ -58,10 +77,12 @@ local awards = {
                               text="Ohio Chapter",
                               --doublewide=true,
                               backtext = "<",
-                             navigation = { app = {
-                                    --url="twitter://user?screen_name=StateAuto",
-                                    urlfallback = "https://twitter.com/search?q=nspii",
-                                 },},
+                              sceneinfo = { 
+                                       htmlinfo = {},
+                                       scrollblockinfo = { object="awardsohio" , navigate = "subscene"},
+                                     },
+                                  navigation = { composer = { id = "awardsohio",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
+                     
                                 
                                 },
                          --[[ bbb= {title = "NSPII Facebook", 
