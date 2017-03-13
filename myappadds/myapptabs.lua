@@ -29,14 +29,11 @@ local tabs = {
                     },]]
             cchapters = {
                         label="Chapters",  title="Chapters" ,def="chapter.png",over="chapter-down.png",
-                         objecttype = "",  -- not used
-                         objectexisting = "myaccount",
-                         sceneinfo = { 
+                        sceneinfo = { 
                                                htmlinfo = {},
-                                               scrollblockinfo = { },
-                                               usage = { navigate = "mainscene"},
+                                               scrollblockinfo = { object="chapters" , navigate = "mainscene"},
                                              },
-                        navigation = { composer = { id = "myaccount",lua="account" ,time=250, effect="crossFade" },},
+                        navigation = { composer = { id = "chapters",lua="scrollblocks" ,time=250, effect="crossFade" },},
                     },
             daccount = {
                         label="My Account",  title="My Account" ,def="myaccount.png",over="myaccount-down.png",

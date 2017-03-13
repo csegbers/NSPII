@@ -137,6 +137,12 @@ local M = {
                                       },
                            },
             objecttypes = {
+                        fax = {
+                              launch="phone",
+                              pic="phone.png",
+                              title="Fax",
+                              navigation = { systemurl = { url="tel:%s" },},
+                            },            
                         phone = {
                               launch="phone",
                               pic="phone.png",
@@ -404,6 +410,7 @@ local M = {
 M.tabs     = require( M.myappadds .. "myapptabs" )  
 M.moreinfo = require( M.myappadds .. "myappmoreinfo" )  
 M.homepage = require( M.myappadds .. "myapphomepage" )  
+
 M.news = require( M.myappadds .. "myappnews" )  
 M.contactus = require( M.myappadds .. "myappcontactus" )  
 M.extras = require( M.myappadds .. "myappextras" )  
@@ -420,7 +427,11 @@ M.locate = require( M.myappadds .. "myapplocate" ).locate
 M.locatepre = require( M.myappadds .. "myapplocate" ).locatepre
 M.locatedetails = require( M.myappadds .. "myapplocate" ).locatedetails
 
-
+M.people = require( M.myappadds .. "myapppeople" ) 
+M.chapters = require( M.myappadds .. "myappchapters" ) 
+M.chapnational = require( M.myappadds .. "myappchaptersdetails" ).national 
+M.chapcommittees = require( M.myappadds .. "myappchaptersdetails" ).committees 
+M.chapstate = require( M.myappadds .. "myappchaptersdetails" ).state
 
 M.resources = require( M.myappadds .. "myappresources" ) 
 M.respsa = require( M.myappadds .. "myappresourcedetails" ).respsa
