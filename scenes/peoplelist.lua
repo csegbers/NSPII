@@ -335,7 +335,7 @@ function displayFeed(feedName, feedURL)
     -- be reached, then check for the cached version of the file.  
     --
     
-    local isReachable =  common.testNetworkConnection() 
+    local isReachable = common.testNetworkConnection() 
     if  isReachable then
         -- download the latest file
         -- show some indicator that we are busy
