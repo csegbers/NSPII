@@ -403,44 +403,102 @@ local M = {
 
             mydb = {   -- Databse info   other stuff will be added at startup
                       lCC  = {},    -- used to store user defaults from db record
-                   },    -- 
-  
+                   },    
+
+                   -- 
+            --========================
+            --== additional files
+            --========================  
+             files = {
+                            tabs = {name="myapptabs",download=""},
+                            moreinfo = {name="myappmoreinfo",download=""},
+                            homepage = {name="myapphomepage",download=""},
+                            news = {name="myappnews",download=""},
+                            contactus = {name="myappcontactus",download=""},
+                            extras = {name="myappextras",download=""},
+                            
+                            awards = {name="myappawards",download=""},
+                            awardsnational = {name="myappawards",section="awardsnational",download=""},
+                            awardsohio = {name="myappawards",section="awardsohio",download=""},
+
+                            social = {name="myappsocial",download=""},
+                            mappings = {name="myappmappings",download=""},
+                            otherscenes = {name="myappotherscenes",download=""},
+
+                            locate = {name="myapplocate",section="locate",download=""},
+                            locatepre = {name="myapplocate",section="locatepre",download=""},
+                            locatedetails = {name="myapplocate",section="locatedetails",download=""},
+
+                            people = {name="myapppeople",download=""},
+
+                            chapters = {name="myappchapters",download=""},
+                            chapnational = {name="myappchaptersdetails",section="chapnational",download=""},
+                            chapcommittees = {name="myappchaptersdetails",section="chapcommittees",download=""},
+                            chapstate = {name="myappchaptersdetails",section="chapstate",download=""},
+
+                            resources = {name="myappresources",download=""},
+                            respsa = {name="myappresourcedetails",section="respsa",download=""},
+                            resref = {name="myappresourcedetails",section="resref",download=""},
+                            resfraud = {name="myappresourcedetails",section="resfraud",download=""},
+                            restools = {name="myappresourcedetails",section="restools",download=""},
+                            resnews = {name="myappresourcedetails",section="resnews",download=""},
+                            reslegal = {name="myappresourcedetails",section="reslegal",download=""},
+                            resyoutube = {name="myappresourcedetails",section="resyoutube",download=""},
+
+                        },
 
         }
-M.tabs     = require( M.myappadds .. "myapptabs" )  
-M.moreinfo = require( M.myappadds .. "myappmoreinfo" )  
-M.homepage = require( M.myappadds .. "myapphomepage" )  
 
-M.news = require( M.myappadds .. "myappnews" )  
-M.contactus = require( M.myappadds .. "myappcontactus" )  
-M.extras = require( M.myappadds .. "myappextras" )  
+local a = {}
+local n,i,k
+for n in pairs(M.files) do table.insert(a, n) end
+for i,k in ipairs(a) do 
+   local v = M.files[k]
+   print ("home page item " .. k)
+   if v.section then
+      M[k] = require( M.myappadds .. v.name)[v.section]  
+   else
+      M[k] = require( M.myappadds .. v.name)  
+   end
+   
+end
 
-M.awards = require( M.myappadds .. "myappawards" ) 
-M.awardsnational = require( M.myappadds .. "myappawardsdetails" ).awardsnational
-M.awardsohio = require( M.myappadds .. "myappawardsdetails" ).awardsohio
+--M.tabs     = require( M.myappadds .. M.files.tabs.name)  
+--M.moreinfo = require( M.myappadds .. M.files.moreinfo.name )  
+--M.homepage = require( M.myappadds .. M.files.homepage.name )  
 
-M.social = require( M.myappadds .. "myappsocial" )  
-M.mappings = require( M.myappadds .. "myappmappings" )  
-M.otherscenes = require( M.myappadds .. "myappotherscenes" ) 
+--M.news = require( M.myappadds .. "myappnews" )  
+--M.contactus = require( M.myappadds .. "myappcontactus" )  
+--M.extras = require( M.myappadds .. "myappextras" )  
 
-M.locate = require( M.myappadds .. "myapplocate" ).locate 
-M.locatepre = require( M.myappadds .. "myapplocate" ).locatepre
-M.locatedetails = require( M.myappadds .. "myapplocate" ).locatedetails
+--M.awards = require( M.myappadds .. "myappawards" ) 
+--M.awardsnational = require( M.myappadds .. "myappawardsdetails" ).awardsnational
+--M.awardsohio = require( M.myappadds .. "myappawardsdetails" ).awardsohio
 
-M.people = require( M.myappadds .. "myapppeople" ) 
-M.chapters = require( M.myappadds .. "myappchapters" ) 
-M.chapnational = require( M.myappadds .. "myappchaptersdetails" ).national 
-M.chapcommittees = require( M.myappadds .. "myappchaptersdetails" ).committees 
-M.chapstate = require( M.myappadds .. "myappchaptersdetails" ).state
+--M.social = require( M.myappadds .. "myappsocial" )  
+--M.mappings = require( M.myappadds .. "myappmappings" )  
+--M.otherscenes = require( M.myappadds .. "myappotherscenes" ) 
 
-M.resources = require( M.myappadds .. "myappresources" ) 
-M.respsa = require( M.myappadds .. "myappresourcedetails" ).respsa
-M.resref = require( M.myappadds .. "myappresourcedetails" ).resref
-M.resfraud = require( M.myappadds .. "myappresourcedetails" ).resfraud
-M.restools = require( M.myappadds .. "myappresourcedetails" ).restools
-M.resnews = require( M.myappadds .. "myappresourcedetails" ).resnews
-M.reslegal = require( M.myappadds .. "myappresourcedetails" ).reslegal
-M.resyoutube = require( M.myappadds .. "myappresourcedetails" ).resyoutube
+--M.locate = require( M.myappadds .. "myapplocate" ).locate 
+--M.locatepre = require( M.myappadds .. "myapplocate" ).locatepre
+--M.locatedetails = require( M.myappadds .. "myapplocate" ).locatedetails
+
+--M.people = require( M.myappadds .. "myapppeople" ) 
+
+--M.chapters = require( M.myappadds .. "myappchapters" ) 
+--M.chapnational = require( M.myappadds .. "myappchaptersdetails" ).national 
+--M.chapcommittees = require( M.myappadds .. "myappchaptersdetails" ).committees 
+--M.chapstate = require( M.myappadds .. "myappchaptersdetails" ).state
+print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappchaptersdetails" )))
+
+--M.resources = require( M.myappadds .. "myappresources" ) 
+--M.respsa = require( M.myappadds .. "myappresourcedetails" ).respsa
+--M.resref = require( M.myappadds .. "myappresourcedetails" ).resref
+--M.resfraud = require( M.myappadds .. "myappresourcedetails" ).resfraud
+--M.restools = require( M.myappadds .. "myappresourcedetails" ).restools
+--M.resnews = require( M.myappadds .. "myappresourcedetails" ).resnews
+--M.reslegal = require( M.myappadds .. "myappresourcedetails" ).reslegal
+--M.resyoutube = require( M.myappadds .. "myappresourcedetails" ).resyoutube
 
 
  

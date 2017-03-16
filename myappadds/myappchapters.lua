@@ -29,11 +29,29 @@ local chapters = {
 
                                   backtext = "<",
                                   sceneinfo = { 
-                                       htmlinfo = {},
-                                       scrollblockinfo = { object="social" , navigate = "subscene"},
-                                     },
-                                  navigation = { composer = { id = "social",lua="scrollblocks" ,time=250, effect="slideLeft" ,effectback="slideRight", },},
-                              },   
+                                               feedName = "myappchaptersdetails.json",
+                                               feedURL = "https://s3.amazonaws.com/nspii/myappchaptersdetails.json",
+                                               icons = "fixed",
+                                               reachablemsg = {
+                                                      errortitle = "No Feed", 
+                                                      errormessage = "Feed temporarily unavaialble." ,
+                                                   } ,
+                                              },
+                                    child={
+                                                 navigation = { composer = {
+                                                     id = "xx",    -- dynamiclaly changed
+                                                     lua="webview",
+                                                     time=250, 
+                                                     effect="slideLeft",
+                                                     effectback="slideRight",
+                                                  },},
+                                             },
+
+                                   ---------------------------
+                                    -- note if calling same lua from same lua... effect wont do much of course
+                                     ---------------------------
+                                     navigation = { composer = { id = "national",lua="peoplelist" ,time=250, effect="slideLeft" ,effectback="slideRight",},},
+                                  },   
 
 
                      b = {
