@@ -1,0 +1,88 @@
+{
+  "groupheaderheight": 20,
+  "items": {
+    "ggg": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "social",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "title": "Social Media",
+      "iconwidth": 90,
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "social",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "text": "NSPII On Social Media",
+      "backtext": "<",
+      "pic": "socialmedia.png"
+    },
+    "iii": {
+      "navigation": {
+        "popup": {
+          "options": {
+            "to": "webmaster@stateauto.com",
+            "subject": "General Question"
+          },
+          "type": "mail"
+        }
+      },
+      "text": "Email NSPII your question",
+      "title": "Email NSPII",
+      "pic": "email.png"
+    },
+    "hhh": {
+      "navigation": {
+        "composer": {
+          "lua": "webview",
+          "effect": "slideLeft",
+          "id": "nspiiweb",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "title": "NSPII Web",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": [],
+        "htmlinfo": {
+          "url": "http://www.nspii.com/"
+        }
+      },
+      "text": "NSPII Main Website",
+      "forwardtext": ">",
+      "pic": "web.png"
+    },
+    "aaa": {
+      "navigation": {
+        "systemurl": {
+          "url": "tel:888-677-4498"
+        }
+      },
+      "headerfontsize": 16,
+      "title": "Call NSPII",
+      "textfontsize": 18,
+      "groupheaderheight": 30,
+      "text": "NSPII Phone Line 888-677-4498",
+      "doublewide": true,
+      "pic": "phone.png"
+    },
+    "kkk": {
+      "navigation": {
+        "directions": {
+          "address": "P.O. BOX 88 Delaware,Ohio 43015"
+        }
+      },
+      "text": "P.O. BOX 88 Delaware,Ohio 43015",
+      "title": "Mailing Address",
+      "pic": "map.png"
+    }
+  }
+}

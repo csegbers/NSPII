@@ -87,6 +87,22 @@ function M.testNetworkConnection()
     return true
 end
 
+function M.fileexists(filename,filepath)
+    local path = system.pathForFile( filename, filepath )
+    local fhd = io.open( path )
+    local rc = false
+      
+    -- Determine if file exists
+    if fhd then
+       print( "File exists" )
+       fhd:close()
+       rc = true
+    else
+        print( "File does not exist!" )
+    end
+    return rc
+end
+
 function M.fitImage( displayObject, fitWidth, enlarge )
     --
     -- first determine which edge is out of bounds

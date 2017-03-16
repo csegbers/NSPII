@@ -410,50 +410,52 @@ local M = {
             --== additional files
             --========================  
              files = {
-                            tabs = {name="myapptabs",download=""},
-                            moreinfo = {name="myappmoreinfo",download=""},
-                            homepage = {name="myapphomepage",download=""},
-                            news = {name="myappnews",download=""},
-                            contactus = {name="myappcontactus",download=""},
-                            extras = {name="myappextras",download=""},
-                            
-                            awards = {name="myappawards",download=""},
-                            awardsnational = {name="myappawards",section="awardsnational",download=""},
-                            awardsohio = {name="myappawards",section="awardsohio",download=""},
+                         downloadloc = "https://s3.amazonaws.com/nspii/",
+                         items = {
+                                    tabs = {name="myapptabs" },
+                                    moreinfo = {name="myappmoreinfo" },
+                                    homepage = {name="myapphomepage" },
+                                    news = {name="myappnews" },
+                                    contactus = {name="myappcontactus",download="myappcontactus.json"},
+                                    extras = {name="myappextras" },
+                                    
+                                    awards = {name="myappawards" },
+                                    awardsnational = {name="myappawards",section="awardsnational" },
+                                    awardsohio = {name="myappawards",section="awardsohio" },
 
-                            social = {name="myappsocial",download=""},
-                            mappings = {name="myappmappings",download=""},
-                            otherscenes = {name="myappotherscenes",download=""},
+                                    social = {name="myappsocial" },
+                                    mappings = {name="myappmappings" },
+                                    otherscenes = {name="myappotherscenes" },
 
-                            locate = {name="myapplocate",section="locate",download=""},
-                            locatepre = {name="myapplocate",section="locatepre",download=""},
-                            locatedetails = {name="myapplocate",section="locatedetails",download=""},
+                                    locate = {name="myapplocate",section="locate" },
+                                    locatepre = {name="myapplocate",section="locatepre" },
+                                    locatedetails = {name="myapplocate",section="locatedetails" },
 
-                            people = {name="myapppeople",download=""},
+                                    people = {name="myapppeople" },
 
-                            chapters = {name="myappchapters",download=""},
-                            chapnational = {name="myappchaptersdetails",section="chapnational",download=""},
-                            chapcommittees = {name="myappchaptersdetails",section="chapcommittees",download=""},
-                            chapstate = {name="myappchaptersdetails",section="chapstate",download=""},
+                                    chapters = {name="myappchapters" },
+                                    chapnational = {name="myappchaptersdetails",section="chapnational" },
+                                    chapcommittees = {name="myappchaptersdetails",section="chapcommittees" },
+                                    chapstate = {name="myappchaptersdetails",section="chapstate" },
 
-                            resources = {name="myappresources",download=""},
-                            respsa = {name="myappresourcedetails",section="respsa",download=""},
-                            resref = {name="myappresourcedetails",section="resref",download=""},
-                            resfraud = {name="myappresourcedetails",section="resfraud",download=""},
-                            restools = {name="myappresourcedetails",section="restools",download=""},
-                            resnews = {name="myappresourcedetails",section="resnews",download=""},
-                            reslegal = {name="myappresourcedetails",section="reslegal",download=""},
-                            resyoutube = {name="myappresourcedetails",section="resyoutube",download=""},
-
+                                    resources = {name="myappresources" },
+                                    respsa = {name="myappresourcedetails",section="respsa" },
+                                    resref = {name="myappresourcedetails",section="resref", },
+                                    resfraud = {name="myappresourcedetails",section="resfraud" },
+                                    restools = {name="myappresourcedetails",section="restools" },
+                                    resnews = {name="myappresourcedetails",section="resnews" },
+                                    reslegal = {name="myappresourcedetails",section="reslegal", },
+                                    resyoutube = {name="myappresourcedetails",section="resyoutube" },
+                                },
                         },
 
         }
 
 local a = {}
 local n,i,k
-for n in pairs(M.files) do table.insert(a, n) end
+for n in pairs(M.files.items) do table.insert(a, n) end
 for i,k in ipairs(a) do 
-   local v = M.files[k]
+   local v = M.files.items[k]
    print ("home page item " .. k)
    if v.section then
       M[k] = require( M.myappadds .. v.name)[v.section]  
@@ -489,7 +491,7 @@ end
 --M.chapnational = require( M.myappadds .. "myappchaptersdetails" ).national 
 --M.chapcommittees = require( M.myappadds .. "myappchaptersdetails" ).committees 
 --M.chapstate = require( M.myappadds .. "myappchaptersdetails" ).state
-print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappchaptersdetails" )))
+print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappcontactus" )))
 
 --M.resources = require( M.myappadds .. "myappresources" ) 
 --M.respsa = require( M.myappadds .. "myappresourcedetails" ).respsa
