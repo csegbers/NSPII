@@ -85,7 +85,7 @@ myApp.sceneWidth = myApp.cW
 myApp.sceneHeight = myApp.cH - myApp.sceneStartTop - myApp.tabs.tabBarHeight
 myApp.authentication.loggedin = false
 myApp.justLaunched = true
-myApp.moreinfo.direction = "left"
+--myApp.moreinfo.direction = "left"
 if (display.pixelHeight/display.pixelWidth) > 1.5 then  myApp.isTall = true end
 if display.contentWidth > 320 then myApp.is_iPad = true end
 

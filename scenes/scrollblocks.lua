@@ -7,8 +7,9 @@ local scene = composer.newScene()
 
 local widget = require( "widget" )
 local myApp = require( "myapp" ) 
-local parse = require( myApp.utilsfld .. "mod_parse" )  
+--local parse = require( myApp.utilsfld .. "mod_parse" )  
 local common = require( myApp.utilsfld .. "common" )
+local assetmgr = require( myApp.utilsfld .. "assetmgr" )
 local login = require( myApp.classfld .. "classlogin" )
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")
@@ -66,9 +67,21 @@ function scene:show( event )
 
 
        --debugpopup (sceneparams.sceneinfo.scrollblockinfo.navigate)
-        local function fnchaveobject(  )
+        local function fnchaveobject( event )
             native.setActivityIndicator(false)
             if (runit or justcreated) then 
+                --------------------------------------
+                -- since this scene can be used for multiple purposes
+                -- sbi will point to the table for what items to show etc...etc
+                --
+                -- if event.tableobject then we came from a download.. update main object
+                ---------------------------------------
+                if event and event.tableobject then
+                    myApp[sceneparams.sceneinfo.scrollblockinfo.object] = event.tableobject
+                end
+                sbi = myApp[sceneparams.sceneinfo.scrollblockinfo.object]
+                -- print  ("table load scrollbloack")
+                --require( myApp.utilsfld .. "loadsave" ).print_r (sbi)
 
                 display.remove( container )           -- wont exist initially no biggie
                 container = nil
@@ -349,48 +362,30 @@ function scene:show( event )
         end
 
 
-        --------------------------------------
-        -- since this scene can be used for multiple purposes
-        -- sbi will point to the table for what items to show etc...etc
-        ---------------------------------------
-        sbi = myApp[sceneparams.sceneinfo.scrollblockinfo.object]
-        local haveobject = true
+        if myApp.files.items[sceneparams.sceneinfo.scrollblockinfo.object].download  then
+            assetmgr.getjsonasset(
+                                      {
+                                        errortitle = myApp.files.download.errortitle,
+                                        objectname = sceneparams.sceneinfo.scrollblockinfo.object,
+                                        filename = myApp.files.items[sceneparams.sceneinfo.scrollblockinfo.object].name,
+                                        fileloc = myApp.files.download.fileloc,
+                                        callback = fnchaveobject,
+                                        networkurl = myApp.files.download.url,
+                                        timeout = myApp.files.download.timeout,
 
-        local networkListener = function( event )
-           
-            if ( event.isError ) then
-                native.setActivityIndicator(false)
-                --local alert = native.showAlert( sceneinfo.reachablemsg.errortitle, sceneinfo.reachablemsg.errormessage, { "Okay" } , onAlertComplete)
-                 local alert = native.showAlert( "segbersxxxx", event.response, { "Okay" } , onAlertComplete)
-           else
-                print("calling  because the feed is avaialble")
-                native.setActivityIndicator(false)
-                fnchaveobject()
-            end
-            return true
+                                        --------------------
+                                        -- cannot get reference to work so callback must update
+                                        -------------------------
+                                        --tableobject = myApp[sceneparams.sceneinfo.scrollblockinfo.object],
+                                      }
+                                  )
+        else
+            fnchaveobject() 
         end
-        --------------------------------------
-        -- downloadable ? Have we downloaded yet ?
-        ---------------------------------------        
-        print ("KLKLKLKLKLKLKL 2222 " .. sceneparams.sceneinfo.scrollblockinfo.object)
-        local dlf = myApp.files.items[sceneparams.sceneinfo.scrollblockinfo.object].download
-        if dlf  then
-           if common.fileexists(dlf,system.TemporaryDirectory) ~= true then
-                print ("attaepmt dl")
-                local isReachable =  common.testNetworkConnection() 
-                if  isReachable then
-                    haveobject = false
-                    native.setActivityIndicator(true)
-                    network.download(myApp.files.downloadloc .. dlf, "GET", networkListener, dlf, system.TemporaryDirectory)
-                end
-           end
-        end
-
-        if haveobject then fnchaveobject()  end
-       
+      
     elseif ( phase == "did" ) then
          print ("end of did show")
-        parse:logEvent( "Scene", { ["name"] = currScene} )
+        --parse:logEvent( "Scene", { ["name"] = currScene} )
         
 
             -- Called when the scene is now on screen.

@@ -1,50 +1,9 @@
 local myApp = require( "myapp" ) 
 local common = require( myApp.utilsfld .. "common" )
+local assetmgr = require( myApp.utilsfld .. "assetmgr" )
 local composer = require( "composer" )
 local widget = require( "widget" )
 
-----------------------------------------------------------
---    background that shows thru 
-----------------------------------------------------------
-myApp.backGroup = display.newGroup( )
-myApp.backGroup:insert(common.SceneBackground(myApp.sceneBackgroundcolor))
----------------------------------------------
--- Block touches from going thru to the nmoreGroup
------------------------------------------------
-myApp.backGroup:addEventListener( "touch", function(event)   return true end )
-
-----------------------------------------------------------
---    background that shows when top right button is hit
-----------------------------------------------------------
-myApp.moreGroup = display.newGroup( )
-myApp.moreGroup:insert(common.SceneBackground(myApp.sceneBackgroundmorecolor))
-
-----------------------------------------------------------
---    move transparent group  
---    this will display over evenrything to capture touch events
---    and give the appearance you cant do something
-----------------------------------------------------------
-myApp.transContainer = common.SceneBackground(myApp.moreinfo.transparentcolor)
-myApp.transContainer.y = myApp.transContainer.y + myApp.sceneStartTop/2
-myApp.transContainer.height = myApp.transContainer.height - myApp.sceneStartTop
-myApp.transContainer.alpha = 0
-
----------------------------------------------
--- dont allow touches to go thru
--- for some reason items in composer idnore this
------------------------------------------------
-myApp.transContainer:addEventListener( "touch", 
-    function(event)   
-         if myApp.transContainer.alpha  > 0 then
-            if myApp.moreinfo.imsliding == false then
-                myApp.MoreInfoMove()
-            end
-            return true
-         else
-            return false
-         end
-    end 
-    )
 
 ---------------------------------------------
 -- used to slide out the major groups left and right
@@ -56,7 +15,7 @@ function myApp.MoreInfoMove( parms )
     local params = parms or {}
     local transtime = myApp.moreinfo.transitiontime
     local deltax = myApp.cW/myApp.moreinfo.movefactor*-1
-    local talpha = myApp.moreinfo.transparentalpha
+    local talpha = myApp.transparentalpha
     local action = ""
 
     if myApp.moreinfo.direction  == "right" then
@@ -116,34 +75,35 @@ local onRowTouch = function( event )
  
 end
 
----------------------------------------------
--- create the list that will appear on the "more" button
------------------------------------------------
-local myMoreList = widget.newTableView {
-   x = myApp.cW/2 + (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)/2 ,
-   y = myApp.cH/2 + myApp.tSbch/2 , 
-   hideBackground=true,
-   width = myApp.sceneWidth- (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)-10, 
-   height = myApp.cH - myApp.tSbch,
-   onRowTouch = onRowTouch,
-   onRowRender = 
-      function(event)
-           local row = event.row
-           row.nameText = display.newText( event.row.params.title, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
-           row.nameText.anchorX = 0
-           row.nameText.anchorY = 0.5
-           row.nameText:setFillColor( myApp.moreinfo.row.textcolor )
-           row.nameText.y = row.height / 2
-           row.nameText.x = myApp.moreinfo.row.indent
-           if row.isCategory then row.nameText.x = myApp.moreinfo.row.indent/2 end
-           row:insert( row.nameText )
-           return true
-      end
-   ,
-}
-
 
 function myApp.BuildMoreInfoList(  )
+
+      ---------------------------------------------
+      -- create the list that will appear on the "more" button
+      -----------------------------------------------
+      local myMoreList = widget.newTableView {
+         x = myApp.cW/2 + (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)/2 ,
+         y = myApp.cH/2 + myApp.tSbch/2 , 
+         hideBackground=true,
+         width = myApp.sceneWidth- (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)-10, 
+         height = myApp.cH - myApp.tSbch,
+         onRowTouch = onRowTouch,
+         onRowRender = 
+            function(event)
+                 local row = event.row
+                 row.nameText = display.newText( event.row.params.title, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                 row.nameText.anchorX = 0
+                 row.nameText.anchorY = 0.5
+                 row.nameText:setFillColor( myApp.moreinfo.row.textcolor )
+                 row.nameText.y = row.height / 2
+                 row.nameText.x = myApp.moreinfo.row.indent
+                 if row.isCategory then row.nameText.x = myApp.moreinfo.row.indent/2 end
+                 row:insert( row.nameText )
+                 return true
+            end
+         ,
+      }
+
       myMoreList:deleteAllRows()
       ---------------------------------------------
       -- Sort (key is critical !!)
@@ -195,4 +155,86 @@ function myApp.BuildMoreInfoList(  )
       myMoreList:scrollToIndex( 1 ) 
 end
 
-myApp.BuildMoreInfoList()
+
+
+
+function myApp.MoreInfoStart( event )
+    -- if event.tableobject then we came from a download.. update main object
+    if event and event.tableobject then
+        myApp.moreinfo  = event.tableobject
+    end
+
+    myApp.BuildMoreInfoList()
+end
+
+
+
+
+----------------------------------------------------------
+--    background that shows thru 
+----------------------------------------------------------
+myApp.backGroup = display.newGroup( )
+myApp.backGroup:insert(common.SceneBackground(myApp.sceneBackgroundcolor))
+---------------------------------------------
+-- Block touches from going thru to the nmoreGroup
+-----------------------------------------------
+myApp.backGroup:addEventListener( "touch", function(event)   return true end )
+
+----------------------------------------------------------
+--    background that shows when top right button is hit
+----------------------------------------------------------
+myApp.moreGroup = display.newGroup( )
+myApp.moreGroup:insert(common.SceneBackground(myApp.sceneBackgroundmorecolor))
+
+----------------------------------------------------------
+--    move transparent group  
+--    this will display over evenrything to capture touch events
+--    and give the appearance you cant do something
+----------------------------------------------------------
+myApp.transContainer = common.SceneBackground(myApp.transparentcolor)
+myApp.transContainer.y = myApp.transContainer.y + myApp.sceneStartTop/2
+myApp.transContainer.height = myApp.transContainer.height - myApp.sceneStartTop
+myApp.transContainer.alpha = 0
+
+---------------------------------------------
+-- dont allow touches to go thru
+-- for some reason items in composer idnore this
+-----------------------------------------------
+myApp.transContainer:addEventListener( "touch", 
+    function(event)   
+         if myApp.transContainer.alpha  > 0 then
+            if myApp.moreinfo.imsliding == false then
+                myApp.MoreInfoMove()
+            end
+            return true
+         else
+            return false
+         end
+    end 
+    )
+
+if myApp.files.items.moreinfo.download  then
+    assetmgr.getjsonasset(
+                {
+                  errortitle = myApp.files.download.errortitle,
+                  objectname = "moreinfo",
+                  filename = myApp.files.items.moreinfo.name,
+                  fileloc = myApp.files.download.fileloc,
+                  callback = myApp.MoreInfoStart,
+                  networkurl = myApp.files.download.url,
+                  timeout = myApp.files.download.timeout,
+                  setActivityIndicator = false,
+
+                  --------------------
+                  -- cannot get reference to work so callback must update
+                  -------------------------
+                  --tableobject = myApp[sceneparams.sceneinfo.scrollblockinfo.object],
+                }
+            )
+else
+    myApp.MoreInfoStart()
+end
+
+
+
+

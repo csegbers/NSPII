@@ -27,6 +27,8 @@ local M = {
             titleBarHeight = 50,
             titleBarEdge = 10,
             titleBarTextColor = { r=255/255, g=255/255, b=255/255, a=1 },
+            transparentcolor = { r=255/255, g=255/255, b=255/255, a=1 },
+            transparentalpha = .7,
             ------------------------------
             -- folders
             ------------------------------
@@ -410,13 +412,20 @@ local M = {
             --== additional files
             --========================  
              files = {
-                         downloadloc = "https://s3.amazonaws.com/nspii/",
+                         download = { 
+                                       url = "https://s3.amazonaws.com/nspii/",
+                                       origfileloc = system.ResourceDirectory,
+                                       fileloc = system.TemporaryDirectory,
+                                       timeout = 5,
+                                       errortitle = "Network Error",
+                                    },
+
                          items = {
                                     tabs = {name="myapptabs" },
-                                    moreinfo = {name="myappmoreinfo" },
+                                    moreinfo = {name="myappmoreinfo.json",download=true,json=true,xxdownloadatstartup = true },
                                     homepage = {name="myapphomepage" },
                                     news = {name="myappnews" },
-                                    contactus = {name="myappcontactus",download="myappcontactus.json"},
+                                    contactus = {name="myappcontactus.json",download=true,json=true,downloadatstartup = true },
                                     extras = {name="myappextras" },
                                     
                                     awards = {name="myappawards" },
@@ -451,20 +460,101 @@ local M = {
 
         }
 
+function M.fileexists(filename,filepath)
+    local path = system.pathForFile( filename, filepath )
+    local fhd = io.open( path )
+    local rc = false
+      
+    -- Determine if file exists
+    if fhd then
+       print( "File exists" )
+       fhd:close()
+       rc = true
+    else
+        print( "File does not exist!" )
+    end
+    return rc
+end
+
 local a = {}
 local n,i,k
 for n in pairs(M.files.items) do table.insert(a, n) end
 for i,k in ipairs(a) do 
    local v = M.files.items[k]
-   print ("home page item " .. k)
-   if v.section then
-      M[k] = require( M.myappadds .. v.name)[v.section]  
-   else
-      M[k] = require( M.myappadds .. v.name)  
+   local vreq = {}
+   function sectioncheck(event)
+     print ("home page item " .. event.objectname)
+     if M.files.items[event.objectname].section then
+        M[event.objectname] = event.vreq[M.files.items[event.objectname].section]  
+     else
+        M[event.objectname] = event.vreq
+     end
    end
-   
-end
+   function loadjsonfile(event)
+      ------------------------
+      -- any error revert back to original file included in app
+      ------------------------------
+      if ( event.isError ) then
+        vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,M.files.download.origfileloc)
+      else
+        if event.tableobject then
+            vreq = event.tableobject
+        else
+            ----------------------------
+             -- double check because we may not get an error on network request bt if file
+             -- does not exist there is nothing to load
+             -------------------------------------
+            if M.fileexists(event.name,event.fileloc) then
+              print ("here aaaa")
+               vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,event.fileloc)
+            else
+               print ("here bbbb")
+               vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,M.files.download.origfileloc)
+            end
+        end        
+      end
+      event.vreq = vreq
+      sectioncheck(event)
+   end   
+   if v.json then
+       local fileloc = M.files.download.origfileloc
+       local dlfe = false
+       -------------------------
+       -- has a new copy been downloaded ? Use it
+       -----------------------------------
+       if v.download and M.fileexists(v.name,M.files.download.fileloc) == true then
+          fileloc = M.files.download.fileloc
+          dlfe = true
+          print ("FFFFFFFILE")
+       end
 
+       if v.download and dlfe == false and v.downloadatstartup then
+           require( M.utilsfld .. "assetmgr" ).getjsonasset(
+                                    {
+                                      errortitle = M.files.download.errortitle,
+                                      objectname = k,
+                                      filename = v.name,
+                                      fileloc = M.files.download.fileloc,
+                                      callback = loadjsonfile,
+                                      networkurl = M.files.download.url,
+                                      timeout = M.files.download.timeout,
+                                      setActivityIndicator = false,
+                                      --------------------
+                                      -- cannot get reference to work so callback must update
+                                      -------------------------
+                                      --tableobject = myApp[sceneparams.sceneinfo.scrollblockinfo.object],
+                                    }
+                                )       
+       else
+          loadjsonfile({objectname = k,name=v.name,fileloc=fileloc})
+       end
+   else   -- not json
+       vreq = require( M.myappadds .. v.name)
+       sectioncheck({vreq=vreq,objectname=k})
+   end
+
+end
+-- print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappmoreinfo" )))
 --M.tabs     = require( M.myappadds .. M.files.tabs.name)  
 --M.moreinfo = require( M.myappadds .. M.files.moreinfo.name )  
 --M.homepage = require( M.myappadds .. M.files.homepage.name )  
@@ -491,7 +581,9 @@ end
 --M.chapnational = require( M.myappadds .. "myappchaptersdetails" ).national 
 --M.chapcommittees = require( M.myappadds .. "myappchaptersdetails" ).committees 
 --M.chapstate = require( M.myappadds .. "myappchaptersdetails" ).state
-print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappcontactus" )))
+
+
+
 
 --M.resources = require( M.myappadds .. "myappresources" ) 
 --M.respsa = require( M.myappadds .. "myappresourcedetails" ).respsa

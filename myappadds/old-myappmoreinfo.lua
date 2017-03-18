@@ -13,8 +13,7 @@ local moreinfo = {
                                       defaultFile="morebutton.png",
                                       overFile="morebutton-down.png",
                                       },
-                      transparentcolor = { r=255/255, g=255/255, b=255/255, a=1 },
-                      transparentalpha = .7,
+
                       row = {
                               over={ 1, 0.5, 0, 0.2 },
                               linecolor={ 200/255 },
