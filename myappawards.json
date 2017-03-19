@@ -1,0 +1,247 @@
+{
+  "items": {
+    "aaa": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "awardsnational",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "Each year at its Annual Seminar, the Society honors as many as four individuals.",
+      "headerfontsize": 16,
+      "title": "National Awards",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "awardsnational",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "textfontsize": 16,
+      "doublewide": true,
+      "pic": "nspii-down.png"
+    },
+    "bbb": {
+      "navigation": {
+        "composer": {
+          "lua": "webview",
+          "effect": "slideLeft",
+          "id": "lifetimemembers",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "doublewide": true,
+      "title": "Lifetime Members",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": [],
+        "htmlinfo": {
+          "htmlfile": "lifetimemembers.html",
+          "dir": "r"
+        }
+      },
+      "text": "Any member who has given continuous exemplary service to the Society for not less than 10 years may be recommended for Lifetime Membership",
+      "headerfontsize": 16,
+      "pic": "nspii-down.png"
+    },
+    "ccc": {
+      "title": "Indiana Chapter",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": [],
+        "htmlinfo": {
+          "htmlfile": "indianaaward.html",
+          "dir": "r"
+        }
+      },
+      "text": "Indiana Chapter",
+      "navigation": {
+        "composer": {
+          "lua": "webview",
+          "effect": "slideLeft",
+          "id": "indianaaward",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "pic": "nspii-down.png"
+    },
+    "ddd": {
+      "title": "Ohio Chapter",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "awardsohio",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "text": "Ohio Chapter",
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "awardsohio",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "pic": "nspii-down.png"
+    }
+  },
+  "awardsnational": {
+    "items": {
+      "aa": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "brininger",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "F. Lee Brininger Award",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "brininger.html",
+            "dir": "r"
+          }
+        },
+        "text": "Investigator of the Year Award.",
+        "doublewide": true,
+        "groupheight": 100
+      },
+      "bb": {
+        "title": "Public Service Award",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "publicserviceaward.html",
+            "dir": "r"
+          }
+        },
+        "text": "To be given to a member of the public sector for 'professionalism, dedication, and accomplishment in the fight against fraudulent insurance claims and/or arson.'",
+        "doublewide": true,
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "publicserviceaward",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        }
+      },
+      "cc": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "oustandingaward",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "Outstanding Achievement Award",
+        "titlealt": "Achievement Award",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "oustandingaward.html",
+            "dir": "r"
+          }
+        },
+        "text": "To be given to a Society member for 'outstanding achievement in the fight against fraudulent insurance claims.'",
+        "doublewide": true,
+        "backtext": "<"
+      },
+      "dd": {
+        "title": "President's Award",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "presidentsaward.html",
+            "dir": "r"
+          }
+        },
+        "text": "To be given to a Society member for 'outstanding and exceptional service to the Society.' Awarded at the discretion of the outgoing NSPII President.",
+        "doublewide": true,
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "presidentsaward",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        }
+      }
+    },
+    "headerfontsize": 16,
+    "groupheight": 120
+  },
+  "awardsohio": {
+    "items": {
+      "aa": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "ohioawardgeneral",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "The two current Ohio Chapter Awards are the Investigator of the Year Award and Outstanding Service Award.",
+        "headerfontsize": 15,
+        "title": "Ohio Chapter Awards General Information",
+        "titlealt": "General Information",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "ohioawardgeneral.html",
+            "dir": "r"
+          }
+        },
+        "groupheight": 100,
+        "doublewide": true,
+        "backtext": "<"
+      },
+      "bb": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "ohioawardrec",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "Ohio Chapter Award Recipients",
+        "titlealt": "Award Recipients",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "ohioawardrec.html",
+            "dir": "r"
+          }
+        },
+        "text": "Ohio Chapter's current Investigator of the Year, Outstanding Service of the Year, and Contributor of the Year recipients'",
+        "doublewide": true,
+        "backtext": "<"
+      }
+    },
+    "headerfontsize": 16,
+    "groupheight": 120
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "items": {
+    "tburris": {
+      "state": "IN",
+      "name": "Todd M. Burris",
+      "corp": "State Auto Insurance Co.",
+      "launchobjects": {
+        "a": {
+          "desc": "(317) 452-9615",
+          "type": "phone"
+        },
+        "b": {
+          "field": "todd.burris@stateauto.com",
+          "type": "email"
+        },
+        "c": {
+          "desc": "(614) 719-0182",
+          "type": "fax"
+        }
+      },
+      "zip": "46278",
+      "city": "Indianapolis",
+      "street": "P.O. Box 781022"
+    },
+    "coswald": {
+      "state": "KY",
+      "name": "Clayton O. Oswald",
+      "corp": "Taylor, Keller & Oswald, PLLC",
+      "launchobjects": {
+        "a": {
+          "desc": "(606) 878-8844",
+          "type": "phone"
+        },
+        "b": {
+          "field": "coswald@tkolegal.com",
+          "type": "email"
+        },
+        "c": {
+          "desc": "(606) 878-8850",
+          "type": "fax"
+        }
+      },
+      "zip": "40743",
+      "city": "London",
+      "street": "P.O. Box 3440"
+    },
+    "dcomstock": {
+      "street2": "Suite 101",
+      "launchobjects": {
+        "a": {
+          "desc": "(330) 286-3701",
+          "type": "phone"
+        },
+        "b": {
+          "field": "dcomstock@bsphlaw.com",
+          "type": "email"
+        },
+        "c": {
+          "desc": "(330) 286-3745",
+          "type": "fax"
+        }
+      },
+      "name": "David 'Chip' Comstock, Jr.",
+      "corp": "Bonezzi Switzer Polito & Hupp",
+      "zip": "44406",
+      "state": "OH",
+      "city": "Canfield",
+      "street": "4137 Boardman-Canfield Rd."
+    }
+  }
+}

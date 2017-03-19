@@ -77,7 +77,16 @@ function scene:show( event )
                 -- if event.tableobject then we came from a download.. update main object
                 ---------------------------------------
                 if event and event.tableobject then
-                    myApp[sceneparams.sceneinfo.scrollblockinfo.object] = event.tableobject
+                    --------------------------------------
+                    -- is this object a section of 1 larger file used for myltuke sections?
+                    -- if so since we will only download once, grb all sections
+                    --------------------------------------
+        
+                    if myApp.files.items[sceneparams.sceneinfo.scrollblockinfo.object].section then
+                        myApp.loadsectionsfromdownload(event)
+                    else
+                        myApp[sceneparams.sceneinfo.scrollblockinfo.object] = event.tableobject -- do this incase file is used for master as well. If section is subset it will be overridden
+                    end
                 end
                 sbi = myApp[sceneparams.sceneinfo.scrollblockinfo.object]
                 -- print  ("table load scrollbloack")

@@ -7,15 +7,14 @@
   },
   "national": {
     "items": {
-      "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
-      },
       "a01": {
         "id": "x",
         "text": "President",
         "isCategory": true
+      },
+      "a02": {
+        "id": "coswald",
+        "text": "President"
       },
       "b01": {
         "id": "x",
@@ -27,9 +26,10 @@
         "text": "First Vice President",
         "subtext": "(Automatic Succession)"
       },
-      "a02": {
-        "id": "coswald",
-        "text": "President"
+      "b03": {
+        "id": "dcomstock",
+        "text": "Second Vice-President ",
+        "subtext": "(Automatic Succession)"
       }
     }
   }

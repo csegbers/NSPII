@@ -44,7 +44,7 @@ local moreinfo = {
                                    --            htmlinfo = {},
                                    --            scrollblockinfo = { },
                                     --         },
-                                   navigation = { execute = {  method = function() Runtime:dispatchEvent{ name="logmeout" } end, },},
+                                   navigation = { execute = {  method = "logout" },},
                                            
                                        },
                               ablogin = {
@@ -78,7 +78,7 @@ local moreinfo = {
                                           sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="mission.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -100,7 +100,7 @@ local moreinfo = {
                                           sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="antitrust.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -125,7 +125,7 @@ local moreinfo = {
                                           sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="help.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -160,7 +160,7 @@ local moreinfo = {
                                    sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="foundation.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -180,7 +180,7 @@ local moreinfo = {
                                    sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="pastawards.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },

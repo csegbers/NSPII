@@ -624,7 +624,7 @@ function myApp.navigationCommon(parms)
                                -- execute some code
                                ------------------------------
                                if  v.navigation.execute then
-                                   v.navigation.execute.method()
+                                   myApp.methods[v.navigation.execute.method]()
                                else
                                    ------------------------------
                                    -- Launch another app

@@ -1,0 +1,52 @@
+{
+  "items": {
+    "aaa": {
+      "title": "NSPII LinkedIn",
+      "backtext": "<",
+      "navigation": {
+        "app": {
+          "urlfallback": "http://www.linkedin.com/groups?gid=3733613&sik=1364930442625&viewmember"
+        }
+      },
+      "text": "Search NSPII On LinkedIn",
+      "doublewide": true,
+      "pic": "linkedin_icon.png"
+    },
+    "bbb": {
+      "title": "NSPII Twitter",
+      "backtext": "<",
+      "navigation": {
+        "app": {
+          "urlfallback": "https://twitter.com/search?q=nspii"
+        }
+      },
+      "text": "Search NSPII On Twitter",
+      "doublewide": true,
+      "pic": "twitter.png"
+    }
+  },
+  "groupheader": {
+    "a": 1,
+    "b": 0.35294117647059,
+    "g": 0.19607843137255,
+    "r": 0.35294117647059
+  },
+  "textfontsize": 18,
+  "headerfontsize": 16,
+  "groupbackgroundstyle": {
+    "color2": [
+      0.98039215686275,
+      0.98039215686275,
+      0.98039215686275,
+      1
+    ],
+    "type": "gradient",
+    "direction": "down",
+    "color1": [
+      0.88235294117647,
+      0.96078431372549,
+      0.92156862745098,
+      1
+    ]
+  }
+}

@@ -37,7 +37,7 @@ local awards = {
                                sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="lifetimemembers.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -59,7 +59,7 @@ local awards = {
                                sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="indianaaward.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -130,7 +130,7 @@ local awards = {
                                    sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="brininger.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -152,7 +152,7 @@ local awards = {
                                    sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="publicserviceaward.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -174,7 +174,7 @@ local awards = {
                                    sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="oustandingaward.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -196,7 +196,7 @@ local awards = {
                                    sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="presidentsaward.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
@@ -238,7 +238,7 @@ local awards = {
                                        sceneinfo = { 
                                                     htmlinfo = {
                                                         htmlfile="ohioawardgeneral.html" ,
-                                                        dir = system.ResourceDirectory ,
+                                                        dir = "r" ,
                                                     },
                                                    scrollblockinfo = { },
                                                  },
@@ -260,7 +260,7 @@ local awards = {
                                        sceneinfo = { 
                                                     htmlinfo = {
                                                         htmlfile="ohioawardrec.html" ,
-                                                        dir = system.ResourceDirectory ,
+                                                        dir = "r" ,
                                                     },
                                                    scrollblockinfo = { },
                                                  },

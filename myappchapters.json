@@ -1,0 +1,85 @@
+{
+  "items": {
+    "a": {
+      "navigation": {
+        "composer": {
+          "lua": "peoplelist",
+          "effect": "slideLeft",
+          "id": "national",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "title": "National Board",
+      "iconwidth": 90,
+      "sceneinfo": {
+        "reachablemsg": {
+          "errortitle": "No Feed",
+          "errormessage": "Feed temporarily unavaialble."
+        },
+        "feedName": "myappchaptersdetails.json",
+        "feedURL": "https://s3.amazonaws.com/nspii/myappchaptersdetails.json",
+        "icons": "fixed"
+      },
+      "child": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "xx",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        }
+      },
+      "doublewide": true,
+      "backtext": "<"
+    },
+    "b": {
+      "title": "Committees",
+      "iconwidth": 90,
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "social",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "social",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "doublewide": true,
+      "backtext": "<"
+    },
+    "c": {
+      "title": "State Chapters",
+      "iconwidth": 90,
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "social",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "social",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "doublewide": true,
+      "backtext": "<"
+    }
+  },
+  "groupheight": 25,
+  "headerfontsize": 16
+}

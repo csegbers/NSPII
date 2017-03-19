@@ -72,7 +72,7 @@ function scene:show( event )
                 native.setActivityIndicator( true )
                 webView:request( url )
             elseif  sceneparams.sceneinfo.htmlinfo.htmlfile then
-                webView:request( myApp.htmlfld .. sceneparams.sceneinfo.htmlinfo.htmlfile , sceneparams.sceneinfo.htmlinfo.dir )
+                webView:request( myApp.htmlfld .. sceneparams.sceneinfo.htmlinfo.htmlfile , myApp.directories[sceneparams.sceneinfo.htmlinfo.dir] )
             elseif sceneparams.sceneinfo.htmlinfo.youtubeid   then
 
                      local temphtml = "youtube.html"

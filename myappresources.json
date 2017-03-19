@@ -1,0 +1,179 @@
+{
+  "items": {
+    "avid": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "respsa",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "In conjunction with CAIF, NSPII provides videos involving Insurance Fraud",
+      "picx": "phone.png",
+      "title": "PSA Videos",
+      "textfontsize": 18,
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "respsa",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "headerfontsize": 16,
+      "doublewide": true,
+      "groupheight": 110
+    },
+    "bref": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "resref",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "Insurance References",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "resref",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "textfontsize": 16,
+      "groupheight": 25,
+      "doublewide": true
+    },
+    "cfraud": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "resfraud",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "Insurance Fraud Links",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "resfraud",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "textfontsize": 16,
+      "groupheight": 25,
+      "doublewide": true
+    },
+    "dtools": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "restools",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "Insurance Investigation Tools and References",
+      "headerfontsize": 16,
+      "title": "Investigation Tools",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "restools",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "textfontsize": 18,
+      "groupheight": 90,
+      "doublewide": true
+    },
+    "enews": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "resnews",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "Insurance News Sources",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "resnews",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "textfontsize": 16,
+      "groupheight": 25,
+      "doublewide": true
+    },
+    "flegal": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "reslegal",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "National Legal Links",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "reslegal",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "textfontsize": 16,
+      "groupheight": 25,
+      "doublewide": true
+    },
+    "gyoutube": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "resyoutube",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "YouTube Videos",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "resyoutube",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "textfontsize": 16,
+      "groupheight": 25,
+      "doublewide": true
+    }
+  }
+}

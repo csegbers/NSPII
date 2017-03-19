@@ -1,0 +1,770 @@
+{
+  "respsa": {
+    "items": {
+      "aa": {
+        "navigation": {
+          "composer": {
+            "lua": "videoview",
+            "effect": "slideLeft",
+            "id": "videroof",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "doublewide": true,
+        "title": "Hitting The Roof",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "dir": "r",
+            "video": "Hitting the Roof.m4v"
+          }
+        },
+        "text": "Hitting The Roof",
+        "groupheight": 100,
+        "pic": "video.png"
+      },
+      "bb": {
+        "navigation": {
+          "composer": {
+            "lua": "videoview",
+            "effect": "slideLeft",
+            "id": "videolost",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "doublewide": true,
+        "title": "Lost & Found",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "dir": "r",
+            "video": "Lost and Found.m4v"
+          }
+        },
+        "text": "Lost & Found",
+        "groupheight": 100,
+        "pic": "video.png"
+      },
+      "cc": {
+        "navigation": {
+          "composer": {
+            "lua": "videoview",
+            "effect": "slideLeft",
+            "id": "videotv",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "doublewide": true,
+        "title": "Bigger Screen TV",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "dir": "r",
+            "video": "Big Screen.m4v"
+          }
+        },
+        "text": "Bigger Screen TV",
+        "groupheight": 100,
+        "pic": "video.png"
+      },
+      "dd": {
+        "navigation": {
+          "composer": {
+            "lua": "videoview",
+            "effect": "slideLeft",
+            "id": "videoweekend",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "doublewide": true,
+        "title": "Weekend Warrior",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "dir": "r",
+            "video": "Weekend Warrior.m4v"
+          }
+        },
+        "text": "Weekend Warrior",
+        "groupheight": 100,
+        "pic": "video.png"
+      },
+      "ee": {
+        "navigation": {
+          "composer": {
+            "lua": "videoview",
+            "effect": "slideLeft",
+            "id": "videotroub",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "doublewide": true,
+        "title": "Asking for Trouble",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "dir": "r",
+            "video": "Asking for Trouble.m4v"
+          }
+        },
+        "text": "Asking for Trouble",
+        "groupheight": 100,
+        "pic": "video.png"
+      }
+    },
+    "headerfontsize": 16,
+    "textfontsize": 16
+  },
+  "resref": {
+    "items": {
+      "aa": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "barryklein",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Barry Klein's Insurance Trade and Professional Associations",
+        "groupheight": 100,
+        "title": "Resources",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.barryklein.com/plnn/organizations.htm"
+          }
+        },
+        "forwardtext": ">",
+        "doublewide": true,
+        "pic": "web.png"
+      },
+      "bb": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "nhtsa",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "forwardtext": ">",
+        "title": "NHTSA",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "https://www.nhtsa.gov/"
+          }
+        },
+        "text": "National Highway Traffic Safety Admin. Child Safety Seats, Air Bag Safety & More",
+        "doublewide": true,
+        "pic": "web.png"
+      },
+      "cc": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "iso",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Supplier of statistical, actuarial, and underwriting information for the property/casualty insurance industry.",
+        "backtext": "<",
+        "groupheight": 140,
+        "title": "Insurance Services Office",
+        "titlealt": "ISO",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.iso.com"
+          }
+        },
+        "forwardtext": ">",
+        "doublewide": true,
+        "pic": "web.png"
+      }
+    },
+    "headerfontsize": 16,
+    "textfontsize": 14
+  },
+  "resyoutube": {
+    "items": {
+      "a2": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "B5dybSC8UG8",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Florida Authorities: Insurance Fraud, a Booming Crime Ring",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "ABC News",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "youtubeid": "B5dybSC8UG8"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 120,
+        "pic": "youtube.png"
+      },
+      "b2": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "EY1mMvYAhLM",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Local driver believes incident caught on dashcam was insurance scam",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "ABC News",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "youtubeid": "EY1mMvYAhLM"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 120,
+        "pic": "youtube.png"
+      }
+    }
+  },
+  "restools": {
+    "items": {
+      "aa": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "kelly",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Check the current value of a vehicle for free! ",
+        "groupheight": 85,
+        "title": "Kelly Blue Book",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "https://www.kbb.com/"
+          }
+        },
+        "forwardtext": ">",
+        "doublewide": true,
+        "pic": "web.png"
+      },
+      "bb": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "NAIS",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "NAIS Insurance Claims Resource Center",
+        "backtext": "<",
+        "groupheight": 85,
+        "title": "NAIS Insurance Claims Resource Center",
+        "titlealt": "NAIS",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.pimall.com/nais/sur.rc.html"
+          }
+        },
+        "forwardtext": ">",
+        "doublewide": true,
+        "pic": "web.png"
+      },
+      "cc": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "pitool",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "National Association of Investigation Specialists PI Assistance Page ",
+        "groupheight": 90,
+        "title": "PI Toolbox",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.pimall.com/nais/in.menu.html"
+          }
+        },
+        "forwardtext": ">",
+        "doublewide": true,
+        "pic": "web.png"
+      },
+      "dd": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "switchboard",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Search for surnames or look up addresses and telephone numbers using this free national telephone criss-cross directory.  It can also be used as a conventional telephone information source.",
+        "backtext": "<",
+        "groupheight": 145,
+        "title": "Surname, address & telephone search",
+        "titlealt": "Switchboard",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.switchboard.com/"
+          }
+        },
+        "forwardtext": ">",
+        "doublewide": true,
+        "pic": "web.png"
+      }
+    }
+  },
+  "reslegal": {
+    "items": {
+      "a": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "abanet",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "American Bar Association Network",
+        "headerfontsize": 16,
+        "backtext": "<",
+        "textfontsize": 16,
+        "title": "American Bar Association Network",
+        "titlealt": "ABANET",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.abanet.org/"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 90,
+        "pic": "web.png"
+      },
+      "b": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "kuester",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Jeff Kuester's Technology Comprehensive Law List",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "KuesterLaw",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.kuesterlaw.com/"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 100,
+        "pic": "web.png"
+      },
+      "c": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "law",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Legal Services Corporation",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "Law Journal Extra",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.law.com/"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 90,
+        "pic": "web.png"
+      },
+      "d": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "mart",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Helps corporate counsel and law firm lawyers connect with lawyers and firms",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "Martindale-Hubbell",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.martindale.com/"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 120,
+        "pic": "web.png"
+      }
+    }
+  },
+  "resnews": {
+    "items": {
+      "a": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "ambest",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Best's Insurance Professionals and Claims Resource",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "A.M. Best",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www3.ambest.com/DPSDirectorySearch/DirectoryCenter.aspx"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 100,
+        "pic": "web.png"
+      },
+      "b": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "claimmag",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "National Underwriter Property & Casualty",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "Claims Magazine",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.claimsmag.com/"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 100,
+        "pic": "web.png"
+      },
+      "c": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "innet",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "text": "Insurance News Network",
+        "headerfontsize": 16,
+        "textfontsize": 16,
+        "title": "Insurance News Network",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.insure.com/"
+          }
+        },
+        "doublewide": true,
+        "groupheight": 100,
+        "pic": "web.png"
+      }
+    }
+  },
+  "resfraud": {
+    "items": {
+      "aa": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "ACFE",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "ACFE",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.acfe.com/"
+          }
+        },
+        "text": "Association of Certified Fraud Examiners",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "bb": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "ATF",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "ATF",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "https://www.atf.gov/"
+          }
+        },
+        "text": "Bureau of Alcohol, Tobacco, Firearms and Explosives",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "cc": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "CAIF",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "CAIF",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.insurancefraud.org/index.htm"
+          }
+        },
+        "text": "Coalition Against Insurance Fraud",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "dd": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "III",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "III",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.iii.org/search/node/%22insurance%20fraud%22"
+          }
+        },
+        "text": "\"Insurance Fraud\" Insurance Information Institute",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "ee": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "IASIU",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "IASIU",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.iasiu.org/"
+          }
+        },
+        "text": "International Association of Special Investigations Unit",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "ff": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "IRS",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "IRS",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "https://www.irs.gov/"
+          }
+        },
+        "text": "Internal Revenue Service",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "gg": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "Fraudorg",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "Fraud.org",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.fraud.org/"
+          }
+        },
+        "text": "National Fraud Information Center",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "hh": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "NICB",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "NICB",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "https://www.nicb.org/"
+          }
+        },
+        "text": "National Insurance Crime Bureau ",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "ii": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "NW3C",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "NW3C",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "https://www.nw3c.org/"
+          }
+        },
+        "text": "National White Collar Crime",
+        "forwardtext": ">",
+        "pic": "web.png"
+      },
+      "jj": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "sea",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "S.E.A.",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "url": "http://www.sealimited.com/"
+          }
+        },
+        "text": "Scientific Expert Analysis",
+        "forwardtext": ">",
+        "pic": "web.png"
+      }
+    }
+  }
+}

@@ -60,6 +60,18 @@ local M = {
             sceneBackgroundcolor = { r=241/255, g=242/255, b=243/255, a=1 },
             sceneBackgroundmorecolor = { r=56/255, g=106/255, b=76/255, a=1 },
 
+            directories = {
+                 d = system.DocumentsDirectory ,
+                 c = system.CachesDirectory ,
+                 t = system.TemporaryDirectory ,
+                 r = system.ResourceDirectory 
+              },
+
+            methods = {
+                logout = function() Runtime:dispatchEvent{ name="logmeout" } end,
+                alert = function() local alert = native.showAlert( "hi", "hi there", { "Okay" }  ) end,
+
+              },
             ------------------------------
             -- used by scrollblocks
             ------------------------------ 
@@ -422,47 +434,74 @@ local M = {
 
                          items = {
                                     tabs = {name="myapptabs" },
-                                    moreinfo = {name="myappmoreinfo.json",download=true,json=true,xxdownloadatstartup = true },
-                                    homepage = {name="myapphomepage" },
-                                    news = {name="myappnews" },
-                                    contactus = {name="myappcontactus.json",download=true,json=true,downloadatstartup = true },
-                                    extras = {name="myappextras" },
-                                    
-                                    awards = {name="myappawards" },
-                                    awardsnational = {name="myappawards",section="awardsnational" },
-                                    awardsohio = {name="myappawards",section="awardsohio" },
+                                    moreinfo = {
+                                                  name="myappmoreinfo.json",download=true,json=true,
+                                                  initialload = { 
+                                                                        imsliding = false,     -- will be updated in app
+                                                                        transitiontime = 700,
+                                                                        transitiontimealpha = 200,
+                                                                        direction = "left",     -- initial direction
+                                                                        movefactor = 1.2,      -- how much left or right. Less means less showing of the main screen
+                                                                        morebutton = {
+                                                                                        defaultFile="morebutton.png",
+                                                                                        overFile="morebutton-down.png",
+                                                                                        },
+                                                                    },                      
 
-                                    social = {name="myappsocial" },
-                                    mappings = {name="myappmappings" },
+                                                },
+                                    homepage = {name="myapphomepage.json",json=true ,download=true ,downloadatstartup = true},
+                                    news = {name="myappnews.json" ,json=true ,download=true},
+                                    contactus = {name="myappcontactus.json",download=true,json=true},
+                                    extras = {name="myappextras.json" ,download=true,json=true},
+                                    
+                                    awards = {name="myappawards.json",json=true ,download=true},
+                                    awardsnational = {name="myappawards.json",json=true,section="awardsnational" ,download=true },
+                                    awardsohio = {name="myappawards.json",json=true,section="awardsohio" ,download=true },
+
+                                    social = {name="myappsocial.json" ,download=true,json=true},
+                                    --mappings = {name="myappmappings" },
                                     otherscenes = {name="myappotherscenes" },
 
-                                    locate = {name="myapplocate",section="locate" },
-                                    locatepre = {name="myapplocate",section="locatepre" },
-                                    locatedetails = {name="myapplocate",section="locatedetails" },
+                                    --locate = {name="myapplocate",section="locate" },
+                                    --locatepre = {name="myapplocate",section="locatepre" },
+                                    --locatedetails = {name="myapplocate",section="locatedetails" },
 
-                                    people = {name="myapppeople" },
+                                    people = {name="myapppeople.json",json=true,download=true},
 
-                                    chapters = {name="myappchapters" },
-                                    chapnational = {name="myappchaptersdetails",section="chapnational" },
-                                    chapcommittees = {name="myappchaptersdetails",section="chapcommittees" },
-                                    chapstate = {name="myappchaptersdetails",section="chapstate" },
+                                    chapters = {name="myappchapters.json",json=true,download=true},
+                                    chapnational = {name="myappchaptersdetails.json",json=true,section="chapnational" ,download=true},
+                                    chapcommittees = {name="myappchaptersdetails.json",json=true,section="chapcommittees" ,download=true},
+                                    chapstate = {name="myappchaptersdetails.json",json=true,section="chapstate" ,download=true},
 
-                                    resources = {name="myappresources" },
-                                    respsa = {name="myappresourcedetails",section="respsa" },
-                                    resref = {name="myappresourcedetails",section="resref", },
-                                    resfraud = {name="myappresourcedetails",section="resfraud" },
-                                    restools = {name="myappresourcedetails",section="restools" },
-                                    resnews = {name="myappresourcedetails",section="resnews" },
-                                    reslegal = {name="myappresourcedetails",section="reslegal", },
-                                    resyoutube = {name="myappresourcedetails",section="resyoutube" },
+                                    resources = {name="myappresources.json",json=true,download=true },
+                                    respsa = {name="myappresourcedetails.json",json=true,download=true ,section="respsa" },
+                                    resref = {name="myappresourcedetails.json",json=true,download=true,section="resref" },
+                                    resfraud = {name="myappresourcedetails.json",json=true,download=true,section="resfraud"  },
+                                    restools = {name="myappresourcedetails.json",json=true,download=true,section="restools" },
+                                    resnews = {name="myappresourcedetails.json",json=true,download=true,section="resnews" },
+                                    reslegal = {name="myappresourcedetails.json",json=true,download=true,section="reslegal" },
+                                    resyoutube = {name="myappresourcedetails.json",json=true,download=true,section="resyoutube"  },
                                 },
                         },
 
         }
 
+function M.loadsectionsfromdownload(event)
+    local a = {}
+    local n,i,k
+    for n in pairs(M.files.items) do table.insert(a, n) end
+    for i,k in ipairs(a) do 
+       local v = M.files.items[k]
+       if v.name == event.name and v.section then
+          M[k] = event.tableobject[v.section]  
+       end
+    end
+end
+
 function M.fileexists(filename,filepath)
     local path = system.pathForFile( filename, filepath )
-    local fhd = io.open( path )
+    local fhd = nil 
+    if path then  fhd = io.open( path )  end
     local rc = false
       
     -- Determine if file exists
@@ -476,18 +515,29 @@ function M.fileexists(filename,filepath)
     return rc
 end
 
+-------------------------------------------
+-- note: json files do not have to exist in project if they are being download either at  startup or later
+-------------------------------------------
 local a = {}
 local n,i,k
 for n in pairs(M.files.items) do table.insert(a, n) end
 for i,k in ipairs(a) do 
    local v = M.files.items[k]
+   ----------------------------------
+   -- in case a file only exists in cloud but we rely on some initial fields, you can do an initial oad
+   ----------------------------------
+   if v.initialload then
+      M[k] = v.initialload
+   end
    local vreq = {}
    function sectioncheck(event)
      print ("home page item " .. event.objectname)
-     if M.files.items[event.objectname].section then
-        M[event.objectname] = event.vreq[M.files.items[event.objectname].section]  
-     else
-        M[event.objectname] = event.vreq
+     if event.vreq then
+         if M.files.items[event.objectname].section then
+            M[event.objectname] = event.vreq[M.files.items[event.objectname].section]  
+         else
+            M[event.objectname] = event.vreq
+         end
      end
    end
    function loadjsonfile(event)
@@ -522,10 +572,12 @@ for i,k in ipairs(a) do
        -------------------------
        -- has a new copy been downloaded ? Use it
        -----------------------------------
+       print ("---------------------------")
+       print (v.name)
+       print ("---------------------------")
        if v.download and M.fileexists(v.name,M.files.download.fileloc) == true then
           fileloc = M.files.download.fileloc
           dlfe = true
-          print ("FFFFFFFILE")
        end
 
        if v.download and dlfe == false and v.downloadatstartup then
@@ -554,7 +606,9 @@ for i,k in ipairs(a) do
    end
 
 end
--- print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappmoreinfo" )))
+-- print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappresourcedetails" )))
+
+
 --M.tabs     = require( M.myappadds .. M.files.tabs.name)  
 --M.moreinfo = require( M.myappadds .. M.files.moreinfo.name )  
 --M.homepage = require( M.myappadds .. M.files.homepage.name )  

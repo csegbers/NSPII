@@ -1,0 +1,114 @@
+{
+  "headerfontsize": 16,
+  "items": {
+    "awelcome": {
+      "navigation": {
+        "composer": {
+          "lua": "webview",
+          "effect": "slideLeft",
+          "id": "welcome",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "textfontsize": 14,
+      "title": "Welcome",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": [],
+        "htmlinfo": {
+          "htmlfile": "welcome.html",
+          "dir": "r"
+        }
+      },
+      "text": "Welcome from the National Society of Professional Insurance Investigators",
+      "doublewide": true,
+      "pic": "nspii-down.png"
+    },
+    "bcontact": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "contactus",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "textfontsize": 16,
+      "title": "Contact NSPII",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "contactus",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "text": "Contact The National Society of Professional Insurance Investigators",
+      "doublewide": true,
+      "pic": "contact-us.png"
+    },
+    "cnews": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "news",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "textfontsize": 14,
+      "title": "News and Events",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "news",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "text": "Check out the latest news, upcoming events and seminars from NSPII",
+      "doublewide": true,
+      "pic": "news-events.png"
+    },
+    "znewsevent": {
+      "navigation": {
+        "composer": {
+          "lua": "feed",
+          "effect": "slideLeft",
+          "id": "nspiinewsfeed",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "child": {
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "xx",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        }
+      },
+      "text": ".....feeds",
+      "title": "NSPII rss feed",
+      "backtext": "<",
+      "sceneinfo": {
+        "reachablemsg": {
+          "errortitle": "No Feed",
+          "errormessage": "Feed temporarily unavaialble."
+        },
+        "feedName": "rss.xml",
+        "feedURL": "http://www.nspii.com/pages/news-and-events/rss.xml",
+        "icons": "fixed"
+      },
+      "textfontsize": 16,
+      "doublewide": true,
+      "pic": "nspii-down.png"
+    }
+  }
+}

@@ -89,7 +89,9 @@ end
 
 function M.fileexists(filename,filepath)
     local path = system.pathForFile( filename, filepath )
-    local fhd = io.open( path )
+    --local fhd = io.open( path )
+    local fhd = nil 
+    if path then  fhd = io.open( path )  end
     local rc = false
       
     -- Determine if file exists

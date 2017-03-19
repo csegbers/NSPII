@@ -11,13 +11,14 @@
       "title": "Authentication",
       "isCategory": true
     },
+   
     "aalogout": {
       "iconwidth": 120,
       "includeline": false,
       "showonlyinloggedin": true,
       "navigation": {
         "execute": {
-          "method": "<type 'function' is not supported by JSON.>"
+          "method": "logout"
         }
       },
       "title": "Logout",
@@ -54,7 +55,7 @@
         "scrollblockinfo": [],
         "htmlinfo": {
           "htmlfile": "mission.html",
-          "dir": "<type 'userdata' is not supported by JSON.>"
+          "dir": "r"
         }
       },
       "text": "xx",
@@ -76,7 +77,7 @@
         "scrollblockinfo": [],
         "htmlinfo": {
           "htmlfile": "antitrust.html",
-          "dir": "<type 'userdata' is not supported by JSON.>"
+          "dir": "r"
         }
       },
       "text": "xx",
@@ -98,7 +99,7 @@
         "scrollblockinfo": [],
         "htmlinfo": {
           "htmlfile": "help.html",
-          "dir": "<type 'userdata' is not supported by JSON.>"
+          "dir": "r"
         }
       },
       "text": "Flat tire, out of gas ? We can help",
@@ -144,7 +145,7 @@
         "scrollblockinfo": [],
         "htmlinfo": {
           "htmlfile": "foundation.html",
-          "dir": "<type 'userdata' is not supported by JSON.>"
+          "dir": "r"
         }
       },
       "navigation": {
@@ -166,7 +167,7 @@
         "scrollblockinfo": [],
         "htmlinfo": {
           "htmlfile": "pastawards.html",
-          "dir": "<type 'userdata' is not supported by JSON.>"
+          "dir": "r"
         }
       },
       "includeline": false,

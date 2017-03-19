@@ -37,7 +37,9 @@ function M.loadTable(filename, location)
     local path = system.pathForFile( filename, location)
     local contents = ""
     local myTable = {}
-    local file = io.open( path, "r" )
+    --local file = io.open( path, "r" )
+    local file = nil 
+    if path then  file = io.open( path )  end
     if file then
         -- read all contents of file into a string
         local contents = file:read( "*a" )

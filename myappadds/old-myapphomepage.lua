@@ -172,7 +172,7 @@ local homepage = {
                                sceneinfo = { 
                                                 htmlinfo = {
                                                     htmlfile="welcome.html" ,
-                                                    dir = system.ResourceDirectory ,
+                                                    dir = "r" ,
                                                 },
                                                scrollblockinfo = { },
                                              },
