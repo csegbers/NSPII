@@ -67,7 +67,7 @@ function M.getjsonasset(parms)
             return true
         end
 
-        if M.fileexists(parms.filename,parms.fileloc) ~= true then
+        if M.fileexists(parms.filename,parms.fileloc) ~= true or parms.overrideexistingfile then
             print ("attempt dl")
             if M.testNetworkConnection()  then
                  

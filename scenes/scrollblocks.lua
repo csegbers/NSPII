@@ -86,6 +86,7 @@ function scene:show( event )
                         myApp.loadsectionsfromdownload(event)
                     else
                         myApp[sceneparams.sceneinfo.scrollblockinfo.object] = event.tableobject -- do this incase file is used for master as well. If section is subset it will be overridden
+                        myApp.loadsectionsfromdownload(event)   -- need to do incase main file is also used to house sections
                     end
                 end
                 sbi = myApp[sceneparams.sceneinfo.scrollblockinfo.object]

@@ -1,0 +1,14 @@
+{
+  "items": {
+    "2myapphomepage": {
+      "name": "2myapphomepage.json",
+      "json": true,
+      "download": true
+    },
+    "3myapphomepage": {
+      "name": "3myapphomepage.json",
+      "json": true,
+      "download": true
+    }
+  }
+}

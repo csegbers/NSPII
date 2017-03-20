@@ -73,6 +73,30 @@
       "doublewide": true,
       "pic": "news-events.png"
     },
+    "cznews": {
+      "navigation": {
+        "composer": {
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "2myapphomepage",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "textfontsize": 14,
+      "title": "News and Events 2222",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "2myapphomepage",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "text": "C2myapphomepage seminars from NSPII",
+      "doublewide": true,
+      "pic": "news-events.png"
+    },
     "znewsevent": {
       "navigation": {
         "composer": {

@@ -424,8 +424,15 @@ local M = {
             --== additional files
             --========================  
              files = {
+                         config = { 
+                                       url = "https://s3.amazonaws.com/nspii/config/",
+                                       fileloc = system.TemporaryDirectory,
+                                       timeout = 5,
+                                       name = "appconfig.json",
+                                       errortitle = "Network Error",
+                                    },
                          download = { 
-                                       url = "https://s3.amazonaws.com/nspii/",
+                                       url = "https://s3.amazonaws.com/nspii/myappadds/",
                                        origfileloc = system.ResourceDirectory,
                                        fileloc = system.TemporaryDirectory,
                                        timeout = 5,
@@ -485,7 +492,11 @@ local M = {
                         },
 
         }
-
+-----------------------------------
+-- if we download a file later on which is also used with sections
+-- this function cal be called to grab all the other sections
+-- since we only downoad once
+------------------------------------
 function M.loadsectionsfromdownload(event)
     local a = {}
     local n,i,k
@@ -530,8 +541,11 @@ for i,k in ipairs(a) do
       M[k] = v.initialload
    end
    local vreq = {}
-   function sectioncheck(event)
+   local function sectioncheck(event)
      print ("home page item " .. event.objectname)
+     ------------------------
+     -- vreq could be nil if file is only downloaded
+     -------------------------
      if event.vreq then
          if M.files.items[event.objectname].section then
             M[event.objectname] = event.vreq[M.files.items[event.objectname].section]  
@@ -540,7 +554,7 @@ for i,k in ipairs(a) do
          end
      end
    end
-   function loadjsonfile(event)
+   local function loadjsonfile(event)
       ------------------------
       -- any error revert back to original file included in app
       ------------------------------
@@ -570,7 +584,7 @@ for i,k in ipairs(a) do
        local fileloc = M.files.download.origfileloc
        local dlfe = false
        -------------------------
-       -- has a new copy been downloaded ? Use it
+       -- has a new copy been downloaded  and we have it ? Use it.  .fileloc
        -----------------------------------
        print ("---------------------------")
        print (v.name)
@@ -600,12 +614,52 @@ for i,k in ipairs(a) do
        else
           loadjsonfile({objectname = k,name=v.name,fileloc=fileloc})
        end
-   else   -- not json
+   else   -- not json ... inlline lua table file ... in the M.myappadds suubfolder
        vreq = require( M.myappadds .. v.name)
        sectioncheck({vreq=vreq,objectname=k})
    end
 
 end
+
+-----------------------------
+-- get config file
+-----------------------------
+local function loadconfigfile(event)
+      if ( event.isError ) then         
+      else
+        if event.tableobject then
+           ----------------------
+           -- additional files ?
+           ----------------------  
+           if event.tableobject.files then
+              if event.tableobject.files.items then
+                  local a = {}
+                  local n,i,k
+                  for n in pairs(event.tableobject.files.items) do table.insert(a, n) end
+                  for i,k in ipairs(a) do 
+                      M.files.items[k] = event.tableobject.files.items[k]
+                  end
+              end
+           end 
+
+        end        
+      end
+end  
+require( M.utilsfld .. "assetmgr" ).getjsonasset(
+                        {
+                          errortitle = M.files.config.errortitle,
+                          filename = M.files.config.name,
+                          fileloc = M.files.config.fileloc,
+                          callback = loadconfigfile,
+                          networkurl = M.files.config.url,
+                          timeout = M.files.config.timeout,
+                          overrideexistingfile = true,
+                          setActivityIndicator = false,
+                        }
+                    )  
+
+
+return M
 -- print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappresourcedetails" )))
 
 
@@ -650,7 +704,7 @@ end
 
 
  
-return M
+
 -- The following string values are supported for the effect key of the options table:
 
 -- "fade"
