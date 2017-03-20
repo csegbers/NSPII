@@ -509,7 +509,7 @@ function M.loadsectionsfromdownload(event)
     end
 end
 
-function M.fileexists(filename,filepath)
+local function fileexists(filename,filepath)
     local path = system.pathForFile( filename, filepath )
     local fhd = nil 
     if path then  fhd = io.open( path )  end
@@ -526,6 +526,45 @@ function M.fileexists(filename,filepath)
     return rc
 end
 
+local function sectioncheck(event)
+ print ("home page item " .. event.objectname)
+ ------------------------
+ -- vreq could be nil if file is only downloaded
+ -------------------------
+ if event.vreq then
+     if M.files.items[event.objectname].section then
+        M[event.objectname] = event.vreq[M.files.items[event.objectname].section]  
+     else
+        M[event.objectname] = event.vreq
+     end
+ end
+end
+local function loadjsonfile(event)
+  ------------------------
+  -- any error revert back to original file included in app
+  ------------------------------
+  if ( event.isError ) then
+    vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,M.files.download.origfileloc)
+  else
+    if event.tableobject then
+        vreq = event.tableobject
+    else
+        ----------------------------
+         -- double check because we may not get an error on network request bt if file
+         -- does not exist there is nothing to load
+         -------------------------------------
+        if fileexists(event.name,event.fileloc) then
+          print ("here aaaa")
+           vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,event.fileloc)
+        else
+           print ("here bbbb")
+           vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,M.files.download.origfileloc)
+        end
+    end        
+  end
+  event.vreq = vreq
+  sectioncheck(event)
+end  
 -------------------------------------------
 -- note: json files do not have to exist in project if they are being download either at  startup or later
 -------------------------------------------
@@ -541,45 +580,7 @@ for i,k in ipairs(a) do
       M[k] = v.initialload
    end
    local vreq = {}
-   local function sectioncheck(event)
-     print ("home page item " .. event.objectname)
-     ------------------------
-     -- vreq could be nil if file is only downloaded
-     -------------------------
-     if event.vreq then
-         if M.files.items[event.objectname].section then
-            M[event.objectname] = event.vreq[M.files.items[event.objectname].section]  
-         else
-            M[event.objectname] = event.vreq
-         end
-     end
-   end
-   local function loadjsonfile(event)
-      ------------------------
-      -- any error revert back to original file included in app
-      ------------------------------
-      if ( event.isError ) then
-        vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,M.files.download.origfileloc)
-      else
-        if event.tableobject then
-            vreq = event.tableobject
-        else
-            ----------------------------
-             -- double check because we may not get an error on network request bt if file
-             -- does not exist there is nothing to load
-             -------------------------------------
-            if M.fileexists(event.name,event.fileloc) then
-              print ("here aaaa")
-               vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,event.fileloc)
-            else
-               print ("here bbbb")
-               vreq = require( M.utilsfld .. "loadsave" ).loadTable(event.name,M.files.download.origfileloc)
-            end
-        end        
-      end
-      event.vreq = vreq
-      sectioncheck(event)
-   end   
+ 
    if v.json then
        local fileloc = M.files.download.origfileloc
        local dlfe = false
@@ -589,7 +590,7 @@ for i,k in ipairs(a) do
        print ("---------------------------")
        print (v.name)
        print ("---------------------------")
-       if v.download and M.fileexists(v.name,M.files.download.fileloc) == true then
+       if v.download and fileexists(v.name,M.files.download.fileloc) == true then
           fileloc = M.files.download.fileloc
           dlfe = true
        end
@@ -623,6 +624,9 @@ end
 
 -----------------------------
 -- get config file
+--
+-- this could point to dynamic tables used for scrollblocks etc..
+--
 -----------------------------
 local function loadconfigfile(event)
       if ( event.isError ) then         
@@ -630,6 +634,8 @@ local function loadconfigfile(event)
         if event.tableobject then
            ----------------------
            -- additional files ?
+           --
+           -- files { items { .....}}
            ----------------------  
            if event.tableobject.files then
               if event.tableobject.files.items then
@@ -637,7 +643,19 @@ local function loadconfigfile(event)
                   local n,i,k
                   for n in pairs(event.tableobject.files.items) do table.insert(a, n) end
                   for i,k in ipairs(a) do 
+                      -----------------------------------
+                      -- first add to avaiable files
+                      -- 
+                      -- must have name, json=true, download=true
+                      -----------------------------------
                       M.files.items[k] = event.tableobject.files.items[k]
+                      ------------------------------------
+                      --  by chance is the file already downloaded and is still in the cache or temp or wherever?
+                      --  get it into the main M table because the rest of the app wont do that , it assume it would have already been loaded
+                      ------------------------------------
+                      if fileexists(M.files.items[k].name,M.files.download.fileloc) == true then
+                         loadjsonfile({objectname = k,name=M.files.items[k].name,fileloc=M.files.download.fileloc})
+                      end
                   end
               end
            end 
