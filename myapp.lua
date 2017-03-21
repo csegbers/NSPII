@@ -7,7 +7,8 @@ local M = {
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
-            appVersion = "0",
+            appVersion = 0,
+            appVersionFileName = "appversion.json",
             tabMyAgentKey = "",     -- will be key of myagent if used
             tabMyAccountKey = "",     -- will be key of myaccount if used
             tabCurrentKey = "",     -- will change as we tab
@@ -44,7 +45,7 @@ local M = {
             ------------------------------
             -- database stuff
             ------------------------------            
-            databasename= "insapp.db",
+            databasename= "nspiiapp.db",    -- be sure to put in protected file down below
             hashkey = "aXaLwATgS3lPh848glLpugq5sqcHi8T2jfDQeWz1",
 
             ------------------------------
@@ -427,7 +428,7 @@ local M = {
              files = {
                          config = { 
                                        url = "https://s3.amazonaws.com/nspii/config/",
-                                       fileloc = system.TemporaryDirectory,
+                                       fileloc = system.TemporaryDirectory,    -- always override so put here
                                        timeout = 5,
                                        name = "appconfig.json",
                                        errortitle = "Network Error",
@@ -436,6 +437,7 @@ local M = {
                                        url = "https://s3.amazonaws.com/nspii/myappadds/",
                                        origfileloc = system.ResourceDirectory,
                                        fileloc = system.DocumentsDirectory,
+                                       --filefolder = "downloads/",
                                        timeout = 5,
                                        errortitle = "Network Error",
                                     },
@@ -493,6 +495,7 @@ local M = {
                         },
 
         }
+
 -----------------------------------
 -- if we download a file later on which is also used with sections
 -- this function cal be called to grab all the other sections
@@ -566,62 +569,73 @@ local function loadjsonfile(event)
   event.vreq = vreq
   sectioncheck(event)
 end  
--------------------------------------------
--- note: json files do not have to exist in project if they are being download either at  startup or later
--------------------------------------------
-local a = {}
-local n,i,k
-for n in pairs(M.files.items) do table.insert(a, n) end
-for i,k in ipairs(a) do 
-   local v = M.files.items[k]
-   ----------------------------------
-   -- in case a file only exists in cloud but we rely on some initial fields, you can do an initial oad
-   ----------------------------------
-   if v.initialload then
-      M[k] = v.initialload
-   end
-   local vreq = {}
- 
-   if v.json then
-       local fileloc = M.files.download.origfileloc
-       local dlfe = false
-       -------------------------
-       -- has a new copy been downloaded  and we have it ? Use it.  .fileloc
-       -----------------------------------
-       print ("---------------------------")
-       print (v.name)
-       print ("---------------------------")
-       if v.download and fileexists(v.name,M.files.download.fileloc) == true then
-          fileloc = M.files.download.fileloc
-          dlfe = true
+
+
+
+local function loadmyappfiles()
+    -------------------------------------------
+    -- note: json files do not have to exist in project if they are being download either at  startup or later
+    -------------------------------------------
+    local a = {}
+    local n,i,k
+    for n in pairs(M.files.items) do table.insert(a, n) end
+    for i,k in ipairs(a) do 
+       local v = M.files.items[k]
+       ----------------------------------
+       -- in case a file only exists in cloud but we rely on some initial fields, you can do an initial oad
+       ----------------------------------
+       if v.initialload then
+          M[k] = v.initialload
+       end
+       local vreq = {}
+     
+       if v.json then
+           local fileloc = M.files.download.origfileloc
+           local dlfe = false
+           -------------------------
+           -- has a new copy been downloaded  and we have it ? Use it.  .fileloc
+           -----------------------------------
+           print ("---------------------------")
+           print (v.name)
+           print ("---------------------------")
+           if v.download and fileexists(v.name,M.files.download.fileloc) == true then
+              fileloc = M.files.download.fileloc
+              dlfe = true
+           end
+
+           if v.download and dlfe == false and v.downloadatstartup then
+               require( M.utilsfld .. "assetmgr" ).getjsonasset(
+                                        {
+                                          errortitle = M.files.download.errortitle,
+                                          objectname = k,
+                                          filename = v.name,
+                                          fileloc = M.files.download.fileloc,
+                                          callback = loadjsonfile,
+                                          networkurl = M.files.download.url,
+                                          timeout = M.files.download.timeout,
+                                          setActivityIndicator = false,
+                                          --------------------
+                                          -- cannot get reference to work so callback must update
+                                          -------------------------
+                                          --tableobject = myApp[sceneparams.sceneinfo.scrollblockinfo.object],
+                                        }
+                                    )       
+           else
+              loadjsonfile({objectname = k,name=v.name,fileloc=fileloc})
+           end
+       else   -- not json ... inlline lua table file ... in the M.myappadds suubfolder
+           vreq = require( M.myappadds .. v.name)
+           sectioncheck({vreq=vreq,objectname=k})
        end
 
-       if v.download and dlfe == false and v.downloadatstartup then
-           require( M.utilsfld .. "assetmgr" ).getjsonasset(
-                                    {
-                                      errortitle = M.files.download.errortitle,
-                                      objectname = k,
-                                      filename = v.name,
-                                      fileloc = M.files.download.fileloc,
-                                      callback = loadjsonfile,
-                                      networkurl = M.files.download.url,
-                                      timeout = M.files.download.timeout,
-                                      setActivityIndicator = false,
-                                      --------------------
-                                      -- cannot get reference to work so callback must update
-                                      -------------------------
-                                      --tableobject = myApp[sceneparams.sceneinfo.scrollblockinfo.object],
-                                    }
-                                )       
-       else
-          loadjsonfile({objectname = k,name=v.name,fileloc=fileloc})
-       end
-   else   -- not json ... inlline lua table file ... in the M.myappadds suubfolder
-       vreq = require( M.myappadds .. v.name)
-       sectioncheck({vreq=vreq,objectname=k})
-   end
-
+    end
+    -------------------------------------
+    -- get everything else rolling
+    -- we are done here
+    -------------------------------------
+    Runtime:dispatchEvent{ name="startup" }
 end
+
 
 -----------------------------
 -- get config file
@@ -633,10 +647,49 @@ local function loadconfigfile(event)
       if ( event.isError ) then         
       else
         if event.tableobject then
+           ----------------------------------
+           -- what app version ?
+           ----------------------------------
+           if event.tableobject.appVersion then
+              if event.tableobject.appVersion > M.appVersion then
+                 require( M.utilsfld .. "loadsave" ).saveTable({appVersion=event.tableobject.appVersion},M.appVersionFileName,system.DocumentsDirectory)
+                 ---------------------------------------
+                 -- delete all previously downloaded config files
+                 -- if the new version > than what we have
+                 -- even though some config files may not have changed, no biggie
+                 ---------------------------------------
+
+                 local lfs = require( "lfs" )
+                 local doc_path = system.pathForFile( "", M.files.download.fileloc )
+                 local filedel = {}
+                 local i,v
+ 
+                 for file in lfs.dir( doc_path ) do
+                      -----------------------------------------
+                      -- exclude certain files
+                      -----------------------------------------
+                      if file == M.databasename or file == M.appVersionFileName or file == "." or file == ".." then
+                      else
+                         table.insert(filedel, file)
+                      end
+                 end
+
+                 for i,v in ipairs(filedel) do
+                      local result, reason = os.remove( system.pathForFile( v, M.files.download.fileloc ) )
+                      if result then
+                         print( v .. "   xxxxxxxxxxxxxxxxxxxxxxxxxxxx >>>>>File removed" )
+                      else
+                         print( v .. "  xxxxxxxxxxxxxxxxxxxxxxx >>>>>File does not exist", reason )  --> File does not exist    apple.txt: No such file or directory
+                      end
+                 end
+              end
+           end
            ----------------------
            -- additional files ?
            --
            -- files { items { .....}}
+           -- 
+           -- we wont actually download unless called upon
            ----------------------  
            if event.tableobject.files then
               if event.tableobject.files.items then
@@ -663,7 +716,28 @@ local function loadconfigfile(event)
 
         end        
       end
+      ----------------------------------
+      -- now continue on and load other myapp
+      -----------------------------------
+      loadmyappfiles()
 end  
+
+
+-------------------------------------------
+-- start here !!!!
+-- be sure to have an appconfig with current version
+-- lets us know what version they are on for downloading purposes
+-------------------------------------------
+if fileexists(M.appVersionFileName,system.DocumentsDirectory) ~= true then
+   require( M.utilsfld .. "loadsave" ).saveTable({appVersion=M.appVersion},M.appVersionFileName,system.DocumentsDirectory)
+end
+M.appVersion = require( M.utilsfld .. "loadsave" ).loadTable(M.appVersionFileName,system.DocumentsDirectory).appVersion
+print ("APP Version - " .. M.appVersion)
+
+-----------------------------------
+-- see if we are on current version
+-----------------------------------
+
 require( M.utilsfld .. "assetmgr" ).getjsonasset(
                         {
                           errortitle = M.files.config.errortitle,
@@ -672,7 +746,7 @@ require( M.utilsfld .. "assetmgr" ).getjsonasset(
                           callback = loadconfigfile,
                           networkurl = M.files.config.url,
                           timeout = M.files.config.timeout,
-                          overrideexistingfile = true,
+                          overrideexistingfile = true,    -- always override
                           setActivityIndicator = false,
                         }
                     )  
