@@ -20,6 +20,7 @@ M.dbschema = {
 								userid = {name="uduserid",title="UserID",att="TEXT", def="",reset=false},
 								email = {name="udemail",title="Email",att="TEXT", def="",reset=false},
 								everloggedin = {name="udeverlogedin",title="Ever Logged In",att="INTEGER", def=0,reset=false},
+								appVersion = {name="udappVersion",title="App Version",att="TEXT", def="0",reset=false},
 																															
 							},
 

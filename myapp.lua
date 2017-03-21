@@ -7,6 +7,7 @@ local M = {
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
+            appVersion = "0",
             tabMyAgentKey = "",     -- will be key of myagent if used
             tabMyAccountKey = "",     -- will be key of myaccount if used
             tabCurrentKey = "",     -- will change as we tab
@@ -434,7 +435,7 @@ local M = {
                          download = { 
                                        url = "https://s3.amazonaws.com/nspii/myappadds/",
                                        origfileloc = system.ResourceDirectory,
-                                       fileloc = system.TemporaryDirectory,
+                                       fileloc = system.DocumentsDirectory,
                                        timeout = 5,
                                        errortitle = "Network Error",
                                     },
