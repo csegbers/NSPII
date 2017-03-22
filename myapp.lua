@@ -88,6 +88,9 @@ local M = {
                                                         type = 'gradient',
                                                         color1 = { 43/255, 143/255, 82/255, 1 }, 
                                                         color2 = { 161/255, 200/255, 177/255, 1 },
+                                                        -- stateautoswitch
+                                                     --   color1 = { 189/255, 203/255, 220/255, 1 }, 
+                                                     -- color2 = { 89/255, 116/255, 152/255, 1 },
                                                         direction = "down"
                                                    },
                                       
@@ -320,6 +323,9 @@ local M = {
                     type = 'gradient',
                     color1 = { 43/255, 143/255, 82/255, 1 }, 
                     color2 = { 161/255, 200/255, 177/255, 1 },
+                    -- stateautoswitch
+                 -- color1 = { 189/255, 203/255, 220/255, 1 }, 
+                  -- color2 = { 89/255, 116/255, 152/255, 1 },
                     direction = "down"
              },
             icons = "",

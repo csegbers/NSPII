@@ -5,6 +5,17 @@
 local tabs = { 
   
         tabbtnw = 28,tabbtnh = 28, tabBarHeight = 50,frameWidth = 20,launchkey = "ahome", transitiontime = 200,
+        images = {    backgroundFile  ="tabBarBg7.png",
+                      tabSelectedLeftFile =  "tabBar_tabSelectedLeft7.png",       
+                      tabSelectedRightFile =   "tabBar_tabSelectedRight7.png",     
+                      tabSelectedMiddleFile =  "tabBar_tabSelectedMiddle7.png",  
+                 } ,
+                 -- stateautoswitch
+       -- images = {    backgroundFile  ="sa-tabBarBg7.png",
+       --               tabSelectedLeftFile =  "sa-tabBar_tabSelectedLeft7.png",       
+       --               tabSelectedRightFile =   "sa-tabBar_tabSelectedRight7.png",     
+       --               tabSelectedMiddleFile =  "sa-tabBar_tabSelectedMiddle7.png",  
+       --          } ,
         btns = {
             ahome = {
                         label="Home", title="NSPII" ,def="nspii.png",over="nspii-down.png",
