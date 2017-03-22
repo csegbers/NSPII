@@ -1,6 +1,7 @@
 --====================================================================--
 -- NSPII App
 --====================================================================--
+local myApp = require( "myapp" ) 
 -----------------------------------------
 -- launched from somehwre else ?
 -----------------------------------------
@@ -17,10 +18,8 @@ Runtime:addEventListener( "startup",
 	function()  
     ---------------------------
     -- inline
-    --------------------------- 
-        local myApp = require( "myapp" )     -- need to include again no forward reference
+    ---------------------------    
 		require( myApp.utilsfld .. "startup" ) 
-
 		require( myApp.utilsfld .. "common" )  
 
 		local composer = require( "composer" )
@@ -33,8 +32,6 @@ Runtime:addEventListener( "startup",
 		require( myApp.utilsfld .. "backgroup" )   -- set the backgroup
 		require( myApp.utilsfld .. "tabandtop" )   -- set the top and bottom sections
 
-
-
 		---------------------------------------------------
 		--  Sort everything in the correct z-index order
 		----------------------------------------------------
@@ -45,9 +42,7 @@ Runtime:addEventListener( "startup",
 		stage:insert( myApp.TitleGroup )              -- the top title area
 		stage:insert( myApp.tabBar )                  -- tabbar at bottom
 		stage:insert( myApp.transContainer )          -- a container we turn on and off if they select more.select
-		                                              -- this makes the slid out main area still somewhat appear but receive taps
-
-		                                            
+		                                              -- this makes the slid out main area still somewhat appear but receive taps		                                            
 		---------------------------------------------------
 		--  Splash and launch first page
 		----------------------------------------------------
@@ -63,7 +58,7 @@ Runtime:addEventListener( "startup",
 -- actual start right here
 -- when finished it will launch the above startup proc
 -----------------------------------
-local myApp = require( "myapp" )  
+require( myApp.utilsfld .. "initialload" )  
  
  
 

@@ -127,6 +127,25 @@ parse:getConfig(
       end )
 --parse:logEvent( "MyCustomEvent", { ["x"] = "modparse" ,["y"] = "ccc"}, function (e) print ("return from home logevent") print (e.requestType)   end )
 --]]
+
+
+-----------------------------------
+-- if we download a file later on which is also used with sections
+-- this function cal be called to grab all the other sections
+-- since we only downoad once
+------------------------------------
+function myApp.loadsectionsfromdownload(event)
+    local a = {}
+    local n,i,k
+    for n in pairs(myApp.files.items) do table.insert(a, n) end
+    for i,k in ipairs(a) do 
+       local v = myApp.files.items[k]
+       if v.name == event.name and v.section then
+          myApp[k] = event.tableobject[v.section]  
+       end
+    end
+end
+
 ----------------------------------------
 -- Was the scene laucnhed as a main tabbar sceene ?
 ----------------------------------------
