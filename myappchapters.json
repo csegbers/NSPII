@@ -1,40 +1,38 @@
 {
+  "groupheight": 25,
+  "headerfontsize": 16,
+
   "items": {
+
+
+
     "a": {
       "navigation": {
         "composer": {
-          "lua": "peoplelist",
+          "lua": "scrolllist",
           "effect": "slideLeft",
-          "id": "national",
+          "id": "nationalchapter",
           "effectback": "slideRight",
           "time": 250
         }
       },
+      "textfontsize": 16,
       "title": "National Board",
-      "iconwidth": 90,
+      "backtext": "<",
       "sceneinfo": {
-        "reachablemsg": {
-          "errortitle": "No Feed",
-          "errormessage": "Feed temporarily unavaialble."
+        "scrollblockinfo": {
+          "object": "nationalchapter",
+          "navigate": "subscene"
         },
-        "feedName": "myappchaptersdetails.json",
-        "feedURL": "https://s3.amazonaws.com/nspii/myappchaptersdetails.json",
-        "icons": "fixed"
+        "htmlinfo": []
       },
-      "child": {
-        "navigation": {
-          "composer": {
-            "lua": "webview",
-            "effect": "slideLeft",
-            "id": "xx",
-            "effectback": "slideRight",
-            "time": 250
-          }
-        }
-      },
+      "text": "",
       "doublewide": true,
-      "backtext": "<"
+
     },
+
+
+
     "b": {
       "title": "Committees",
       "iconwidth": 90,
@@ -80,6 +78,5 @@
       "backtext": "<"
     }
   },
-  "groupheight": 25,
-  "headerfontsize": 16
+
 }

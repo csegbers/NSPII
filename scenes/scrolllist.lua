@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------
--- Scrollblocks scene
+-- peoplelist scene
 ---------------------------------------------------------------------------------------
 
 local composer = require( "composer" )
@@ -106,17 +106,17 @@ function scene:show( event )
                       return true
                 end
 
-                scrollView = widget.newScrollView
-                    {
-                        x = 0,
-                        y = 0,
-                        width = myApp.sceneWidth, 
-                        height =  myApp.sceneHeight,
-                        listener = scrollListener,
-                        horizontalScrollDisabled = true,
-                        hideBackground = true,
-                    }
-                 container:insert(scrollView)
+                scrollView = widget.newTableView{ 
+                    top = navBar.height, 
+                    width = display.contentWidth, 
+                    height = display.contentHeight - navBar.height - myApp.tabBar.height, 
+                    maskFile = maskFile,
+                    listener = tableViewListener,
+                    hideBackground = true, 
+                    onRowRender = onRowRender,
+                    onRowTouch = onRowTouch 
+                }    
+                container:insert(scrollView)            
 
                  ----------------------------------------------
                  -- Tcouhed an object - go do something
@@ -410,7 +410,7 @@ function scene:show( event )
          end
          justcreated = false
     end
-	
+    
 
 end
 
@@ -431,7 +431,7 @@ function scene:hide( event )
 end
 
 function scene:destroy( event )
-	 
+     
     print ("Destroy "   .. currScene)
 end
 

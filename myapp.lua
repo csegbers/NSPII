@@ -479,9 +479,9 @@ local M = {
                                     people = {name="myapppeople.json",json=true,download=true},
 
                                     chapters = {name="myappchapters.json",json=true,download=true},
-                                    chapnational = {name="myappchaptersdetails.json",json=true,section="chapnational" ,download=true},
-                                    chapcommittees = {name="myappchaptersdetails.json",json=true,section="chapcommittees" ,download=true},
-                                    chapstate = {name="myappchaptersdetails.json",json=true,section="chapstate" ,download=true},
+                                    nationalchapter = {name="myappchaptersdetails.json",json=true,section="nationalchapter" ,download=true},
+                                    chaptercommittees = {name="myappchaptersdetails.json",json=true,section="chaptercommittees" ,download=true},
+                                    statechapters = {name="myappchaptersdetails.json",json=true,section="statechapters" ,download=true},
 
                                     resources = {name="myappresources.json",json=true,download=true },
                                     respsa = {name="myappresourcedetails.json",json=true,download=true ,section="respsa" },

@@ -1,11 +1,11 @@
 {
-  "state": {
+  "statechapters": {
     "items": []
   },
-  "committees": {
+  "chaptercommittees": {
     "items": []
   },
-  "national": {
+  "nationalchapter": {
     "items": {
       "a01": {
         "id": "x",
