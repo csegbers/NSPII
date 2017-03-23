@@ -6,6 +6,10 @@
     "items": []
   },
   "nationalchapter": {
+    "type": { 
+              "display":"positions",    
+              "object":"people"
+            },
     "items": {
       "a01": {
         "id": "x",

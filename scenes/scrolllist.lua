@@ -16,7 +16,7 @@ local sceneparams
 local sceneid
 local sbi
 local container
-local scrollView
+local listView
 local justcreated  
 local runit  
 ------------------------------------------------------
@@ -95,41 +95,74 @@ function scene:show( event )
                 display.remove( container )           -- wont exist initially no biggie
                 container = nil
 
-                display.remove( scrollView )           -- wont exist initially no biggie
-                scrollView = nil
+                display.remove( listView )           -- wont exist initially no biggie
+                listView = nil
 
                 container = common.SceneContainer()
                 group:insert(container)
              
-                local function tableViewListener( event )
-                      return true
-                end
+                local function onRowRender( event )
+                     if sbi.type.display == "positions" then
+                             local row = event.row
+                             local v = sbi.items[event.row.params.k]
+                             ------------------------------
+                             -- grab the people file to use
+                             ------------------------------
+                             local p = myApp[sbi.type.object]
 
-                 scrollView = widget.newTableView{ 
-                     x = 0 ,
-                     y = 50 , 
-                     hideBackground=true,
-                     width = myApp.sceneWidth- (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)-10, 
-                     height = myApp.cH - myApp.tSbch,
-                    --maskFile = maskFile,
-                    listener = tableViewListener,
-                    hideBackground = true, 
-                    onRowRender = 
-                            function(event)
-                                 local row = event.row
-                                 row.nameText = display.newText( event.row.params.title, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                             if v.isCategory then
+                                 row.nameText = display.newText( v.text, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                                 row.nameText.anchorX = 0
+                                 row.nameText.anchorY = 0.5
+                                 row.nameText:setFillColor( 0,0,0 )
+                                 row.nameText.y = row.height / 2
+                                 row.nameText.x = myApp.moreinfo.row.indent/2 
+                                 row:insert( row.nameText )
+                             else
+                                  
+                                 row.nameText = display.newText( v.text, 0, 0, myApp.font, myApp.moreinfo.row.textfontsize )
                                  row.nameText.anchorX = 0
                                  row.nameText.anchorY = 0.5
                                  row.nameText:setFillColor( 0,0,0 )
                                  row.nameText.y = row.height / 2
                                  row.nameText.x = myApp.moreinfo.row.indent
-                                 if row.isCategory then row.nameText.x = myApp.moreinfo.row.indent/2 end
                                  row:insert( row.nameText )
-                                 return true
-                            end,
-          --  onRowTouch = onRowTouch 
+
+                                 row.nameName = display.newText( p.items[v.id].name, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                                 row.nameName.anchorX = 0
+                                 row.nameName.anchorY = 0.5
+                                 row.nameName:setFillColor( 0,0,0 )
+                                 row.nameName.y = row.height -20
+                                 row.nameName.x = myApp.moreinfo.row.indent
+                                 row:insert( row.nameName )
+
+                                 row.rightArrow = display.newImageRect(myApp.icons, 15 , 40, 40)
+                                 row.rightArrow.x = display.contentWidth - 20
+                                 row.rightArrow.y = row.height / 2
+                                 row:insert(row.rightArrow)
+                             end
+
+                             
+                     end
+                     return true
+                end
+
+                ---------------------------------------------
+                -- create the listview
+                ---------------------------------------------
+                listView = widget.newTableView{ 
+                    x = 0,
+                    y = 0,
+                    width = myApp.sceneWidth, 
+                    height =  myApp.sceneHeight,
+                    hideBackground=true,
+                    --maskFile = maskFile,
+                    --listener = tableViewListener,
+                    hideBackground = true, 
+                    onRowRender = onRowRender,
+                --  onRowTouch = onRowTouch 
                  }    
-                 container:insert(scrollView)  
+                 container:insert(listView)  
 
                  --------------------------------------------
                  -- must sort otherwise order is not honered
@@ -142,17 +175,21 @@ function scene:show( event )
                  local col = 1
                  for i,k in ipairs(a) do 
                      local v = sbi.items[k]
-                     print ("scrolllist page item " .. k)
-                       scrollView:insertRow({
-                          rowHeight = 20, 
-                          params = { title = v.text,key = k,}
+                     print ("listView page item " .. k)
+                       local rowHeight = 80
+                       if v.isCategory then rowHeight = 40 end
+                       listView:insertRow({
+                          rowHeight = rowHeight, 
+                          --rowColor =  rowColor,
+                          --lineColor = lineColor,
+                          isCategory = v.isCategory or false,
+                          params = { k = k}
                        })
                           end     -- end for
                  
                    print ("end of will show")
             end -- runit ?
         end
-
 
         if myApp.files.items[sceneparams.sceneinfo.scrollblockinfo.object].download  then
             assetmgr.getjsonasset(

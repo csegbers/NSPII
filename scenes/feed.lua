@@ -227,6 +227,7 @@ local function onRowRender(event)
     row.rightArrow.x = display.contentWidth - 20
     row.rightArrow.y = row.height / 2
     -- must insert everything into event.view:
+    
     row:insert(row.title )
     row:insert(row.subtitle)
     row:insert(row.rightArrow)

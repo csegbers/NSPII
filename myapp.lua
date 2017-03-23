@@ -433,7 +433,7 @@ local M = {
             --========================  
              files = {
                          config = { 
-                                       performdl= true,
+                                       performdl= false,
                                        url = "https://s3.amazonaws.com/nspii/config/",
                                        fileloc = system.TemporaryDirectory,    -- always override so put here
                                        timeout = 5,
@@ -441,7 +441,7 @@ local M = {
                                        errortitle = "Network Error",
                                     },
                          download = { 
-                                       performdl= true,
+                                       performdl= false,
                                        url = "https://s3.amazonaws.com/nspii/myappadds/",
                                        origfileloc = system.ResourceDirectory,
                                        fileloc = system.DocumentsDirectory,
@@ -483,7 +483,7 @@ local M = {
                                     --locatepre = {name="myapplocate",section="locatepre" },
                                     --locatedetails = {name="myapplocate",section="locatedetails" },
 
-                                    people = {name="myapppeople.json",json=true,download=true},
+                                    people = {name="myapppeople.json",json=true,download=true,downloadatstartup = true},
 
                                     chapters = {name="myappchapters.json",json=true,download=true},
                                     nationalchapter = {name="myappchaptersdetails.json",json=true,section="nationalchapter" ,download=true},
