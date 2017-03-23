@@ -100,6 +100,7 @@ local function loadmyappfiles()
                                           networkurl = myApp.files.download.url,
                                           timeout = myApp.files.download.timeout,
                                           setActivityIndicator = false,
+                                          performdl = myApp.files.download.performdl,
                                           --------------------
                                           -- cannot get reference to work so callback must update
                                           -------------------------
@@ -234,5 +235,6 @@ require( myApp.utilsfld .. "assetmgr" ).getjsonasset(
                           timeout = myApp.files.config.timeout,
                           overrideexistingfile = true,    -- always override
                           setActivityIndicator = false,
+                          performdl = myApp.files.config.performdl,
                         }
                     )  

@@ -433,6 +433,7 @@ local M = {
             --========================  
              files = {
                          config = { 
+                                       performdl= true,
                                        url = "https://s3.amazonaws.com/nspii/config/",
                                        fileloc = system.TemporaryDirectory,    -- always override so put here
                                        timeout = 5,
@@ -440,10 +441,10 @@ local M = {
                                        errortitle = "Network Error",
                                     },
                          download = { 
+                                       performdl= true,
                                        url = "https://s3.amazonaws.com/nspii/myappadds/",
                                        origfileloc = system.ResourceDirectory,
                                        fileloc = system.DocumentsDirectory,
-                                       --filefolder = "downloads/",
                                        timeout = 5,
                                        errortitle = "Network Error",
                                     },

@@ -128,7 +128,14 @@ parse:getConfig(
 --parse:logEvent( "MyCustomEvent", { ["x"] = "modparse" ,["y"] = "ccc"}, function (e) print ("return from home logevent") print (e.requestType)   end )
 --]]
 
-
+function myApp.launchlogin(event)
+   if myApp.authentication.loggedin == false and myApp.justLaunched == true then
+      myApp.justLaunched = false
+      if myApp.authentication.launchonstart then
+         timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login}))  --- cant just launch if we recycle composer for some reason
+      end
+   end
+end
 -----------------------------------
 -- if we download a file later on which is also used with sections
 -- this function cal be called to grab all the other sections

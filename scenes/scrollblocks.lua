@@ -10,7 +10,6 @@ local myApp = require( "myapp" )
 --local parse = require( myApp.utilsfld .. "mod_parse" )  
 local common = require( myApp.utilsfld .. "common" )
 local assetmgr = require( myApp.utilsfld .. "assetmgr" )
-local login = require( myApp.classfld .. "classlogin" )
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")
 local sceneparams
@@ -382,6 +381,7 @@ function scene:show( event )
                                         callback = fnchaveobject,
                                         networkurl = myApp.files.download.url,
                                         timeout = myApp.files.download.timeout,
+                                        performdl = myApp.files.download.performdl,
 
                                         --------------------
                                         -- cannot get reference to work so callback must update
@@ -396,18 +396,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
          print ("end of did show")
         --parse:logEvent( "Scene", { ["name"] = currScene} )
-        
-
-            -- Called when the scene is now on screen.
-            -- Insert code here to make the scene come alive.
-            -- Example: start timers, begin animation, play audio, etc.
-
-         if myApp.authentication.loggedin == false and myApp.justLaunched == true then
-            myApp.justLaunched = false
-            if myApp.authentication.launchonstart then
-               timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login}))  --- cant just launch if we recycle composer for some reason
-            end
-         end
+         myApp.launchlogin()
          justcreated = false
     end
 	

@@ -224,6 +224,7 @@ if myApp.files.items.moreinfo.download  then
                   networkurl = myApp.files.download.url,
                   timeout = myApp.files.download.timeout,
                   setActivityIndicator = false,
+                  performdl = myApp.files.download.performdl,
 
                   --------------------
                   -- cannot get reference to work so callback must update

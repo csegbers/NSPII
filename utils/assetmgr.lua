@@ -67,7 +67,7 @@ function M.getjsonasset(parms)
             return true
         end
 
-        if M.fileexists(parms.filename,parms.fileloc) ~= true or parms.overrideexistingfile then
+        if (M.fileexists(parms.filename,parms.fileloc) ~= true or parms.overrideexistingfile) and parms.performdl == true then
             print ("attempt dl")
             if M.testNetworkConnection()  then
                  
@@ -78,7 +78,7 @@ function M.getjsonasset(parms)
                 parms.callback({name= parms.filename,fileloc= parms.fileloc,objectname = parms.objectname,isError = true, response="Network Unreachable"})
             end
         else
-            parms.callback({name= parms.filename,fileloc= parms.fileloc,objectname = parms.objectname,isError = false, response="File already downloaded"})
+            parms.callback({name= parms.filename,fileloc= parms.fileloc,objectname = parms.objectname,isError = false, response="File already downloaded or no attempt"})
         end
 
 end

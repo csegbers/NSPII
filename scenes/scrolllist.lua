@@ -10,7 +10,6 @@ local myApp = require( "myapp" )
 --local parse = require( myApp.utilsfld .. "mod_parse" )  
 local common = require( myApp.utilsfld .. "common" )
 local assetmgr = require( myApp.utilsfld .. "assetmgr" )
-local login = require( myApp.classfld .. "classlogin" )
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")
 local sceneparams
@@ -102,87 +101,35 @@ function scene:show( event )
                 container = common.SceneContainer()
                 group:insert(container)
              
-                local function scrollListener( event )
+                local function tableViewListener( event )
                       return true
                 end
 
-                scrollView = widget.newTableView{ 
-                    top = navBar.height, 
-                    width = display.contentWidth, 
-                    height = display.contentHeight - navBar.height - myApp.tabBar.height, 
-                    maskFile = maskFile,
+                 scrollView = widget.newTableView{ 
+                     x = 0 ,
+                     y = 50 , 
+                     hideBackground=true,
+                     width = myApp.sceneWidth- (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)-10, 
+                     height = myApp.cH - myApp.tSbch,
+                    --maskFile = maskFile,
                     listener = tableViewListener,
                     hideBackground = true, 
-                    onRowRender = onRowRender,
-                    onRowTouch = onRowTouch 
-                }    
-                container:insert(scrollView)            
-
-                 ----------------------------------------------
-                 -- Tcouhed an object - go do something
-                 ----------------------------------------------
-                 local function onObjectTouch( event )
-                    print ("sceneparams " .. (sbi.groupwidth or myApp.scrollblocks.groupwidth))
-                    local homepageitem = sbi.items[event.target.id] 
-                --    local homepageitem = sbi.items[event.target.id] 
-                    -------------------------------------------
-                    -- launch another scene ?
-                    -- Pass in our scene info for the new scene callback
-                    -------------------------------------------
-                    local function onObjectTouchAction(  )
-                        ------------------------------
-                        -- subscene with a composer ?
-                        ------------------------------
-                        if sceneparams.sceneinfo.scrollblockinfo.navigate == "subscene" and homepageitem.navigation.composer then
-                             --debugpopup (sceneparams.sceneinfo.scrollblockinfo.navigate .. " " )
-                             local parentinfo =  sceneparams 
-                             homepageitem.callBack = function() myApp.showSubScreen({instructions=parentinfo,effectback="slideRight"}) end
-                             myApp.showSubScreen ({instructions=homepageitem})
-                        else
-                             myApp.navigationCommon(homepageitem)
-                         end
-
-                    end       
-                    ---------------------------------------------
-                    -- simulate a pressing of a button
-                    ---------------------------------------------
-                    transition.to( event.target, { time=100, x=5,y=5,  delta=true , transition=easing.continuousLoop, onComplete=onObjectTouchAction } )  
-                 end
-
-                 local groupbetween = sbi.groupbetween or myApp.scrollblocks.groupbetween  
-                 local groupheight = sbi.groupheight or myApp.scrollblocks.groupheight  
-                 local runningheight = 0
-                 local groupwidth = sbi.groupwidth  or myApp.scrollblocks.groupwidth                               -- starting width of the selection box
-                 local workingScreenWidth = myApp.sceneWidth - groupbetween   -- screen widh - the left edge (since each box would have 1 right edge)
-                 local workingGroupWidth = groupwidth + groupbetween          -- group width plus the right edge
-                 local groupsPerRow = math.floor(workingScreenWidth / workingGroupWidth )    -- how many across can we fit
-                 local leftWidth = myApp.sceneWidth - (workingGroupWidth*groupsPerRow )      -- width of the left edige
-                 local leftY = (leftWidth) / 2 + (groupbetween / 2 )          -- starting point of left box
-                 local dumText = display.newText( {text="X",font= myApp.fontBold, fontSize=sbi.textfontsize or myApp.scrollblocks.textfontsize})
-                 local textHeightSingleLine = dumText.height
-                 display.remove( dumText )
-                 dumText=nil
-
-                 -------------------------------------------
-                 -- lots of extra edging ? edging > space in between ?
-                 -- expand the boxes but not beyond their max size
-                 -------------------------------------------
-                 if leftWidth > groupbetween then
-                    local origgroupwidth = groupwidth
-                    groupwidth = groupwidth + ((leftWidth - groupbetween) / groupsPerRow)   -- calcualte new group width
-                    if groupwidth > (sbi.groupmaxwidth or myApp.scrollblocks.groupmaxwidth) then                                      -- gone too far ? push back
-                        groupwidth = sbi.groupmaxwidth or myApp.scrollblocks.groupmaxwidth
-                        if groupwidth < origgroupwidth then groupwidth = origgroupwidth end                -- just incase someone puts the max > than original
-                    end
-                    workingGroupWidth = groupwidth +  groupbetween                          -- calcualt enew total group width _ spacing
-                    leftWidth = myApp.sceneWidth - (workingGroupWidth*groupsPerRow )                       -- recalce leftwdith and left starting point
-                    leftY = (leftWidth) / 2 + (groupbetween / 2 )
-                 end
-
-                 -----------------------------------------------
-                 -- where we stuff all the little selection groups
-                 -----------------------------------------------
-                 local primGroup = display.newGroup(  )
+                    onRowRender = 
+                            function(event)
+                                 local row = event.row
+                                 row.nameText = display.newText( event.row.params.title, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                                 row.nameText.anchorX = 0
+                                 row.nameText.anchorY = 0.5
+                                 row.nameText:setFillColor( 0,0,0 )
+                                 row.nameText.y = row.height / 2
+                                 row.nameText.x = myApp.moreinfo.row.indent
+                                 if row.isCategory then row.nameText.x = myApp.moreinfo.row.indent/2 end
+                                 row:insert( row.nameText )
+                                 return true
+                            end,
+          --  onRowTouch = onRowTouch 
+                 }    
+                 container:insert(scrollView)  
 
                  --------------------------------------------
                  -- must sort otherwise order is not honered
@@ -195,177 +142,12 @@ function scene:show( event )
                  local col = 1
                  for i,k in ipairs(a) do 
                      local v = sbi.items[k]
-                     print ("home page item " .. k)
-                     -- local showbtn = true
-                     -- if (v.showonlyindebugMode and myApp.debugMode == false) then showbtn = false end
-                     -- if (v.showonlyinloggedin and myApp.authentication.loggedin == false) then showbtn = false  end
-                     local showbtn = common.appCondition(v)
-                     if v.groupheight then 
-                        groupheight = v.groupheight
-                     end
-                     if row ==  1 and col == 1 then
-                        runningheight =  groupheight
-                     end
-
-                     if showbtn then
-                         --------------------------------------
-                         -- need to start a new row ?
-                         --------------------------------------
-                         if col > groupsPerRow then
-                              row = row + 1
-                              runningheight = runningheight + groupheight
-                              col = 1
-                         end
-
-                         local cellworkingGroupWidth = workingGroupWidth
-                         local cellgroupwidth = groupwidth 
-                         local iconverticaladjust = 10
-                         local iconhorizontaladjust = 0
-                         local textwidthadjust = 0
-                         local textxadjust = 0
-                         local blnadjusttexty = false  
-                         local grouptextwidth
-                         if v.doublewide then 
-                            iconverticaladjust = 0
-                            cellworkingGroupWidth = cellworkingGroupWidth * 2  
-                            cellgroupwidth = cellgroupwidth * 2 + groupbetween
-                            iconhorizontaladjust = cellgroupwidth / 3
-                            textwidthadjust =  cellgroupwidth   / 2   
-                            textxadjust =   textwidthadjust /2 - 15
-                            blnadjusttexty = true
-                            --col = col + 1
-                            if col == groupsPerRow then
-                              row = row + 1
-                              runningheight = runningheight + groupheight
-                               col = 1
-                             end
-                         end
-
-                         ---------------------------------------------
-                         -- lets create the group
-                         ---------------------------------------------
-                         local itemGrp = display.newGroup(  )
-                         itemGrp.id = k
-                         local startX = cellworkingGroupWidth*(col-1) + leftY + cellgroupwidth/2
-                         --local startY = (groupheight/2 +sbi.groupbetween*row) + (row-1)* groupheight
-                         local startY = (groupheight/2 +groupbetween*row) + runningheight- groupheight
-                         
-                         -------------------------------------------------
-                         -- Background
-                         -------------------------------------------------
-                         local myRoundedRect = display.newRoundedRect(startX, startY ,cellgroupwidth,  groupheight, 1 )
-                         local backcolor = v.groupbackground or sbi.groupbackground or myApp.scrollblocks.groupbackground
-                         local backcolorstyle = v.groupbackgroundstyle or sbi.groupbackgroundstyle or myApp.scrollblocks.groupbackgroundstyle
-                         -----------------------------
-                         -- anything from sepfici item being used ? use it first
-                         -----------------------------
-                         if v.groupbackground or v.groupbackgroundstyle then
-                            if v.groupbackground then backcolorstyle = nil else backcolor = nil end
-                         end
-                         -------------------------------------
-                         -- style wins over regular color
-                         ---------------------------------
-                         if  backcolorstyle then
-                            myRoundedRect:setFillColor(backcolorstyle)
-                         else
-                            myRoundedRect:setFillColor(backcolor.r,backcolor.g,backcolor.b,backcolor.a )
-                         end
-                        -- myRoundedRect:setFillColor(sbi.groupbackground.r,sbi.groupbackground.g,sbi.groupbackground.b,sbi.groupbackground.a )
-                         itemGrp:insert(myRoundedRect)
-
-                         -------------------------------------------------
-                         -- Header Background
-                         -------------------------------------------------
-                         local startYother = startY- groupheight/2 + groupbetween
-                         local groupheaderheight = v.groupheaderheight or sbi.groupheaderheight  or myApp.scrollblocks.groupheaderheight
-                         local myRoundedTop = display.newRoundedRect(startX, startYother ,cellgroupwidth, groupheaderheight, 1 )
-                         local headcolor = v.groupheader or sbi.groupheader or myApp.scrollblocks.groupheader
-                         local headcolorstyle = v.groupheaderstyle or sbi.groupheaderstyle or myApp.scrollblocks.groupheaderstyle
-                         -----------------------------
-                         -- anything from sepfici item being used ? use it first
-                         -----------------------------
-                         if v.groupheader or v.groupheaderstyle then
-                            if v.groupheader then headcolorstyle = nil else headcolor = nil end
-                         end
-                         -------------------------------------
-                         -- style wins over regular color
-                         ---------------------------------
-                         if  headcolorstyle then
-                            myRoundedTop:setFillColor(headcolorstyle)
-                         else
-                            myRoundedTop:setFillColor(headcolor.r,headcolor.g,headcolor.b,headcolor.a )
-                         end
-
-                         itemGrp:insert(myRoundedTop)
-                         
-                         -------------------------------------------------
-                         -- Header text
-                         -------------------------------------------------
-                         local headerfontsize = v.headerfontsize or sbi.headerfontsize or myApp.scrollblocks.headerfontsize
-                         local myText = display.newText( (v.title or ""), startX, startYother,  myApp.fontBold, headerfontsize )
-                         if sbi.headercolor then
-                            myText:setFillColor( sbi.headercolor.r,sbi.headercolor.g,sbi.headercolor.b,sbi.headercolor.a )
-                         else
-                            myText:setFillColor( myApp.scrollblocks.headercolor.r,myApp.scrollblocks.headercolor.g,myApp.scrollblocks.headercolor.b,myApp.scrollblocks.headercolor.a )
-                         end
-                         itemGrp:insert(myText)
-
-                         -------------------------------------------------
-                         -- Icon ?
-                         -------------------------------------------------
-                         if v.pic then
-                             local myIcon = display.newImageRect(myApp.imgfld .. v.pic, v.originaliconwidth or sbi.iconwidth  or myApp.scrollblocks.iconwidth,v.originaliconheight or sbi.iconheight or myApp.scrollblocks.iconheight )
-                             common.fitImage( myIcon, v.iconwidth or sbi.iconwidth   or myApp.scrollblocks.iconwidth )
-                             myIcon.x = startX - iconhorizontaladjust
-                             myIcon.y = startYother + itemGrp.height/2 - iconverticaladjust --- sbi.iconwidth
-                             itemGrp:insert(myIcon)
-                             grouptextwidth = cellgroupwidth-5 - textwidthadjust
-                         else 
-                            textxadjust = 0
-                            grouptextwidth = cellgroupwidth -5  
-                         end
-
-                         -------------------------------------------------
-                         -- Desc text
-                         -------------------------------------------------
-                         local textfontsize = v.textfontsize or sbi.textfontsize or myApp.scrollblocks.textfontsize
-                         local myDesc = display.newText( {text=(v.text or ""), x=startX +   textxadjust, y=0, height=0,width=grouptextwidth,font= myApp.fontBold, fontSize= textfontsize,align="center" })
-                         myDesc.y=startYother+groupheight - (myDesc.height/2) - (sbi.textbottomedge  or myApp.scrollblocks.textbottomedge )
-                         if blnadjusttexty then
-                            myDesc.y=startYother + itemGrp.height/2
-                         end
-                         if sbi.textcolor then
-                            myDesc:setFillColor( sbi.textcolor.r,sbi.textcolor.g,sbi.textcolor.b,sbi.textcolor.a )
-                         else
-                            myDesc:setFillColor( myApp.scrollblocks.textcolor.r,myApp.scrollblocks.textcolor.g,myApp.scrollblocks.textcolor.b,myApp.scrollblocks.textcolor.a )
-                         end
-                         itemGrp:insert(myDesc)
-
-                         -------------------------------------------------
-                         -- Add touch event
-                         -------------------------------------------------
-                         itemGrp:addEventListener( "tap", onObjectTouch )
-
-                         -------------------------------------------------
-                         -- insert each individual group into the master group
-                         -------------------------------------------------
-
-                         primGroup:insert(itemGrp)
-
-                         col = col+1
-                         if v.doublewide then 
-                          col = col+1
-                         end
-                     end   -- end showbtn
-                  end     -- end for
-
-                  scrollView:insert(primGroup)
-
-                  ---------------------------------------------
-                  -- stick in a buffer for the scroll
-                  ----------------------------------------------
-                  -- scrollView:insert(display.newRoundedRect(1, (sbi.groupbetween*(row+1)) + row*sbi.groupheight ,1, sbi.groupbetween, 1 ))
-                   scrollView:insert(display.newRoundedRect(1, (groupbetween*(row+1)) + runningheight ,1, groupbetween, 1 ))
+                     print ("scrolllist page item " .. k)
+                       scrollView:insertRow({
+                          rowHeight = 20, 
+                          params = { title = v.text,key = k,}
+                       })
+                          end     -- end for
                  
                    print ("end of will show")
             end -- runit ?
@@ -382,6 +164,7 @@ function scene:show( event )
                                         callback = fnchaveobject,
                                         networkurl = myApp.files.download.url,
                                         timeout = myApp.files.download.timeout,
+                                        performdl = myApp.files.download.performdl,
 
                                         --------------------
                                         -- cannot get reference to work so callback must update
@@ -396,18 +179,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
          print ("end of did show")
         --parse:logEvent( "Scene", { ["name"] = currScene} )
-        
-
-            -- Called when the scene is now on screen.
-            -- Insert code here to make the scene come alive.
-            -- Example: start timers, begin animation, play audio, etc.
-
-         if myApp.authentication.loggedin == false and myApp.justLaunched == true then
-            myApp.justLaunched = false
-            if myApp.authentication.launchonstart then
-               timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login}))  --- cant just launch if we recycle composer for some reason
-            end
-         end
+         myApp.launchlogin()
          justcreated = false
     end
     
