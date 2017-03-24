@@ -100,7 +100,74 @@ function scene:show( event )
 
                 container = common.SceneContainer()
                 group:insert(container)
-             
+
+
+                local function launchPeopleDetailsScene(event) 
+
+                      --[[    local objecttype = sceneparams.locateinfo.object    -- Agency, BodyShop etc...
+                          local objectgroup = myApp.mappings.objects[objecttype]
+                          local objectqueryvalue = queryvalue
+
+                          local locatedetails = {  
+                                     objecttype = objecttype,
+                                     objectqueryvalue = queryvalue,
+                                     title = objectgroup.desc.singular, 
+                                     pic=sceneparams.pic,
+                                     originaliconwidth = sceneparams.originaliconwidth,
+                                     originaliconheight = sceneparams.originaliconheight,
+                                     iconwidth = sceneparams.iconwidth,      -- height will be scaled appropriately
+                                     backtext = objectgroup.backtext,
+
+                                     navigation = { 
+                                           composer = {
+                                                          -- this id setting this way we will rerun if different than prior request either object type, value etc etc...
+                                                         id = objecttype.."-" ..queryvalue,   
+                                                         lua=objectgroup.navigation.composer.lua ,
+                                                         time=objectgroup.navigation.composer.time, 
+                                                         effect=objectgroup.navigation.composer.effect,
+                                                         effectback=objectgroup.navigation.composer.effectback,
+                                                      },
+                                                 },
+                                     }      
+
+                             local parentinfo =  sceneparams 
+                             locatedetails.callBack = function() myApp.showSubScreen({instructions=parentinfo,effectback="slideRight"}) end
+                             myApp.showSubScreen ({instructions=locatedetails})
+]]
+                end
+
+
+
+                local onRowTouch = function( event )
+                        local row = event.row
+                        local v = sbi.items[event.row.params.k]
+                        ------------------------------
+                        -- grab the people file to use
+                        ------------------------------
+                        local p = myApp[sbi.type.object] or {}
+                        if p.items == nil then p.items = {}  end  -- should never happen but in case they point to non existient people file
+                        if p.items[v.id] == nil then p.items[v.id] = {} end
+
+                        if event.phase == "press"  then     
+
+                                print ("press")
+                        elseif event.phase == "tap" then
+                               print ("tap")
+                        elseif event.phase == "swipeLeft" then
+
+                               print ("sl")
+                        elseif event.phase == "swipeRight" then
+                               print ("sr")
+                 
+                        elseif event.phase == "release" then
+                               print ("release")
+                               launchPeopleDetailsScene( p.items[v.id] )
+                            -- force row re-render on next TableView update
+                            
+                        end
+                    return true
+                end       
+
                 local function onRowRender( event )
                      if sbi.type.display == "positions" then
                              local row = event.row
@@ -108,10 +175,12 @@ function scene:show( event )
                              ------------------------------
                              -- grab the people file to use
                              ------------------------------
-                             local p = myApp[sbi.type.object]
+                             local p = myApp[sbi.type.object] or {}
+                             if p.items == nil then p.items = {}  end  -- should never happen but in case they point to non existient people file
+                             if p.items[v.id] == nil then p.items[v.id] = {} end
 
                              if v.isCategory then
-                                 row.nameText = display.newText( v.text, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                                 row.nameText = display.newText( v.text or "", 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
                                  row.nameText.anchorX = 0
                                  row.nameText.anchorY = 0.5
                                  row.nameText:setFillColor( 0,0,0 )
@@ -120,7 +189,7 @@ function scene:show( event )
                                  row:insert( row.nameText )
                              else
                                   
-                                 row.nameText = display.newText( v.text, 0, 0, myApp.font, myApp.moreinfo.row.textfontsize )
+                                 row.nameText = display.newText( v.text or "", 0, 0, myApp.font, myApp.moreinfo.row.textfontsize )
                                  row.nameText.anchorX = 0
                                  row.nameText.anchorY = 0.5
                                  row.nameText:setFillColor( 0,0,0 )
@@ -128,7 +197,7 @@ function scene:show( event )
                                  row.nameText.x = myApp.moreinfo.row.indent
                                  row:insert( row.nameText )
 
-                                 row.nameName = display.newText( p.items[v.id].name, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                                 row.nameName = display.newText( p.items[v.id].name or "Unknown Name", 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
                                  row.nameName.anchorX = 0
                                  row.nameName.anchorY = 0.5
                                  row.nameName:setFillColor( 0,0,0 )
@@ -160,7 +229,7 @@ function scene:show( event )
                     --listener = tableViewListener,
                     hideBackground = true, 
                     onRowRender = onRowRender,
-                --  onRowTouch = onRowTouch 
+                    onRowTouch = onRowTouch 
                  }    
                  container:insert(listView)  
 

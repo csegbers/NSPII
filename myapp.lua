@@ -483,7 +483,7 @@ local M = {
                                     --locatepre = {name="myapplocate",section="locatepre" },
                                     --locatedetails = {name="myapplocate",section="locatedetails" },
 
-                                    people = {name="myapppeople.json",json=true,download=true,downloadatstartup = true},
+                                    people = {name="myapppeople.json",json=true,download=true,downloadatstartup = true},   -- do at startup since there is no other time we go look
 
                                     chapters = {name="myappchapters.json",json=true,download=true},
                                     nationalchapter = {name="myappchaptersdetails.json",json=true,section="nationalchapter" ,download=true},

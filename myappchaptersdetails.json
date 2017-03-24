@@ -34,7 +34,38 @@
         "id": "dcomstock",
         "text": "Second Vice-President ",
         "subtext": "(Automatic Succession)"
-      }
+      },
+      "b04": {
+        "id": "jferrand",
+        "text": "Immediate Past President "
+      }  ,
+      "b05": {
+        "id": "jlibbert",
+        "text": "Treasurer ",
+        "subtext": "(Term Expires 11/17)"
+      } ,
+      "b06": {
+        "id": "rluskin",
+        "text": "Secretary ",
+        "subtext": "(Term Expires 11/17)"
+      } ,
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "jdavis",
+        "subtext": "(Term Expires 11/18)"
+      }, 
+      "c03": {
+        "id": "cpadgett",
+        "subtext": "(Term Expires 11/18)"
+      }, 
+      "c04": {
+        "id": "hpfaffenberger",
+        "subtext": "(Term Expires 11/17)"
+      }     
     }
   }
 }

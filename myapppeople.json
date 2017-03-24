@@ -45,7 +45,7 @@
       "street": "P.O. Box 3440"
     },
     "dcomstock": {
-      "street2": "Suite 101",
+      
       "launchobjects": {
         "a": {
           "desc": "(330) 286-3701",
@@ -65,7 +65,135 @@
       "zip": "44406",
       "state": "OH",
       "city": "Canfield",
-      "street": "4137 Boardman-Canfield Rd."
-    }
+      "street": "4137 Boardman-Canfield Rd.",
+      "street2": "Suite 101"
+    },
+   "jlibbert": {
+ 
+      "launchobjects": {
+        "a": {
+          "desc": "(513) 919-7200",
+          "type": "phone"
+        },
+        "b": {
+          "field": "jonlibbert@msn.com",
+          "type": "email"
+        },
+      },
+      "name": "Jonathan Libbert",
+      "corp": "JD Forensics, Inc.",
+      "zip": "41017",
+      "state": "KY",
+      "city": "Crescent Springs",
+      "street": "2613 Crescent Springs Pike" 
+       
+    },
+   "jferrand": {
+      
+      "launchobjects": {
+        "a": {
+          "desc": "(317) 566-7573",
+          "type": "phone"
+        }
+
+
+      },
+      "name": "Jeffrey W. Ferrand",
+      "corp": "Fuzion ",
+      "zip": "46032",
+      "state": "IN",
+      "city": "Carmel",
+      "street": "550 Congressional Blvd",
+      "street2": "Suite 200"
+    },
+   "rluskin": {
+      
+      "launchobjects": {
+        "a": {
+          "desc": "(404) 264-1500",
+          "type": "phone"
+        },
+        "b": {
+          "field": "rluskin@gmlj.com",
+          "type": "email"
+        },
+        "c": {
+          "desc": "(404) 264-1737",
+          "type": "fax"
+        }
+      },
+      "name": "Robert A. Luskin",
+      "corp": "Goodman McGuffey LLP",
+      "zip": "30326",
+      "state": "GA",
+      "city": "Atlanta",
+      "street": "3340 Peachtree Rd., N.E.",
+      "street2": "Suite 2100"
+    }   ,
+   "jdavis": {
+      
+      "launchobjects": {
+        "a": {
+          "desc": "(317) 370-6475",
+          "type": "phone"
+        },
+        "b": {
+          "field": "jessica.davis@erieinsurance.com",
+          "type": "email"
+        },
+        "c": {
+          "desc": "(814) 461-2914",
+          "type": "fax"
+        }
+      },
+      "name": "Jessica Davis ",
+      "corp": "Erie Insurance",
+      "zip": "46280",
+      "state": "IN",
+      "city": "Indianapolis",
+      "street": "P.O. Box 80129"
+    
+    }  ,
+   "cpadgett": {
+      
+      "launchobjects": {
+        "a": {
+          "desc": "(859) 653-0547",
+          "type": "phone"
+        },
+        "b": {
+          "field": "candace.padgett@safeauto.com",
+          "type": "email"
+        } 
+
+      },
+      "name": "Candace Padgett ",
+      "corp": "Safe Auto Insurance",
+      "zip": "43219",
+      "state": "OH",
+      "city": "Columbus",
+      "street": "4 Easton Oval" 
+       
+    } ,
+   "hpfaffenberger": {
+      
+      "launchobjects": {
+        "a": {
+          "desc": "(502) 437-9011",
+          "type": "phone"
+        },
+        "b": {
+          "field": "hans@hanspflaw.com",
+          "type": "email"
+        }
+      },
+      "name": "Hans Pfaffenberger",
+      "corp": "Hans Pfaffenberger Law",
+      "zip": "40202",
+      "state": "KY",
+      "city": "Louisville",
+      "street": "231 South Fifth St., 3rd Floor" 
+     
+    } 
   }
 }
