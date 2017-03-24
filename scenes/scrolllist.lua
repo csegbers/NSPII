@@ -180,30 +180,54 @@ function scene:show( event )
                              if p.items[v.id] == nil then p.items[v.id] = {} end
 
                              if v.isCategory then
-                                 row.nameText = display.newText( v.text or "", 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                                 row.nameText = display.newText( v.text or "", 0, 0, myApp.fontBold,sbi.row.catfontsize )
                                  row.nameText.anchorX = 0
                                  row.nameText.anchorY = 0.5
-                                 row.nameText:setFillColor( 0,0,0 )
+                                 row.nameText:setFillColor( sbi.row.cattextcolor)
                                  row.nameText.y = row.height / 2
-                                 row.nameText.x = myApp.moreinfo.row.indent/2 
+                                 row.nameText.x = sbi.row.picindent/2 
                                  row:insert( row.nameText )
                              else
-                                  
-                                 row.nameText = display.newText( v.text or "", 0, 0, myApp.font, myApp.moreinfo.row.textfontsize )
+                                  -------------------------------------------------
+                                 -- Pic ?
+                                 -------------------------------------------------
+                                 if p.items[v.id].pic then
+                                     row.myIcon = display.newImageRect(myApp.imgfld .. p.items[v.id].pic, p.items[v.id].originaliconwidth or sbi.iconwidth  ,p.items[v.id].originaliconheight or sbi.iconheight )
+                                     common.fitImage( row.myIcon,   sbi.row.iconwidth   )
+                                     row.myIcon.anchorX = 0
+                                     row.myIcon.x = sbi.row.picindent
+                                     row.myIcon.y = row.height/2
+                                     row:insert( row.myIcon )
+
+                                 end  
+
+                                 local textadjust = 10
+                                 if v.subtext then  textadjust = 0 end
+
+
+                                 row.nameText = display.newText( v.text or "", 0, 0, myApp.font, sbi.row.textfontsize )
                                  row.nameText.anchorX = 0
-                                 row.nameText.anchorY = 0.5
-                                 row.nameText:setFillColor( 0,0,0 )
-                                 row.nameText.y = row.height / 2
-                                 row.nameText.x = myApp.moreinfo.row.indent
+                                 row.nameText.anchorY = 0
+                                 row.nameText:setFillColor( sbi.row.textcolor )
+                                 row.nameText.y = 10 + textadjust
+                                 row.nameText.x = sbi.row.picindent + sbi.row.iconwidth + sbi.row.picindent
                                  row:insert( row.nameText )
 
-                                 row.nameName = display.newText( p.items[v.id].name or "Unknown Name", 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                                 row.nameName = display.newText( p.items[v.id].name or "Unknown Name", 0, 0, myApp.fontBold, sbi.row.textfontsize )
                                  row.nameName.anchorX = 0
-                                 row.nameName.anchorY = 0.5
-                                 row.nameName:setFillColor( 0,0,0 )
-                                 row.nameName.y = row.height -20
-                                 row.nameName.x = myApp.moreinfo.row.indent
+                                 row.nameName.anchorY = 0
+                                 row.nameName:setFillColor( sbi.row.textcolor )
+                                 row.nameName.y = 30 + textadjust
+                                 row.nameName.x = row.nameText.x
                                  row:insert( row.nameName )
+
+                                 row.nameSubtext = display.newText( v.subtext or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
+                                 row.nameSubtext.anchorX = 0
+                                 row.nameSubtext.anchorY = 0
+                                 row.nameSubtext:setFillColor( sbi.row.subtextcolor )
+                                 row.nameSubtext.y = 50
+                                 row.nameSubtext.x = row.nameText.x
+                                 row:insert( row.nameSubtext )
 
                                  row.rightArrow = display.newImageRect(myApp.icons, 15 , 40, 40)
                                  row.rightArrow.x = display.contentWidth - 20
@@ -237,6 +261,7 @@ function scene:show( event )
                  -- must sort otherwise order is not honered
                  -- so the KEYS must be in alphabetical order you want !!
                  --------------------------------------------
+
                  local a = {}
                  for n in pairs(sbi.items) do table.insert(a, n) end
                  table.sort(a)
@@ -244,17 +269,29 @@ function scene:show( event )
                  local col = 1
                  for i,k in ipairs(a) do 
                      local v = sbi.items[k]
+                     
+                     local defaultcolor ={myApp.sceneBackgroundcolor.r,myApp.sceneBackgroundcolor.g,myApp.sceneBackgroundcolor.b}
+                     local rowHeight = sbi.row.height
+                     local rowColor = { default=defaultcolor, over=sbi.row.over }
+                     local lineColor =  sbi.row.linecolor
+                     local isCategory= false
+
+                     if (v.isCategory) then
+                          isCategory = true
+                          rowHeight = sbi.row.catheight
+                          rowColor = sbi.row.catcolor
+                          lineColor = defaultcolor
+                     end
+
                      print ("listView page item " .. k)
-                       local rowHeight = 80
-                       if v.isCategory then rowHeight = 40 end
                        listView:insertRow({
                           rowHeight = rowHeight, 
-                          --rowColor =  rowColor,
-                          --lineColor = lineColor,
+                          rowColor =  rowColor,
+                          lineColor = lineColor,
                           isCategory = v.isCategory or false,
                           params = { k = k}
                        })
-                          end     -- end for
+                  end     -- end for
                  
                    print ("end of will show")
             end -- runit ?

@@ -1,6 +1,9 @@
 {
   "items": {
     "tburris": {
+      "pic":"tburris.jpg",
+      "originaliconwidth":950,
+      "originaliconheight":1188,
       "state": "IN",
       "name": "Todd M. Burris",
       "corp": "State Auto Insurance Co.",
@@ -23,6 +26,9 @@
       "street": "P.O. Box 781022"
     },
     "coswald": {
+      "pic":"coswald.jpg",
+      "originaliconwidth":2189,
+      "originaliconheight":1599,
       "state": "KY",
       "name": "Clayton O. Oswald",
       "corp": "Taylor, Keller & Oswald, PLLC",
@@ -45,7 +51,9 @@
       "street": "P.O. Box 3440"
     },
     "dcomstock": {
-      
+      "pic":"dcomstock.jpg",
+      "originaliconwidth":940,
+      "originaliconheight":1135,      
       "launchobjects": {
         "a": {
           "desc": "(330) 286-3701",

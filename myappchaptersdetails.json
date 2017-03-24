@@ -10,6 +10,40 @@
               "display":"positions",    
               "object":"people"
             },
+    "row": { 
+              "height":80,    
+              "object":"people",
+              "iconwidth":60,
+              "iconheight":60,
+              "picindent": 10,
+             "indent": 25,
+            "cattextcolor": 1,
+            "textcolor": 0,
+            "catheight": 30,
+             "catfontsize": 20, 
+              "catcolor": {
+                "default": [
+                  0.1686,
+                  0.56078,
+                  0.3215,
+                  0.86
+                ]
+ 
+
+              }     ,       
+               "linecolor": [
+                0.7843137254902
+              ],           
+            "textfontsize": 16,  
+             "subtextcolor": 0.5,  
+            "subtextfontsize": 14,            
+               "over": [
+                      1,
+                      0.5,
+                      0,
+                      0.2
+                    ],           
+            },   
     "items": {
       "a01": {
         "id": "x",
