@@ -193,7 +193,7 @@ function scene:show( event )
                                  -------------------------------------------------
                                  if p.items[v.id].pic then
                                      row.myIcon = display.newImageRect(myApp.imgfld .. p.items[v.id].pic, p.items[v.id].originaliconwidth or sbi.iconwidth  ,p.items[v.id].originaliconheight or sbi.iconheight )
-                                     common.fitImage( row.myIcon,   sbi.row.iconwidth   )
+                                     common.fitImage( row.myIcon,   sbi.row.iconwidth ,row.height-10  )
                                      row.myIcon.anchorX = 0
                                      row.myIcon.x = sbi.row.picindent
                                      row.myIcon.y = row.height/2

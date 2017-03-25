@@ -105,11 +105,16 @@ function M.fileexists(filename,filepath)
     return rc
 end
 
-function M.fitImage( displayObject, fitWidth, enlarge )
+function M.fitImage( displayObject, fitWidth, maxheight )
     --
     -- first determine which edge is out of bounds
     --
     local scaleFactor = fitWidth / displayObject.width 
+    if maxheight then
+        if (displayObject.height * scaleFactor) > maxheight then
+            scaleFactor = scaleFactor * (maxheight / (displayObject.height * scaleFactor) )
+        end
+    end
     displayObject:scale( scaleFactor, scaleFactor )
 end
 

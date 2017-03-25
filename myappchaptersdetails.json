@@ -1,49 +1,473 @@
 {
   "statechapters": {
-    "items": []
+          "textfontsize": 16,
+      "groupheight": 25,
+      "headerfontsize": 16,
+"items": {
+
+
+    "alabama": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "alabamachapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Alabama",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+
+
+    "florida": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "floridachapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Florida",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+
+    "georgia": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "georgiachapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Georgia",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+    "illinois": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "illinoischapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Illinois",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+
+    "indiana": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "indianachapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Indiana",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+    "kentucky": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "kentuckychapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Kentucky",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+    "michigan": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "michiganchapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Michigan",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+    "missouri": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "missourichapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Missouri",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+    "ohio": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "ohiochapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Ohio",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+    "tennessee": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "tennesseechapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Tennessee",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+    "zdevchap": {
+      "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "zdevchapchapter",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "text": "",
+      
+      "title": "Developing Chapters",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "chaptercommittees",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+
+      "doublewide": true
+    },
+
+
+ },
+},
+  "xxxstatechapters": {
+    "type": {
+      "display": "positions",
+      "object": "people"
+    },
+    "row": {
+      "height": 80,
+      "iconwidth": 60,
+      "iconheight": 60,
+      "picindent": 10,
+      "indent": 25,
+      "cattextcolor": 1,
+      "catheight": 30,
+      "catfontsize": 20,
+      "catcolor": {
+        "default": [
+          0.1686,
+          0.56078,
+          0.3215,
+          0.86
+        ]
+      },
+      "linecolor": [
+        0.7843137254902
+      ],
+      "textcolor": 0,
+      "textfontsize": 16,
+      "subtextcolor": 0.5,
+      "subtextfontsize": 14,
+      "over": [
+        1,
+        0.5,
+        0,
+        0.2
+      ]
+    },
+    "items": {
+      "a01": {
+        "id": "x",
+        "text": "President",
+        "isCategory": true
+      },
+      "a02": {
+        "id": "coswald",
+        "text": "President"
+      },
+      "b01": {
+        "id": "x",
+        "text": "Officers",
+        "isCategory": true
+      },
+      "b02": {
+        "id": "tburris",
+        "text": "First Vice President",
+        "subtext": "(Automatic Succession)"
+      },
+      "b03": {
+        "id": "dcomstock",
+        "text": "Second Vice-President ",
+        "subtext": "(Automatic Succession)"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "jdavis",
+        "subtext": "(Term Expires 11/18)"
+      },
+      "c03": {
+        "id": "cpadgett",
+        "subtext": "(Term Expires 11/18)"
+      }
+
+    }
   },
   "chaptercommittees": {
-    "items": []
+    "type": {
+      "display": "positions",
+      "object": "people"
+    },
+    "row": {
+      "height": 80,
+      "iconwidth": 60,
+      "iconheight": 60,
+      "picindent": 10,
+      "indent": 25,
+      "cattextcolor": 1,
+      "catheight": 30,
+      "catfontsize": 20,
+      "catcolor": {
+        "default": [
+          0.1686,
+          0.56078,
+          0.3215,
+          0.86
+        ]
+      },
+      "linecolor": [
+        0.7843137254902
+      ],
+      "textcolor": 0,
+      "textfontsize": 16,
+      "subtextcolor": 0.5,
+      "subtextfontsize": 14,
+      "over": [
+        1,
+        0.5,
+        0,
+        0.2
+      ]
+    },
+    "items": {
+      "a01": {
+        "id": "x",
+        "text": "President",
+        "isCategory": true
+      },
+      "a02": {
+        "id": "coswald",
+        "text": "President"
+      },
+      "b01": {
+        "id": "x",
+        "text": "Officers",
+        "isCategory": true
+      },
+      "b02": {
+        "id": "tburris",
+        "text": "First Vice President",
+        "subtext": "(Automatic Succession)"
+      },
+      "b03": {
+        "id": "dcomstock",
+        "text": "Second Vice-President ",
+        "subtext": "(Automatic Succession)"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "jdavis",
+        "subtext": "(Term Expires 11/18)"
+      },
+      "c03": {
+        "id": "cpadgett",
+        "subtext": "(Term Expires 11/18)"
+      }
+
+    }
   },
   "nationalchapter": {
-    "type": { 
-              "display":"positions",    
-              "object":"people"
-            },
-    "row": { 
-              "height":80,    
-              "object":"people",
-              "iconwidth":60,
-              "iconheight":60,
-              "picindent": 10,
-             "indent": 25,
-            "cattextcolor": 1,
-            "textcolor": 0,
-            "catheight": 30,
-             "catfontsize": 20, 
-              "catcolor": {
-                "default": [
-                  0.1686,
-                  0.56078,
-                  0.3215,
-                  0.86
-                ]
- 
-
-              }     ,       
-               "linecolor": [
-                0.7843137254902
-              ],           
-            "textfontsize": 16,  
-             "subtextcolor": 0.5,  
-            "subtextfontsize": 14,            
-               "over": [
-                      1,
-                      0.5,
-                      0,
-                      0.2
-                    ],           
-            },   
+    "type": {
+      "display": "positions",
+      "object": "people"
+    },
+    "row": {
+      "height": 80,
+      "iconwidth": 60,
+      "iconheight": 60,
+      "picindent": 10,
+      "indent": 25,
+      "cattextcolor": 1,
+      "catheight": 30,
+      "catfontsize": 20,
+      "catcolor": {
+        "default": [
+          0.1686,
+          0.56078,
+          0.3215,
+          0.86
+        ]
+      },
+      "linecolor": [
+        0.7843137254902
+      ],
+      "textcolor": 0,
+      "textfontsize": 16,
+      "subtextcolor": 0.5,
+      "subtextfontsize": 14,
+      "over": [
+        1,
+        0.5,
+        0,
+        0.2
+      ]
+    },
     "items": {
       "a01": {
         "id": "x",
@@ -72,17 +496,17 @@
       "b04": {
         "id": "jferrand",
         "text": "Immediate Past President "
-      }  ,
+      },
       "b05": {
         "id": "jlibbert",
         "text": "Treasurer ",
         "subtext": "(Term Expires 11/17)"
-      } ,
+      },
       "b06": {
         "id": "rluskin",
         "text": "Secretary ",
         "subtext": "(Term Expires 11/17)"
-      } ,
+      },
       "c01": {
         "id": "x",
         "text": "Board Members",
@@ -91,15 +515,20 @@
       "c02": {
         "id": "jdavis",
         "subtext": "(Term Expires 11/18)"
-      }, 
+      },
       "c03": {
         "id": "cpadgett",
         "subtext": "(Term Expires 11/18)"
-      }, 
+      },
       "c04": {
         "id": "hpfaffenberger",
         "subtext": "(Term Expires 11/17)"
-      }     
+      },
+      "d01": {
+        "id": "x",
+        "text": "State Delegates",
+        "isCategory": true
+      }
     }
   }
 }

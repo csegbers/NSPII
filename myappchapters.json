@@ -6,7 +6,7 @@
 
 
 
-    "a": {
+    "a1": {
       "navigation": {
         "composer": {
           "lua": "scrolllist",
@@ -31,52 +31,83 @@
 
     },
 
+    "a2": {
+      "groupheight": 90,
+      "doublewide": true,
+      "textfontsize": 16,
+      "navigation": {
+        "composer": {
+          "lua": "webview",
+          "effect": "slideLeft",
+          "id": "nationalprofile",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "title": "2017 National Candidate Profiles",
+      "titlealt": "Candidate Profiles",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": [],
+        "htmlinfo": {
+          "url": "http://www.nspii.com/media/documents/2017%20National%20Profiles%20For%20Web.pdf"
+        }
+      },
+      "text": "View the Profiles of the Candidates",
+      "forwardtext": ">",
+      "pic": "pdf.png"
+    },
 
 
     "b": {
+       "navigation": {
+        "composer": {
+          "lua": "scrolllist",
+          "effect": "slideLeft",
+          "id": "chaptercommittees",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      },
+      "textfontsize": 16,
       "title": "Committees",
-      "iconwidth": 90,
+      "backtext": "<",
       "sceneinfo": {
         "scrollblockinfo": {
-          "object": "social",
+          "object": "chaptercommittees",
           "navigate": "subscene"
         },
         "htmlinfo": []
       },
-      "navigation": {
-        "composer": {
-          "lua": "scrollblocks",
-          "effect": "slideLeft",
-          "id": "social",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },
+      "text": "",
       "doublewide": true,
-      "backtext": "<"
     },
+
+
     "c": {
-      "title": "State Chapters",
-      "iconwidth": 90,
-      "sceneinfo": {
-        "scrollblockinfo": {
-          "object": "social",
-          "navigate": "subscene"
-        },
-        "htmlinfo": []
-      },
-      "navigation": {
+       "navigation": {
         "composer": {
           "lua": "scrollblocks",
           "effect": "slideLeft",
-          "id": "social",
+          "id": "statechapters",
           "effectback": "slideRight",
           "time": 250
         }
       },
+      "textfontsize": 16,
+      "title": "State Chapters",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "statechapters",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
+      "text": "",
       "doublewide": true,
-      "backtext": "<"
     }
   },
 
 }
+

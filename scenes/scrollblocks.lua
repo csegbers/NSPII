@@ -149,7 +149,7 @@ function scene:show( event )
                  end
 
                  local groupbetween = sbi.groupbetween or myApp.scrollblocks.groupbetween  
-                 local groupheight = sbi.groupheight or myApp.scrollblocks.groupheight  
+                 local groupheight = 0 --sbi.groupheight or myApp.scrollblocks.groupheight  
                  local runningheight = 0
                  local groupwidth = sbi.groupwidth  or myApp.scrollblocks.groupwidth                               -- starting width of the selection box
                  local workingScreenWidth = myApp.sceneWidth - groupbetween   -- screen widh - the left edge (since each box would have 1 right edge)
@@ -201,6 +201,8 @@ function scene:show( event )
                      local showbtn = common.appCondition(v)
                      if v.groupheight then 
                         groupheight = v.groupheight
+                     else
+                        groupheight = sbi.groupheight or myApp.scrollblocks.groupheight
                      end
                      if row ==  1 and col == 1 then
                         runningheight =  groupheight

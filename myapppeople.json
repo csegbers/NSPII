@@ -77,7 +77,9 @@
       "street2": "Suite 101"
     },
    "jlibbert": {
- 
+      "pic":"jlibbert.jpg",
+      "originaliconwidth":2272,
+      "originaliconheight":1704, 
       "launchobjects": {
         "a": {
           "desc": "(513) 919-7200",
@@ -97,7 +99,9 @@
        
     },
    "jferrand": {
-      
+      "pic":"jferrand.jpg",
+      "originaliconwidth":300,
+      "originaliconheight":400,       
       "launchobjects": {
         "a": {
           "desc": "(317) 566-7573",
@@ -115,7 +119,9 @@
       "street2": "Suite 200"
     },
    "rluskin": {
-      
+      "pic":"rluskin.jpg",
+      "originaliconwidth":2000,
+      "originaliconheight":3008,        
       "launchobjects": {
         "a": {
           "desc": "(404) 264-1500",
