@@ -109,6 +109,7 @@ function scene:show( event )
                           if objecttype == "person" then
                               local persondetails = {  
                                          objecttype = objecttype,
+                                         sceneinfo = detailfile.sceneinfo,
                                          title = detailfile.items[id].name, 
                                          pic=detailfile.pic,
                                          originaliconwidth = detailfile.originaliconwidth,
@@ -199,33 +200,43 @@ function scene:show( event )
 
                                  end  
 
-                                 local textadjust = 10
-                                 if v.subtext then  textadjust = 0 end
+                                 local textstart = 30
+                                 local xpos = sbi.row.picindent + sbi.row.iconwidth + sbi.row.picindent
+                                  
+                                 if v.text then  textstart =  textstart - 10 end 
+                                 if v.subtext then  textstart =  textstart - 10 end
 
 
-                                 row.nameText = display.newText( v.text or "", 0, 0, myApp.font, sbi.row.textfontsize )
-                                 row.nameText.anchorX = 0
-                                 row.nameText.anchorY = 0
-                                 row.nameText:setFillColor( sbi.row.textcolor )
-                                 row.nameText.y = 10 + textadjust
-                                 row.nameText.x = sbi.row.picindent + sbi.row.iconwidth + sbi.row.picindent
-                                 row:insert( row.nameText )
+                                 if v.text then
+                                     row.nameTitle = display.newText( v.text or "", 0, 0, myApp.font, sbi.row.textfontsize )
+                                     row.nameTitle.anchorX = 0
+                                     row.nameTitle.anchorY = 0
+                                     row.nameTitle:setFillColor( sbi.row.textcolor )
+                                     row.nameTitle.y = textstart
+                                     textstart =  textstart + 20
+                                     row.nameTitle.x = xpos
+                                     row:insert( row.nameTitle )
+                                 end
 
                                  row.nameName = display.newText( p.items[v.id].name or "Unknown Name", 0, 0, myApp.fontBold, sbi.row.textfontsize )
                                  row.nameName.anchorX = 0
                                  row.nameName.anchorY = 0
                                  row.nameName:setFillColor( sbi.row.textcolor )
-                                 row.nameName.y = 30 + textadjust
-                                 row.nameName.x = row.nameText.x
+                                 row.nameName.y = textstart
+                                 textstart =  textstart + 20
+                                 row.nameName.x = xpos
                                  row:insert( row.nameName )
 
-                                 row.nameSubtext = display.newText( v.subtext or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
-                                 row.nameSubtext.anchorX = 0
-                                 row.nameSubtext.anchorY = 0
-                                 row.nameSubtext:setFillColor( sbi.row.subtextcolor )
-                                 row.nameSubtext.y = 50
-                                 row.nameSubtext.x = row.nameText.x
-                                 row:insert( row.nameSubtext )
+                                 if v.subtext then 
+                                     row.nameSubtext = display.newText( v.subtext or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
+                                     row.nameSubtext.anchorX = 0
+                                     row.nameSubtext.anchorY = 0
+                                     row.nameSubtext:setFillColor( sbi.row.subtextcolor )
+                                     row.nameSubtext.y = textstart
+                                     textstart =  textstart + 20
+                                     row.nameSubtext.x = xpos
+                                     row:insert( row.nameSubtext )
+                                 end
 
                                  row.rightArrow = display.newImageRect(myApp.icons, 15 , 40, 40)
                                  row.rightArrow.x = display.contentWidth - 20

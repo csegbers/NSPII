@@ -1,5 +1,6 @@
 {
   "type":"person",
+  "sceneinfo":"persondetails",
   "pic":"person.png",
   "originaliconwidth": 302,
   "originaliconheight": 302,
@@ -34,6 +35,10 @@
         "c": {
           "field": "(614) 719-0182",
           "type": "fax"
+        },
+        "d": {
+          "field": "http://www.stateauto.com/",
+          "type": "web"
         }
       },
       "zip": "46278",
@@ -63,6 +68,10 @@
         "c": {
           "field": "(606) 878-8850",
           "type": "fax"
+        },
+        "d": {
+          "field": "http://www.tkolegal.com",
+          "type": "web"
         }
       },
       "zip": "40743",
@@ -85,6 +94,10 @@
         "c": {
           "field": "(330) 286-3745",
           "type": "fax"
+        },
+        "d": {
+          "field": "http://www.bsmph.com/Attorneys/",
+          "type": "web"
         }
       },
       "name": "David 'Chip' Comstock, Jr.",
@@ -107,7 +120,8 @@
         "b": {
           "field": "jonlibbert@msn.com",
           "type": "email"
-        },
+        }
+
       },
       "name": "Jonathan Libbert",
       "corp": "JD Forensics, Inc.",
@@ -125,12 +139,16 @@
         "a": {
           "field": "(317) 566-7573",
           "type": "phone"
+        },
+        "d": {
+          "field": "http://fuzionanalytics.com/",
+          "type": "web"
         }
 
 
       },
       "name": "Jeffrey W. Ferrand",
-      "corp": "Fuzion ",
+      "corp": "Fuzion",
       "zip": "46032",
       "state": "IN",
       "city": "Carmel",
@@ -153,6 +171,10 @@
         "c": {
           "field": "(404) 264-1737",
           "type": "fax"
+        },
+        "d": {
+          "field": "http://www.gmlj.com/",
+          "type": "web"
         }
       },
       "name": "Robert A. Luskin",
@@ -177,6 +199,10 @@
         "c": {
           "field": "(814) 461-2914",
           "type": "fax"
+        },
+        "d": {
+          "field": "http://www.x.com",
+          "type": "web"
         }
       },
       "name": "Jessica Davis ",
@@ -197,7 +223,11 @@
         "b": {
           "field": "candace.padgett@safeauto.com",
           "type": "email"
-        } 
+        } ,
+        "d": {
+          "field": "http://www.x.com",
+          "type": "web"
+        }
 
       },
       "name": "Candace Padgett ",
@@ -218,6 +248,10 @@
         "b": {
           "field": "hans@hanspflaw.com",
           "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com",
+          "type": "web"
         }
       },
       "name": "Hans Pfaffenberger",

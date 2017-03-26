@@ -46,7 +46,7 @@ local  onRowRender = function ( event )
 
          if ( event.row.params ) then    
  
-            row.titleText = display.newText( myApp.objecttypes[params.fieldtype].title, 0, 0, myApp.fontBold, sceneinfo.row.titletextfontsize )
+            row.titleText = display.newText( params.title or myApp.objecttypes[params.fieldtype].title, 0, 0, myApp.fontBold, sceneinfo.row.titletextfontsize )
             row.titleText.anchorX = 0
             row.titleText.anchorY = 0.5
             row.titleText:setFillColor( sceneinfo.row.titletextcolor )
@@ -260,7 +260,7 @@ function scene:show( event )
         ------------------------------
         sceneparams = event.params  
         sceneid = sceneparams.navigation.composer.id       --- new field otherwise it is a refernce and some calls here send a reference so comparing id's is useless         
-        sceneinfo = myApp.persondetails
+        sceneinfo = myApp[sceneparams.sceneinfo]
 
         ------------------------------------------------
         -- clear thing out for this luanhc
@@ -422,8 +422,12 @@ function scene:show( event )
                     ---------------------------
                     if myObject.launchobjects[k].field  then  
                        local fieldval = myObject.launchobjects[k].field 
+                       local fieldtitle 
+                       if myObject.launchobjects[k].type == "web" then 
+                           fieldtitle = myObject.corp
+                       end
                        if myObject.launchobjects[k].type == "phone" then fieldval = common.phoneformat(fieldval) end
-                       insertObject({fieldtype = myObject.launchobjects[k].type,  value = fieldval, })
+                       insertObject({fieldtype = myObject.launchobjects[k].type,  value = fieldval, title = fieldtitle})
                     end   -- does field exist
                 end   --loop
 
