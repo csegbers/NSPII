@@ -59,7 +59,7 @@
     },
 
 
-    "b": {
+    "b1": {
        "navigation": {
         "composer": {
           "lua": "scrolllist",
@@ -84,7 +84,7 @@
     },
 
 
-    "c": {
+    "c1": {
        "navigation": {
         "composer": {
           "lua": "scrollblocks",

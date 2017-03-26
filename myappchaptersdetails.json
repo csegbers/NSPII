@@ -1,9 +1,9 @@
 {
   "statechapters": {
           "textfontsize": 16,
-      "groupheight": 25,
-      "headerfontsize": 16,
-"items": {
+          "groupheight": 25,
+          "headerfontsize": 16,
+  "items": {
 
 
     "alabama": {
@@ -16,16 +16,14 @@
           "time": 250
         }
       },
-      "text": "",
-      
       "title": "Alabama",
-      "backtext": "<",
+      
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
+         
       },
 
       "doublewide": true
@@ -42,16 +40,16 @@
           "time": 250
         }
       },
-      "text": "",
+     
       
       "title": "Florida",
-      "backtext": "<",
+    
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
+       
       },
 
       "doublewide": true
@@ -67,17 +65,17 @@
           "time": 250
         }
       },
-      "text": "",
+     
       
       "title": "Georgia",
-      "backtext": "<",
+     
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
-      },
+        } 
+         
+      } ,
 
       "doublewide": true
     },
@@ -91,17 +89,17 @@
           "time": 250
         }
       },
-      "text": "",
+       
       
       "title": "Illinois",
-      "backtext": "<",
+    
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
-      },
+        } 
+        
+      } ,
 
       "doublewide": true
     },
@@ -116,16 +114,16 @@
           "time": 250
         }
       },
-      "text": "",
+     
       
       "title": "Indiana",
-      "backtext": "<",
+    
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
+        
       },
 
       "doublewide": true
@@ -140,16 +138,15 @@
           "time": 250
         }
       },
-      "text": "",
+    
       
       "title": "Kentucky",
-      "backtext": "<",
+     
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
       },
 
       "doublewide": true
@@ -164,16 +161,15 @@
           "time": 250
         }
       },
-      "text": "",
+     
       
       "title": "Michigan",
-      "backtext": "<",
+     
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
       },
 
       "doublewide": true
@@ -188,16 +184,15 @@
           "time": 250
         }
       },
-      "text": "",
+     
       
       "title": "Missouri",
-      "backtext": "<",
+ 
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
       },
 
       "doublewide": true
@@ -212,16 +207,15 @@
           "time": 250
         }
       },
-      "text": "",
+       
       
       "title": "Ohio",
-      "backtext": "<",
+     
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
       },
 
       "doublewide": true
@@ -236,16 +230,15 @@
           "time": 250
         }
       },
-      "text": "",
+     
       
       "title": "Tennessee",
-      "backtext": "<",
+
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
       },
 
       "doublewide": true
@@ -260,16 +253,15 @@
           "time": 250
         }
       },
-      "text": "",
+      
       
       "title": "Developing Chapters",
-      "backtext": "<",
+ 
       "sceneinfo": {
         "scrollblockinfo": {
           "object": "chaptercommittees",
           "navigate": "subscene"
-        },
-        "htmlinfo": []
+        } 
       },
 
       "doublewide": true

@@ -482,6 +482,7 @@ local M = {
                                     --locate = {name="myapplocate",section="locate" },
                                     --locatepre = {name="myapplocate",section="locatepre" },
                                     --locatedetails = {name="myapplocate",section="locatedetails" },
+                                    persondetails = {name="myapplocate",section="persondetails" },
 
                                     people = {name="myapppeople.json",json=true,download=true,downloadatstartup = true},   -- do at startup since there is no other time we go look
 

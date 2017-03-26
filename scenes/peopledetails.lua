@@ -8,7 +8,7 @@ local scene = composer.newScene()
 local widget = require( "widget" )
 local myApp = require( "myapp" ) 
 
-local parse = require( myApp.utilsfld .. "mod_parse" ) 
+--local parse = require( myApp.utilsfld .. "mod_parse" ) 
 local common = require( myApp.utilsfld .. "common" )
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")
@@ -21,9 +21,11 @@ local container
 local myList
 local runit  
 local justcreated  
+local myRoundedRect
 local myMap
 local myName
 local myAddress
+local myIcon
 local itemGrp
 local myObject     -- response object from the services call or nil if no hit or if existing like agent info
 local objectgroup -- pointer to the mappings stuff
@@ -258,10 +260,7 @@ function scene:show( event )
         ------------------------------
         sceneparams = event.params  
         sceneid = sceneparams.navigation.composer.id       --- new field otherwise it is a refernce and some calls here send a reference so comparing id's is useless         
-        sceneinfo = myApp.locatedetails
-        if sceneparams.objectexisting then
-           sceneinfo =  myApp.otherscenes[sceneparams.objectexisting]  
-        end
+        sceneinfo = myApp.persondetails
 
         ------------------------------------------------
         -- clear thing out for this luanhc
@@ -295,7 +294,7 @@ function scene:show( event )
              -------------------------------------------------
              -- Background
              -------------------------------------------------
-             local myRoundedRect = display.newRoundedRect(startX, startY , groupwidth-sceneinfo.groupstrokewidth*2,sceneinfo.groupheight, sceneinfo.cornerradius )
+             myRoundedRect = display.newRoundedRect(startX, startY , groupwidth-sceneinfo.groupstrokewidth*2,sceneinfo.groupheight, sceneinfo.cornerradius )
              myRoundedRect:setFillColor(sceneinfo.groupbackground.r,sceneinfo.groupbackground.g,sceneinfo.groupbackground.b,sceneinfo.groupbackground.a )
              itemGrp:insert(myRoundedRect)
 
@@ -355,39 +354,45 @@ function scene:show( event )
     -- Did Show
     ----------------------------------
     elseif ( phase == "did" ) then
-        parse:logEvent( "Scene", { ["name"] = currScene} )
-        objectgroup = myApp.mappings.objects[sceneparams.objecttype]     
-        print(sceneparams.objecttype .." queryval" .. (sceneparams.objectqueryvalue  or "")  .. " Existing " .. (sceneparams.objectexisting  or "") )
+        --parse:logEvent( "Scene", { ["name"] = currScene} )
+        --objectgroup = myApp.mappings.objects[sceneparams.objecttype]     
+        --print(sceneparams.objecttype .." queryval" .. (sceneparams.objectqueryvalue  or "")  .. " Existing " .. (sceneparams.objectexisting  or "") )
 
         local BuildTheScene = function (resp)
-                myObject = resp
+                myObject = resp    --person
                 local haveitems = false
                 ---------------------------------------------
                 --  do we even have an object
                 ---------------------------------------------
                 itemGrp.isVisible = true
                 myList.isVisible = true
-                if myObject[objectgroup.mapping.name] == nil then
-                  itemGrp.isVisible = false
-                  myList.isVisible = false
-                end
 
-                print("NAME" .. (myObject[objectgroup.mapping.name] or ""))
-                myName.text = (myObject[objectgroup.mapping.name] or "") 
-                myAddress.text = (myObject[objectgroup.mapping.street] or "") .. "\n" .. (myObject[objectgroup.mapping.city] or "") .. ", " .. (myObject[objectgroup.mapping.state] or "") .. " " .. (myObject[objectgroup.mapping.zip] or "") 
+                print("NAME" .. (myObject.name or ""))
+                myName.text = (myObject.name or "") 
+                myAddress.text = (myObject.street  or "") .. "\n"   
+                if myObject.street2 then myAddress.text = myAddress.text ..myObject.street2  .. "\n"   end
+                myAddress.text = myAddress.text  .. (myObject.city or "") .. ", " .. (myObject.state or "") .. " " .. (myObject.zip or "") 
                 myAddress.y = myName.y+ myName.height  
                 if sceneinfo.animation then
                     transition.to(  itemGrp, { time=sceneinfo.animationtime, y = curitemGrpy , transition=easing.outQuint})
                     transition.to(  myList, { time=sceneinfo.animationtime, y = curmyListy , transition=easing.outQuint})
                 end
-
+                if myObject.pic then
+                   myIcon = display.newImageRect(myApp.imgfld .. myObject.pic, myObject.originaliconwidth or sceneinfo.iconwidth ,myObject.originaliconheight or sceneinfo.iconheight)
+                   common.fitImage( myIcon,   sceneinfo.iconwidth ,myRoundedRect.height -sceneinfo.edge  )
+                   itemGrp:insert(myIcon )
+                  --myIcon.anchorX = 0
+                   --myIcon.anchorY = 0
+                   myIcon.x = myRoundedRect.x + myRoundedRect.width/2 - sceneinfo.iconwidth/2 - sceneinfo.edge/2
+                   myIcon.y = myRoundedRect.y
+               end  
                 ---------------------------------------------
                 -- Sort (key is critical !!)
                 -- what laucnh objects are availble ? See if those fields came down via the service.
                 -- they may not always exist
                 --------------------------------------------- 
                 local a = {}
-                for n in pairs(objectgroup.launchobjects) do table.insert(a, n) end
+                for n in pairs(myObject.launchobjects) do table.insert(a, n) end
                 table.sort(a)
 
 
@@ -406,18 +411,7 @@ function scene:show( event )
                         }   --myList:insertRow
                 end
 
-                ---------------------------------------------
-                -- Generate a get directions row ?
-                --------------------------------------------- 
-                if sceneinfo.row.includedirections and myObject[objectgroup.mapping.street] then
-                   local address = (myObject[objectgroup.mapping.street] or "") .. " " .. (myObject[objectgroup.mapping.city] or "") .. ", " .. (myObject[objectgroup.mapping.state] or "")   --.. " " .. (myObject[objectgroup.mapping.zip] or ""
-                   local addresswithzip = address .. " " .. (myObject[objectgroup.mapping.zip] or "")
-                   insertObject({
-                          fieldtype = "directions",
-                          value = address, 
-                          fulladdress = addresswithzip,
-                          })
-                end
+
  
                 ---------------------------------------------
                 -- Generate the rows for potential object launches like phne email
@@ -426,69 +420,41 @@ function scene:show( event )
                     ---------------------------
                     -- is the field there  in the response?
                     ---------------------------
-                    if myObject[objectgroup.launchobjects[k].field] then  
-                       local fieldval = myObject[objectgroup.launchobjects[k].field]
-                       if objectgroup.launchobjects[k].type == "phone" then fieldval = common.phoneformat(fieldval) end
-                       insertObject({fieldtype = objectgroup.launchobjects[k].type,  value = fieldval, })
+                    if myObject.launchobjects[k].field  then  
+                       local fieldval = myObject.launchobjects[k].field 
+                       if myObject.launchobjects[k].type == "phone" then fieldval = common.phoneformat(fieldval) end
+                       insertObject({fieldtype = myObject.launchobjects[k].type,  value = fieldval, })
                     end   -- does field exist
                 end   --loop
 
+                ---------------------------------------------
+                -- Generate a get directions row ?
+                -- myApp.persondetails
+                --------------------------------------------- 
+                if sceneinfo.row.includedirections and myObject.street  then
+                   local address = (myObject.street  or "") .. " " .. (myObject.city  or "") .. ", " .. (myObject.state  or "")   --.. " " .. (myObject[objectgroup.mapping.zip] or ""
+                   local addresswithzip = address .. " " .. (myObject.zip or "")
+                   insertObject({
+                          fieldtype = "directions",
+                          value = address, 
+                          fulladdress = addresswithzip,
+                          })
+                end
                if haveitems then 
                   myList:scrollToIndex( 1 ) 
                end
         end 
 
-         ------------------------------------------------------------
-         -- Existing object ? like an agent (myagent)
-         ------------------------------------------------------------
-        if sceneparams.objectexisting then
-            if (runit or justcreated) then
-              local theobjecttouse = {}
-              if  sceneparams.objectexisting == "myagent" then
-                  theobjecttouse = myApp.authentication.agencies
-              end
-              BuildTheScene(theobjecttouse)
-            end
-            buildMap()    -- do regardsless
-        else    -- sceneparams.objectexisting    else
-
-            if common.testNetworkConnection()  then
-               native.setActivityIndicator( true )
-               if (runit or justcreated) then
-                   --debugpopup ("looking for " .. sceneparams.objecttype .." " .. sceneparams.objectqueryvalue)
-                   
-                   parse:run(objectgroup.functionname.details,
-                       {
-                          [objectgroup.mapping.id] =  sceneparams.objectqueryvalue,  
-                       },
-                       ------------------------------------------------------------
-                       -- Callback inline function
-                       ------------------------------------------------------------
-                       function(e) 
-                          if (e.response.error or "" ) == "" then 
-                              
-                              if #e.response.result > 0 then
-                                  BuildTheScene(e.response.result[1])
-
-                              end  -- end of results >0
-
-                          end  -- end of error check
-                          -----------------------------------------------
-                          -- always do when returned fro srvice call
-                          ----------------------------------------------
-                          native.setActivityIndicator( false ) 
-                          buildMap()
-                      end )  -- end of parse call
-                else   -- runit or justcreated
-                    -----------------------------------------------
-                    -- always do the map even if same criteria coming in
-                    -----------------------------------------------
-                    native.setActivityIndicator( false )
-                    buildMap()     -- always need to do   even on same object
-                end  -- end of runit or justcreated
-            end    -- end of network connection check
-            
-        end    -- sceneparams.objectexisting
+     ------------------------------------------------------------
+     -- get it started
+     ------------------------------------------------------------
+    
+        if (runit or justcreated) then
+          BuildTheScene(sceneparams.person)
+        end
+     --   buildMap()    -- do regardsless
+       
+ 
         justcreated = false
     end   -- phase check
 	

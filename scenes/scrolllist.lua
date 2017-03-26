@@ -102,41 +102,39 @@ function scene:show( event )
                 group:insert(container)
 
 
-                local function launchPeopleDetailsScene(event) 
+                local function launchDetailsScene(detailfile,id) 
 
-                      --[[    local objecttype = sceneparams.locateinfo.object    -- Agency, BodyShop etc...
-                          local objectgroup = myApp.mappings.objects[objecttype]
-                          local objectqueryvalue = queryvalue
+                          local objecttype = detailfile.type    -- person, future others
 
-                          local locatedetails = {  
-                                     objecttype = objecttype,
-                                     objectqueryvalue = queryvalue,
-                                     title = objectgroup.desc.singular, 
-                                     pic=sceneparams.pic,
-                                     originaliconwidth = sceneparams.originaliconwidth,
-                                     originaliconheight = sceneparams.originaliconheight,
-                                     iconwidth = sceneparams.iconwidth,      -- height will be scaled appropriately
-                                     backtext = objectgroup.backtext,
+                          if objecttype == "person" then
+                              local persondetails = {  
+                                         objecttype = objecttype,
+                                         title = detailfile.items[id].name, 
+                                         pic=detailfile.pic,
+                                         originaliconwidth = detailfile.originaliconwidth,
+                                         originaliconheight = detailfile.originaliconheight,
+                                         iconwidth = detailfile.iconwidth,      -- height will be scaled appropriately
+                                         backtext = detailfile.backtext,
+                                         person=detailfile.items[id],
 
-                                     navigation = { 
-                                           composer = {
-                                                          -- this id setting this way we will rerun if different than prior request either object type, value etc etc...
-                                                         id = objecttype.."-" ..queryvalue,   
-                                                         lua=objectgroup.navigation.composer.lua ,
-                                                         time=objectgroup.navigation.composer.time, 
-                                                         effect=objectgroup.navigation.composer.effect,
-                                                         effectback=objectgroup.navigation.composer.effectback,
-                                                      },
-                                                 },
-                                     }      
+                                         navigation = { 
+                                               composer = {
+                                                              -- this id setting this way we will rerun if different than prior request either object type, value etc etc...
+                                                             id = id,   
+                                                             lua=detailfile.navigation.composer.lua ,
+                                                             time=detailfile.navigation.composer.time, 
+                                                             effect=detailfile.navigation.composer.effect,
+                                                             effectback=detailfile.navigation.composer.effectback,
+                                                          },
+                                                     },
+                                         }      
 
-                             local parentinfo =  sceneparams 
-                             locatedetails.callBack = function() myApp.showSubScreen({instructions=parentinfo,effectback="slideRight"}) end
-                             myApp.showSubScreen ({instructions=locatedetails})
-]]
+                                 local parentinfo =  sceneparams 
+                                 persondetails.callBack = function() myApp.showSubScreen({instructions=parentinfo,effectback="slideRight"}) end
+                                 myApp.showSubScreen ({instructions=persondetails})
+                         end
+
                 end
-
-
 
                 local onRowTouch = function( event )
                         local row = event.row
@@ -161,7 +159,7 @@ function scene:show( event )
                  
                         elseif event.phase == "release" then
                                print ("release")
-                               launchPeopleDetailsScene( p.items[v.id] )
+                               launchDetailsScene( p,v.id )
                             -- force row re-render on next TableView update
                             
                         end

@@ -1,4 +1,19 @@
 {
+  "type":"person",
+  "pic":"person.png",
+  "originaliconwidth": 302,
+  "originaliconheight": 302,
+  "iconwidth": 60,
+  "backtext": "<",
+  "navigation": {
+        "composer": {
+          "lua": "peopledetails",
+          "effect": "slideLeft",
+          "id": "x",
+          "effectback": "slideRight",
+          "time": 250
+        }
+      }, 
   "items": {
     "tburris": {
       "pic":"tburris.jpg",
@@ -9,7 +24,7 @@
       "corp": "State Auto Insurance Co.",
       "launchobjects": {
         "a": {
-          "desc": "(317) 452-9615",
+          "field": "(317) 452-9615",
           "type": "phone"
         },
         "b": {
@@ -17,7 +32,7 @@
           "type": "email"
         },
         "c": {
-          "desc": "(614) 719-0182",
+          "field": "(614) 719-0182",
           "type": "fax"
         }
       },
@@ -34,7 +49,7 @@
       "corp": "Taylor, Keller & Oswald, PLLC",
       "launchobjects": {
         "a": {
-          "desc": "(606) 878-8844",
+          "field": "(606) 878-8844",
           "type": "phone"
         },
         "b": {
@@ -42,7 +57,7 @@
           "type": "email"
         },
         "c": {
-          "desc": "(606) 878-8850",
+          "field": "(606) 878-8850",
           "type": "fax"
         }
       },
@@ -56,7 +71,7 @@
       "originaliconheight":1135,      
       "launchobjects": {
         "a": {
-          "desc": "(330) 286-3701",
+          "field": "(330) 286-3701",
           "type": "phone"
         },
         "b": {
@@ -64,7 +79,7 @@
           "type": "email"
         },
         "c": {
-          "desc": "(330) 286-3745",
+          "field": "(330) 286-3745",
           "type": "fax"
         }
       },
@@ -82,7 +97,7 @@
       "originaliconheight":1704, 
       "launchobjects": {
         "a": {
-          "desc": "(513) 919-7200",
+          "field": "(513) 919-7200",
           "type": "phone"
         },
         "b": {
@@ -104,7 +119,7 @@
       "originaliconheight":400,       
       "launchobjects": {
         "a": {
-          "desc": "(317) 566-7573",
+          "field": "(317) 566-7573",
           "type": "phone"
         }
 
@@ -124,7 +139,7 @@
       "originaliconheight":3008,        
       "launchobjects": {
         "a": {
-          "desc": "(404) 264-1500",
+          "field": "(404) 264-1500",
           "type": "phone"
         },
         "b": {
@@ -132,7 +147,7 @@
           "type": "email"
         },
         "c": {
-          "desc": "(404) 264-1737",
+          "field": "(404) 264-1737",
           "type": "fax"
         }
       },
@@ -148,7 +163,7 @@
       
       "launchobjects": {
         "a": {
-          "desc": "(317) 370-6475",
+          "field": "(317) 370-6475",
           "type": "phone"
         },
         "b": {
@@ -156,7 +171,7 @@
           "type": "email"
         },
         "c": {
-          "desc": "(814) 461-2914",
+          "field": "(814) 461-2914",
           "type": "fax"
         }
       },
@@ -172,7 +187,7 @@
       
       "launchobjects": {
         "a": {
-          "desc": "(859) 653-0547",
+          "field": "(859) 653-0547",
           "type": "phone"
         },
         "b": {
@@ -193,7 +208,7 @@
       
       "launchobjects": {
         "a": {
-          "desc": "(502) 437-9011",
+          "field": "(502) 437-9011",
           "type": "phone"
         },
         "b": {
