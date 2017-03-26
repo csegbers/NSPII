@@ -96,7 +96,7 @@ local onRowTouch = function( event )
         ------------------------
         if navgroup.directions  then
             if myMap and myObject then 
-              if myObject[objectgroup.mapping.geo] then myMap:setCenter( myObject[objectgroup.mapping.geo].latitude, myObject[objectgroup.mapping.geo].longitude ,true ) end
+              if myObject.geo then myMap:setCenter( myObject.geo.latitude, myObject.geo.longitude ,true ) end
             end
         end
         
@@ -180,8 +180,8 @@ end
 -- The map. centered and marked for the 1 item
 ------------------------------------------------------
 local function buildMap( event )
-      if  myObject   then
-          if  myObject[objectgroup.mapping.geo]  then
+      if  myObject   then   --  myObject = person
+          if  myObject.geo  then
               native.setActivityIndicator( true ) 
 
               local mapheight = myApp.sceneHeight-myList.height-itemGrp.height-sceneinfo.edge*2
@@ -194,15 +194,15 @@ local function buildMap( event )
                  myMap.y = myApp.sceneStartTop + itemGrp.height  + sceneinfo.edge+ mapheight/2 + sceneinfo.edge/2
 
                  
-                 if myObject[objectgroup.mapping.geo].latitude and myObject[objectgroup.mapping.geo].longitude then
-                    myMap:setCenter( myObject[objectgroup.mapping.geo].latitude, myObject[objectgroup.mapping.geo].longitude, false )
-                    myMap:setRegion( myObject[objectgroup.mapping.geo].latitude, myObject[objectgroup.mapping.geo].longitude, sceneinfo.map.latitudespan, sceneinfo.map.longitudespan, false)
+                 if myObject.geo.latitude and myObject.geo.longitude then
+                    myMap:setCenter( myObject.geo.latitude, myObject.geo.longitude, false )
+                    myMap:setRegion( myObject.geo.latitude, myObject.geo.longitude, sceneinfo.map.latitudespan, sceneinfo.map.longitudespan, false)
 
                     local options = { 
-                              title=myObject[objectgroup.mapping.name], 
-                              subtitle=(myObject[objectgroup.mapping.street] or "") .. " " .. (myObject[objectgroup.mapping.city] or "") .. ", " .. (myObject[objectgroup.mapping.state] or "") .. " " .. (myObject[objectgroup.mapping.zip] or "") , 
+                              title=myObject.name, 
+                              subtitle=(myObject.street or "") .. " " .. (myObject.city  or "") .. ", " .. (myObject.state  or "") .. " " .. (myObject.zip or "") , 
                                }
-                    myMap:addMarker( myObject[objectgroup.mapping.geo].latitude, myObject[objectgroup.mapping.geo].longitude, options )
+                    myMap:addMarker(  myObject.geo.latitude, myObject.geo.longitude, options )
                  end
                 
               end
@@ -450,9 +450,9 @@ function scene:show( event )
      ------------------------------------------------------------
     
         if (runit or justcreated) then
-          BuildTheScene(sceneparams.person)
+           BuildTheScene(sceneparams.person)
         end
-     --   buildMap()    -- do regardsless
+        buildMap()    -- do regardsless
        
  
         justcreated = false

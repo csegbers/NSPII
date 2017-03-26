@@ -38,7 +38,11 @@
       },
       "zip": "46278",
       "city": "Indianapolis",
-      "street": "P.O. Box 781022"
+      "street": "P.O. Box 781022",
+      "geo": {
+           "latitude": 39.8608444,
+           "longitude": -86.389553
+          },
     },
     "coswald": {
       "pic":"coswald.jpg",

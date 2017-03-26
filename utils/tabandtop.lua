@@ -618,7 +618,14 @@ function myApp.navigationCommon(parms)
                            -- popup like email or sms
                            -------------------------------
                            if v.navigation.popup then
-                              native.showPopup( v.navigation.popup.type, v.navigation.popup.options )
+                            --native.showAlert( "hi1111", "hi there1111", { "Okay" }  ) 
+                              local xx = native.showPopup( v.navigation.popup.type, v.navigation.popup.options )
+                               
+                                   --[[ if xx then
+                                        native.showAlert( "Success", "xx", { "Okay" }  ) 
+                                    else
+                                        native.showAlert( "failure", v.navigation.popup.options.to , { "Okay" }  ) 
+                                    end  ]]
                            else
                                ------------------------------
                                -- execute some code
