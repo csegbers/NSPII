@@ -471,9 +471,9 @@ local M = {
                                     contactus = {name="myappcontactus.json",download=true,json=true},
                                     extras = {name="myappextras.json" ,download=true,json=true},
                                     
-                                    awards = {name="myappawards.json",json=true ,download=true},
-                                    awardsnational = {name="myappawards.json",json=true,section="awardsnational" ,download=true },
-                                    awardsohio = {name="myappawards.json",json=true,section="awardsohio" ,download=true },
+                                    awards = {name="myappawards.json",json=true ,download=true},   -- need atleast 1 per file others in includedsections
+                                    --awardsnational = {name="myappawards.json",json=true,section="awardsnational" ,download=true },
+                                    --awardsohio = {name="myappawards.json",json=true,section="awardsohio" ,download=true },
 
                                     social = {name="myappsocial.json" ,download=true,json=true},
                                     --mappings = {name="myappmappings" },
@@ -482,23 +482,22 @@ local M = {
                                     --locate = {name="myapplocate",section="locate" },
                                     --locatepre = {name="myapplocate",section="locatepre" },
                                     --locatedetails = {name="myapplocate",section="locatedetails" },
-                                    persondetails = {name="myapplocate",section="persondetails" },
 
                                     people = {name="myapppeople.json",json=true,download=true,downloadatstartup = true},   -- do at startup since there is no other time we go look
 
                                     chapters = {name="myappchapters.json",json=true,download=true},
-                                    nationalchapter = {name="myappchaptersdetails.json",json=true,section="nationalchapter" ,download=true},
-                                    chaptercommittees = {name="myappchaptersdetails.json",json=true,section="chaptercommittees" ,download=true},
-                                    statechapters = {name="myappchaptersdetails.json",json=true,section="statechapters" ,download=true},
+                                    nationalchapter = {name="myappchaptersdetails.json",json=true,section="nationalchapter" ,download=true},   -- need atleast 1 per file others in includedsections
+                                    --chaptercommittees = {name="myappchaptersdetails.json",json=true,section="chaptercommittees" ,download=true},
+                                    --statechapters = {name="myappchaptersdetails.json",json=true,section="statechapters" ,download=true},
 
                                     resources = {name="myappresources.json",json=true,download=true },
-                                    respsa = {name="myappresourcedetails.json",json=true,download=true ,section="respsa" },
-                                    resref = {name="myappresourcedetails.json",json=true,download=true,section="resref" },
-                                    resfraud = {name="myappresourcedetails.json",json=true,download=true,section="resfraud"  },
-                                    restools = {name="myappresourcedetails.json",json=true,download=true,section="restools" },
-                                    resnews = {name="myappresourcedetails.json",json=true,download=true,section="resnews" },
-                                    reslegal = {name="myappresourcedetails.json",json=true,download=true,section="reslegal" },
-                                    resyoutube = {name="myappresourcedetails.json",json=true,download=true,section="resyoutube"  },
+                                    respsa = {name="myappresourcedetails.json",json=true,download=true ,section="respsa" },  -- need atleast 1 per file others in includedsections
+                                   -- resref = {name="myappresourcedetails.json",json=true,download=true,section="resref" },
+                                   -- resfraud = {name="myappresourcedetails.json",json=true,download=true,section="resfraud"  },
+                                    --restools = {name="myappresourcedetails.json",json=true,download=true,section="restools" },
+                                   -- resnews = {name="myappresourcedetails.json",json=true,download=true,section="resnews" },
+                                   -- reslegal = {name="myappresourcedetails.json",json=true,download=true,section="reslegal" },
+                                   -- resyoutube = {name="myappresourcedetails.json",json=true,download=true,section="resyoutube"  },
                                 },
                         },
 

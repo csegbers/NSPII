@@ -260,7 +260,7 @@ function scene:show( event )
         ------------------------------
         sceneparams = event.params  
         sceneid = sceneparams.navigation.composer.id       --- new field otherwise it is a refernce and some calls here send a reference so comparing id's is useless         
-        sceneinfo = myApp[sceneparams.sceneinfo]
+        sceneinfo = sceneparams.sceneinfo
 
         ------------------------------------------------
         -- clear thing out for this luanhc
@@ -369,7 +369,11 @@ function scene:show( event )
 
                 print("NAME" .. (myObject.name or ""))
                 myName.text = (myObject.name or "") 
-                myAddress.text = (myObject.street  or "") .. "\n"   
+                 
+                if myObject.corp then
+                   myAddress.text = (myObject.corp  or "") .. "\n" 
+                end
+                myAddress.text = myAddress.text .. (myObject.street  or "") .. "\n"   
                 if myObject.street2 then myAddress.text = myAddress.text ..myObject.street2  .. "\n"   end
                 myAddress.text = myAddress.text  .. (myObject.city or "") .. ", " .. (myObject.state or "") .. " " .. (myObject.zip or "") 
                 myAddress.y = myName.y+ myName.height  

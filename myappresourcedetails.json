@@ -1,4 +1,14 @@
 {
+  "includedsections":{
+    "items": {
+       "resref": {},
+       "resfraud": {},
+       "restools": {},
+       "resnews": {},
+       "reslegal": {},
+       "resyoutube": {}
+    }
+  },
   "respsa": {
     "items": {
       "aa": {

@@ -160,7 +160,7 @@ function scene:show( event )
                  
                         elseif event.phase == "release" then
                                print ("release")
-                               launchDetailsScene( p,v.id )
+                               if p.items[v.id].name then  launchDetailsScene( p,v.id ) end
                             -- force row re-render on next TableView update
                             
                         end
@@ -208,17 +208,17 @@ function scene:show( event )
 
 
                                  if v.text then
-                                     row.nameTitle = display.newText( v.text or "", 0, 0, myApp.font, sbi.row.textfontsize )
+                                     row.nameTitle = display.newText( v.text or "", 0, 0, myApp.font, sbi.row.titlefontsize )
                                      row.nameTitle.anchorX = 0
                                      row.nameTitle.anchorY = 0
-                                     row.nameTitle:setFillColor( sbi.row.textcolor )
+                                     row.nameTitle:setFillColor( sbi.row.titlecolor )
                                      row.nameTitle.y = textstart
                                      textstart =  textstart + 20
                                      row.nameTitle.x = xpos
                                      row:insert( row.nameTitle )
                                  end
 
-                                 row.nameName = display.newText( p.items[v.id].name or "Unknown Name", 0, 0, myApp.fontBold, sbi.row.textfontsize )
+                                 row.nameName = display.newText( p.items[v.id].name or v.id, 0, 0, myApp.fontBold, sbi.row.textfontsize )
                                  row.nameName.anchorX = 0
                                  row.nameName.anchorY = 0
                                  row.nameName:setFillColor( sbi.row.textcolor )

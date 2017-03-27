@@ -3,51 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-             persondetails = {    
-                                animation=true,
-                                animationtime=300,
-                                iconheight=60,
-                                iconwidth=60,
-                                edge=10,
-                                groupheight = 90,
-                                groupbackground = { r=220/255, g=220/255, b=220/255, a=1 },
-                                groupstrokewidth = 0,
-                                cornerradius = 3,
 
-                                textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
-                                textfontsize=18  ,   
-                                textbottomedge =5   ,
-                                textfontsizeaddress=14  ,  
-                                textcoloraddress = { r=130/255, g=130/255, b=130/255, a=1 },   
-
-                                tableheight=180,  
-                                row={
-                                       height=60,
-                                       rowColor = { 1, 1, 1 },
-                                       lineColor = { 220/255 },
-                                       titletextfontsize=16  , 
-                                       titletexty = 20,
-                                       titletextx = 60,
-                                       titletextColor = 0,
-                                       desctextfontsize=12  , 
-                                       desctexty = 40,
-                                       desctextx = 60,
-                                       desctextColor = 0.5,
-
-                                       iconwidth = 40,
-                                       iconheight = 40,
-
-                                       includedirections = true,
-
-                                    },
-                                map = {
-                                          latitudespan = .1,
-                                          longitudespan = .1,
-                                          type = "standard" ,
-                                      },
-
-                                 
-                       },
              locatepre = {    
 
                                 edge=10,

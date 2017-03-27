@@ -19,17 +19,34 @@ local function fileexists(filename,filepath)
 end
 
 local function sectioncheck(event)
- print ("home page item " .. event.objectname)
- ------------------------
- -- vreq could be nil if file is only downloaded
- -------------------------
- if event.vreq then
-     if myApp.files.items[event.objectname].section then
-        myApp[event.objectname] = event.vreq[myApp.files.items[event.objectname].section]  
-     else
-        myApp[event.objectname] = event.vreq
-     end
- end
+   print ("home page item " .. event.objectname)
+   ------------------------
+   -- vreq could be nil if file is only downloaded
+   -------------------------
+   if event.vreq then
+       if myApp.files.items[event.objectname].section then
+          myApp[event.objectname] = event.vreq[myApp.files.items[event.objectname].section]  
+       else
+          myApp[event.objectname] = event.vreq
+       end
+       --------------------------------------
+       -- included objects that arent identified on myApp ?
+       --------------------------------------
+       if event.vreq.includedsections then
+           local a = {}
+           local n,i,k
+           for n in pairs(event.vreq.includedsections.items) do table.insert(a, n) end
+           for i,k in ipairs(a) do 
+                 myApp.files.items[k] = {}
+                 myApp.files.items[k].section = k
+                 myApp.files.items[k].name = myApp.files.items[event.objectname].name
+                 myApp.files.items[k].json = myApp.files.items[event.objectname].json
+                 myApp.files.items[k].download = myApp.files.items[event.objectname].download
+                 myApp[k] = event.vreq[k]
+           end
+       end       
+   end
+
 end
 local function loadjsonfile(event)
   ------------------------
@@ -121,6 +138,7 @@ local function loadmyappfiles()
     -- we are done here
     -------------------------------------
     Runtime:dispatchEvent{ name="startup" }
+   -- print ("json  -  " .. require("json").encode(myApp.persondetails ))
 end
 
 
@@ -193,6 +211,7 @@ local function loadconfigfile(event)
                       ------------------------------------
                       --  by chance is the file already downloaded and is still in the cache or temp or wherever?
                       --  get it into the main M table because the rest of the app wont do that , it assume it would have already been loaded
+                      -- otherwise no downloadatstartup  ... just get when needed
                       ------------------------------------
                       if fileexists(myApp.files.items[k].name,myApp.files.download.fileloc) == true then
                          loadjsonfile({objectname = k,name=myApp.files.items[k].name,fileloc=myApp.files.download.fileloc})

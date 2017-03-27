@@ -1,25 +1,83 @@
 {
-  "type":"person",
-  "sceneinfo":"persondetails",
-  "pic":"person.png",
+  "type": "person",
+  "pic": "person.png",
   "originaliconwidth": 302,
   "originaliconheight": 302,
   "iconwidth": 60,
   "backtext": "<",
   "navigation": {
-        "composer": {
-          "lua": "peopledetails",
-          "effect": "slideLeft",
-          "id": "x",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      }, 
+    "composer": {
+      "lua": "peopledetails",
+      "effect": "slideLeft",
+      "id": "x",
+      "effectback": "slideRight",
+      "time": 250
+    }
+  },
+  "sceneinfo": {
+    "cornerradius": 3,
+    "textcoloraddress": {
+      "a": 1,
+      "b": 0.5098,
+      "g": 0.5098,
+      "r": 0.5098
+    },
+    "groupbackground": {
+      "a": 1,
+      "b": 0.8627,
+      "g": 0.8627,
+      "r": 0.8627
+    },
+    "tableheight": 180,
+    "groupheight": 100,
+    "map": {
+      "type": "standard",
+      "longitudespan": 0.1,
+      "latitudespan": 0.1
+    },
+    "textcolor": {
+      "a": 1,
+      "b": 0.0039,
+      "g": 0.0039,
+      "r": 0.0039
+    },
+    "animation": true,
+    "textbottomedge": 5,
+    "animationtime": 300,
+    "row": {
+      "desctexty": 40,
+      "iconwidth": 40,
+      "titletextx": 60,
+      "desctextx": 60,
+      "iconheight": 40,
+      "titletextColor": 0,
+      "titletexty": 20,
+      "lineColor": [
+        0.8627
+      ],
+      "includedirections": true,
+      "titletextfontsize": 16,
+      "height": 60,
+      "desctextColor": 0.5,
+      "desctextfontsize": 12,
+      "rowColor": [
+        1,
+        1,
+        1
+      ]
+    },
+    "groupstrokewidth": 0,
+    "iconheight": 60,
+    "textfontsizeaddress": 14,
+    "textfontsize": 18,
+    "edge": 10,
+    "iconwidth": 60
+  },
   "items": {
     "tburris": {
-      "pic":"tburris.jpg",
-      "originaliconwidth":950,
-      "originaliconheight":1188,
+      "pic": "tburris.jpg",
+      "originaliconwidth": 950,
+      "originaliconheight": 1188,
       "state": "IN",
       "name": "Todd M. Burris",
       "corp": "State Auto Insurance Co.",
@@ -45,14 +103,14 @@
       "city": "Indianapolis",
       "street": "P.O. Box 781022",
       "geo": {
-           "latitude": 39.8608444,
-           "longitude": -86.389553
-          },
+        "latitude": 39.8608444,
+        "longitude": -86.389553
+      }
     },
     "coswald": {
-      "pic":"coswald.jpg",
-      "originaliconwidth":2189,
-      "originaliconheight":1599,
+      "pic": "coswald.jpg",
+      "originaliconwidth": 2189,
+      "originaliconheight": 1599,
       "state": "KY",
       "name": "Clayton O. Oswald",
       "corp": "Taylor, Keller & Oswald, PLLC",
@@ -79,9 +137,9 @@
       "street": "P.O. Box 3440"
     },
     "dcomstock": {
-      "pic":"dcomstock.jpg",
-      "originaliconwidth":940,
-      "originaliconheight":1135,      
+      "pic": "dcomstock.jpg",
+      "originaliconwidth": 940,
+      "originaliconheight": 1135,
       "launchobjects": {
         "a": {
           "field": "(330) 286-3701",
@@ -108,10 +166,10 @@
       "street": "4137 Boardman-Canfield Rd.",
       "street2": "Suite 101"
     },
-   "jlibbert": {
-      "pic":"jlibbert.jpg",
-      "originaliconwidth":2272,
-      "originaliconheight":1704, 
+    "jlibbert": {
+      "pic": "jlibbert.jpg",
+      "originaliconwidth": 2272,
+      "originaliconheight": 1704,
       "launchobjects": {
         "a": {
           "field": "(513) 919-7200",
@@ -121,20 +179,18 @@
           "field": "jonlibbert@msn.com",
           "type": "email"
         }
-
       },
       "name": "Jonathan Libbert",
       "corp": "JD Forensics, Inc.",
       "zip": "41017",
       "state": "KY",
       "city": "Crescent Springs",
-      "street": "2613 Crescent Springs Pike" 
-       
+      "street": "2613 Crescent Springs Pike"
     },
-   "jferrand": {
-      "pic":"jferrand.jpg",
-      "originaliconwidth":300,
-      "originaliconheight":400,       
+    "jferrand": {
+      "pic": "jferrand.jpg",
+      "originaliconwidth": 300,
+      "originaliconheight": 400,
       "launchobjects": {
         "a": {
           "field": "(317) 566-7573",
@@ -144,8 +200,6 @@
           "field": "http://fuzionanalytics.com/",
           "type": "web"
         }
-
-
       },
       "name": "Jeffrey W. Ferrand",
       "corp": "Fuzion",
@@ -155,10 +209,10 @@
       "street": "550 Congressional Blvd",
       "street2": "Suite 200"
     },
-   "rluskin": {
-      "pic":"rluskin.jpg",
-      "originaliconwidth":2000,
-      "originaliconheight":3008,        
+    "rluskin": {
+      "pic": "rluskin.jpg",
+      "originaliconwidth": 2000,
+      "originaliconheight": 3008,
       "launchobjects": {
         "a": {
           "field": "(404) 264-1500",
@@ -184,9 +238,8 @@
       "city": "Atlanta",
       "street": "3340 Peachtree Rd., N.E.",
       "street2": "Suite 2100"
-    }   ,
-   "jdavis": {
-      
+    },
+    "jdavis": {
       "launchobjects": {
         "a": {
           "field": "(317) 370-6475",
@@ -211,10 +264,8 @@
       "state": "IN",
       "city": "Indianapolis",
       "street": "P.O. Box 80129"
-    
-    }  ,
-   "cpadgett": {
-      
+    },
+    "cpadgett": {
       "launchobjects": {
         "a": {
           "field": "(859) 653-0547",
@@ -223,23 +274,20 @@
         "b": {
           "field": "candace.padgett@safeauto.com",
           "type": "email"
-        } ,
+        },
         "d": {
           "field": "http://www.x.com",
           "type": "web"
         }
-
       },
       "name": "Candace Padgett ",
       "corp": "Safe Auto Insurance",
       "zip": "43219",
       "state": "OH",
       "city": "Columbus",
-      "street": "4 Easton Oval" 
-       
-    } ,
-   "hpfaffenberger": {
-      
+      "street": "4 Easton Oval"
+    },
+    "hpfaffenberger": {
       "launchobjects": {
         "a": {
           "field": "(502) 437-9011",
@@ -259,8 +307,210 @@
       "zip": "40202",
       "state": "KY",
       "city": "Louisville",
-      "street": "231 South Fifth St., 3rd Floor" 
-     
-    } 
+      "street": "231 South Fifth St., 3rd Floor"
+    },
+    "jmunn": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "x",
+      "name": "x",
+      "corp": "x",
+      "launchobjects": {
+        "a": {
+          "field": "x",
+          "type": "phone"
+        },
+        "b": {
+          "field": "x.com",
+          "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com/",
+          "type": "web"
+        }
+      },
+      "zip": "x",
+      "city": "x",
+      "street": "x",
+      "geo": {
+        "latitude": 1,
+        "longitude": -1
+      }
+    },
+    "lwerkheiser": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "x",
+      "name": "x",
+      "corp": "x",
+      "launchobjects": {
+        "a": {
+          "field": "x",
+          "type": "phone"
+        },
+        "b": {
+          "field": "x.com",
+          "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com/",
+          "type": "web"
+        }
+      },
+      "zip": "x",
+      "city": "x",
+      "street": "x",
+      "geo": {
+        "latitude": 1,
+        "longitude": -1
+      }
+    },
+    "rmiller": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "x",
+      "name": "x",
+      "corp": "x",
+      "launchobjects": {
+        "a": {
+          "field": "x",
+          "type": "phone"
+        },
+        "b": {
+          "field": "x.com",
+          "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com/",
+          "type": "web"
+        }
+      },
+      "zip": "x",
+      "city": "x",
+      "street": "x",
+      "geo": {
+        "latitude": 1,
+        "longitude": -1
+      }
+    },
+    "jbush": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "x",
+      "name": "x",
+      "corp": "x",
+      "launchobjects": {
+        "a": {
+          "field": "x",
+          "type": "phone"
+        },
+        "b": {
+          "field": "x.com",
+          "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com/",
+          "type": "web"
+        }
+      },
+      "zip": "x",
+      "city": "x",
+      "street": "x",
+      "geo": {
+        "latitude": 1,
+        "longitude": -1
+      }
+    },
+    "gpickover": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "x",
+      "name": "x",
+      "corp": "x",
+      "launchobjects": {
+        "a": {
+          "field": "x",
+          "type": "phone"
+        },
+        "b": {
+          "field": "x.com",
+          "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com/",
+          "type": "web"
+        }
+      },
+      "zip": "x",
+      "city": "x",
+      "street": "x",
+      "geo": {
+        "latitude": 1,
+        "longitude": -1
+      }
+    },
+    "mpresson": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "x",
+      "name": "x",
+      "corp": "x",
+      "launchobjects": {
+        "a": {
+          "field": "x",
+          "type": "phone"
+        },
+        "b": {
+          "field": "x.com",
+          "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com/",
+          "type": "web"
+        }
+      },
+      "zip": "x",
+      "city": "x",
+      "street": "x",
+      "geo": {
+        "latitude": 1,
+        "longitude": -1
+      }
+    },
+    "sbrown": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "x",
+      "name": "x",
+      "corp": "x",
+      "launchobjects": {
+        "a": {
+          "field": "x",
+          "type": "phone"
+        },
+        "b": {
+          "field": "x.com",
+          "type": "email"
+        },
+        "d": {
+          "field": "http://www.x.com/",
+          "type": "web"
+        }
+      },
+      "zip": "x",
+      "city": "x",
+      "street": "x",
+      "geo": {
+        "latitude": 1,
+        "longitude": -1
+      }
+    }
   }
 }

@@ -1,4 +1,10 @@
 {
+  "includedsections":{
+    "items": {
+       "awardsnational": {},
+       "awardsohio": {}
+    }
+  },
   "items": {
     "aaa": {
       "navigation": {
