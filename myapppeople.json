@@ -74,8 +74,8 @@
     "iconwidth": 60
   },
   "items": {
-    "tburris": {
-      "pic": "tburris.jpg",
+    "burrist": {
+      "pic": "burrist.jpg",
       "originaliconwidth": 950,
       "originaliconheight": 1188,
       "state": "IN",
@@ -107,8 +107,8 @@
         "longitude": -86.389553
       }
     },
-    "coswald": {
-      "pic": "coswald.jpg",
+    "oswaldc": {
+      "pic": "oswaldc.jpg",
       "originaliconwidth": 2189,
       "originaliconheight": 1599,
       "state": "KY",
@@ -136,8 +136,8 @@
       "city": "London",
       "street": "P.O. Box 3440"
     },
-    "dcomstock": {
-      "pic": "dcomstock.jpg",
+    "comstockd": {
+      "pic": "comstockd.jpg",
       "originaliconwidth": 940,
       "originaliconheight": 1135,
       "launchobjects": {
@@ -166,8 +166,8 @@
       "street": "4137 Boardman-Canfield Rd.",
       "street2": "Suite 101"
     },
-    "jlibbert": {
-      "pic": "jlibbert.jpg",
+    "libbertj": {
+      "pic": "libbertj.jpg",
       "originaliconwidth": 2272,
       "originaliconheight": 1704,
       "launchobjects": {
@@ -187,8 +187,8 @@
       "city": "Crescent Springs",
       "street": "2613 Crescent Springs Pike"
     },
-    "jferrand": {
-      "pic": "jferrand.jpg",
+    "ferrandj": {
+      "pic": "ferrandj.jpg",
       "originaliconwidth": 300,
       "originaliconheight": 400,
       "launchobjects": {
@@ -209,8 +209,8 @@
       "street": "550 Congressional Blvd",
       "street2": "Suite 200"
     },
-    "rluskin": {
-      "pic": "rluskin.jpg",
+    "luskinr": {
+      "pic": "luskinr.jpg",
       "originaliconwidth": 2000,
       "originaliconheight": 3008,
       "launchobjects": {
@@ -239,7 +239,7 @@
       "street": "3340 Peachtree Rd., N.E.",
       "street2": "Suite 2100"
     },
-    "jdavis": {
+    "davisj": {
       "launchobjects": {
         "a": {
           "field": "(317) 370-6475",
@@ -265,7 +265,7 @@
       "city": "Indianapolis",
       "street": "P.O. Box 80129"
     },
-    "cpadgett": {
+    "padgettc": {
       "launchobjects": {
         "a": {
           "field": "(859) 653-0547",
@@ -287,7 +287,7 @@
       "city": "Columbus",
       "street": "4 Easton Oval"
     },
-    "hpfaffenberger": {
+    "pfaffenbergerh": {
       "launchobjects": {
         "a": {
           "field": "(502) 437-9011",
@@ -309,7 +309,7 @@
       "city": "Louisville",
       "street": "231 South Fifth St., 3rd Floor"
     },
-    "jmunn": {
+    "munnj": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
@@ -338,7 +338,7 @@
         "longitude": -1
       }
     },
-    "lwerkheiser": {
+    "werkheiserl": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
@@ -367,7 +367,7 @@
         "longitude": -1
       }
     },
-    "rmiller": {
+    "millerr": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
@@ -396,7 +396,7 @@
         "longitude": -1
       }
     },
-    "jbush": {
+    "bushj": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
@@ -425,7 +425,7 @@
         "longitude": -1
       }
     },
-    "gpickover": {
+    "pickoverg": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
@@ -454,7 +454,7 @@
         "longitude": -1
       }
     },
-    "mpresson": {
+    "pressonm": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
@@ -483,7 +483,7 @@
         "longitude": -1
       }
     },
-    "sbrown": {
+    "browns": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,

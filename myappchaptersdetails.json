@@ -992,7 +992,7 @@
         "isCategory": true
       },
       "a02": {
-        "id": "jdavis",
+        "id": "davisj",
         "text": "Chair"
       },
       "b01": {
@@ -1001,7 +1001,7 @@
         "isCategory": true
       },
       "b02": {
-        "id": "tburris",
+        "id": "burrist",
         "text": "Chair"
       },
       "c01": {
@@ -1010,7 +1010,7 @@
         "isCategory": true
       },
       "c02": {
-        "id": "rluskin",
+        "id": "luskinr",
         "text": "Chair"
       },
       "d01": {
@@ -1019,7 +1019,7 @@
         "isCategory": true
       },
       "d02": {
-        "id": "dcomstock",
+        "id": "comstockd",
         "text": "Chair"
       },
       "e01": {
@@ -1028,11 +1028,11 @@
         "isCategory": true
       },
       "e02": {
-        "id": "coswald",
+        "id": "oswaldc",
         "text": "Chair"
       },
       "e03": {
-        "id": "tburris",
+        "id": "burrist",
         "text": "Co-Chair"
       },
       "f01": {
@@ -1041,19 +1041,19 @@
         "isCategory": true
       },
       "f02": {
-        "id": "mwatters",
+        "id": "wattersm",
         "text": "Chair"
       },
       "f03": {
-        "id": "dcomstock",
+        "id": "comstockd",
         "text": "Member"
       },
       "f04": {
-        "id": "wkeller",
+        "id": "kellerw",
         "text": "Member"
       },
       "f05": {
-        "id": "rsweebe",
+        "id": "sweeber",
         "text": "Member"
       },
       "g01": {
@@ -1062,7 +1062,7 @@
         "isCategory": true
       },
       "g02": {
-        "id": "jlibbert",
+        "id": "libbertj",
         "text": "Chair"
       },
       "h01": {
@@ -1071,19 +1071,19 @@
         "isCategory": true
       },
       "h02": {
-        "id": "mwatters",
+        "id": "wattersm",
         "text": "Chair"
       },
       "h03": {
-        "id": "dcomstock",
+        "id": "comstockd",
         "text": "Member"
       },
       "h04": {
-        "id": "wkeller",
+        "id": "kellerw",
         "text": "Member"
       },
       "h05": {
-        "id": "rsweebe",
+        "id": "sweeber",
         "text": "Member"
       },
       "i01": {
@@ -1092,11 +1092,11 @@
         "isCategory": true
       },
       "i02": {
-        "id": "dcomstock",
+        "id": "comstockd",
         "text": "Chair"
       },
       "i03": {
-        "id": "ttorode",
+        "id": "torodet",
         "text": "Member"
       },
       "j01": {
@@ -1105,11 +1105,11 @@
         "isCategory": true
       },
       "j02": {
-        "id": "mrobinson",
+        "id": "robinsonm",
         "text": "Chair"
       },
       "j03": {
-        "id": "wchris",
+        "id": "chrisw",
         "text": "Member"
       },
       "k01": {
@@ -1118,7 +1118,7 @@
         "isCategory": true
       },
       "k02": {
-        "id": "asmith",
+        "id": "smitha",
         "text": "Chair"
       },
       "l01": {
@@ -1127,31 +1127,31 @@
         "isCategory": true
       },
       "l02": {
-        "id": "pheagerty",
+        "id": "heagertyp",
         "text": "Co-Chair"
       },
       "l03": {
-        "id": "cpadgett",
+        "id": "padgettc",
         "text": "Co-Chair"
       },
       "l04": {
-        "id": "cashby",
+        "id": "ashbyc",
         "text": "Member"
       },
       "l05": {
-        "id": "jbush",
+        "id": "bushj",
         "text": "Member"
       },
       "l06": {
-        "id": "ccharlton",
+        "id": "charltonc",
         "text": "Member"
       },
       "l07": {
-        "id": "jlibbert",
+        "id": "libbertj",
         "text": "Member"
       },
       "l08": {
-        "id": "mreynolds",
+        "id": "reynoldsm",
         "text": "Member"
       },
       "m01": {
@@ -1160,7 +1160,7 @@
         "isCategory": true
       },
       "m02": {
-        "id": "tburris",
+        "id": "burrist",
         "text": "Chair"
       }
     }
@@ -1210,7 +1210,7 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
+        "id": "oswaldc",
         "text": "President"
       },
       "b01": {
@@ -1219,26 +1219,26 @@
         "isCategory": true
       },
       "b02": {
-        "id": "tburris",
+        "id": "burrist",
         "text": "First Vice President",
         "subtext": "(Automatic Succession)"
       },
       "b03": {
-        "id": "dcomstock",
+        "id": "comstockd",
         "text": "Second Vice-President ",
         "subtext": "(Automatic Succession)"
       },
       "b04": {
-        "id": "jferrand",
+        "id": "ferrandj",
         "text": "Immediate Past President "
       },
       "b05": {
-        "id": "jlibbert",
+        "id": "libbertj",
         "text": "Treasurer ",
         "subtext": "(Term Expires 11/17)"
       },
       "b06": {
-        "id": "rluskin",
+        "id": "luskinr",
         "text": "Secretary ",
         "subtext": "(Term Expires 11/17)"
       },
@@ -1248,15 +1248,15 @@
         "isCategory": true
       },
       "c02": {
-        "id": "jdavis",
+        "id": "davisj",
         "subtext": "(Term Expires 11/18)"
       },
       "c03": {
-        "id": "cpadgett",
+        "id": "padgettc",
         "subtext": "(Term Expires 11/18)"
       },
       "c04": {
-        "id": "hpfaffenberger",
+        "id": "pfaffenbergerh",
         "subtext": "(Term Expires 11/17)"
       },
       "d01": {
@@ -1265,11 +1265,11 @@
         "isCategory": true
       },
       "d02": {
-        "id": "jmunn",
+        "id": "munnj",
         "text": "Alabama Chapter Delegate"
       },
       "d03": {
-        "id": "lwerkheiser",
+        "id": "werkheiserl",
         "text": "Arizona Chapter Delegate"
       },
       "d04": {
@@ -1277,35 +1277,35 @@
         "text": "Florida Chapter Delegate"
       },
       "d05": {
-        "id": "rluskin",
+        "id": "luskinr",
         "text": "Georgia Chapter Delegate"
       },
       "d06": {
-        "id": "rmiller",
+        "id": "millerr",
         "text": "Illinois Chapter Delegate"
       },
       "d07": {
-        "id": "jferrand",
+        "id": "ferrandj",
         "text": "Indiana Chapter Delegate"
       },
       "d08": {
-        "id": "jbush",
+        "id": "bushj",
         "text": "Kentucky Chapter Delegate"
       },
       "d09": {
-        "id": "gpickover",
+        "id": "pickoverg",
         "text": "Michigan Chapter Delegate"
       },
       "d10": {
-        "id": "mpresson",
+        "id": "pressonm",
         "text": "Missouri Chapter Delegate"
       },
       "d11": {
-        "id": "cpadgett",
+        "id": "padgettc",
         "text": "Ohio Chapter Delegate"
       },
       "d12": {
-        "id": "sbrown",
+        "id": "browns",
         "text": "Tennessee Chapter Delegate"
       }
     }

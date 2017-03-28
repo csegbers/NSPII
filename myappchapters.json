@@ -1,11 +1,7 @@
 {
   "groupheight": 25,
   "headerfontsize": 16,
-
   "items": {
-
-
-
     "a1": {
       "navigation": {
         "composer": {
@@ -30,7 +26,6 @@
       "doublewide": true,
 
     },
-
     "a2": {
       "groupheight": 90,
       "doublewide": true,
@@ -57,8 +52,6 @@
       "forwardtext": ">",
       "pic": "pdf.png"
     },
-
-
     "b1": {
        "navigation": {
         "composer": {
@@ -82,8 +75,6 @@
       "text": "",
       "doublewide": true,
     },
-
-
     "c1": {
        "navigation": {
         "composer": {
