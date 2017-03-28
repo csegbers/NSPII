@@ -1,19 +1,19 @@
 {
-  "includedsections":{
+  "includedsections": {
     "items": {
-       "chaptercommittees": {},
-       "statechapters": {},
-       "alabamachapter": {},
-       "floridachapter": {},
-       "georgiachapter": {},
-       "illinoischapter": {},
-       "indianachapter": {},
-       "kentuckychapter": {},
-       "michiganchapter": {},
-       "missourichapter": {},
-       "ohiochapter": {},
-       "tennesseechapter": {},
-       "devchapchapter": {}
+      "chaptercommittees": {},
+      "statechapters": {},
+      "alabamachapter": {},
+      "floridachapter": {},
+      "georgiachapter": {},
+      "illinoischapter": {},
+      "indianachapter": {},
+      "kentuckychapter": {},
+      "michiganchapter": {},
+      "missourichapter": {},
+      "ohiochapter": {},
+      "tennesseechapter": {},
+      "devchapchapter": {}
     }
   },
   "statechapters": {
@@ -277,23 +277,39 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
-        "text": "President"
+        "id": "munnj",
+        "text": "President and Chapter Delegate "
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
       "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
+        "id": "beaglem",
+        "text": "Board Member"
       },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
+        "id": "x",
+        "text": "First Vice-President",
         "subtext": "(Automatic Succession)"
+      },
+      "b04": {
+        "id": "x",
+        "text": "Second Vice-President",
+        "subtext": "(Automatic Succession)"
+      },
+      "b05": {
+        "id": "hesterc",
+        "text": "Secretary"
+      },
+      "b06": {
+        "id": "crainj",
+        "text": "Treasurer"
+      },
+      "b07": {
+        "id": "spearm",
+        "text": "Board Member and Past President"
       }
     }
   },
@@ -342,23 +358,42 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
+        "id": "meshelh",
         "text": "President"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "smithg",
+        "text": "First Vice-President"
+      },
+      "b04": {
+        "id": "bernalr",
+        "text": "Second Vice-President"
+      },
+      "b05": {
+        "id": "noceroa",
+        "text": "Secretary"
+      },
+      "b06": {
+        "id": "butlerc",
+        "text": "Treasurer"
+      },
+      "b07": {
+        "id": "harlowt",
+        "text": "Immediate Past President and Chapter Delegate"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "henryb",
+        "text": "Board Member"
       }
     }
   },
@@ -407,23 +442,33 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
-        "text": "President"
+        "id": "luskinr",
+        "text": "President and Chapter Delegate"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "x",
+        "text": "First Vice-President"
+      },
+      "b04": {
+        "id": "x",
+        "text": "Second Vice-President"
+      },
+      "b05": {
+        "id": "x",
+        "text": "Secretary"
+      },
+      "b06": {
+        "id": "x",
+        "text": "Treasurer"
+      },
+      "b07": {
+        "id": "x",
+        "text": "Immediate Past President"
       }
     }
   },
@@ -472,23 +517,58 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
+        "id": "moche",
         "text": "President"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "callahanm",
+        "text": "First Vice-President"
+      },
+      "b04": {
+        "id": "x",
+        "text": "Second Vice-President"
+      },
+      "b05": {
+        "id": "wallacej",
+        "text": "Secretary"
+      },
+      "b06": {
+        "id": "dwyerk",
+        "text": "Treasurer"
+      },
+      "b07": {
+        "id": "blockc",
+        "text": "Immediate Past President"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "barnaclej",
+        "text": "Board Member"
+      },
+      "c03": {
+        "id": "fishmans",
+        "text": "Board Member"
+      },
+      "c04": {
+        "id": "gillmans",
+        "text": "Board Member"
+      },
+      "c05": {
+        "id": "legenzam",
+        "text": "Board Member"
+      },
+      "c06": {
+        "id": "millerr",
+        "text": "Chapter Delegate"
       }
     }
   },
@@ -537,23 +617,106 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
+        "id": "abbeyj",
         "text": "President"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
+      "b03": {
+        "id": "pinkusg",
+        "text": "First Vice-President",
         "subtext": "(Automatic Succession)"
       },
-      "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
+      "b04": {
+        "id": "ottor",
+        "text": "Second Vice-President",
         "subtext": "(Automatic Succession)"
+      },
+      "b05": {
+        "id": "tyrak",
+        "text": "Secretary",
+        "subtext": "(Term Expires 12/18)"
+      },
+      "b06": {
+        "id": "horinea",
+        "text": "Treasurer",
+        "subtext": "(Term Expires 12/18)"
+      },
+      "b07": {
+        "id": "vergonm",
+        "text": "Past President"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "biskupskib",
+        "text": "Board Member",
+        "subtext": "(Term Expires 12/18)"
+      },
+      "c03": {
+        "id": "blackl",
+        "text": "Board Member",
+        "subtext": "(Term Expires 12/18)"
+      },
+      "c04": {
+        "id": "davisj",
+        "text": "Board Member",
+        "subtext": "(Term Expires 12/17)"
+      },
+      "d01": {
+        "id": "x",
+        "text": "Indiana Chapter Committees",
+        "isCategory": true
+      },
+      "d02": {
+        "id": "horinea",
+        "text": "Awards & Recognition"
+      },
+      "d03": {
+        "id": "abbeyj",
+        "text": "Constitution & Bylaws"
+      },
+      "d04": {
+        "id": "biskupskib",
+        "text": "Election"
+      },
+      "d05": {
+        "id": "cambrae",
+        "text": "Finance"
+      },
+      "d06": {
+        "id": "tyrak",
+        "text": "Grievance"
+      },
+      "d07": {
+        "id": "ferrandj",
+        "text": "Legislative"
+      },
+      "d08": {
+        "id": "pinkusg",
+        "text": "Membership"
+      },
+      "d09": {
+        "id": "abbeyj",
+        "text": "Newsletter"
+      },
+      "d10": {
+        "id": "ottor",
+        "text": "Public Relations"
+      },
+      "d11": {
+        "id": "abbeyj",
+        "text": "Training & Education"
+      },
+      "d12": {
+        "id": "vergonm",
+        "text": "Training & Education"
       }
     }
   },
@@ -602,23 +765,46 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
-        "text": "President"
+        "id": "browns",
+        "text": "President and TN Chapter Delegate"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "rottmuellerd",
+        "text": "First Vice-President"
+      },
+      "b04": {
+        "id": "schockmanb",
+        "text": "Second Vice-President"
+      },
+      "b05": {
+        "id": "funfsinng",
+        "text": "Secretary"
+      },
+      "b06": {
+        "id": "hagemanm",
+        "text": "Treasurer and Past President "
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "beaglem",
+        "text": "Board Member"
+      },
+      "c03": {
+        "id": "priceg",
+        "text": "Board Member"
+      },
+      "c04": {
+        "id": "bushj",
+        "text": "Chapter Delegate"
       }
     }
   },
@@ -667,23 +853,42 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
+        "id": "pickoverg",
         "text": "President"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "wasekc",
+        "text": "First Vice-President"
+      },
+      "b04": {
+        "id": "x",
+        "text": "Second Vice-President"
+      },
+      "b06": {
+        "id": "tarchalas",
+        "text": "Treasurer"
+      },
+      "b07": {
+        "id": "meyerk",
+        "text": "Past President, Chapter Delegate, Chapter Newsletter Editor"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "walworthb",
+        "text": "Board Member"
+      },
+      "c03": {
+        "id": "yeagerp",
+        "text": "Board Member"
       }
     }
   },
@@ -732,23 +937,54 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
-        "text": "President"
+        "id": "sproatj",
+        "text": "President and Chapter Delegate"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "pressonm",
+        "text": "First Vice-President"
+      },
+      "b04": {
+        "id": "clarkk",
+        "text": "Second Vice-President"
+      },
+      "b05": {
+        "id": "fickenc",
+        "text": "Secretary"
+      },
+      "b06": {
+        "id": "jacobsonc",
+        "text": "Treasurer"
+      },
+      "b07": {
+        "id": "morrowj",
+        "text": "Immediate Past President"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "cristl",
+        "text": "Board Member"
+      },
+      "c03": {
+        "id": "lanxonm",
+        "text": "Board Member"
+      },
+      "c04": {
+        "id": "mcdonaldc",
+        "text": "Board Member"
+      },
+      "c05": {
+        "id": "waggonerw",
+        "text": "Board Member"
       }
     }
   },
@@ -797,23 +1033,184 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
+        "id": "chrisw",
         "text": "President"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
+      "b03": {
+        "id": "rileyr",
+        "text": "First Vice-President",
         "subtext": "(Automatic Succession)"
       },
-      "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
+      "b04": {
+        "id": "heagertyp",
+        "text": "Second Vice-President",
         "subtext": "(Automatic Succession)"
+      },
+      "b05": {
+        "id": "jamesc",
+        "text": "Secretary",
+        "subtext": "(Term Expires 11/18)"
+      },
+      "b06": {
+        "id": "sherwoodm",
+        "text": "Treasurer",
+        "subtext": "(Term Expires 11/18)"
+      },
+      "b07": {
+        "id": "warrens",
+        "text": "Past President"
+      },
+      "b08": {
+        "id": "padgettc",
+        "text": "Ohio Chapter Delegate"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "angstt",
+        "text": "Board Member",
+        "subtext": "(Term Expires 11/17)"
+      },
+      "c03": {
+        "id": "carra",
+        "text": "Board Member",
+        "subtext": "(Term Expires 11/18)"
+      },
+      "c04": {
+        "id": "deans",
+        "text": "Board Member",
+        "subtext": "(Term Expires 11/18)"
+      },
+      "c05": {
+        "id": "padgettc",
+        "text": "Board Member",
+        "subtext": "(Term Expires 11/17)"
+      },
+      "c06": {
+        "id": "koontzt",
+        "text": "Board Member",
+        "subtext": "(Term Expires 11/18)"
+      },
+      "d01": {
+        "id": "x",
+        "text": "Executive Secretary",
+        "isCategory": true
+      },
+      "d02": {
+        "id": "robinsonm"
+      },
+      "e01": {
+        "id": "x",
+        "text": "Ohio Chapter Committees",
+        "isCategory": true
+      },
+      "e02a": {
+        "id": "jamesc",
+        "text": "Awards & Recognition",
+        "subtext": "Chair"
+      },
+      "e02b": {
+        "id": "warrens",
+        "text": "Awards & Recognition",
+        "subtext": "Member"
+      },
+      "e03": {
+        "id": "sherwoodm",
+        "text": "Budget & Finance",
+        "subtext": "Chair"
+      },
+      "e04a": {
+        "id": "chrisw",
+        "text": "Constitution & Bylaws",
+        "subtext": "Chair"
+      },
+      "e04b": {
+        "id": "sherwoodm",
+        "text": "Constitution & Bylaws",
+        "subtext": "Member"
+      },
+      "e05a": {
+        "id": "koontzt",
+        "text": "Election",
+        "subtext": "Chair"
+      },
+      "e05b": {
+        "id": "deans",
+        "text": "Election",
+        "subtext": "Member"
+      },
+      "e06a": {
+        "id": "chrisw",
+        "text": "Golf Outing",
+        "subtext": "Chair"
+      },
+      "e06b": {
+        "id": "heagertyp",
+        "text": "Golf Outing",
+        "subtext": "Member"
+      },
+      "e06c": {
+        "id": "rileyr",
+        "text": "Golf Outing",
+        "subtext": "Member"
+      },
+      "e07a": {
+        "id": "chrisw",
+        "text": "Grievance",
+        "subtext": "Chair"
+      },
+      "e07b": {
+        "id": "sherwoodm",
+        "text": "Grievance",
+        "subtext": "Member"
+      },
+      "e08a": {
+        "id": "rileyr",
+        "text": "Membership",
+        "subtext": "Chair"
+      },
+      "e08b": {
+        "id": "carra",
+        "text": "Membership",
+        "subtext": "Member"
+      },
+      "e08c": {
+        "id": "koontzt",
+        "text": "Membership",
+        "subtext": "Member"
+      },
+      "e09a": {
+        "id": "chrisw",
+        "text": "Newsletter",
+        "subtext" : "Chapter Newsletter Editor"
+      },
+      "e10a": {
+        "id": "heagertyp",
+        "text": "Training & Education",
+        "subtext": "Member"
+      },
+      "e10b": {
+        "id": "padgettc",
+        "text": "Training & Education",
+        "subtext": "Member"
+      },
+      "e10c": {
+        "id": "rileyr",
+        "text": "Training & Education",
+        "subtext": "Member"
+      },
+      "e10d": {
+        "id": "warrens",
+        "text": "Training & Education",
+        "subtext": "Member"
       }
     }
   },
@@ -862,23 +1259,42 @@
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
+        "id": "browns",
         "text": "President"
       },
       "b01": {
         "id": "x",
-        "text": "Officers",
+        "text": "Chapter Officers",
         "isCategory": true
       },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
       "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "rottmuellerd",
+        "text": "First Vice-President"
+      },
+      "b04": {
+        "id": "schockmanb",
+        "text": "Second Vice-President"
+      },
+      "b05": {
+        "id": "funfsinng",
+        "text": "Secretary"
+      },
+      "b06": {
+        "id": "hagemanm",
+        "text": "Treasurer and Past President"
+      },
+      "c01": {
+        "id": "x",
+        "text": "Board Members",
+        "isCategory": true
+      },
+      "c02": {
+        "id": "beaglem",
+        "text": "Board Member"
+      },
+      "c03": {
+        "id": "priceg",
+        "text": "Board Member"
       }
     }
   },
@@ -923,27 +1339,12 @@
     "items": {
       "a01": {
         "id": "x",
-        "text": "President",
+        "text": "Points of Contact",
         "isCategory": true
       },
       "a02": {
-        "id": "coswald",
-        "text": "President"
-      },
-      "b01": {
-        "id": "x",
-        "text": "Officers",
-        "isCategory": true
-      },
-      "b02": {
-        "id": "tburris",
-        "text": "First Vice President",
-        "subtext": "(Automatic Succession)"
-      },
-      "b03": {
-        "id": "dcomstock",
-        "text": "Second Vice-President ",
-        "subtext": "(Automatic Succession)"
+        "id": "hydec",
+        "text": "Pennsylvania and New Jersey"
       }
     }
   },
