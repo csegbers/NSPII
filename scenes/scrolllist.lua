@@ -140,12 +140,32 @@ function scene:show( event )
                 local onRowTouch = function( event )
                         local row = event.row
                         local v = sbi.items[event.row.params.k]
+                        local personkey
+
                         ------------------------------
-                        -- grab the people file to use
+                        -- grab the people file to use (or sbi may already be it)
                         ------------------------------
-                        local p = myApp[sbi.type.object] or {}
+                        local p = {}
+
+
+                        --------------------------------------
+                        -- people file ?
+                        -- if not make sure the people file we point to has this person key
+                        --
+                        -- if display is person then the sbi is a people file so the k key is the actual key to use
+                        -- otherwise the v.id is the key to the people list file
+                        --------------------------------------
+                        if sbi.type.display == "person" then
+                            p = sbi
+                            personkey = event.row.params.k
+                        else
+                            p = myApp[sbi.type.object] or {}
+                            personkey = v.id
+                        end
+
                         if p.items == nil then p.items = {}  end  -- should never happen but in case they point to non existient people file
-                        if p.items[v.id] == nil then p.items[v.id] = {} end
+                        if p.items[personkey] == nil then p.items[personkey] = {} end
+
 
                         if event.phase == "press"  then     
 
@@ -160,7 +180,10 @@ function scene:show( event )
                  
                         elseif event.phase == "release" then
                                print ("release")
-                               if p.items[v.id].name then  launchDetailsScene( p,v.id ) end
+
+                               if p.items[personkey].name then  launchDetailsScene( p,personkey ) end
+
+                               
                             -- force row re-render on next TableView update
                             
                         end
@@ -168,15 +191,25 @@ function scene:show( event )
                 end       
 
                 local function onRowRender( event )
-                     if sbi.type.display == "positions" then
+                     --if sbi.type.display == "positions" then
                              local row = event.row
                              local v = sbi.items[event.row.params.k]
+
+                             local p =  {}
+                             if sbi.type.display == "person" then
+                                p = sbi
+                                personkey = event.row.params.k
+                             else
+                                p = myApp[sbi.type.object] or {}
+                                personkey = v.id
+                             end
+
                              ------------------------------
                              -- grab the people file to use
+
                              ------------------------------
-                             local p = myApp[sbi.type.object] or {}
                              if p.items == nil then p.items = {}  end  -- should never happen but in case they point to non existient people file
-                             if p.items[v.id] == nil then p.items[v.id] = {} end
+                             if p.items[personkey] == nil then p.items[personkey] = {} end
 
                              if v.isCategory then
                                  row.nameText = display.newText( v.text or "", 0, 0, myApp.fontBold,sbi.row.catfontsize )
@@ -190,8 +223,8 @@ function scene:show( event )
                                   -------------------------------------------------
                                  -- Pic ?
                                  -------------------------------------------------
-                                 if p.items[v.id].pic then
-                                     row.myIcon = display.newImageRect(myApp.imgfld .. p.items[v.id].pic, p.items[v.id].originaliconwidth or sbi.iconwidth  ,p.items[v.id].originaliconheight or sbi.iconheight )
+                                 if p.items[personkey].pic then
+                                     row.myIcon = display.newImageRect(myApp.imgfld .. p.items[personkey].pic, p.items[personkey].originaliconwidth or sbi.iconwidth  ,p.items[personkey].originaliconheight or sbi.iconheight )
                                      common.fitImage( row.myIcon,   sbi.row.iconwidth ,row.height-10  )
                                      row.myIcon.anchorX = 0
                                      row.myIcon.x = sbi.row.picindent
@@ -204,7 +237,7 @@ function scene:show( event )
                                  local xpos = sbi.row.picindent + sbi.row.iconwidth + sbi.row.picindent
                                   
                                  if v.text then  textstart =  textstart - 10 end 
-                                 if v.subtext then  textstart =  textstart - 10 end
+                                 if v.subtext or v.corp then  textstart =  textstart - 10 end
 
 
                                  if v.text then
@@ -218,7 +251,7 @@ function scene:show( event )
                                      row:insert( row.nameTitle )
                                  end
 
-                                 row.nameName = display.newText( p.items[v.id].name or v.id, 0, 0, myApp.fontBold, sbi.row.textfontsize )
+                                 row.nameName = display.newText( p.items[personkey].name or personkey, 0, 0, myApp.fontBold, sbi.row.textfontsize )
                                  row.nameName.anchorX = 0
                                  row.nameName.anchorY = 0
                                  row.nameName:setFillColor( sbi.row.textcolor )
@@ -227,8 +260,8 @@ function scene:show( event )
                                  row.nameName.x = xpos
                                  row:insert( row.nameName )
 
-                                 if v.subtext then 
-                                     row.nameSubtext = display.newText( v.subtext or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
+                                 if v.subtext or v.corp then    -- corp is on a people type file
+                                     row.nameSubtext = display.newText( v.subtext or v.corp or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
                                      row.nameSubtext.anchorX = 0
                                      row.nameSubtext.anchorY = 0
                                      row.nameSubtext:setFillColor( sbi.row.subtextcolor )
@@ -245,78 +278,7 @@ function scene:show( event )
                              end
 
                              
-                     end
-                     if sbi.type.display == "person" then
-                             local row = event.row
-                             local v = sbi.items[event.row.params.k]
-                             ------------------------------
-                             -- grab the people file to use
-                             ------------------------------
-                             local p = myApp[sbi.type.object] or {}
-                             if p.items == nil then p.items = {}  end  -- should never happen but in case they point to non existient people file
-                             if p.items[v.id] == nil then p.items[v.id] = {} end
-
-
-
-                              -------------------------------------------------
-                             -- Pic ?
-                             -------------------------------------------------
-                             if p.items[v.id].pic then
-                                 row.myIcon = display.newImageRect(myApp.imgfld .. p.items[v.id].pic, p.items[v.id].originaliconwidth or sbi.iconwidth  ,p.items[v.id].originaliconheight or sbi.iconheight )
-                                 common.fitImage( row.myIcon,   sbi.row.iconwidth ,row.height-10  )
-                                 row.myIcon.anchorX = 0
-                                 row.myIcon.x = sbi.row.picindent
-                                 row.myIcon.y = row.height/2
-                                 row:insert( row.myIcon )
-
-                             end  
-
-                             local textstart = 30
-                             local xpos = sbi.row.picindent + sbi.row.iconwidth + sbi.row.picindent
-                              
-                             if v.text then  textstart =  textstart - 10 end 
-                             if v.subtext then  textstart =  textstart - 10 end
-
-
-                             if v.text then
-                                 row.nameTitle = display.newText( v.text or "", 0, 0, myApp.font, sbi.row.titlefontsize )
-                                 row.nameTitle.anchorX = 0
-                                 row.nameTitle.anchorY = 0
-                                 row.nameTitle:setFillColor( sbi.row.titlecolor )
-                                 row.nameTitle.y = textstart
-                                 textstart =  textstart + 20
-                                 row.nameTitle.x = xpos
-                                 row:insert( row.nameTitle )
-                             end
-
-                             row.nameName = display.newText( p.items[v.id].name or v.id, 0, 0, myApp.fontBold, sbi.row.textfontsize )
-                             row.nameName.anchorX = 0
-                             row.nameName.anchorY = 0
-                             row.nameName:setFillColor( sbi.row.textcolor )
-                             row.nameName.y = textstart
-                             textstart =  textstart + 20
-                             row.nameName.x = xpos
-                             row:insert( row.nameName )
-
-                             if v.subtext then 
-                                 row.nameSubtext = display.newText( v.subtext or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
-                                 row.nameSubtext.anchorX = 0
-                                 row.nameSubtext.anchorY = 0
-                                 row.nameSubtext:setFillColor( sbi.row.subtextcolor )
-                                 row.nameSubtext.y = textstart
-                                 textstart =  textstart + 20
-                                 row.nameSubtext.x = xpos
-                                 row:insert( row.nameSubtext )
-                             end
-
-                             row.rightArrow = display.newImageRect(myApp.icons, 15 , 40, 40)
-                             row.rightArrow.x = display.contentWidth - 20
-                             row.rightArrow.y = row.height / 2
-                             row:insert(row.rightArrow)
-             
-
-                             
-                     end
+                     --end
                      return true
                 end
 
