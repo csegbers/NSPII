@@ -32,7 +32,7 @@ settings =
                 },
 
             CoronaWindowMovesWhenKeyboardAppears = true,
-            NSLocationWhenInUseUsageDescription = "This app uses maps for a variety of features.",
+            NSLocationWhenInUseUsageDescription = "This app would like to use location services.",
             UIApplicationExitsOnSuspend = false,
             UIPrerenderedIcon = true,
             UIStatusBarHidden = false,

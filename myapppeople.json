@@ -1,5 +1,42 @@
 {
-  "type": "person",
+ "type": {
+      "display": "person",
+      "object": "person"
+    },
+    "row": {
+      "height": 80,
+      "iconwidth": 60,
+      "iconheight": 60,
+      "picindent": 10,
+      "indent": 25,
+      "cattextcolor": 1,
+      "catheight": 30,
+      "catfontsize": 20,
+      "catcolor": {
+        "default": [
+          0.1686,
+          0.56078,
+          0.3215,
+          0.86
+        ]
+      },
+      "linecolor": [
+        0.7843137254902
+      ],
+      "textcolor": 0,
+      "textfontsize": 16,
+      "titlecolor": 0.5,
+      "titlefontsize": 14,
+      "subtextcolor": 0.5,
+      "subtextfontsize": 12,
+      "over": [
+        1,
+        0.5,
+        0,
+        0.2
+      ]
+    },
+
   "pic": "person.png",
   "originaliconwidth": 302,
   "originaliconheight": 302,

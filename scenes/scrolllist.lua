@@ -104,7 +104,7 @@ function scene:show( event )
 
                 local function launchDetailsScene(detailfile,id) 
 
-                          local objecttype = detailfile.type    -- person, future others
+                          local objecttype = detailfile.type.object    -- person, future others
 
                           if objecttype == "person" then
                               local persondetails = {  
@@ -243,6 +243,77 @@ function scene:show( event )
                                  row.rightArrow.y = row.height / 2
                                  row:insert(row.rightArrow)
                              end
+
+                             
+                     end
+                     if sbi.type.display == "person" then
+                             local row = event.row
+                             local v = sbi.items[event.row.params.k]
+                             ------------------------------
+                             -- grab the people file to use
+                             ------------------------------
+                             local p = myApp[sbi.type.object] or {}
+                             if p.items == nil then p.items = {}  end  -- should never happen but in case they point to non existient people file
+                             if p.items[v.id] == nil then p.items[v.id] = {} end
+
+
+
+                              -------------------------------------------------
+                             -- Pic ?
+                             -------------------------------------------------
+                             if p.items[v.id].pic then
+                                 row.myIcon = display.newImageRect(myApp.imgfld .. p.items[v.id].pic, p.items[v.id].originaliconwidth or sbi.iconwidth  ,p.items[v.id].originaliconheight or sbi.iconheight )
+                                 common.fitImage( row.myIcon,   sbi.row.iconwidth ,row.height-10  )
+                                 row.myIcon.anchorX = 0
+                                 row.myIcon.x = sbi.row.picindent
+                                 row.myIcon.y = row.height/2
+                                 row:insert( row.myIcon )
+
+                             end  
+
+                             local textstart = 30
+                             local xpos = sbi.row.picindent + sbi.row.iconwidth + sbi.row.picindent
+                              
+                             if v.text then  textstart =  textstart - 10 end 
+                             if v.subtext then  textstart =  textstart - 10 end
+
+
+                             if v.text then
+                                 row.nameTitle = display.newText( v.text or "", 0, 0, myApp.font, sbi.row.titlefontsize )
+                                 row.nameTitle.anchorX = 0
+                                 row.nameTitle.anchorY = 0
+                                 row.nameTitle:setFillColor( sbi.row.titlecolor )
+                                 row.nameTitle.y = textstart
+                                 textstart =  textstart + 20
+                                 row.nameTitle.x = xpos
+                                 row:insert( row.nameTitle )
+                             end
+
+                             row.nameName = display.newText( p.items[v.id].name or v.id, 0, 0, myApp.fontBold, sbi.row.textfontsize )
+                             row.nameName.anchorX = 0
+                             row.nameName.anchorY = 0
+                             row.nameName:setFillColor( sbi.row.textcolor )
+                             row.nameName.y = textstart
+                             textstart =  textstart + 20
+                             row.nameName.x = xpos
+                             row:insert( row.nameName )
+
+                             if v.subtext then 
+                                 row.nameSubtext = display.newText( v.subtext or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
+                                 row.nameSubtext.anchorX = 0
+                                 row.nameSubtext.anchorY = 0
+                                 row.nameSubtext:setFillColor( sbi.row.subtextcolor )
+                                 row.nameSubtext.y = textstart
+                                 textstart =  textstart + 20
+                                 row.nameSubtext.x = xpos
+                                 row:insert( row.nameSubtext )
+                             end
+
+                             row.rightArrow = display.newImageRect(myApp.icons, 15 , 40, 40)
+                             row.rightArrow.x = display.contentWidth - 20
+                             row.rightArrow.y = row.height / 2
+                             row:insert(row.rightArrow)
+             
 
                              
                      end

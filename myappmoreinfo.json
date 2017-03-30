@@ -185,6 +185,30 @@
       "title": "Extras",
       "isCategory": true
     },
+     "zz1": {
+          "navigation": {
+            "composer": {
+              "lua": "scrolllist",
+              "effect": "slideLeft",
+              "id": "peoplelist",
+              "effectback": "slideRight",
+              "time": 250
+            }
+          },
+          "textfontsize": 16,
+          "title": "Members",
+          "backtext": "<",
+          "sceneinfo": {
+            "scrollblockinfo": {
+              "object": "people",
+              "navigate": "subscene"
+            },
+            "htmlinfo": []
+          },
+          "text": "",
+          "doublewide": true,
+
+        },    
     "zz2": {
       "sceneinfo": {
         "scrollblockinfo": {

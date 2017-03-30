@@ -186,23 +186,39 @@ local function buildMap( event )
 
               local mapheight = myApp.sceneHeight-myList.height-itemGrp.height-sceneinfo.edge*2
               myMap = native.newMapView( 0, 0, myApp.sceneWidth-sceneinfo.edge , mapheight  )   -- cause
+              local function locationAddMarker(  )
+                  myMap:setCenter( myObject.geo.latitude, myObject.geo.longitude, false )
+                  myMap:setRegion( myObject.geo.latitude, myObject.geo.longitude, sceneinfo.map.latitudespan, sceneinfo.map.longitudespan, false)
+
+                  local options = { 
+                            title=myObject.name, 
+                            subtitle=(myObject.street or "") .. " " .. (myObject.city  or "") .. ", " .. (myObject.state  or "") .. " " .. (myObject.zip or "") , 
+                             }
+                  myMap:addMarker(  myObject.geo.latitude, myObject.geo.longitude, options )
+              end   
               if myMap then
                  myMap.mapType = sceneinfo.map.type -- other mapType options are "satellite" or "hybrid"
 
               -- The MapView is just another Corona display object, and can be moved or rotated, etc.
                  myMap.x = myApp.cCx
                  myMap.y = myApp.sceneStartTop + itemGrp.height  + sceneinfo.edge+ mapheight/2 + sceneinfo.edge/2
-
-                 
+                
                  if myObject.geo.latitude and myObject.geo.longitude then
-                    myMap:setCenter( myObject.geo.latitude, myObject.geo.longitude, false )
-                    myMap:setRegion( myObject.geo.latitude, myObject.geo.longitude, sceneinfo.map.latitudespan, sceneinfo.map.longitudespan, false)
-
-                    local options = { 
-                              title=myObject.name, 
-                              subtitle=(myObject.street or "") .. " " .. (myObject.city  or "") .. ", " .. (myObject.state  or "") .. " " .. (myObject.zip or "") , 
-                               }
-                    myMap:addMarker(  myObject.geo.latitude, myObject.geo.longitude, options )
+                    locationAddMarker()
+                 else
+                    local function locationHandler( event )
+                     
+                        if ( event.isError ) then
+                            print( "Map Error: " .. event.errorMessage )
+                        else
+                            print( "The specified string is at: " .. event.latitude .. "," .. event.longitude )
+                            myObject.geo.latitude = event.latitude
+                            myObject.geo.longitude = event.longitude
+                            locationAddMarker()
+                        end
+                     
+                    end                  
+                    myMap:requestLocation( (myObject.street or "") .. " " .. (myObject.city  or "") .. ", " .. (myObject.state  or "") .. " " .. (myObject.zip or ""), locationHandler )
                  end
                 
               end
