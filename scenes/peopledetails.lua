@@ -397,7 +397,7 @@ function scene:show( event )
                     transition.to(  itemGrp, { time=sceneinfo.animationtime, y = curitemGrpy , transition=easing.outQuint})
                     transition.to(  myList, { time=sceneinfo.animationtime, y = curmyListy , transition=easing.outQuint})
                 end
-                if myObject.pic then
+                if myObject.pic and myObject.pic ~= "" then
                    myIcon = display.newImageRect(myApp.imgfld .. myObject.pic, myObject.originaliconwidth or sceneinfo.iconwidth ,myObject.originaliconheight or sceneinfo.iconheight)
                    common.fitImage( myIcon,   sceneinfo.iconwidth ,myRoundedRect.height -sceneinfo.edge  )
                    itemGrp:insert(myIcon )
