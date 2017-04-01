@@ -455,7 +455,7 @@ function scene:show( event )
                 -- Generate a get directions row ?
                 -- myApp.persondetails
                 --------------------------------------------- 
-                if sceneinfo.row.includedirections and myObject.street  then
+                if sceneinfo.row.includedirections and myObject.street and myObject.street ~= ""  then
                    local address = (myObject.street  or "") .. " " .. (myObject.city  or "") .. ", " .. (myObject.state  or "")   --.. " " .. (myObject[objectgroup.mapping.zip] or ""
                    local addresswithzip = address .. " " .. (myObject.zip or "")
                    insertObject({
