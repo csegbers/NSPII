@@ -251,14 +251,17 @@ function scene:show( event )
                                      row:insert( row.nameTitle )
                                  end
 
-                                 row.nameName = display.newText( p.items[personkey].name or personkey, 0, 0, myApp.fontBold, sbi.row.textfontsize )
-                                 row.nameName.anchorX = 0
-                                 row.nameName.anchorY = 0
-                                 row.nameName:setFillColor( sbi.row.textcolor )
-                                 row.nameName.y = textstart
-                                 textstart =  textstart + 20
-                                 row.nameName.x = xpos
-                                 row:insert( row.nameName )
+                                 local persname = p.items[personkey].name or personkey
+                                 if persname ~= "x" then  
+                                     row.nameName = display.newText( persname, 0, 0, myApp.fontBold, sbi.row.textfontsize )
+                                     row.nameName.anchorX = 0
+                                     row.nameName.anchorY = 0
+                                     row.nameName:setFillColor( sbi.row.textcolor )
+                                     row.nameName.y = textstart
+                                     textstart =  textstart + 20
+                                     row.nameName.x = xpos
+                                     row:insert( row.nameName )
+                                 end
 
                                  if v.subtext or v.corp then    -- corp is on a people type file
                                      row.nameSubtext = display.newText( v.subtext or v.corp or "", 0, 0, myApp.fontBold, sbi.row.subtextfontsize )
