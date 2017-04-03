@@ -152,7 +152,9 @@ function myApp.BuildMoreInfoList(  )
       -- Insert the list
       --------------------------------------------- 
       myApp.moreGroup:insert(myMoreList )
-      myMoreList:scrollToIndex( 1 ) 
+      --myMoreList:scrollToIndex( 1 ) 
+      myMoreList:scrollToY( { y=-0 } )    --- works better for some reason
+    
 end
 
 
