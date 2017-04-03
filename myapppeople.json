@@ -240,30 +240,23 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "FL",
+      "name": "Roland Bernal",
+      "corp": "Groelle & Salmon, P.A.",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(772) 257-0700",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.gspalaw.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "32966",
+      "city": "Vero Beach",
+      "street": "1880 82nd Avenue",
+      "street2": "Suite 104"
     },
     "biskupskib": {
       "pic": "",
@@ -441,30 +434,23 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "FL",
+      "name": "Chris Butler",
+      "corp": "Eagle Eye Investigative Solutions",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(561) 983-4455",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.eeinvestigativesolutions.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "33409",
+      "city": "West Palm Beach",
+      "street": "931 Village Blvd.",
+      "street2": "Suite 905-395"
     },
     "callahanm": {
       "pic": "",
@@ -978,30 +964,19 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "FL",
+      "name": "T. David Harlow",
+      "corp": "PTC/LWG",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(954) 703-0130",
           "type": "phone"
-        },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
-        "d": {
-          "field": "http://www.x.com/",
-          "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "33441",
+      "city": "Deerfield Beach",
+      "street": "1950 N.E. 7th Street",
+      "street2": "Suite 105"
     },
     "heagertyp": {
       "pic": "",
@@ -1029,33 +1004,34 @@
       "street": ""
     },
     "henryb": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "henryb.jpg",
+      "originaliconwidth": 600,
+      "originaliconheight": 799,
+      "state": "FL",
+      "name": "Brian Henry",
+      "corp": "Smith, Rolfes & Skavdahl Co., L.P.A.",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(941) 684-0100",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "bhenry@smithrolfes.com",
+          "type": "email"
+        },
+        "c": {
+          "field": "(941) 684-0109",
           "type": "email"
         },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.smithrolfes.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "34236",
+      "city": "Sarasota",
+      "street": "1605 Main St.",
+      "street2": "Suite 1106"
     },
     "hesterc": {
       "pic": "hesterc.jpg",
@@ -1396,33 +1372,25 @@
       }
     },
     "meshelh": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "meshelh.jpg",
+      "originaliconwidth": 576,
+      "originaliconheight": 768,
+      "state": "FL",
+      "name": "Harvey S. Meshel",
+      "corp": "HSM Consulting, Inc.",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(954) 961-3502",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.hsmconsulting.net/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "33081",
+      "city": "Hollywood",
+      "street": "P.O. Box 814722"
     },
     "meyerk": {
       "pic": "",
@@ -1564,33 +1532,33 @@
       "street2": "Suite 110"
     },
     "noceroa": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "noceroa.jpg",
+      "originaliconwidth": 174,
+      "originaliconheight": 254,
+      "state": "FL",
+      "name": "Aimee Nocero",
+      "corp": "Neilson and Associates, P.A.",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(407) 843-6514",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "anocero@ntlaw.com",
           "type": "email"
         },
+        "c": {
+          "field": "(407) 843-0427",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.ntlaw.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "32804",
+      "city": "Orlando",
+      "street": "1332 W. Colonial Dr."
     },
     "oswaldc": {
       "pic": "oswaldc.jpg",
@@ -2005,33 +1973,30 @@
       "street": ""
     },
     "smithg": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "smithg.jpg",
+      "originaliconwidth": 150,
+      "originaliconheight": 150,
+      "state": "FL",
+      "name": "Gina G. Smith",
+      "corp": "Butler Weihmuller Katz Craig LLP",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(850) 894-4111",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
+        "c": {
+          "field": "(850) 894-4999",
+          "type": "fax"
         },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.butler.legal/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "32312",
+      "city": "Tallahassee",
+      "street": "3600 Maclay Blvd.",
+      "street2": "Suite 101"
     },
     "spearm": {
       "pic": "spearm.jpg",
