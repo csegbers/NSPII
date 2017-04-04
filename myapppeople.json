@@ -193,30 +193,26 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "IL",
+      "name": "John Barnacle",
+      "corp": "The Hartford",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(630) 692-8724",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
+        "c": {
+          "field": "(855) 878-9968",
+          "type": "fax"
         },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.thehartford.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "60439",
+      "city": "Lemont",
+      "street": "13530 Arctic Lane"
     },
     "beaglem": {
       "pic": "",
@@ -831,33 +827,30 @@
       }
     },
     "fishmans": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "fishmans.jpg",
+      "originaliconwidth": 395,
+      "originaliconheight": 395,
+      "state": "IL",
+      "name": "Scott Fishman",
+      "corp": "Freeborn & Peters LLP",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(312) 360-6626",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "sfishman@freeborn.com",
           "type": "email"
         },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.freeborn.com",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "60606",
+      "city": "Chicago",
+      "street": "311 S. Wacker Dr.",
+      "street2": "Suite 3000"
     },
     "funfsinng": {
       "pic": "",
@@ -889,33 +882,33 @@
       }
     },
     "gillmans": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "gillmans.jpg",
+      "originaliconwidth": 150,
+      "originaliconheight": 150,
+      "state": "IL",
+      "name": "Scott Gillman",
+      "corp": "Condon & Cook, LLC",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(312) 266-1313",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "sgillman@condoncook.com",
           "type": "email"
         },
+        "c": {
+          "field": "(312) 266-8148",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.condoncook.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "60610",
+      "city": "Chicago",
+      "street": "745 North Dearborn St."
     },
     "hagemanm": {
       "pic": "",
@@ -1252,30 +1245,18 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "IL",
+      "name": "Michael Legenza",
+      "corp": "Safeway Insurance",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(630) 850-3874",
           "type": "phone"
-        },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
-        "d": {
-          "field": "http://www.x.com/",
-          "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "60559",
+      "city": "Westmont",
+      "street": "790 Pasquinelli Dr."
     },
     "libbertj": {
       "pic": "libbertj.jpg",
@@ -1418,10 +1399,6 @@
         "a": {
           "field": "(630) 803-8517",
           "type": "phone"
-        },
-        "b": {
-          "field": "x.com",
-          "type": "email"
         },
         "d": {
           "field": "https://www.farmers.com/",
