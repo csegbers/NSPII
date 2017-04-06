@@ -262,49 +262,55 @@ function scene:show( event )
                     ---------------------------------
                     -- stick inside a time to prevent the buton press from passing thru to the current scene
                     ---------------------------------
-                    onRelease = function() --print ("111btnpushed " .. tostring(btnpushed))
-                                        if btnpushed == false then
-                                            btnpushed = true 
-                                            --print ("222 btnpushed " .. tostring(btnpushed))
-                                            local inputemail = userField.textField.text or ""
-                                            local inputpwd = pwdField.textField.text or ""
-                                            if inputemail == "" or inputpwd == "" then
-                                               native.showAlert( sceneinfo.btnloginmessage.errortitle, sceneinfo.btnloginmessage.errormessage, { "Okay" },function() btnpushed = false  end  )
-                                            else
-                                                native.setActivityIndicator( true )
-                                                local userDataTable = { ["username"] = inputemail, ["password"] = inputpwd }
-                                                parse:clearSessionToken ()
-                                                print ('about to login"')
-                                                parse:loginUser( 
-                                                                  userDataTable,  
-                                                                  function(event)
-                                                                       native.setActivityIndicator( false )
-                                                                       print ("login info " .. (event.response.error or "") )
-                                                                       if  (event.response.error or "")   == "" then 
-                                                                          myApp.fncPutUD("email",inputemail)
-                                                                          myApp.fncUserLogInfo(event.response)
-                                                                          if myApp.authentication.emailVerified == false then
-                                                                            -----------------------------------------------
-                                                                            -- resend another email verification. Prior ones invalid
-                                                                            -- only way to do this is update email to "" then reupdate
-                                                                            ------------------------------------------------
-                                                                            parse:updateUser( myApp.authentication.objectId, { ["email"] = "" } ,function() parse:updateUser(myApp.authentication.objectId, { ["email"] = inputemail } ) end)
-                                                                            native.showAlert( sceneinfo.btnloginmessage.verifytitle, sceneinfo.btnloginmessage.verifymessage, { "Okay" },function() btnpushed = false  end )
-                                                                          else
-                                                                            timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
-                                                                          end
-                                                                        -- native.showAlert( sceneinfo.btnloginmessage.successtitle, sceneinfo.btnloginmessage.successmessage, { "Okay" } )
-                                                                         
-                                                                         -- stay here becuase they most likely will get the email and need to login again  
-                                                                       else
-                                                                          native.showAlert( sceneinfo.btnloginmessage.failuretitle, (event.response.error or "Unknown"), { "Okay" },function() btnpushed = false  end )
-                                                                       end
-                                                                       
-                                                                  end    --- return function from parse
-                                                                 )   -- end of parse
-                                             end -- end of checking for valid input
-                                             
-                                         end   -- end of btnpushed check
+                    onRelease = function() 
+                                        local inputemail = userField.textField.text or ""
+                                        local inputpwd = pwdField.textField.text or ""
+                                        if inputemail == "" or inputpwd == "" then
+                                           native.showAlert( sceneinfo.btnloginmessage.errortitle, sceneinfo.btnloginmessage.errormessage, { "Okay" } )
+                                        else
+                                            native.setActivityIndicator( true )
+                                           -- local userDataTable = { ["username"] = inputemail, ["email"] = inputemail, ["password"] = inputpwd }
+                                          --  local userDataTable = {}
+                                          --  userDataTable.ClientId = myapp.aws.ClientId
+                                           -- userDataTable.Password = inputpwd
+                                           -- userDataTable.Username = inputemail
+                                           -- userDataTable.UserAttributes = {}
+
+                                           -- local jstr = '{"ClientId": "' .. myApp.aws.ClientId .. '","Password": "' .. inputpwd .. '","Username": "' .. inputemail .. '",'
+                                          --  jstr = jstr .. '"UserAttributes": [{"Name": "email","Value": "' .. inputemail .. '"  }]}'
+                                          --  local userDataTable = json.decode(jstr)
+                                           -- print (json.encode(userDataTable))
+                                            --parse:clearSessionToken ()
+
+                                            
+                                            local userDataTable = {}
+                                            userDataTable.ClientId = myApp.aws.ClientId
+                                            userDataTable.Password = inputpwd
+                                            userDataTable.Username = inputemail
+                                            userDataTable.UserAttributes = {}
+                                            local userDataTableEmail = {}
+                                            userDataTableEmail.Name = "email"
+                                            userDataTableEmail.Value = inputemail
+                                            table.insert (userDataTable.UserAttributes,userDataTableEmail)
+                                            print ("signUp  -  " .. json.encode(userDataTable))
+
+                                            aws:clearSessionToken()
+                                            aws:signUp(       myApp.aws,
+                                                              userDataTable,  
+                                                              function(event)
+                                                                   native.setActivityIndicator( false )
+                                                                   if (event.status ) == 200 then 
+                                                                     myApp.fncPutUD("email",inputemail)
+                                                                     myApp.fncUserLogInfo(event.response)
+                                                                     native.showAlert( sceneinfo.btnloginmessage.successtitle, sceneinfo.btnloginmessage.successmessage, { "Okay" } )
+                                                                     --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
+                                                                     -- stay here becuase they most likely will get the email and need to login again  
+                                                                   else
+                                                                     native.showAlert( sceneinfo.btnloginmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
+                                                                   end
+                                                              end    --- return function from parse
+                                                             )   -- end of parse
+                                         end -- end of checking for valid input
                                  end,    -- end onrelease
                   }
                loginButton.anchorX = 0
