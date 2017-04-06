@@ -344,20 +344,35 @@ local M = {
             -- aws
             ------------------------------            
            aws = {
-                        ClientId = '1br0l7moqel6h915ceimtohsju',
+                        ClientId = '7m7p7tk8ta4qlb4ai15nqmh8a1',
                         IDP = {
                                 url = "https://cognito-idp.us-east-1.amazonaws.com/",
                                 headers =
                                          {
-                                           a = {name = "Host",value="cognito-idp.us-east-1.amazonaws.com"},
-                                           b = {name = "Content-Type", value = "application/x-amz-json-1.1"},
-                                           c = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService.{actionname}"}
+                                           a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService.{actionname}"}
+                                           b = {name = "X-AMZ-DATE", value = "{utc}"},
+                                           c = {name = "Authorization", value = "{signature}", includewithauth=true},
+                                           d = {name = "Content-Type", value = "application/x-amz-json-1.1"},
+                                           e = {name = "Host",value="cognito-idp.us-east-1.amazonaws.com"},
                                          },
   
                                 Actions = {
                                              SignUp = {name = "SignUp", httpaction="POST"}
                                           },
                               },
+                         config = {
+                            aws_host       = "cognito-idp.us-east-1.amazonaws.com",
+                            aws_key        = "--",  
+                            aws_secret     = "--",
+                            aws_region     = "us-east-1",
+                            aws_service    = "cognito-idp",
+                            aws_request    = 'aws4_request',
+                            content_type   = "application/x-amz-json-1.1",
+                            request_method = "POST",
+                            equest_querystr = "" ,  -- always in asc order !!! empty string if nothing
+                            request_path   = "/",    -- "/" if nothing
+                        } 
+
 
                         -- endpoints = {
                         --                 config  = {

@@ -40,7 +40,7 @@ function _M.new(self, config)
   req_method  = config.request_method or "POST"
   req_path    = config.request_path   or "/"
   req_querystr= config.request_querystr or ''
-  req_body    = config.request_body
+  req_body    = config.request_body or ""
   sessionToken= nil
   -- set default time
   self:set_iso_date(config.iso_date or os.time())
