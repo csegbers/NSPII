@@ -117,7 +117,7 @@ end
 -- if user just created then not every field is there like email
 -------------------------------
 function myApp.fncUserLogInfo (userObject)
-     print "fncUserLoggedIn  "
+     print "fncUserLoggedIn  "  
      myApp.authentication.email = userObject.email
      myApp.authentication.emailVerified = userObject.emailVerified
      myApp.authentication.username = userObject.username                -- for now this is email

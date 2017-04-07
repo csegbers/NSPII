@@ -36,27 +36,16 @@ function _M.new(self, config)
   aws_service = config.aws_service
   aws_request = config.aws_request
   aws_host    = config.aws_host
-  cont_type   = config.content_type   or "application/x-www-form-urlencoded" 
+  cont_type   = config.content_type  
   req_method  = config.request_method or "POST"
   req_path    = config.request_path   or "/"
-  req_querystr= config.request_querystr or ''
+  req_querystr= config.request_querystr or ""
   req_body    = config.request_body or ""
   sessionToken= nil
   -- set default time
   self:set_iso_date(config.iso_date or os.time())
   return setmetatable(_M, mt)
 end
-
-
-
-
-
-
-
-
-
-
-
 
 ---Clears the Parse sessionToken.
 --
@@ -73,12 +62,36 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
   --set up headers
   local headers = {}
   local k,v
+  local addheader 
+  local headvalue 
   for k,v in pairs(objMetaTable[objMetaTableKey].headers) do 
-    headers[v.name] = string.gsub( v.value, "{actionname}", objMetaTable[objMetaTableKey].Actions[awsAction].name)
-    
+    addheader = true
+    if objMetaTable[objMetaTableKey].Actions[awsAction].authtype ~= true then
+       if v.authtype == true then addheader = false  end
+    end
+    if addheader then
+      headvalue =  v.value 
+      headvalue = string.gsub( headvalue, "{actionname}", objMetaTable[objMetaTableKey].Actions[awsAction].name)
+      headvalue = string.gsub( headvalue, "{contenttype}", objMetaTable.ContentType)
+      headvalue = string.gsub( headvalue, "{host}", objMetaTable.Host)
+      headvalue = string.gsub( headvalue, "{utc}",iso_tz)
+      ----------------------------------
+      -- dont do all this logic if not needed
+      ----------------------------------
+      if string.find( headvalue, "{signature}" ) then
+          headvalue = string.gsub( headvalue, "{signature}",self:get_authorization_header())
+      end
+      
+      print ("**************** HEAD VALUE *****************")
+      print ("**************** HEAD VALUE *****************")
+      print (v.name .. ": " .. headvalue)
+      print ("**************** HEAD VALUE *****************")
+      print ("**************** HEAD VALUE *****************")
+      headers[v.name] = headvalue
+    end
   end  
 
-
+ 
   --populate parameters for the network call
   local requestParams = {}
   requestParams.headers = headers
@@ -88,8 +101,10 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
 end
 
 function _M.buildRequestParams(self, objMetaTable, objMetaTableKey, withDataTable,awsAction)
-  local postData = json.encode( withDataTable )
-  return self:newRequestParams(objMetaTable, objMetaTableKey, postData,awsAction) --for use in a network request
+--  local postData = json.encode( withDataTable )
+--  return self:newRequestParams(objMetaTable, objMetaTableKey, postData,awsAction) --for use in a network request
+   return self:newRequestParams(objMetaTable, objMetaTableKey, withDataTable,awsAction) --for use in a network request
+
 end
 
 
@@ -97,7 +112,9 @@ function _M.sendRequest( self, objMetaTable, objMetaTableKey, requestParamsTbl, 
   print ("awsaction  " .. awsAction)
   local requestParams = self:buildRequestParams(objMetaTable,objMetaTableKey ,requestParamsTbl,awsAction)
   
+  print ("network.request  -  " .. json.encode(requestParams))
   requestId = network.request( objMetaTable[objMetaTableKey].url, objMetaTable[objMetaTableKey].Actions[awsAction].httpaction, _callback, requestParams )
+  
   return  requestId
 
  --[[ local q = { 
@@ -112,7 +129,11 @@ end
 
 
 function _M.signUp( self, objMetaTable, objDataTable, _callback )
-  return self:sendRequest( objMetaTable,"IDP", objDataTable,   "SignUp", _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "SignUp", _callback )
+end
+
+function _M.signIn( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "SignIn", _callback )
 end
 
 
@@ -140,7 +161,8 @@ function _M.set_iso_date(self, microtime)
   --mt = os.time({year=2017, month=02, day=11, hour=05, min=10,  sec=00})     --'2015-08-30T12:36:00Z')
   iso_date = os.date('!%Y%m%d', mt)
   iso_tz   = os.date('!%Y%m%dT%H%M%SZ', mt)
-  print (iso_date)
+  print ("ise_date " .. iso_date)
+  print ("iso_tz " .. iso_tz)
 end
 
 -- create canonical headers
@@ -161,6 +183,13 @@ function _M.get_signed_request_body(self)
     --table.sort(params)    -- do we need to sort ?
     params = json.encode(params)
   end
+     print ("***************reqbody*************")
+  print ("***************reqbody*************")
+  print ("***************reqbody*************")
+  print (params)
+  print ("***************reqbody*************")
+  print ("***************reqbody*************")
+  print ("***************reqbody*************") 
   local digest = self:get_sha256_digest(params or '')
   return string.lower(digest) -- hash must be in lowercase hex string
 end

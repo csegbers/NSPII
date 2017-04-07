@@ -2,7 +2,7 @@
 -- Login Overlay scene
 ---------------------------------------------------------------------------------------
 local myApp = require( "myapp" ) 
-local aws = require( myApp.utilsfld .. "aws_auth" )
+local aws_auth = require( myApp.utilsfld .. "aws_auth" )
 local json = require("json")  
 
 local composer = require( "composer" )
@@ -186,15 +186,27 @@ function scene:show( event )
                                             userDataTable.Password = inputpwd
                                             userDataTable.Username = inputemail
                                             userDataTable.UserAttributes = {}
+
                                             local userDataTableEmail = {}
                                             userDataTableEmail.Name = "email"
                                             userDataTableEmail.Value = inputemail
                                             table.insert (userDataTable.UserAttributes,userDataTableEmail)
-                                            print ("signUp  -  " .. json.encode(userDataTable))
 
+                                            local jed = json.encode(userDataTable)
+                                            print ("signUp  -  " .. jed)
+
+                                            local aws = aws_auth:new({
+                                                                        aws_key     = myApp.aws.Key,
+                                                                        aws_secret  = myApp.aws.Secret,
+                                                                        aws_region  = myApp.aws.Region,
+                                                                        aws_service = myApp.aws.Service,
+                                                                        aws_request = myApp.aws.Request,
+                                                                        aws_host    = myApp.aws.Host,
+                                                                        content_type   = myApp.aws.ContentType,
+                                                                      })
                                             aws:clearSessionToken()
                                             aws:signUp(       myApp.aws,
-                                                              userDataTable,  
+                                                              jed,  
                                                               function(event)
                                                                    native.setActivityIndicator( false )
                                                                    if (event.status ) == 200 then 
@@ -204,6 +216,7 @@ function scene:show( event )
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                    else
+                                                                     print ("error on return   -  " .. json.encode(event))
                                                                      native.showAlert( sceneinfo.btncreatemessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
                                                                    end
                                                               end    --- return function from parse
@@ -284,22 +297,41 @@ function scene:show( event )
 
                                             
                                             local userDataTable = {}
+                                            userDataTable.AuthFlow = "ADMIN_NO_SRP_AUTH"
+                                            userDataTable.AuthParameters = {}
+                                            userDataTable.AuthParameters.USERNAME = inputemail                                
+                                            userDataTable.AuthParameters.PASSWORD = inputpwd
+                                            userDataTable.UserPoolId = myApp.aws.UserPoolId
                                             userDataTable.ClientId = myApp.aws.ClientId
-                                            userDataTable.Password = inputpwd
-                                            userDataTable.Username = inputemail
-                                            userDataTable.UserAttributes = {}
-                                            local userDataTableEmail = {}
-                                            userDataTableEmail.Name = "email"
-                                            userDataTableEmail.Value = inputemail
-                                            table.insert (userDataTable.UserAttributes,userDataTableEmail)
-                                            print ("signUp  -  " .. json.encode(userDataTable))
 
+                                           -- local userDataTableAuth = {}
+                                          --  userDataTableAuth.USERNAME = inputemail
+                                          --  userDataTableAuth.PASSWORD = inputpwd
+                                          --  table.insert (userDataTable.AuthParameters,userDataTableAuth)
+
+                                            --{"AuthFlow": "ADMIN_NO_SRP_AUTH", "AuthParameters":{"USERNAME":"craig@segbers.com","PASSWORD":"gh%%3322SSsD"},"UserPoolId":"us-east-1_6p997uKVk","ClientId":"7m7p7tk8ta4qlb4ai15nqmh8a1"}
+                                            
+                                            local jed = json.encode(userDataTable)
+
+                                            --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
+                                            print ("jed  -  " .. jed)
+                                            local aws = aws_auth:new({
+                                                                        aws_key     = myApp.aws.Key,
+                                                                        aws_secret  = myApp.aws.Secret,
+                                                                        aws_region  = myApp.aws.Region,
+                                                                        aws_service = myApp.aws.Service,
+                                                                        aws_request = myApp.aws.Request,
+                                                                        aws_host    = myApp.aws.Host,
+                                                                        content_type   = myApp.aws.ContentType,
+                                                                        request_body    = jed,
+                                                                      })
                                             aws:clearSessionToken()
-                                            aws:signUp(       myApp.aws,
-                                                              userDataTable,  
+                                            aws:signIn(       myApp.aws,
+                                                              jed,  
                                                               function(event)
                                                                    native.setActivityIndicator( false )
                                                                    if (event.status ) == 200 then 
+                                                                     print ("Return from login" .. json.encode(event.response))
                                                                      myApp.fncPutUD("email",inputemail)
                                                                      myApp.fncUserLogInfo(event.response)
                                                                      native.showAlert( sceneinfo.btnloginmessage.successtitle, sceneinfo.btnloginmessage.successmessage, { "Okay" } )
