@@ -132,7 +132,7 @@ function scene:show( event )
                         ------------------------------
                         -- subscene with a composer ?
                         ------------------------------
-                        if sceneparams.sceneinfo.scrollblockinfo.navigate == "subscene" and homepageitem.navigation.composer then
+                        if sceneparams.sceneinfo.scrollblockinfo.navigate == "subscene" and homepageitem.navigation.composer and homepageitem.navigation.composer.otherscenes == nil then
                              --debugpopup (sceneparams.sceneinfo.scrollblockinfo.navigate .. " " )
                              local parentinfo =  sceneparams 
                              homepageitem.callBack = function() myApp.showSubScreen({instructions=parentinfo,effectback="slideRight"}) end

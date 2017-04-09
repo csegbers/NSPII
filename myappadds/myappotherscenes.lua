@@ -10,7 +10,7 @@ local otherscenes = {
                                      scrollblockinfo = { },
 
                                      edge = 15,
-                                     height = 220,
+                                     height = 280,
                                      cornerradius = 2,
                                      groupbackground = { r=235/255, g=235/255, b=235/255, a=1 },
                                      strokecolor = { r=150/255, g=150/255, b=150/255, a=1 },
@@ -18,6 +18,7 @@ local otherscenes = {
 
                                      userlabel = "Email Address",
                                      pwdlabel = "Password",
+                                     namelabel = "Name",
 
                                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
                                      textfontsize=18  ,
@@ -50,7 +51,7 @@ local otherscenes = {
                                      btnwidth = 90,
 
                                      userfieldfontsize=14  , 
-                                     userfieldheight = 25,
+                                     userfieldheight = 30,
                                      userfieldcornerradius = 6,
                                      userfieldplaceholder = "",
                                      userfieldmessage = {
@@ -59,15 +60,25 @@ local otherscenes = {
                                       },
 
                                      pwdfieldfontsize=14  , 
-                                     pwdfieldheight = 25,
+                                     pwdfieldheight = 30,
                                      pwdfieldcornerradius = 6,
                                      pwdfieldplaceholder = "",
                                      pwdfieldmessage = {
                                           errortitle = "xxxx", 
                                           errormessage = "yyyy",
                                       },
+                                     showpwdswitchstyle = "onOff",
 
-                                      showpwdswitchstyle = "onOff",
+                                     namefieldfontsize=14  , 
+                                     namefieldheight = 30,
+                                     namefieldcornerradius = 6,
+                                     namefieldplaceholder = "",
+                                     namefieldmessage = {
+                                          errortitle = "xxxx", 
+                                          errormessage = "yyyy",
+                                      },
+
+                                     
 
                                       btnforgotlabel = "Forgot Password" ,
                                       btnforgotllabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
@@ -87,9 +98,9 @@ local otherscenes = {
                                       btncreatefontsize=13  , 
                                       btncreatemessage = {
                                           errortitle = "Invalid Entries", 
-                                          errormessage = "Must have a valid email address and password entered.",
+                                          errormessage = "Must have a valid email address, name and password entered.",
                                           successtitle= "Congratulations !!",
-                                          successmessage= "An email verification has been sent. Please follow the link in the email, return back and Login again to continue.",
+                                          successmessage= "An email verification has been sent. Please find the confirmation code in the email, return back, enter the code to complete the registration.",
                                           failuretitle= "Error With Your Request",
 
                                       },
@@ -107,7 +118,170 @@ local otherscenes = {
                                    effectback="slideUp",
                                 },},
                     },
+            logincreate = {
+                        loggedin = false,
+                        sceneinfo = { 
+                                     htmlinfo = {},
+                                     scrollblockinfo = { },
 
+                                     edge = 15,
+                                     height = 260,
+                                     cornerradius = 2,
+                                     groupbackground = { r=235/255, g=235/255, b=235/255, a=1 },
+                                     strokecolor = { r=150/255, g=150/255, b=150/255, a=1 },
+                                     strokewidth = 1,
+
+                                     userlabel = "Email Address",
+                                     pwdlabel = "Password",
+                                     namelabel = "Name",
+
+                                     textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
+                                     textfontsize=18  ,
+                                     btnshape= "rect", --roundedRect",
+
+                                     btncanceldefcolor = { r=160/255, g=160/255, b=160/255, a=1 },  
+                                     btncancelovcolor = { r=130/255, g=130/255, b=130/255, a=1 }, 
+                                     btncanceldeflabelcolor = { r=255/255, g=255/255, b=255/255, a=1 }, 
+                                     btncancelovlabelcolor = { r=100/255, g=100/255, b=100/255, a=1 },  
+                                     btncanceltext = "Cancel",
+                
+                                     btnfontsize = 16,
+                                     btnheight = 30,
+                                     btnwidth = 90,
+
+                                     userfieldfontsize=14  , 
+                                     userfieldheight = 30,
+                                     userfieldcornerradius = 6,
+                                     userfieldplaceholder = "",
+                                     userfieldmessage = {
+                                          errortitle = "xxxx", 
+                                          errormessage = "yyyy",
+                                      },
+
+                                     pwdfieldfontsize=14  , 
+                                     pwdfieldheight = 30,
+                                     pwdfieldcornerradius = 6,
+                                     pwdfieldplaceholder = "",
+                                     pwdfieldmessage = {
+                                          errortitle = "xxxx", 
+                                          errormessage = "yyyy",
+                                      },
+                                     showpwdswitchstyle = "onOff",
+
+                                     namefieldfontsize=14  , 
+                                     namefieldheight = 30,
+                                     namefieldcornerradius = 6,
+                                     namefieldplaceholder = "",
+                                     namefieldmessage = {
+                                          errortitle = "xxxx", 
+                                          errormessage = "yyyy",
+                                      },
+
+                                      btncreatelabel = "Create An Account" ,
+                                      btncreatelabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
+                                      btncreatefontsize=13  , 
+                                      btncreatedefcolor = { r=0/255, g=100/255, b=0/255, a=1 },  
+                                      btncreateovcolor = { r=0/255, g=150/255, b=0/255, a=1 }, 
+                                      btncreatedeflabelcolor = { r=255/255, g=255/255, b=255/255, a=1 }, 
+                                      btncreateovlabelcolor = { r=230/255, g=230/255, b=230/255, a=1 },  
+
+                                      btncreatemessage = {
+                                          errortitle = "Invalid Entries", 
+                                          errormessage = "Must have a valid email address, name and password entered.",
+                                          successtitle= "Congratulations !!",
+                                          successmessage= "An email verification has been sent. Please find the confirmation code in the email, return back, enter the code to complete the registration.",
+                                          failuretitle= "Error With Your Request",
+
+                                      },
+
+                                   },
+                        navigation = { composer = {
+                                   id = "logincreate",
+                                   isModal = true,
+                                   lua="logincreate",
+                                   overlay=true,
+                                   time=700, 
+                                   effect= "slideDown",
+                                   effectback="slideUp",
+                                },},
+                    },
+            loginconfirm = {
+                        loggedin = false,
+                        sceneinfo = { 
+                                     htmlinfo = {},
+                                     scrollblockinfo = { },
+
+                                     edge = 15,
+                                     height = 180,
+                                     cornerradius = 2,
+                                     groupbackground = { r=235/255, g=235/255, b=235/255, a=1 },
+                                     strokecolor = { r=150/255, g=150/255, b=150/255, a=1 },
+                                     strokewidth = 1,
+
+                                     namelabel = "Confirmation Code",
+
+                                     textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
+                                     textfontsize=14  ,
+                                     btnshape= "rect", --roundedRect",
+
+                                     btncanceldefcolor = { r=160/255, g=160/255, b=160/255, a=1 },  
+                                     btncancelovcolor = { r=130/255, g=130/255, b=130/255, a=1 }, 
+                                     btncanceldeflabelcolor = { r=255/255, g=255/255, b=255/255, a=1 }, 
+                                     btncancelovlabelcolor = { r=100/255, g=100/255, b=100/255, a=1 },  
+                                     btncanceltext = "Cancel",
+                
+                                     btnfontsize = 16,
+                                     btnheight = 30,
+                                     btnwidth = 90,
+
+
+                                     namefieldfontsize=14  , 
+                                     namefieldheight = 30,
+                                     namefieldcornerradius = 6,
+                                     namefieldplaceholder = "",
+                                     namefieldmessage = {
+                                          errortitle = "xxxx", 
+                                          errormessage = "yyyy",
+                                      },
+
+                                      btnresendlabel = "Resend Confirmation Code" ,
+                                      btnresendllabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
+                                      btnresendfontsize=13  , 
+                                      btnresendmessage = {
+                                          successtitle= "Email Sent",
+                                          successmessage= "An email verification has been resent. Please find the confirmation code in the email, return back, enter the code to complete the registration.",
+                                          failuretitle= "Error With Your Request",
+
+                                      },
+
+                                      btncreatelabel = "Confirm Account" ,
+                                      btncreatelabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
+                                      btncreatefontsize=13  , 
+                                      btncreatedefcolor = { r=0/255, g=100/255, b=0/255, a=1 },  
+                                      btncreateovcolor = { r=0/255, g=150/255, b=0/255, a=1 }, 
+                                      btncreatedeflabelcolor = { r=255/255, g=255/255, b=255/255, a=1 }, 
+                                      btncreateovlabelcolor = { r=230/255, g=230/255, b=230/255, a=1 },  
+
+                                      btncreatemessage = {
+                                          errortitle = "Invalid Entries", 
+                                          errormessage = "Must have a Confirmation Code.",
+                                          successtitle= "Congratulations !!",
+                                          successmessage= "Your email has been confirmed. Please login.",
+                                          failuretitle= "Error With Your Request",
+
+                                      },
+
+                                   },
+                        navigation = { composer = {
+                                   id = "loginconfirm",
+                                   isModal = true,
+                                   lua="loginconfirm",
+                                   overlay=true,
+                                   time=700, 
+                                   effect= "slideUp",
+                                   effectback="slideUp",
+                                },},
+                    },
           emergency = {  
                            sceneinfo = {   
                                        groupheader = { r=255/255, g=0/255, b=0/255, a=1 },

@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = true,
+            debugMode = false,
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
@@ -365,7 +365,10 @@ local M = {
                                          },
                                   Actions = {
                                              SignUp = {name = "SignUp", httpaction="POST",authtype=false},
-                                             SignIn = {name = "AdminInitiateAuth", httpaction="POST",authtype=true}
+                                             SignIn = {name = "AdminInitiateAuth", httpaction="POST",authtype=true},
+                                             ConfirmSignUp = {name = "ConfirmSignUp", httpaction="POST",authtype=false},
+                                             ResendConfirmationCode = {name = "ResendConfirmationCode", httpaction="POST",authtype=false},
+                                            
                                             -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                           },
                               },
@@ -463,7 +466,7 @@ local M = {
                          items = {
                                     tabs = {name="myapptabs" },
                                     moreinfo = {
-                                                  name="myappmoreinfo.json",download=true,json=true,
+                                                  name="myappmoreinfo.json",download=true,json=true,section="moreinfo",
                                                   initialload = { 
                                                                         imsliding = false,     -- will be updated in app
                                                                         transitiontime = 700,

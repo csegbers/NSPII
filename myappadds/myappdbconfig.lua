@@ -19,7 +19,10 @@ M.dbschema = {
 								
 								userid = {name="uduserid",title="UserID",att="TEXT", def="",reset=false},
 								email = {name="udemail",title="Email",att="TEXT", def="",reset=false},
-								everloggedin = {name="udeverlogedin",title="Ever Logged In",att="INTEGER", def=0,reset=false},
+								name = {name="udname",title="Name",att="TEXT", def="",reset=false},
+								accountcreated = {name="udacctcreated",title="Account Created",att="INTEGER", def=0,reset=false},
+								accountconfirmed = {name="udacctconf",title="Account Confirmed",att="INTEGER", def=0,reset=false},
+								everloggedin = {name="udeverloggedin",title="Ever Logged In",att="INTEGER", def=0,reset=false},
 																															
 							},
 

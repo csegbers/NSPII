@@ -13,7 +13,7 @@ local widgetExtras = require( myApp.utilsfld .. "widget-extras" )
 
 local common = require( myApp.utilsfld .. "common" )
 
-local currScene = "login"
+local currScene = "logincreate"
 print ("Inxxxxxxxxxxxxxxxxxxxxxxxxxxxxx " .. currScene .. " Scene")
 
 local sceneparams
@@ -26,9 +26,7 @@ local txtUserLabel
 local txtPWDLabel
 local txtNameLabel
 local showpwdSwitch
-local forgotButton
 local createButton
-local loginButton
 local btnpushed = true
 
 ------------------------------------------------------
@@ -78,7 +76,7 @@ function scene:show( event )
              -------------------------------------------------
              -- userid text
              -------------------------------------------------
-             txtUserLabel = display.newText({text=sceneinfo.userlabel, font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
+             txtUserLabel = display.newText({text= sceneinfo.userlabel, font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
              txtUserLabel:setFillColor( sceneinfo.textcolor.r,sceneinfo.textcolor.g,sceneinfo.textcolor.b,sceneinfo.textcolor.a )
              txtUserLabel.anchorX = 0
              txtUserLabel.anchorY = 0
@@ -127,51 +125,18 @@ function scene:show( event )
              showpwdSwitch.y = txtPWDLabel.y + sceneinfo.pwdfieldheight + sceneinfo.edge/2
              container:insert(showpwdSwitch)
 
-              -------------------------------------------------
-             -- forgot pwd buttoin
-             -------------------------------------------------
-            forgotButton = widget.newButton {
-                    label = sceneinfo.btnforgotlabel ,
-                    width =  1,    -- will recalucualte
-                    labelColor = sceneinfo.btnforgotlabelColor,
-                    fontSize = sceneinfo.btnforgotfontsize,
-                    font = myApp.fontBold,      
-                    onRelease = function() 
-                                        local inputemail = userField.textField.text or ""
-                                        if inputemail == ""  then
-                                            native.showAlert( sceneinfo.btnforgotmessage.errortitle, sceneinfo.btnforgotmessage.errormessage, { "Okay" } )
-                                        else
-                                            native.setActivityIndicator( true )
-                                            --parse:clearSessionToken ()
-                                         --[[]   parse:requestPassword( 
-                                                              inputemail,  
-                                                              function(event)
-                                                                   native.setActivityIndicator( false )
-                                                                   if (event.response.error or "" ) == "" then 
-                                                                      native.showAlert( sceneinfo.btnforgotmessage.successtitle, sceneinfo.btnforgotmessage.successmessage, { "Okay" } )
-                                                                   -- stay here becuase they most likely will get the email and need to login again  
-                                                                   else
-                                                                      native.showAlert( sceneinfo.btnforgotmessage.failuretitle, (event.response.error or "Unknown"), { "Okay" } )
-                                                                   end
-                                                              end    --- return function from parse
-                                                             ) ]]  -- end of parse
-                                         end -- end of checking for valid input
-                                 end,    -- end onrelease
-               }
-
-             forgotButton.x = 0 - background.width/2 + forgotButton.width/2 + sceneinfo.edge
-             forgotButton.y = txtNAMELabel.y + txtNAMELabel.height  + sceneinfo.userfieldheight*2
-             container:insert(forgotButton)
-
              -------------------------------------------------
              -- create pwd buttoin
              -------------------------------------------------
             createButton = widget.newButton {
-                    label = sceneinfo.btncreatelabel ,
-                    width =  1,    -- will recalucualte
-                    labelColor = sceneinfo.btncreatelabelColor,
-                    fontSize = sceneinfo.btncreatefontsize,
-                    font = myApp.fontBold,      
+                    shape=sceneinfo.btnshape,
+                    fillColor = { default={ sceneinfo.btncreatedefcolor.r,  sceneinfo.btncreatedefcolor.g, sceneinfo.btncreatedefcolor.b, sceneinfo.btncreatedefcolor.a}, over={ sceneinfo.btncreateovcolor.r, sceneinfo.btncreateovcolor.g, sceneinfo.btncreateovcolor.b, sceneinfo.btncreateovcolor.a } },
+                    label = sceneinfo.btncreatelabel,
+                    labelColor = { default={ sceneinfo.btncreatedeflabelcolor.r,  sceneinfo.btncreatedeflabelcolor.g, sceneinfo.btncreatedeflabelcolor.b, sceneinfo.btncreatedeflabelcolor.a}, over={ sceneinfo.btncreateovlabelcolor.r, sceneinfo.btncreateovlabelcolor.g, sceneinfo.btncreateovlabelcolor.b, sceneinfo.btncreateovlabelcolor.a } },
+                    fontSize = sceneinfo.btnfontsize,
+                    font = myApp.fontBold,
+                    width = sceneinfo.btnwidth*2-sceneinfo.edge,
+                    height = sceneinfo.btnheight,    
                     onRelease = function() 
                                         local inputemail = userField.textField.text or ""
                                         local inputpwd = pwdField.textField.text or ""
@@ -250,8 +215,11 @@ function scene:show( event )
                                  end,    -- end onrelease
                }
 
-             createButton.x = forgotButton.x + forgotButton.width + sceneinfo.edge*3
-             createButton.y = forgotButton.y
+             createButton.anchorX = 0
+             createButton.anchorY = 0
+             createButton.x = background.x + background.width/2  - createButton.width - sceneinfo.edge/2 
+             createButton.y = background.y + background.height/2 - sceneinfo.btnheight - sceneinfo.edge/2   -- background uses .5 anchor
+
              container:insert(createButton)
              ---------------------------------------------
              -- Cancel button
@@ -280,102 +248,11 @@ function scene:show( event )
                cancelButton.anchorX = 0
                cancelButton.anchorY = 0
                cancelButton.x = txtUserLabel.x  
-               cancelButton.y = background.y + background.height/2 - sceneinfo.btnheight - sceneinfo.edge/2   -- background uses .5 anchor
+               cancelButton.y = createButton.y
                --debugpopup (background.y .. " " .. background.height)
                container:insert(cancelButton)
 
 
-             ---------------------------------------------
-             -- Login button
-             ---------------------------------------------
-             loginButton = widget.newButton {
-                    shape=sceneinfo.btnshape,
-                    fillColor = { default={ sceneinfo.btnlogindefcolor.r,  sceneinfo.btnlogindefcolor.g, sceneinfo.btnlogindefcolor.b, sceneinfo.btnlogindefcolor.a}, over={ sceneinfo.btnloginovcolor.r, sceneinfo.btnloginovcolor.g, sceneinfo.btnloginovcolor.b, sceneinfo.btnloginovcolor.a } },
-                    label = sceneinfo.btnlogintext,
-                    labelColor = { default={ sceneinfo.btnlogindeflabelcolor.r,  sceneinfo.btnlogindeflabelcolor.g, sceneinfo.btnlogindeflabelcolor.b, sceneinfo.btnlogindeflabelcolor.a}, over={ sceneinfo.btnloginovlabelcolor.r, sceneinfo.btnloginovlabelcolor.g, sceneinfo.btnloginovlabelcolor.b, sceneinfo.btnloginovlabelcolor.a } },
-                    fontSize = sceneinfo.btnfontsize,
-                    font = myApp.fontBold,
-                    width = sceneinfo.btnwidth,
-                    height = sceneinfo.btnheight,
-                    ---------------------------------
-                    -- stick inside a time to prevent the buton press from passing thru to the current scene
-                    ---------------------------------
-                    onRelease = function() 
-                                        local inputemail = userField.textField.text or ""
-                                        local inputpwd = pwdField.textField.text or ""
-                                        if inputemail == "" or inputpwd == "" then
-                                           native.showAlert( sceneinfo.btnloginmessage.errortitle, sceneinfo.btnloginmessage.errormessage, { "Okay" } )
-                                        else
-                                            native.setActivityIndicator( true )
-                                           -- local userDataTable = { ["username"] = inputemail, ["email"] = inputemail, ["password"] = inputpwd }
-                                          --  local userDataTable = {}
-                                          --  userDataTable.ClientId = myapp.aws.ClientId
-                                           -- userDataTable.Password = inputpwd
-                                           -- userDataTable.Username = inputemail
-                                           -- userDataTable.UserAttributes = {}
-
-                                           -- local jstr = '{"ClientId": "' .. myApp.aws.ClientId .. '","Password": "' .. inputpwd .. '","Username": "' .. inputemail .. '",'
-                                          --  jstr = jstr .. '"UserAttributes": [{"Name": "email","Value": "' .. inputemail .. '"  }]}'
-                                          --  local userDataTable = json.decode(jstr)
-                                           -- print (json.encode(userDataTable))
-                                            --parse:clearSessionToken ()
-
-                                            
-                                            local userDataTable = {}
-                                            userDataTable.AuthFlow = "ADMIN_NO_SRP_AUTH"
-                                            userDataTable.AuthParameters = {}
-                                            userDataTable.AuthParameters.USERNAME = inputemail                                
-                                            userDataTable.AuthParameters.PASSWORD = inputpwd
-                                            userDataTable.UserPoolId = myApp.aws.UserPoolId
-                                            userDataTable.ClientId = myApp.aws.ClientId
-
-                                           -- local userDataTableAuth = {}
-                                          --  userDataTableAuth.USERNAME = inputemail
-                                          --  userDataTableAuth.PASSWORD = inputpwd
-                                          --  table.insert (userDataTable.AuthParameters,userDataTableAuth)
-
-                                            --{"AuthFlow": "ADMIN_NO_SRP_AUTH", "AuthParameters":{"USERNAME":"craig@segbers.com","PASSWORD":"gh%%3322SSsD"},"UserPoolId":"us-east-1_6p997uKVk","ClientId":"7m7p7tk8ta4qlb4ai15nqmh8a1"}
-                                            
-                                            local jed = json.encode(userDataTable)
-
-                                            --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
-                                            print ("jed  -  " .. jed)
-                                            local aws = aws_auth:new({
-                                                                        aws_key     = myApp.aws.Key,
-                                                                        aws_secret  = myApp.aws.Secret,
-                                                                        aws_region  = myApp.aws.Region,
-                                                                        aws_service = myApp.aws.Service,
-                                                                        aws_request = myApp.aws.Request,
-                                                                        aws_host    = myApp.aws.Host,
-                                                                        content_type   = myApp.aws.ContentType,
-                                                                        request_body    = jed,
-                                                                      })
-                                            aws:clearSessionToken()
-                                            aws:signIn(       myApp.aws,
-                                                              jed,  
-                                                              function(event)
-                                                                   native.setActivityIndicator( false )
-                                                                   if (event.status ) == 200 then 
-                                                                     print ("Return from login" .. json.encode(event.response))
-                                                                     myApp.fncPutUD("email",inputemail)
-                                                                     myApp.fncUserLogInfo(event.response)
-                                                                     native.showAlert( sceneinfo.btnloginmessage.successtitle, sceneinfo.btnloginmessage.successmessage, { "Okay" } )
-                                                                     --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
-                                                                     -- stay here becuase they most likely will get the email and need to login again  
-                                                                   else
-                                                                     native.showAlert( sceneinfo.btnloginmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
-                                                                   end
-                                                              end    --- return function from parse
-                                                             )   -- end of parse
-                                         end -- end of checking for valid input
-                                 end,    -- end onrelease
-                  }
-               loginButton.anchorX = 0
-               loginButton.anchorY = 0
-               loginButton.x = background.x + background.width/2  - sceneinfo.btnwidth - sceneinfo.edge/2 
-               loginButton.y = background.y + background.height/2 - sceneinfo.btnheight - sceneinfo.edge/2   -- background uses .5 anchor
-               --debugpopup (background.y .. " " .. background.height)
-               container:insert(loginButton)
 
                group:insert(container)
 

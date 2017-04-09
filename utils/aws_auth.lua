@@ -136,7 +136,13 @@ function _M.signIn( self, objMetaTable, objDataTable, _callback )
   return self:sendRequest( objMetaTable,"IDP", objDataTable, "SignIn", _callback )
 end
 
+function _M.confirmsignUp( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "ConfirmSignUp", _callback )
+end
 
+function _M.resendconfirmationCode( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "ResendConfirmationCode", _callback )
+end
 
 
 

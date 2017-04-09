@@ -1,5 +1,11 @@
 {
-  "direction": "left",
+  "includedsections":{
+    "items": {
+       "moreauth": {}
+    }
+  },
+"moreinfo": {
+   "direction": "left",
   "morebutton": {
     "overFile": "morebutton-down.png",
     "defaultFile": "morebutton.png"
@@ -11,7 +17,6 @@
       "title": "Authentication",
       "isCategory": true
     },
-   
     "aalogout": {
       "iconwidth": 120,
       "includeline": false,
@@ -28,21 +33,26 @@
       "originaliconheight": 77,
       "pic": "trustedchoice.png"
     },
-    "ablogin": {
-      "iconwidth": 120,
+    "aclogin": {
+      "title": "Auhentication",
+      "backtext": "<",
+      "sceneinfo": {
+        "scrollblockinfo": {
+          "object": "moreauth",
+          "navigate": "subscene"
+        },
+        "htmlinfo": []
+      },
       "includeline": false,
       "navigation": {
         "composer": {
-          "otherscenes": "login"
+          "lua": "scrollblocks",
+          "effect": "slideLeft",
+          "id": "moreauth",
+          "effectback": "slideRight",
+          "time": 250
         }
-      },
-      "backtext": "<",
-      "title": "Login",
-      "showonlyinloggedout": true,
-      "text": "xxxxx",
-      "originaliconwidth": 196,
-      "originaliconheight": 77,
-      "pic": "trustedchoice.png"
+      },      
     },
     "bb0head": {
       "title": "About",
@@ -303,4 +313,55 @@
     }
   },
   "transparentalpha": 0.7
+ },
+ "moreauth": {
+  "items": {
+    "alogin": {
+      "navigation": {
+        "composer": {
+          "otherscenes": "login"
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "Login",
+      "backtext": "<",
+      "textfontsize": 16,
+      "groupheight": 35,
+      "groupheaderheight": 35,
+      "doublewide": true
+    },
+    "bcreate": {
+      "navigation": {
+        "composer": {
+          "otherscenes": "logincreate"
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "Create An Account",
+      "backtext": "<",
+      "textfontsize": 16,
+      "groupheight": 35,
+      "groupheaderheight": 35,
+      "doublewide": true
+    },
+   "cconfirm": {
+      "navigation": {
+        "composer": {
+          "otherscenes": "loginconfirm"
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "Confirm Account Creation Email",
+      "backtext": "<",
+      "textfontsize": 16,
+      "groupheight": 35,
+      "groupheaderheight": 35,
+      "doublewide": true
+    },    
+  }
+ }
 }
+ 
