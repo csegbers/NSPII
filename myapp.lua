@@ -302,7 +302,37 @@ local M = {
                                   
                   },
 
+            aws = {
+                                    ClientId = "",
+                                    Key = "",
+                                    Secret = "",
+                                    UserPoolId = "",
+                                    Host = "cognito-idp.us-east-1.amazonaws.com",
+                                    Region = "us-east-1",
+                                    Service = "cognito-idp",
+                                    Request = 'aws4_request',
+                                    ContentType = "application/x-amz-json-1.1",
+                                    IDP = {
+                                            url = "https://cognito-idp.us-east-1.amazonaws.com/",
+                                            headers =   -- ordewr is important !
+                                                     {
+                                                       a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService.{actionname}"},
+                                                       b = {name = "X-AMZ-DATE", value = "{utc}"},
+                                                       c = {name = "Authorization", value = "{signature}", authtype=true},
+                                                       d = {name = "Content-Type", value = "{contenttype}"},
+                                                       e = {name = "Host",value="{host}"},
+                                                     },
+                                              Actions = {
+                                                         SignUp = {name = "SignUp", httpaction="POST",authtype=false},
+                                                         SignIn = {name = "AdminInitiateAuth", httpaction="POST",authtype=true},
+                                                         ConfirmSignUp = {name = "ConfirmSignUp", httpaction="POST",authtype=false},
+                                                         ResendConfirmationCode = {name = "ResendConfirmationCode", httpaction="POST",authtype=false},
+                                                         ForgotPassword = {name = "ForgotPassword", httpaction="POST",authtype=false},
+                                                        -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
+                                                      },
+                                          },
 
+                                },
             ------------------------------
             -- authentication
             ------------------------------            
@@ -340,57 +370,7 @@ local M = {
                               },
                         sheet = "ios7icons.png",
                 },
-            ------------------------------
-            -- aws
-            ------------------------------            
-           aws = {
-                        ClientId = '',
-                        UserPoolId = "us-east-1_6p997uKVk",
-                        Key = "",
-                        Secret = "",
-                        Host = "cognito-idp.us-east-1.amazonaws.com",
-                        Region = "us-east-1",
-                        Service = "cognito-idp",
-                        Request = 'aws4_request',
-                        ContentType = "application/x-amz-json-1.1",
-                        IDP = {
-                                url = "https://cognito-idp.us-east-1.amazonaws.com/",
-                                headers =   -- ordewr is important !
-                                         {
-                                           a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService.{actionname}"},
-                                           b = {name = "X-AMZ-DATE", value = "{utc}"},
-                                           c = {name = "Authorization", value = "{signature}", authtype=true},
-                                           d = {name = "Content-Type", value = "{contenttype}"},
-                                           e = {name = "Host",value="{host}"},
-                                         },
-                                  Actions = {
-                                             SignUp = {name = "SignUp", httpaction="POST",authtype=false},
-                                             SignIn = {name = "AdminInitiateAuth", httpaction="POST",authtype=true},
-                                             ConfirmSignUp = {name = "ConfirmSignUp", httpaction="POST",authtype=false},
-                                             ResendConfirmationCode = {name = "ResendConfirmationCode", httpaction="POST",authtype=false},
-                                             ForgotPassword = {name = "ForgotPassword", httpaction="POST",authtype=false},
-                                            -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
-                                          },
-                              },
 
-                        -- endpoints = {
-                        --                 config  = {
-                        --                              endpoint = "/config",
-                        --                              verb = "GET",
-                        --                           },
-                                 
-                        --                 appopened  = {
-                        --                              endpoint = "/events/AppOpened",
-                        --                              verb = "POST",
-                        --                           },
-                        --                 customevent  = {
-                        --                              endpoint = "/events",    -- pass in actual eventname
-                        --                              verb = "POST",
-                        --                           },
-
-
-                        --           },
-                    },
             ------------------------------
             -- parse
             ------------------------------            
@@ -517,11 +497,16 @@ local M = {
 
         }
 
-
-
-
-
+---------------------------------------
+-- update the aws key info. This file is not githubbed
+---------------------------------------
+local awskey = require("myappaws" ) 
+M.aws.ClientId = awskey.ClientId
+M.aws.UserPoolId = awskey.UserPoolId
+M.aws.Key = awskey.Key
+M.aws.Secret = awskey.Secret
 return M
+
 -- print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappresourcedetails" )))
 
 
