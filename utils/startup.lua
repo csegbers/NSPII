@@ -132,7 +132,15 @@ function myApp.launchlogin(event)
    if myApp.authentication.loggedin == false and myApp.justLaunched == true then
       myApp.justLaunched = false
       if myApp.authentication.launchonstart then
-         timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login}))  --- cant just launch if we recycle composer for some reason
+         if myApp.fncGetUD("accountcreated") == 0  then
+            timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.logincreate}))   
+         else
+            if myApp.fncGetUD("accountconfirmed") == 1  then
+               timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login}))   
+            else
+               timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginconfirm}))   
+            end
+         end
       end
    end
 end

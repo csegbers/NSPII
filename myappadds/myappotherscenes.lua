@@ -87,7 +87,7 @@ local otherscenes = {
                                           errortitle = "Invalid Entries", 
                                           errormessage = "Must have a valid email address to reset password",
                                           successtitle= "Email Sent",
-                                          successmessage= "An email has been sent. Please follow the link in the email to reset your password, return back and Login again to continue.",
+                                          successmessage= "An email verification has been sent. Please find the password reset code in the email, return back, enter the code and new password to complete the process.",
                                           failuretitle= "Error With Your Request",
 
                                       },

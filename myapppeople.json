@@ -315,6 +315,9 @@
       "street2": "Suite 350"
     },
     "browns": {
+      "pic": "browns.jpg",
+      "originaliconwidth": 426,
+      "originaliconheight": 640,
       "state": "TN",
       "name": "Scott Brown",
       "corp": "Frost Brown Todd, LLC",
@@ -821,33 +824,30 @@
       "street2": "Suite 3000"
     },
     "funfsinng": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "funfsinng.jpg",
+      "originaliconwidth": 140,
+      "originaliconheight": 210,
+      "state": "KY",
+      "name": "Gregory Funfsinn",
+      "corp": "Walters Meadows Richardson, PLLC",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(859) 219-9090",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "greg@wmrdefense.com",
           "type": "email"
         },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.wmrdefense.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "40503",
+      "city": "Lexington",
+      "street": "771 Corporate Dr.",
+      "street2": "Suite 900"
     },
     "gillmans": {
       "pic": "gillmans.jpg",
@@ -882,30 +882,22 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "OH",
+      "name": "Michael D. Hageman",
+      "corp": "Cincinnati Insurance Co",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(513) 603-5959",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.cinfin.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "45250",
+      "city": "Cincinnati",
+      "street": "P.O. Box 145496"
     },
     "harlowt": {
       "pic": "",
@@ -1673,30 +1665,23 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "KY",
+      "name": "Gregory Price",
+      "corp": "EFI Global",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(859) 885-1518",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.efiglobal.com",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "40356",
+      "city": "Nicholasville",
+      "street": "1060 Elizabeth St.",
+      "street2": "Suite 7"
     },
     "reynoldsm": {
       "pic": "",
@@ -1778,62 +1763,50 @@
       "street": ""
     },
     "rottmuellerd": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "rottmuellerd.jpg",
+      "originaliconwidth": 355,
+      "originaliconheight": 369,
+      "state": "OH",
+      "name": "Dan Rottmueller",
+      "corp": "Fire & Explosion Consultants, LLC",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(937) 237-4000",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "danrottmueller@fec-fire.com",
           "type": "email"
         },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://fec-fire.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "45424",
+      "city": "Dayton",
+      "street": "7490 Bridgewater Rd."
     },
     "schockmanb": {
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "OH",
+      "name": "Brent Schockman",
+      "corp": "Fire Science Investigations, LLC",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(937) 478-0434",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.fsiohio.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "45342",
+      "city": "Miamisburg",
+      "street": "612 Burnside Dr."
     },
     "sherwoodm": {
       "pic": "",

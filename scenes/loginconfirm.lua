@@ -177,7 +177,7 @@ function scene:show( event )
                                                                    native.setActivityIndicator( false )
                                                                    if (event.status ) == 200 then 
                                                                      myApp.fncPutUD("accountconfirmed",1)                                                                    
-                                                                     native.showAlert( sceneinfo.btncreatemessage.successtitle, sceneinfo.btncreatemessage.successmessage, { "Okay" } )
+                                                                     native.showAlert( sceneinfo.btncreatemessage.successtitle, sceneinfo.btncreatemessage.successmessage, { "Okay" }, function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login})) end )
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                       btnpushed = true
@@ -188,7 +188,7 @@ function scene:show( event )
                                                                      native.showAlert( sceneinfo.btncreatemessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
                                                                    end
                                                               end    --- return function from parse
-                                                             )   -- end of parse
+                                                             )   -- end of aws
                                          end -- end of checking for valid input
                                  end,    -- end onrelease
                }

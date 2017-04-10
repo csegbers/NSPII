@@ -315,6 +315,9 @@
   "transparentalpha": 0.7
  },
  "moreauth": {
+  "textfontsize": 16,
+  "groupheight": 25,
+  "headerfontsize": 16,
   "items": {
     "alogin": {
       "navigation": {
@@ -326,9 +329,6 @@
       "headerfontsize": 16,
       "title": "Login",
       "backtext": "<",
-      "textfontsize": 16,
-      "groupheight": 35,
-      "groupheaderheight": 35,
       "doublewide": true
     },
     "bcreate": {
@@ -341,12 +341,10 @@
       "headerfontsize": 16,
       "title": "Create An Account",
       "backtext": "<",
-      "textfontsize": 16,
-      "groupheight": 35,
-      "groupheaderheight": 35,
       "doublewide": true
     },
    "cconfirm": {
+      "showwhennotconfirmed" : true,
       "navigation": {
         "composer": {
           "otherscenes": "loginconfirm"
@@ -356,9 +354,6 @@
       "headerfontsize": 16,
       "title": "Confirm Account Creation Email",
       "backtext": "<",
-      "textfontsize": 16,
-      "groupheight": 35,
-      "groupheaderheight": 35,
       "doublewide": true
     },    
   }

@@ -368,7 +368,7 @@ local M = {
                                              SignIn = {name = "AdminInitiateAuth", httpaction="POST",authtype=true},
                                              ConfirmSignUp = {name = "ConfirmSignUp", httpaction="POST",authtype=false},
                                              ResendConfirmationCode = {name = "ResendConfirmationCode", httpaction="POST",authtype=false},
-                                            
+                                             ForgotPassword = {name = "ForgotPassword", httpaction="POST",authtype=false},
                                             -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                           },
                               },

@@ -27,7 +27,6 @@ local txtPWDLabel
 local txtNameLabel
 local showpwdSwitch
 local forgotButton
-local createButton
 local loginButton
 local btnpushed = true
 
@@ -137,25 +136,40 @@ function scene:show( event )
                     fontSize = sceneinfo.btnforgotfontsize,
                     font = myApp.fontBold,      
                     onRelease = function() 
-                                        local inputemail = userField.textField.text or ""
-                                        if inputemail == ""  then
-                                            native.showAlert( sceneinfo.btnforgotmessage.errortitle, sceneinfo.btnforgotmessage.errormessage, { "Okay" } )
-                                        else
-                                            native.setActivityIndicator( true )
-                                            --parse:clearSessionToken ()
-                                         --[[]   parse:requestPassword( 
-                                                              inputemail,  
-                                                              function(event)
-                                                                   native.setActivityIndicator( false )
-                                                                   if (event.response.error or "" ) == "" then 
-                                                                      native.showAlert( sceneinfo.btnforgotmessage.successtitle, sceneinfo.btnforgotmessage.successmessage, { "Okay" } )
-                                                                   -- stay here becuase they most likely will get the email and need to login again  
-                                                                   else
-                                                                      native.showAlert( sceneinfo.btnforgotmessage.failuretitle, (event.response.error or "Unknown"), { "Okay" } )
-                                                                   end
-                                                              end    --- return function from parse
-                                                             ) ]]  -- end of parse
-                                         end -- end of checking for valid input
+                                        
+                                      native.setActivityIndicator( true )
+
+                                      --{
+                                      --"ClientId": "xxxxx",
+                                      --"Username": "craig@segbers.com"
+                                      --}
+                                      
+                                      local userDataTable = {}
+                                      userDataTable.ClientId = myApp.aws.ClientId
+                                      userDataTable.Username = myApp.fncGetUD("email")
+
+                                      local jed = json.encode(userDataTable)
+                                      print ("ForgotPassword  -  " .. jed)
+                                      local aws = aws_auth:new({})
+                                      aws:forgotPassword( myApp.aws,
+                                                        jed,  
+                                                        function(event)
+                                                             native.setActivityIndicator( false )
+                                                             if (event.status ) == 200 then 
+                                                               
+                                                               native.showAlert( sceneinfo.btnforgotmessage.successtitle, sceneinfo.btnforgotmessage.successmessage, { "Okay" }, function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginconfirm})) end )
+                                                               --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
+                                                               -- stay here becuase they most likely will get the email and need to login again  
+                                                                btnpushed = true
+                                                                timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
+                                                                return true 
+                                                             else
+                                                               print ("error on return   -  " .. json.encode(event))
+                                                               native.showAlert( sceneinfo.btnforgotmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
+                                                             end
+                                                        end    --- return function from parse
+                                                       )   -- end of parse
+                                         
                                  end,    -- end onrelease
                }
 
@@ -163,96 +177,6 @@ function scene:show( event )
              forgotButton.y = txtNAMELabel.y + txtNAMELabel.height  + sceneinfo.userfieldheight*2
              container:insert(forgotButton)
 
-             -------------------------------------------------
-             -- create pwd buttoin
-             -------------------------------------------------
-            createButton = widget.newButton {
-                    label = sceneinfo.btncreatelabel ,
-                    width =  1,    -- will recalucualte
-                    labelColor = sceneinfo.btncreatelabelColor,
-                    fontSize = sceneinfo.btncreatefontsize,
-                    font = myApp.fontBold,      
-                    onRelease = function() 
-                                        local inputemail = userField.textField.text or ""
-                                        local inputpwd = pwdField.textField.text or ""
-                                        local inputname = nameField.textField.text or ""
-                                        if inputemail == "" or inputpwd == "" or inputname == "" then
-                                           native.showAlert( sceneinfo.btncreatemessage.errortitle, sceneinfo.btncreatemessage.errormessage, { "Okay" } )
-                                        else
-                                            native.setActivityIndicator( true )
-                                           -- local userDataTable = { ["username"] = inputemail, ["email"] = inputemail, ["password"] = inputpwd }
-                                          --  local userDataTable = {}
-                                          --  userDataTable.ClientId = myapp.aws.ClientId
-                                           -- userDataTable.Password = inputpwd
-                                           -- userDataTable.Username = inputemail
-                                           -- userDataTable.UserAttributes = {}
-
-                                           -- local jstr = '{"ClientId": "' .. myApp.aws.ClientId .. '","Password": "' .. inputpwd .. '","Username": "' .. inputemail .. '",'
-                                          --  jstr = jstr .. '"UserAttributes": [{"Name": "email","Value": "' .. inputemail .. '"  }]}'
-                                          --  local userDataTable = json.decode(jstr)
-                                           -- print (json.encode(userDataTable))
-                                            --parse:clearSessionToken ()
-
-                                            
-                                            local userDataTable = {}
-                                            userDataTable.ClientId = myApp.aws.ClientId
-                                            userDataTable.Password = inputpwd
-                                            userDataTable.Username = inputemail
-                                            userDataTable.UserAttributes = {}
-
-                                            local userDataTableEmail = {}
-                                            userDataTableEmail.Name = "email"
-                                            userDataTableEmail.Value = inputemail
-                                            table.insert (userDataTable.UserAttributes,userDataTableEmail)
-
-                                            local userDataTableName = {}
-                                            userDataTableName.Name = "name"
-                                            userDataTableName.Value = inputname
-                                            table.insert (userDataTable.UserAttributes,userDataTableName)
-
-                                            local jed = json.encode(userDataTable)
-                                            print ("signUp  -  " .. jed)
-
-                                            local aws = aws_auth:new({
-                                                                        aws_key     = myApp.aws.Key,
-                                                                        aws_secret  = myApp.aws.Secret,
-                                                                        aws_region  = myApp.aws.Region,
-                                                                        aws_service = myApp.aws.Service,
-                                                                        aws_request = myApp.aws.Request,
-                                                                        aws_host    = myApp.aws.Host,
-                                                                        content_type   = myApp.aws.ContentType,
-                                                                      })
-                                            aws:clearSessionToken()
-                                            aws:signUp(       myApp.aws,
-                                                              jed,  
-                                                              function(event)
-                                                                   native.setActivityIndicator( false )
-                                                                   if (event.status ) == 200 then 
-                                                                     myApp.fncPutUD("userid",inputemail)
-                                                                     myApp.fncPutUD("email",inputemail)
-                                                                     myApp.fncPutUD("name",inputname)
-                                                                     myApp.fncPutUD("accountcreated",1)
-                                                                     myApp.fncPutUD("accountconfirmed",0)                                                                    
-                                                                     myApp.fncUserLogInfo(event.response)
-                                                                     native.showAlert( sceneinfo.btncreatemessage.successtitle, sceneinfo.btncreatemessage.successmessage, { "Okay" } )
-                                                                     --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
-                                                                     -- stay here becuase they most likely will get the email and need to login again  
-                                                                      btnpushed = true
-                                                                      timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
-                                                                      return true 
-                                                                   else
-                                                                     print ("error on return   -  " .. json.encode(event))
-                                                                     native.showAlert( sceneinfo.btncreatemessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
-                                                                   end
-                                                              end    --- return function from parse
-                                                             )   -- end of parse
-                                         end -- end of checking for valid input
-                                 end,    -- end onrelease
-               }
-
-             createButton.x = forgotButton.x + forgotButton.width + sceneinfo.edge*3
-             createButton.y = forgotButton.y
-             container:insert(createButton)
              ---------------------------------------------
              -- Cancel button
              ---------------------------------------------

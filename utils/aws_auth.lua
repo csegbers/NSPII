@@ -144,6 +144,9 @@ function _M.resendconfirmationCode( self, objMetaTable, objDataTable, _callback 
   return self:sendRequest( objMetaTable,"IDP", objDataTable, "ResendConfirmationCode", _callback )
 end
 
+function _M.forgotPassword( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "ForgotPassword", _callback )
+end
 
 
 
