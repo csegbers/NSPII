@@ -344,10 +344,10 @@ local M = {
             -- aws
             ------------------------------            
            aws = {
-                        ClientId = '7m7p7tk8ta4qlb4ai15nqmh8a1',
+                        ClientId = '',
                         UserPoolId = "us-east-1_6p997uKVk",
-                        Key = "--",
-                        Secret = "--",
+                        Key = "",
+                        Secret = "",
                         Host = "cognito-idp.us-east-1.amazonaws.com",
                         Region = "us-east-1",
                         Service = "cognito-idp",

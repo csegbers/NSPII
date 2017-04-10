@@ -106,10 +106,7 @@ function scene:show( event )
                     font = myApp.fontBold,      
                     onRelease = function() 
                                     native.setActivityIndicator( true )
-                                    --{
-                                    --"ClientId": "7m7p7tk8ta4qlb4ai15nqmh8a1",
-                                    --"Username": "craig@segbers.com"
-                                    --}
+  
                                     
                                     local userDataTable = {}
                                     userDataTable.ClientId = myApp.aws.ClientId
