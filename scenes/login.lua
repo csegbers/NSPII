@@ -21,10 +21,8 @@ local container
 local cancelButton
 local userField
 local pwdField
-local nameField
 local txtUserLabel
 local txtPWDLabel
-local txtNameLabel
 local showpwdSwitch
 local forgotButton
 local loginButton
@@ -99,19 +97,6 @@ function scene:show( event )
              
              container:insert(txtPWDLabel)
 
-   
-             -------------------------------------------------
-             -- name text
-             -------------------------------------------------
-             txtNAMELabel = display.newText({text=sceneinfo.namelabel, font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
-             txtNAMELabel:setFillColor( sceneinfo.textcolor.r,sceneinfo.textcolor.g,sceneinfo.textcolor.b,sceneinfo.textcolor.a )
-             txtNAMELabel.anchorX = 0
-             txtNAMELabel.anchorY = 0
-             txtNAMELabel.x = background.x - background.width/2 + sceneinfo.edge/2
-             txtNAMELabel.y = txtPWDLabel.y + txtPWDLabel.height + sceneinfo.userfieldheight + sceneinfo.edge
-             
-             container:insert(txtNAMELabel)
-
              -------------------------------------------------
              -- show password switch
              -------------------------------------------------
@@ -174,7 +159,7 @@ function scene:show( event )
                }
 
              forgotButton.x = 0 - background.width/2 + forgotButton.width/2 + sceneinfo.edge
-             forgotButton.y = txtNAMELabel.y + txtNAMELabel.height  + sceneinfo.userfieldheight*2
+             forgotButton.y = txtPWDLabel.y + txtPWDLabel.height  + sceneinfo.userfieldheight*2
              container:insert(forgotButton)
 
              ---------------------------------------------
@@ -279,15 +264,21 @@ function scene:show( event )
                                                               jed,  
                                                               function(event)
                                                                    native.setActivityIndicator( false )
+                                                                   myApp.fncPutUD("email",inputemail)
                                                                    if (event.status ) == 200 then 
-                                                                     print ("Return from login" .. json.encode(event.response))
-                                                                     myApp.fncPutUD("email",inputemail)
-                                                                     myApp.fncUserLogInfo(event.response)
-                                                                     native.showAlert( sceneinfo.btnloginmessage.successtitle, sceneinfo.btnloginmessage.successmessage, { "Okay" } )
+                                                                      print ("Return from login" .. json.encode(event.response))
+                                                                      myApp.fncUserLogInfo(event.response)
+                                                                      btnpushed = true
+                                                                      timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
+                                                                      return true 
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                    else
-                                                                     native.showAlert( sceneinfo.btnloginmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
+                                                                      print ("Return from login" .. json.encode(event))
+                                                                      if  event.responseHeaders["x-amzn-ErrorType"]  == "UserNotConfirmedException:" then
+                                                                          myApp.fncPutUD("accountconfirmed",0)  
+                                                                      end
+                                                                      native.showAlert( sceneinfo.btnloginmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
                                                                    end
                                                               end    --- return function from parse
                                                              )   -- end of parse
@@ -357,7 +348,7 @@ function scene:show( event )
                 font = myApp.fontBold,
                 labelWidth = 0,
                 isSecure = not showpwdSwitch.isOn,    -- note a border shows up... cannot get rid of when issecure
-                listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nameField )end end,
+                listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nil )end end,
             })
             -- Hide the native part of this until we need to show it on the screen.
             
@@ -366,31 +357,6 @@ function scene:show( event )
             pwdField.y = lbY + sceneinfo.pwdfieldheight
 
             group:insert(pwdField)      -- insertng into container messes up
-
-
-              -------------------------------------------------
-             -- nameField field
-             -------------------------------------------------
-            nameField = widget.newTextField({
-                
-                width = container.width - sceneinfo.edge*2  ,
-                height = sceneinfo.namefieldheight,
-                cornerRadius = sceneinfo.namefieldcornerradius,
-                strokeWidth = 0,
-                text = "", 
-                fontSize = sceneinfo.namefieldfontsize,
-                placeholder = sceneinfo.namefieldplaceholder,
-                font = myApp.fontBold,
-                labelWidth = 0,
-                listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nil )end end,
-            })
-            -- Hide the native part of this until we need to show it on the screen.
-            
-            lbX, lbY = txtNAMELabel:localToContent( 0,0 )
-            nameField.x = lbX - txtNAMELabel.width/2 + nameField.width / 2
-            nameField.y = lbY + sceneinfo.namefieldheight
-
-            group:insert(nameField)      -- insertng into container messes up
 
 
 
@@ -424,9 +390,6 @@ function scene:hide( event )
         pwdField:removeSelf()
         pwdField = nil
 
-        nameField:removeSelf()
-        nameField = nil
-
         native.setKeyboardFocus( nil )
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
@@ -451,7 +414,6 @@ end
 function scene:morebutton( parms )
      transition.to(  userField, {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
      transition.to(  pwdField,  {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
-     transition.to(  nameField, {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
 
 end
 

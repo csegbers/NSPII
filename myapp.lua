@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = false,
+            debugMode = true,
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
@@ -346,8 +346,8 @@ local M = {
            aws = {
                         ClientId = '7m7p7tk8ta4qlb4ai15nqmh8a1',
                         UserPoolId = "us-east-1_6p997uKVk",
-                        Key = "--",
-                        Secret = "--",
+                        Key = "AKIAILAUY72VEVDCGLGQ",
+                        Secret = "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",
                         Host = "cognito-idp.us-east-1.amazonaws.com",
                         Region = "us-east-1",
                         Service = "cognito-idp",

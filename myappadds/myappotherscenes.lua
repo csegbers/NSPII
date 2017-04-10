@@ -10,7 +10,7 @@ local otherscenes = {
                                      scrollblockinfo = { },
 
                                      edge = 15,
-                                     height = 280,
+                                     height = 220,
                                      cornerradius = 2,
                                      groupbackground = { r=235/255, g=235/255, b=235/255, a=1 },
                                      strokecolor = { r=150/255, g=150/255, b=150/255, a=1 },
