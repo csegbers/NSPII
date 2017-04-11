@@ -198,7 +198,6 @@ function scene:show( event )
                                                                      myApp.fncPutUD("name",inputname)
                                                                      myApp.fncPutUD("accountcreated",1)
                                                                      myApp.fncPutUD("accountconfirmed",0)                                                                    
-                                                                     myApp.fncUserLogInfo(event.response)
                                                                      native.showAlert( sceneinfo.btncreatemessage.successtitle, sceneinfo.btncreatemessage.successmessage, { "Okay" } , function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginconfirm})) end )
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  

@@ -19,7 +19,7 @@
     },
     "aalogout": {
       "iconwidth": 120,
-      "includeline": false,
+      "includeline": true,
       "showonlyinloggedin": true,
       "navigation": {
         "execute": {

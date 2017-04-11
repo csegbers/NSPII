@@ -266,15 +266,15 @@ function scene:show( event )
                                                                    native.setActivityIndicator( false )
                                                                    myApp.fncPutUD("email",inputemail)
                                                                    if (event.status ) == 200 then 
-                                                                      print ("Return from login" .. json.encode(event.response))
-                                                                      myApp.fncUserLogInfo(event.response)
+                                                                      print ("Return from login" .. json.encode(event))
+                                                                      myApp.fncUserLogInfo(json.decode(event.response))    -- comes in as raw data
                                                                       btnpushed = true
                                                                       timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
                                                                       return true 
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                    else
-                                                                      print ("Return from login" .. json.encode(event))
+                                                                      print ("Return from login error" .. json.encode(event))
                                                                       if  event.responseHeaders["x-amzn-ErrorType"]  == "UserNotConfirmedException:" then
                                                                           myApp.fncPutUD("accountconfirmed",0)  
                                                                       end

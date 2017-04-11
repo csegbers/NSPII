@@ -303,10 +303,10 @@ local M = {
                   },
 
             aws = {
-                                    ClientId = "",
-                                    Key = "",
-                                    Secret = "",
-                                    UserPoolId = "",
+                                    ClientId = "",                     -- from myappaws.lua
+                                    Key = "",                          -- from myappaws.lua
+                                    Secret = "",                       -- from myappaws.lua
+                                    UserPoolId = "",                   -- from myappaws.lua
                                     Host = "cognito-idp.us-east-1.amazonaws.com",
                                     Region = "us-east-1",
                                     Service = "cognito-idp",
@@ -336,17 +336,17 @@ local M = {
             ------------------------------
             -- authentication
             ------------------------------            
-            authentication = {
+            authentication = {    launchonstart = true,
                                   loggedin = false,
-                                  launchonstart = true,
                                   email="",
-                                  emailVerified = false,
-                                  username = "",
+                                  userid = "",
                                   objectId = "",       -- internal userid key
-                                  sessionToken="",
-                                  policies = {},
-                                  agencies = {},
-                                  agencycode = "",      -- will be first code if multiple policieis
+                                  AccessToken="",
+                                  IdToken="",
+                                  RefreshToken="",
+                                  --policies = {},
+                                  --agencies = {},
+                                  --agencycode = "",      -- will be first code if multiple policieis
                               },
 
             titleGradient = {
