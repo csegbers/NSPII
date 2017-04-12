@@ -121,40 +121,45 @@ function scene:show( event )
                     fontSize = sceneinfo.btnforgotfontsize,
                     font = myApp.fontBold,      
                     onRelease = function() 
-                                        
-                                      native.setActivityIndicator( true )
+                                      local inputemail = userField.textField.text or ""
 
-                                      --{
-                                      --"ClientId": "xxxxx",
-                                      --"Username": "craig@segbers.com"
-                                      --}
-                                      
-                                      local userDataTable = {}
-                                      userDataTable.ClientId = myApp.aws.ClientId
-                                      userDataTable.Username = myApp.fncGetUD("email")
+                                      if inputemail == ""   then
+                                          native.showAlert( sceneinfo.btnforgotmessage.errortitle, sceneinfo.btnforgotmessage.errormessage, { "Okay" } )
+                                      else                                      
+                                          native.setActivityIndicator( true )
 
-                                      local jed = json.encode(userDataTable)
-                                      print ("ForgotPassword  -  " .. jed)
-                                      local aws = aws_auth:new({})
-                                      aws:forgotPassword( myApp.aws,
-                                                        jed,  
-                                                        function(event)
-                                                             native.setActivityIndicator( false )
-                                                             if (event.status ) == 200 then 
-                                                               
-                                                               native.showAlert( sceneinfo.btnforgotmessage.successtitle, sceneinfo.btnforgotmessage.successmessage, { "Okay" }, function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginconfirm})) end )
-                                                               --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
-                                                               -- stay here becuase they most likely will get the email and need to login again  
-                                                                btnpushed = true
-                                                                timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
-                                                                return true 
-                                                             else
-                                                               print ("error on return   -  " .. json.encode(event))
-                                                               native.showAlert( sceneinfo.btnforgotmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
-                                                             end
-                                                        end    --- return function from parse
-                                                       )   -- end of parse
-                                         
+                                          --{
+                                          --"ClientId": "xxxxx",
+                                          --"Username": "craig@segbers.com"
+                                          --}
+                                          
+                                          local userDataTable = {}
+                                          userDataTable.ClientId = myApp.aws.ClientId
+                                          userDataTable.Username = myApp.fncGetUD("email")
+
+                                          local jed = json.encode(userDataTable)
+                                          print ("ForgotPassword  -  " .. jed)
+                                          local aws = aws_auth:new({})
+                                          aws:forgotPassword( myApp.aws,
+                                                            jed,  
+                                                            function(event)
+                                                                 native.setActivityIndicator( false )
+                                                                 if (event.status ) == 200 then 
+                                                                    myApp.fncPutUD("forgotpassword",1)  
+                                                                    myApp.fncPutUD("email",inputemail)
+                                                                    native.showAlert( sceneinfo.btnforgotmessage.successtitle, sceneinfo.btnforgotmessage.successmessage, { "Okay" }, function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginforgot})) end )
+                                                                    --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
+                                                                    -- stay here becuase they most likely will get the email and need to login again  
+                                                                    btnpushed = true
+                                                                    timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
+                                                                    return true 
+                                                                 else
+                                                                   print ("error on return   -  " .. json.encode(event))
+                                                                   native.showAlert( sceneinfo.btnforgotmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
+                                                                 end
+                                                            end    --- return function from parse
+                                                           )   -- end of parse
+                                       end  
                                  end,    -- end onrelease
                }
 
@@ -265,8 +270,10 @@ function scene:show( event )
                                                               function(event)
                                                                    native.setActivityIndicator( false )
                                                                    myApp.fncPutUD("email",inputemail)
+
                                                                    if (event.status ) == 200 then 
                                                                       print ("Return from login" .. json.encode(event))
+                                                                      myApp.fncPutUD("forgotpassword",0) 
                                                                       myApp.fncUserLogInfo(json.decode(event.response))    -- comes in as raw data
                                                                       btnpushed = true
                                                                       timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  

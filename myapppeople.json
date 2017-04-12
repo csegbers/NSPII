@@ -549,30 +549,27 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "MO",
+      "name": "Kevin P. Clark",
+      "corp": "Boggs, Avellino, Lach & Boggs, LLC",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "314) 726-2310",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
+        "c": {
+          "field": "(314) 726-2360",
+          "type": "fax"
         },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.balblawyers.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "63132",
+      "city": "St. Louis",
+      "street": "9326 Olive Blvd.",
+      "street2": "Suite 200"
     },
     "comstockd": {
       "pic": "comstockd.jpg",
@@ -637,30 +634,18 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "MO",
+      "name": "Lewis R. Crist",
+      "corp": "Crist & Associates",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(314) 973-4430",
           "type": "phone"
-        },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
-        "d": {
-          "field": "http://www.x.com/",
-          "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "63040",
+      "city": "Wildwood",
+      "street": "175 Cherry Hills Meadow Dr."
     },
     "davisj": {
       "pic": "davisj.jpg",
@@ -769,33 +754,33 @@
       "street2": "Suite 200"
     },
     "fickenc": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "fickenc.jpg",
+      "originaliconwidth": 106,
+      "originaliconheight": 133,
+      "state": "MO",
+      "name": "Craig E. Ficken",
+      "corp": "MDD - Forensic Accountants",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(314) 469-7445",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "eficken@mdd.com",
           "type": "email"
         },
+        "c": {
+          "field": "(314) 469-4577",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://mdd.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "63141",
+      "city": "St. Louis",
+      "street": "11 The Pines Court, Suite E"
     },
     "fishmans": {
       "pic": "fishmans.jpg",
@@ -1053,33 +1038,34 @@
       }
     },
     "jacobsonc": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "jacobsonc.jpg",
+      "originaliconwidth": 300,
+      "originaliconheight": 350,
+      "state": "MO",
+      "name": "Carly Jacobson",
+      "corp": "RGL Forensics",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(636) 812-0295",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "cjacobson@rgl.com",
           "type": "email"
         },
+        "c": {
+          "field": "(636) 537-9279",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.rgl.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "63017",
+      "city": "Chesterfield",
+      "street": "1422 Elbridge Payne Rd.",
+      "street2": "Suite 240"
     },
     "jamesc": {
       "pic": "",
@@ -1168,30 +1154,30 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "IL",
+      "name": "Michael A. Lanxon",
+      "corp": "Midwest Fire Consulting Group, LLC",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(618) 687-4900",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "mlanxon@midwest-fire.com",
           "type": "email"
         },
+        "c": {
+          "field": "(618) 808-0190",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://midwest-fire.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "62254",
+      "city": "Lebanon",
+      "street": "401 Torchlight Lane"
     },
     "legenzam": {
       "pic": "",
@@ -1265,30 +1251,22 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "IL",
+      "name": "Chris S. McDonald",
+      "corp": "Firensics",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(618) 741-5359",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
-        "d": {
-          "field": "http://www.x.com/",
-          "type": "web"
+        "c": {
+          "field": "(866) 843-9475",
+          "type": "fax"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "62285",
+      "city": "Smithton",
+      "street": "5672 Sand Rock Rd."
     },
     "meshelh": {
       "pic": "meshelh.jpg",
@@ -1394,33 +1372,34 @@
       "street2": "Suite 2900"
     },
     "morrowj": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "morrowj.jpg",
+      "originaliconwidth": 288,
+      "originaliconheight": 432,
+      "state": "MO",
+      "name": "Jonathan Morrow",
+      "corp": "Brown & James, P.C.",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(314) 242-5378",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "jmorrow@bjpc.com",
           "type": "email"
         },
+        "c": {
+          "field": "(314) 242-5578",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.brownjames.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "63101",
+      "city": "St. Louis",
+      "street": "800 Market St.",
+      "street2": "Suite 1100"
     },
     "munnj": {
       "pic": "munnj.jpg",
@@ -1657,6 +1636,31 @@
       "zip": "63026",
       "city": "Fenton",
       "street": "1400 S. Highway Dr."
+    },
+    "pressonmw": {
+      "pic": "",
+      "originaliconwidth": 1,
+      "originaliconheight": 1,
+      "state": "IL",
+      "name": "Michael W. Presson",
+      "corp": "Pyr-Tech, Inc.",
+      "launchobjects": {
+        "a": {
+          "field": "(618) 344-1621",
+          "type": "phone"
+        },
+        "c": {
+          "field": "(618) 344-1852",
+          "type": "fax"
+        },
+        "d": {
+          "field": "http://www.pyrtech.com/",
+          "type": "web"
+        }
+      },
+      "zip": "62234",
+      "city": "Collinsville",
+      "street": "843 St. Louis Rd."
     },
     "priceg": {
       "pic": "",
@@ -1916,33 +1920,34 @@
       "street2": "Suite 200"
     },
     "sproatj": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "sproatj.jpg",
+      "originaliconwidth": 187,
+      "originaliconheight": 189,
+      "state": "IL",
+      "name": "Jesse J. Sproat",
+      "corp": "Unified Investigations & Sciences, Inc.",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(630) 529-2097",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "jsproat@uis-usa.com",
           "type": "email"
         },
+        "c": {
+          "field": "(630) 529-2098",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.uis-usa.com/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "60101",
+      "city": "Addison",
+      "street": "2055 W. Army Trail Rd.",
+      "street2": "Suite 108"
     },
     "sweeber": {
       "pic": "sweeber.jpg",
@@ -2081,30 +2086,22 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "state": "MO",
+      "name": "Walter D. Waggoner",
+      "corp": "National Insurance Crime Bureau",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(636) 262-8497",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "https://www.nicb.org/",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "63026",
+      "city": "Fenton",
+      "street": "P.O. Box 574"
     },
     "wallacej": {
       "pic": "",

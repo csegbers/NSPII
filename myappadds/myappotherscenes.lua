@@ -4,7 +4,6 @@
 -------------------------------------------------------
 local otherscenes = {  
             login = {
-                        loggedin = false,
                         sceneinfo = { 
                                      htmlinfo = {},
                                      scrollblockinfo = { },
@@ -119,7 +118,6 @@ local otherscenes = {
                                 },},
                     },
             logincreate = {
-                        loggedin = false,
                         sceneinfo = { 
                                      htmlinfo = {},
                                      scrollblockinfo = { },
@@ -206,7 +204,6 @@ local otherscenes = {
                                 },},
                     },
             loginconfirm = {
-                        loggedin = false,
                         sceneinfo = { 
                                      htmlinfo = {},
                                      scrollblockinfo = { },
@@ -276,6 +273,93 @@ local otherscenes = {
                                    id = "loginconfirm",
                                    isModal = true,
                                    lua="loginconfirm",
+                                   overlay=true,
+                                   time=700, 
+                                   effect= "slideUp",
+                                   effectback="slideUp",
+                                },},
+                    },
+             loginforgot = {
+                        sceneinfo = { 
+                                     htmlinfo = {},
+                                     scrollblockinfo = { },
+
+                                     edge = 15,
+                                     height = 240,
+                                     cornerradius = 2,
+                                     groupbackground = { r=235/255, g=235/255, b=235/255, a=1 },
+                                     strokecolor = { r=150/255, g=150/255, b=150/255, a=1 },
+                                     strokewidth = 1,
+
+                                     namelabel = "Confirmation Code",
+                                     pwdlabel = "New Password",
+
+                                     textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
+                                     textfontsize=14  ,
+                                     btnshape= "rect", --roundedRect",
+
+                                     btncanceldefcolor = { r=160/255, g=160/255, b=160/255, a=1 },  
+                                     btncancelovcolor = { r=130/255, g=130/255, b=130/255, a=1 }, 
+                                     btncanceldeflabelcolor = { r=255/255, g=255/255, b=255/255, a=1 }, 
+                                     btncancelovlabelcolor = { r=100/255, g=100/255, b=100/255, a=1 },  
+                                     btncanceltext = "Cancel",
+                
+                                     btnfontsize = 16,
+                                     btnheight = 30,
+                                     btnwidth = 90,
+
+
+                                     pwdfieldfontsize=14  , 
+                                     pwdfieldheight = 30,
+                                     pwdfieldcornerradius = 6,
+                                     pwdfieldplaceholder = "",
+                                     pwdfieldmessage = {
+                                          errortitle = "xxxx", 
+                                          errormessage = "yyyy",
+                                      },
+                                     showpwdswitchstyle = "onOff",
+
+                                     namefieldfontsize=14  , 
+                                     namefieldheight = 30,
+                                     namefieldcornerradius = 6,
+                                     namefieldplaceholder = "",
+                                     namefieldmessage = {
+                                          errortitle = "xxxx", 
+                                          errormessage = "yyyy",
+                                      },
+
+                                      btnresendlabel = "Resend Confirmation Code" ,
+                                      btnresendllabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
+                                      btnresendfontsize=13  , 
+                                      btnresendmessage = {
+                                          successtitle= "Email Sent",
+                                          successmessage= "An email verification has been sent. Please find the password reset code in the email, return back, enter the code and new password to complete the process.",
+                                          failuretitle= "Error With Your Request",
+
+                                      },
+
+                                      btncreatelabel = "Reset Password" ,
+                                      btncreatelabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
+                                      btncreatefontsize=13  , 
+                                      btncreatedefcolor = { r=0/255, g=100/255, b=0/255, a=1 },  
+                                      btncreateovcolor = { r=0/255, g=150/255, b=0/255, a=1 }, 
+                                      btncreatedeflabelcolor = { r=255/255, g=255/255, b=255/255, a=1 }, 
+                                      btncreateovlabelcolor = { r=230/255, g=230/255, b=230/255, a=1 },  
+
+                                      btncreatemessage = {
+                                          errortitle = "Invalid Entries", 
+                                          errormessage = "Must have a Confirmation Code and a New Password.",
+                                          successtitle= "Congratulations !!",
+                                          successmessage= "Your password has been reset. Please login.",
+                                          failuretitle= "Error With Your Request",
+
+                                      },
+
+                                   },
+                        navigation = { composer = {
+                                   id = "loginforgot",
+                                   isModal = true,
+                                   lua="loginforgot",
                                    overlay=true,
                                    time=700, 
                                    effect= "slideUp",

@@ -23,6 +23,7 @@ function M.appCondition(parms)
     if (intable.showonlyindebugMode and myApp.debugMode == false) then appcnd = false end
     if (intable.showonlyinloggedin and myApp.authentication.loggedin == false) then appcnd = false  end
     if (intable.showonlyinloggedout and myApp.authentication.loggedin == true) then appcnd = false  end
+    if (intable.showonlyinforgotpassword and myApp.fncGetUD("forgotpassword") == 0) then appcnd = false  end
     if (intable.showwhennotconfirmed and (myApp.fncGetUD("accountcreated") == 0 or myApp.fncGetUD("accountconfirmed") == 1)) then appcnd = false  end
    
     return appcnd

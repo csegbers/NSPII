@@ -22,6 +22,7 @@ M.dbschema = {
 								name = {name="udname",title="Name",att="TEXT", def="",reset=false},
 								accountcreated = {name="udacctcreated",title="Account Created",att="INTEGER", def=0,reset=false},
 								accountconfirmed = {name="udacctconf",title="Account Confirmed",att="INTEGER", def=0,reset=false},
+								forgotpassword = {name="udforgot",title="Forgot Password",att="INTEGER", def=0,reset=false},
 								everloggedin = {name="udeverloggedin",title="Ever Logged In",att="INTEGER", def=0,reset=false},
 																															
 							},

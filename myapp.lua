@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = true,
+            debugMode = false,
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
@@ -328,6 +328,7 @@ local M = {
                                                          ConfirmSignUp = {name = "ConfirmSignUp", httpaction="POST",authtype=false},
                                                          ResendConfirmationCode = {name = "ResendConfirmationCode", httpaction="POST",authtype=false},
                                                          ForgotPassword = {name = "ForgotPassword", httpaction="POST",authtype=false},
+                                                         ConfirmForgotPassword = {name = "ConfirmForgotPassword", httpaction="POST",authtype=false},
                                                         -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                       },
                                           },

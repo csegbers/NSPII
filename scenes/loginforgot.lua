@@ -13,20 +13,20 @@ local widgetExtras = require( myApp.utilsfld .. "widget-extras" )
 
 local common = require( myApp.utilsfld .. "common" )
 
-local currScene = "logincreate"
+local currScene = "loginforgot"
 print ("Inxxxxxxxxxxxxxxxxxxxxxxxxxxxxx " .. currScene .. " Scene")
 
 local sceneparams
 local container
 local cancelButton
-local userField
-local pwdField
 local nameField
 local txtUserLabel
-local txtPWDLabel
 local txtNameLabel
+local txtPWDLabel
+local pwdField
 local showpwdSwitch
 local createButton
+local resendButton
 local btnpushed = true
 
 ------------------------------------------------------
@@ -76,7 +76,7 @@ function scene:show( event )
              -------------------------------------------------
              -- userid text
              -------------------------------------------------
-             txtUserLabel = display.newText({text= sceneinfo.userlabel, font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
+             txtUserLabel = display.newText({text= myApp.fncGetUD("email"), font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
              txtUserLabel:setFillColor( sceneinfo.textcolor.r,sceneinfo.textcolor.g,sceneinfo.textcolor.b,sceneinfo.textcolor.a )
              txtUserLabel.anchorX = 0
              txtUserLabel.anchorY = 0
@@ -84,19 +84,6 @@ function scene:show( event )
              txtUserLabel.y = background.y - background.height/2 + sceneinfo.edge/2
              
              container:insert(txtUserLabel)
-
-
-             -------------------------------------------------
-             -- pwd text
-             -------------------------------------------------
-             txtPWDLabel = display.newText({text=sceneinfo.pwdlabel, font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
-             txtPWDLabel:setFillColor( sceneinfo.textcolor.r,sceneinfo.textcolor.g,sceneinfo.textcolor.b,sceneinfo.textcolor.a )
-             txtPWDLabel.anchorX = 0
-             txtPWDLabel.anchorY = 0
-             txtPWDLabel.x = background.x - background.width/2 + sceneinfo.edge/2
-             txtPWDLabel.y = txtUserLabel.y + txtUserLabel.height + sceneinfo.userfieldheight + sceneinfo.edge
-             
-             container:insert(txtPWDLabel)
 
    
              -------------------------------------------------
@@ -107,9 +94,22 @@ function scene:show( event )
              txtNAMELabel.anchorX = 0
              txtNAMELabel.anchorY = 0
              txtNAMELabel.x = background.x - background.width/2 + sceneinfo.edge/2
-             txtNAMELabel.y = txtPWDLabel.y + txtPWDLabel.height + sceneinfo.userfieldheight + sceneinfo.edge
+             txtNAMELabel.y = txtUserLabel.y + txtUserLabel.height +  sceneinfo.edge
              
              container:insert(txtNAMELabel)
+
+
+             -------------------------------------------------
+             -- pwd text
+             -------------------------------------------------
+             txtPWDLabel = display.newText({text=sceneinfo.pwdlabel, font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
+             txtPWDLabel:setFillColor( sceneinfo.textcolor.r,sceneinfo.textcolor.g,sceneinfo.textcolor.b,sceneinfo.textcolor.a )
+             txtPWDLabel.anchorX = 0
+             txtPWDLabel.anchorY = 0
+             txtPWDLabel.x = background.x - background.width/2 + sceneinfo.edge/2
+             txtPWDLabel.y = txtNAMELabel.y + txtNAMELabel.height + sceneinfo.namefieldheight  + sceneinfo.edge
+             
+             container:insert(txtPWDLabel)
 
              -------------------------------------------------
              -- show password switch
@@ -124,9 +124,60 @@ function scene:show( event )
              showpwdSwitch.x = txtPWDLabel.x + background.width - showpwdSwitch.width
              showpwdSwitch.y = txtPWDLabel.y + sceneinfo.pwdfieldheight + sceneinfo.edge/2
              container:insert(showpwdSwitch)
+          
 
+              -------------------------------------------------
+             -- forgot password buttoin
              -------------------------------------------------
-             -- create pwd buttoin
+            resendButton = widget.newButton {
+                    label = sceneinfo.btnresendlabel ,
+                    width =  1,    -- will recalucualte
+                    labelColor = sceneinfo.btnresendlabelColor,
+                    fontSize = sceneinfo.btnresendfontsize,
+                    font = myApp.fontBold,      
+                    onRelease = function() 
+                                                                
+                                          native.setActivityIndicator( true )
+
+                                          --{
+                                          --"ClientId": "xxxxx",
+                                          --"Username": "craig@segbers.com"
+                                          --}
+                                          
+                                          local userDataTable = {}
+                                          userDataTable.ClientId = myApp.aws.ClientId
+                                          userDataTable.Username = myApp.fncGetUD("email")
+
+                                          local jed = json.encode(userDataTable)
+                                          print ("resend-ForgotPassword  -  " .. jed)
+                                          local aws = aws_auth:new({})
+                                          aws:forgotPassword( myApp.aws,
+                                                            jed,  
+                                                            function(event)
+                                                                 native.setActivityIndicator( false )
+                                                                 if (event.status ) == 200 then 
+                                                                    myApp.fncPutUD("forgotpassword",1)  
+                                                                    native.showAlert( sceneinfo.btnresendmessage.successtitle, sceneinfo.btnresendmessage.successmessage, { "Okay" } )
+                                                                    --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
+                                                                    -- stay here becuase they most likely will get the email and need to login again  
+                                                                    --btnpushed = true
+                                                                    --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
+                                                                    return true 
+                                                                 else
+                                                                   print ("error on return   -  " .. json.encode(event))
+                                                                   native.showAlert( sceneinfo.btnresendmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
+                                                                 end
+                                                            end    --- return function from parse
+                                                           )    
+                                    
+                                 end,    -- end onrelease
+               }
+
+             resendButton.x = 0 - background.width/2 + resendButton.width/2 + sceneinfo.edge
+             resendButton.y = txtPWDLabel.y + txtPWDLabel.height  + sceneinfo.pwdfieldheight*2
+             container:insert(resendButton)
+             -------------------------------------------------
+             -- Confirm forgot pwd
              -------------------------------------------------
             createButton = widget.newButton {
                     shape=sceneinfo.btnshape,
@@ -138,68 +189,35 @@ function scene:show( event )
                     width = sceneinfo.btnwidth*2-sceneinfo.edge,
                     height = sceneinfo.btnheight,    
                     onRelease = function() 
-                                        local inputemail = userField.textField.text or ""
+                                        local inputcode = nameField.textField.text or ""
                                         local inputpwd = pwdField.textField.text or ""
-                                        local inputname = nameField.textField.text or ""
-                                        if inputemail == "" or inputpwd == "" or inputname == "" then
+                                        if inputcode == "" or inputpwd == "" then
                                            native.showAlert( sceneinfo.btncreatemessage.errortitle, sceneinfo.btncreatemessage.errormessage, { "Okay" } )
                                         else
                                             native.setActivityIndicator( true )
-                                           -- local userDataTable = { ["username"] = inputemail, ["email"] = inputemail, ["password"] = inputpwd }
-                                          --  local userDataTable = {}
-                                          --  userDataTable.ClientId = myapp.aws.ClientId
-                                           -- userDataTable.Password = inputpwd
-                                           -- userDataTable.Username = inputemail
-                                           -- userDataTable.UserAttributes = {}
-
-                                           -- local jstr = '{"ClientId": "' .. myApp.aws.ClientId .. '","Password": "' .. inputpwd .. '","Username": "' .. inputemail .. '",'
-                                          --  jstr = jstr .. '"UserAttributes": [{"Name": "email","Value": "' .. inputemail .. '"  }]}'
-                                          --  local userDataTable = json.decode(jstr)
-                                           -- print (json.encode(userDataTable))
-                                            --parse:clearSessionToken ()
-
+                                                --{
+                                                --"ClientId": "7m7p7tk8ta4qlb4ai15nqmh8a1",
+                                                --"ConfirmationCode": "207956",
+                                                --"Password": "gh%%3322SSsD",
+                                                --"Username": "craig@segbers.com"
+                                                --}
                                             
                                             local userDataTable = {}
                                             userDataTable.ClientId = myApp.aws.ClientId
+                                            userDataTable.ConfirmationCode = inputcode
                                             userDataTable.Password = inputpwd
-                                            userDataTable.Username = inputemail
-                                            userDataTable.UserAttributes = {}
-
-                                            local userDataTableEmail = {}
-                                            userDataTableEmail.Name = "email"
-                                            userDataTableEmail.Value = inputemail
-                                            table.insert (userDataTable.UserAttributes,userDataTableEmail)
-
-                                            local userDataTableName = {}
-                                            userDataTableName.Name = "name"
-                                            userDataTableName.Value = inputname
-                                            table.insert (userDataTable.UserAttributes,userDataTableName)
+                                            userDataTable.Username = myApp.fncGetUD("email")
 
                                             local jed = json.encode(userDataTable)
-                                            print ("signUp  -  " .. jed)
-
-                                            local aws = aws_auth:new({
-                                                                        aws_key     = myApp.aws.Key,
-                                                                        aws_secret  = myApp.aws.Secret,
-                                                                        aws_region  = myApp.aws.Region,
-                                                                        aws_service = myApp.aws.Service,
-                                                                        aws_request = myApp.aws.Request,
-                                                                        aws_host    = myApp.aws.Host,
-                                                                        content_type   = myApp.aws.ContentType,
-                                                                      })
-                                            aws:clearSessionToken()
-                                            aws:signUp(       myApp.aws,
+                                            print ("ConfirmForgotPassword  -  " .. jed)
+                                            local aws = aws_auth:new({})
+                                            aws:confirmForgotPassword(       myApp.aws,
                                                               jed,  
                                                               function(event)
                                                                    native.setActivityIndicator( false )
                                                                    if (event.status ) == 200 then 
-                                                                     myApp.fncPutUD("userid",inputemail)
-                                                                     myApp.fncPutUD("email",inputemail)
-                                                                     myApp.fncPutUD("name",inputname)
-                                                                     myApp.fncPutUD("accountcreated",1)
-                                                                     myApp.fncPutUD("accountconfirmed",0)  
                                                                      myApp.fncPutUD("forgotpassword",0)                                                                   
-                                                                     native.showAlert( sceneinfo.btncreatemessage.successtitle, sceneinfo.btncreatemessage.successmessage, { "Okay" } , function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginconfirm})) end )
+                                                                     native.showAlert( sceneinfo.btncreatemessage.successtitle, sceneinfo.btncreatemessage.successmessage, { "Okay" }, function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.login})) end )
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                       btnpushed = true
@@ -210,7 +228,7 @@ function scene:show( event )
                                                                      native.showAlert( sceneinfo.btncreatemessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
                                                                    end
                                                               end    --- return function from parse
-                                                             )   -- end of parse
+                                                             )   -- end of aws
                                          end -- end of checking for valid input
                                  end,    -- end onrelease
                }
@@ -239,7 +257,7 @@ function scene:show( event )
                     onRelease = 
                        function() if btnpushed == false then
                                          btnpushed = true
-                                         timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end)  
+                                         timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
                                          return true 
                                   end
                        end,
@@ -264,64 +282,7 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
-
-              -------------------------------------------------
-             -- userid field
              -------------------------------------------------
-            userField = widget.newTextField({
-                width = container.width - sceneinfo.edge*2,
-                height = sceneinfo.userfieldheight,
-                cornerRadius = sceneinfo.userfieldcornerradius,
-                strokeWidth = 0,
-                text = myApp.fncGetUD("email"),
-                fontSize = sceneinfo.userfieldfontsize,
-                placeholder = sceneinfo.userfieldplaceholder,
-                font = myApp.fontBold,
-                labelWidth = 0,
-                inputType = "email",
-                listener = function()     if ( "began" == event.phase ) then
-                                          elseif ( "submitted" == event.phase ) then
-                                             native.setKeyboardFocus( pwdField )
-                                          end 
-                            end,
-                        })
-            -- Hide the native part of this until we need to show it on the screen.
-            
-         --   local lbX, lbY = txtUserLabel:localToContent( txtUserLabel.width/2-sceneinfo.edge/2, 0 )
-            local lbX, lbY = txtUserLabel:localToContent( 0 , 0 )     -- get center points relative to device
-            userField.x = lbX - txtUserLabel.width/2 + userField.width / 2 
-            userField.y = lbY + sceneinfo.userfieldheight
-     
-            group:insert(userField)      -- insertng into container messes up
-
-
-              -------------------------------------------------
-             -- pwd field
-             -------------------------------------------------
-            pwdField = widget.newTextField({
-                
-                width = container.width - sceneinfo.edge*2 - showpwdSwitch.width*1.5,
-                height = sceneinfo.pwdfieldheight,
-                cornerRadius = sceneinfo.pwdfieldcornerradius,
-                strokeWidth = 0,
-                text = "",
-                fontSize = sceneinfo.pwdfieldfontsize,
-                placeholder = sceneinfo.pwdfieldplaceholder,
-                font = myApp.fontBold,
-                labelWidth = 0,
-                isSecure = not showpwdSwitch.isOn,    -- note a border shows up... cannot get rid of when issecure
-                listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nameField )end end,
-            })
-            -- Hide the native part of this until we need to show it on the screen.
-            
-            lbX, lbY = txtPWDLabel:localToContent( 0,0 )
-            pwdField.x = lbX - txtPWDLabel.width/2 + pwdField.width / 2
-            pwdField.y = lbY + sceneinfo.pwdfieldheight
-
-            group:insert(pwdField)      -- insertng into container messes up
-
-
-              -------------------------------------------------
              -- nameField field
              -------------------------------------------------
             nameField = widget.newTextField({
@@ -345,12 +306,33 @@ function scene:show( event )
 
             group:insert(nameField)      -- insertng into container messes up
 
+               -------------------------------------------------
+             -- pwd field
+             -------------------------------------------------
+            pwdField = widget.newTextField({
+                
+                width = container.width - sceneinfo.edge*2 - showpwdSwitch.width*1.5,
+                height = sceneinfo.pwdfieldheight,
+                cornerRadius = sceneinfo.pwdfieldcornerradius,
+                strokeWidth = 0,
+                text = "",
+                fontSize = sceneinfo.pwdfieldfontsize,
+                placeholder = sceneinfo.pwdfieldplaceholder,
+                font = myApp.fontBold,
+                labelWidth = 0,
+                isSecure = not showpwdSwitch.isOn,    -- note a border shows up... cannot get rid of when issecure
+                listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nil )end end,
+            })
+            -- Hide the native part of this until we need to show it on the screen.
+            
+            lbX, lbY = txtPWDLabel:localToContent( 0,0 )
+            pwdField.x = lbX - txtPWDLabel.width/2 + pwdField.width / 2
+            pwdField.y = lbY + sceneinfo.pwdfieldheight
+
+            group:insert(pwdField)      -- insertng into container messes up           
 
 
-            if (userField.textField.text or "") ~= "" then
-                native.setKeyboardFocus( pwdField )
-            end
-
+            native.setKeyboardFocus( nameField )
             ------------------
             -- allow buttons to be pushed
             -------------------
@@ -371,14 +353,12 @@ function scene:hide( event )
     ------------------------------
     pcall(function() event.parent:overlay({type="hide",phase = phase,time=sceneparams.navigation.composer.time } ) end)
     if ( phase == "will" ) then
-        userField:removeSelf()
-        userField = nil
-
-        pwdField:removeSelf()
-        pwdField = nil
 
         nameField:removeSelf()
         nameField = nil
+
+        pwdField:removeSelf()
+        pwdField = nil
 
         native.setKeyboardFocus( nil )
     elseif ( phase == "did" ) then
@@ -402,8 +382,6 @@ end
 -- used from the more button
 ---------------------------------------------------
 function scene:morebutton( parms )
-     transition.to(  userField, {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
-     transition.to(  pwdField,  {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
      transition.to(  nameField, {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
 
 end

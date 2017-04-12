@@ -331,7 +331,20 @@
       "backtext": "<",
       "doublewide": true
     },
-    "bcreate": {
+    "bloginforgot": {
+      "navigation": {
+        "composer": {
+          "otherscenes": "loginforgot"
+        }
+      },
+      "text": "",
+      "headerfontsize": 16,
+      "title": "Forgot Password Email",
+      "showonlyinforgotpassword": true,
+      "backtext": "<",
+      "doublewide": true
+    },    
+    "ccreate": {
       "navigation": {
         "composer": {
           "otherscenes": "logincreate"
@@ -343,7 +356,7 @@
       "backtext": "<",
       "doublewide": true
     },
-   "cconfirm": {
+   "dconfirm": {
       "showwhennotconfirmed" : true,
       "navigation": {
         "composer": {
