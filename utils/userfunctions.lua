@@ -4,10 +4,14 @@
 local myApp = require( "myapp" ) 
 
 -------------------------------
--- if user just created then not every field is there like email
+-- 
 -------------------------------
 function myApp.fncUserLogInfo (event)
      print ("fncUserLoggedIn  .. "  .. require("json").encode(event))
+
+     myApp.fncPutUD("forgotpassword",0) 
+     myApp.fncPutUD("accountcreated",1)
+     myApp.fncPutUD("accountconfirmed",1) 
  
      myApp.authentication.email = myApp.fncGetUD("email")
      myApp.authentication.userid = myApp.fncGetUD("userid")               -- for now this is email

@@ -9,7 +9,7 @@ local otherscenes = {
                                      scrollblockinfo = { },
 
                                      edge = 15,
-                                     height = 220,
+                                     height = 280,
                                      cornerradius = 2,
                                      groupbackground = { r=235/255, g=235/255, b=235/255, a=1 },
                                      strokecolor = { r=150/255, g=150/255, b=150/255, a=1 },
@@ -17,6 +17,7 @@ local otherscenes = {
 
                                      userlabel = "Email Address",
                                      pwdlabel = "Password",
+                                     pwdNewlabel = "New Password",
                                      namelabel = "Name",
 
                                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
@@ -90,7 +91,20 @@ local otherscenes = {
                                           failuretitle= "Error With Your Request",
 
                                       },
+                                     
 
+                                      btnchangelabel = "Change Password" ,
+                                      btnchangelabelundo = "Undo Change Password" ,
+                                      btnchangelabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
+                                      btnchangefontsize=13  , 
+                                      btnchangemessage = {
+                                          errortitle = "Invalid Entries", 
+                                          errormessage = "Must have a valid email address, password and new password",
+                                          successtitle= "Password Changed",
+                                          successmessage= "Your password has been changed.",
+                                          failuretitle= "Error With Your Request",
+
+                                      },
 
                                       btncreatelabel = "Create An Account" ,
                                       btncreatellabelcolor = { default={ 0, 100/255, 200/255 }, over={ 0, 0, 0, 0.5 } },
@@ -291,7 +305,7 @@ local otherscenes = {
                                      strokecolor = { r=150/255, g=150/255, b=150/255, a=1 },
                                      strokewidth = 1,
 
-                                     namelabel = "Confirmation Code",
+                                     namelabel = "Password Reset Code",
                                      pwdlabel = "New Password",
 
                                      textcolor = { r=1/255, g=1/255, b=1/255, a=1 },   
