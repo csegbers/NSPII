@@ -34,7 +34,8 @@ local otherscenes = {
                                      btnloginovcolor = { r=0/255, g=150/255, b=0/255, a=1 }, 
                                      btnlogindeflabelcolor = { r=255/255, g=255/255, b=255/255, a=1 }, 
                                      btnloginovlabelcolor = { r=230/255, g=230/255, b=230/255, a=1 },  
-                                     btnlogintext = "Login",        
+                                      
+                                     btnlogintext = "Login",       
                                      btnloginmessage = {
                                           errortitle = "Invalid Entries", 
                                           errormessage = "Must have a valid email address and password entered.",
@@ -48,7 +49,8 @@ local otherscenes = {
 
                                      btnfontsize = 16,
                                      btnheight = 30,
-                                     btnwidth = 90,
+                                     btnwidth = 150,
+                                     btnwidthcancel = 90,
 
                                      userfieldfontsize=14  , 
                                      userfieldheight = 30,

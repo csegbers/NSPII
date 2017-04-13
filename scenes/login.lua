@@ -55,6 +55,17 @@ function scene:show( event )
     -- call incase the parent needs to do any action
     ------------------------------
     pcall(function() event.parent:overlay({type="show",phase = phase,time=sceneparams.navigation.composer.time } ) end)
+
+    local function showhidechange(  )
+         txtPWDNewLabel.isVisible = changepwd
+         pwdNewField.isVisible = changepwd
+         showpwdNewSwitch.isVisible = changepwd
+         if changepwd == true then
+            loginButton:setLabel( sceneinfo.btnchangelabel)
+         else
+            loginButton:setLabel( sceneinfo.btnlogintext)
+         end
+     end    
  
 
     if ( phase == "will" ) then
@@ -126,6 +137,7 @@ function scene:show( event )
              txtPWDNewLabel.anchorY = 0
              txtPWDNewLabel.x = background.x - background.width/2 + sceneinfo.edge/2
              txtPWDNewLabel.y = txtPWDLabel.y + txtPWDLabel.height + sceneinfo.userfieldheight + sceneinfo.edge
+             txtPWDNewLabel.isVisible = changepwd 
              
              container:insert(txtPWDNewLabel)
 
@@ -141,7 +153,9 @@ function scene:show( event )
                 }
              showpwdNewSwitch.x = txtPWDNewLabel.x + background.width - showpwdNewSwitch.width
              showpwdNewSwitch.y = txtPWDNewLabel.y + sceneinfo.pwdfieldheight + sceneinfo.edge/2
+             showpwdNewSwitch.isVisible = changepwd 
              container:insert(showpwdNewSwitch)
+
 
               -------------------------------------------------
              -- forgot pwd buttoin
@@ -210,45 +224,8 @@ function scene:show( event )
                     fontSize = sceneinfo.btnchangefontsize,
                     font = myApp.fontBold,      
                     onRelease = function() 
-                                      local inputemail = userField.textField.text or ""
-
-                                      if inputemail == ""   then
-                                          native.showAlert( sceneinfo.btnforgotmessage.errortitle, sceneinfo.btnforgotmessage.errormessage, { "Okay" } )
-                                      else                                      
-                                          native.setActivityIndicator( true )
-
-                                          --{
-                                          --"ClientId": "xxxxx",
-                                          --"Username": "craig@segbers.com"
-                                          --}
-                                          
-                                          local userDataTable = {}
-                                          userDataTable.ClientId = myApp.aws.ClientId
-                                          userDataTable.Username = myApp.fncGetUD("email")
-
-                                          local jed = json.encode(userDataTable)
-                                          print ("ForgotPassword  -  " .. jed)
-                                          local aws = aws_auth:new({})
-                                          aws:forgotPassword( myApp.aws,
-                                                            jed,  
-                                                            function(event)
-                                                                 native.setActivityIndicator( false )
-                                                                 if (event.status ) == 200 then 
-                                                                    myApp.fncPutUD("forgotpassword",1)  
-                                                                    myApp.fncPutUD("email",inputemail)
-                                                                    native.showAlert( sceneinfo.btnforgotmessage.successtitle, sceneinfo.btnforgotmessage.successmessage, { "Okay" }, function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginforgot})) end )
-                                                                    --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
-                                                                    -- stay here becuase they most likely will get the email and need to login again  
-                                                                    btnpushed = true
-                                                                    timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
-                                                                    return true 
-                                                                 else
-                                                                   print ("error on return   -  " .. json.encode(event))
-                                                                   native.showAlert( sceneinfo.btnforgotmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
-                                                                 end
-                                                            end    --- return function from parse
-                                                           )   -- end of parse
-                                       end  
+                                       changepwd = not changepwd
+                                       showhidechange()
                                  end,    -- end onrelease
                }
 
@@ -268,7 +245,7 @@ function scene:show( event )
                     labelColor = { default={ sceneinfo.btncanceldeflabelcolor.r,  sceneinfo.btncanceldeflabelcolor.g, sceneinfo.btncanceldeflabelcolor.b, sceneinfo.btncanceldeflabelcolor.a}, over={ sceneinfo.btncancelovlabelcolor.r, sceneinfo.btncancelovlabelcolor.g, sceneinfo.btncancelovlabelcolor.b, sceneinfo.btncancelovlabelcolor.a } },
                     fontSize = sceneinfo.btnfontsize,
                     font = myApp.fontBold,
-                    width = sceneinfo.btnwidth,
+                    width = sceneinfo.btnwidthcancel,
                     height = sceneinfo.btnheight,
                     ---------------------------------
                     -- stick inside a time to prevent the buton press from passing thru to the current scene
@@ -365,10 +342,13 @@ function scene:show( event )
                                                                    if (event.status ) == 200 then 
                                                                       print ("Return from login" .. json.encode(event))
                                                                      
-                                                                      myApp.fncUserLogInfo(json.decode(event.response))    -- comes in as raw data
-                                                                      btnpushed = true
-                                                                      timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
-                                                                      return true 
+                                                                      if changepwd == false then
+                                                                          myApp.fncUserLogInfo(json.decode(event.response))    -- comes in as raw data
+                                                                          btnpushed = true
+                                                                          timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
+                                                                          return true 
+                                                                      else
+                                                                      end
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                    else
@@ -415,6 +395,7 @@ function scene:show( event )
                 font = myApp.fontBold,
                 labelWidth = 0,
                 inputType = "email",
+                isVisible = changepwd,
                 listener = function()     if ( "began" == event.phase ) then
                                           elseif ( "submitted" == event.phase ) then
                                              native.setKeyboardFocus( pwdField )
@@ -487,8 +468,7 @@ function scene:show( event )
                 native.setKeyboardFocus( pwdField )
             end
 
-  
-            txtPWDNewLabel.isVisible = changepwd
+            showhidechange()
             ------------------
             -- allow buttons to be pushed
             -------------------
