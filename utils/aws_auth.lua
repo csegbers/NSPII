@@ -152,7 +152,9 @@ function _M.confirmForgotPassword( self, objMetaTable, objDataTable, _callback )
   return self:sendRequest( objMetaTable,"IDP", objDataTable, "ConfirmForgotPassword", _callback )
 end
 
-
+function _M.changePassword( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "ChangePassword", _callback )
+end
 
 
 

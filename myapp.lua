@@ -329,6 +329,7 @@ local M = {
                                                          ResendConfirmationCode = {name = "ResendConfirmationCode", httpaction="POST",authtype=false},
                                                          ForgotPassword = {name = "ForgotPassword", httpaction="POST",authtype=false},
                                                          ConfirmForgotPassword = {name = "ConfirmForgotPassword", httpaction="POST",authtype=false},
+                                                         ChangePassword = {name = "ChangePassword", httpaction="POST",authtype=false},
                                                         -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                       },
                                           },

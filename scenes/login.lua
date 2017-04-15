@@ -285,8 +285,22 @@ function scene:show( event )
                     onRelease = function() 
                                         local inputemail = userField.textField.text or ""
                                         local inputpwd = pwdField.textField.text or ""
-                                        if inputemail == "" or inputpwd == "" then
-                                           native.showAlert( sceneinfo.btnloginmessage.errortitle, sceneinfo.btnloginmessage.errormessage, { "Okay" } )
+                                        local inputpwdnew = pwdNewField.textField.text or ""
+                                        local msgtable
+                                        local haveerror = false
+                                        if changepwd then
+                                            msgtable = sceneinfo.btnchangemessage
+                                            if inputemail == "" or inputpwd == "" or inputpwdnew == "" then
+                                                haveerror = true
+                                             end
+                                        else
+                                            msgtable = sceneinfo.btnloginmessage
+                                            if inputemail == "" or inputpwd == "" then
+                                                haveerror = true
+                                            end
+                                        end
+                                        if haveerror == true then
+                                           native.showAlert( msgtable.errortitle, msgtable.errormessage, { "Okay" } )
                                         else
                                             native.setActivityIndicator( true )
                                            -- local userDataTable = { ["username"] = inputemail, ["email"] = inputemail, ["password"] = inputpwd }
@@ -322,6 +336,9 @@ function scene:show( event )
 
                                             --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
                                             print ("jed  -  " .. jed)
+                                            ---------------------------
+                                            -- always login even if changing password
+                                            -----------------------------
                                             local aws = aws_auth:new({
                                                                         aws_key     = myApp.aws.Key,
                                                                         aws_secret  = myApp.aws.Secret,
@@ -341,22 +358,79 @@ function scene:show( event )
 
                                                                    if (event.status ) == 200 then 
                                                                       print ("Return from login" .. json.encode(event))
-                                                                     
+                                                              
+                                                                      myApp.fncUserLogInfo(json.decode(event.response))    -- comes in as raw data
                                                                       if changepwd == false then
-                                                                          myApp.fncUserLogInfo(json.decode(event.response))    -- comes in as raw data
                                                                           btnpushed = true
                                                                           timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
                                                                           return true 
                                                                       else
-                                                                      end
+                                                                          -------------------------
+                                                                          -- second part change password
+                                                                          ---------------------------
+                                                                          native.setActivityIndicator( true )
+                                                                          userDataTable = {}
+                                                                          userDataTable.AccessToken =   myApp.authentication.AccessToken
+                                                                          userDataTable.PreviousPassword = inputpwd                                
+                                                                          userDataTable.ProposedPassword = inputpwdnew
+                                                                          jed = json.encode(userDataTable)
+                                                                          local awsnew = aws_auth:new({
+                                                                                aws_key     = myApp.aws.Key,
+                                                                                aws_secret  = myApp.aws.Secret,
+                                                                                aws_region  = myApp.aws.Region,
+                                                                                aws_service = myApp.aws.Service,
+                                                                                aws_request = myApp.aws.Request,
+                                                                                aws_host    = myApp.aws.Host,
+                                                                                content_type   = myApp.aws.ContentType,
+                                                                                request_body    = jed,
+                                                                              })  
+                                                                              
+
+                                                                           awsnew:changePassword(  myApp.aws,
+                                                                                                  jed,  
+                                                                                                  function(event)
+                                                                                                       native.setActivityIndicator( false )
+
+                                                                                                       if (event.status ) == 200 then 
+                                                                                                          print ("Return from change password" .. json.encode(event))
+                                                                                                              native.showAlert( msgtable.successtitle, msgtable.successmessage, { "Okay" })
+                    
+                                                                                                              btnpushed = true
+                                                                                                              timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
+                                                                                                              return true                                    
+                                                                                                         --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
+                                                                                                         -- stay here becuase they most likely will get the email and need to login again  
+                                                                                                       else
+                                                                                                          print ("Return from changepassword error" .. json.encode(event))
+
+                                                                                                          native.showAlert( msgtable.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
+                                                                                                       end
+                                                                                                  end    --- return function from parse
+                                                                                                 )   -- end of parse
+
+
+
+                                                                      end   -- end of changepasswod process
                                                                      --timer.performWithDelay(10,function () myApp.hideOverlay({callback=nill}) end) 
                                                                      -- stay here becuase they most likely will get the email and need to login again  
                                                                    else
                                                                       print ("Return from login error" .. json.encode(event))
+                                                                      local retfnc = nil
                                                                       if  event.responseHeaders["x-amzn-ErrorType"]  == "UserNotConfirmedException:" then
                                                                           myApp.fncPutUD("accountconfirmed",0)  
                                                                       end
-                                                                      native.showAlert( sceneinfo.btnloginmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" } )
+                                                                      if  event.responseHeaders["x-amzn-ErrorType"]  == "PasswordResetRequiredException:" then
+                                                                          myApp.fncPutUD("forgotpassword",1)  
+                                                                          retfnc = function(event) timer.performWithDelay(10, myApp.showSubScreen({instructions=myApp.otherscenes.loginforgot})) end 
+                                                                      end   
+                                                                      native.showAlert( sceneinfo.btnloginmessage.failuretitle, (event.responseHeaders["x-amzn-ErrorMessage"] or "Unknown"), { "Okay" },retfnc )
+
+                                                                      if retfnc then
+                                                                          btnpushed = true
+                                                                          timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
+                                                                          return true  
+                                                                      end
+                                                                  
                                                                    end
                                                               end    --- return function from parse
                                                              )   -- end of parse

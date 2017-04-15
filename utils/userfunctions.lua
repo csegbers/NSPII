@@ -17,6 +17,7 @@ function myApp.fncUserLogInfo (event)
      myApp.authentication.userid = myApp.fncGetUD("userid")               -- for now this is email
     -- myApp.authentication.objectId = userObject.objectId                -- internal userid
     local authResult =  event.AuthenticationResult 
+     myApp.authentication.AccessToken = authResult.AccessToken
      myApp.authentication.IdToken = authResult.IdToken
      myApp.authentication.RefreshToken = authResult.RefreshToken
 
