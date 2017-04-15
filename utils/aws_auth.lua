@@ -156,9 +156,13 @@ function _M.changePassword( self, objMetaTable, objDataTable, _callback )
   return self:sendRequest( objMetaTable,"IDP", objDataTable, "ChangePassword", _callback )
 end
 
+function _M.globalSignOut( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "GlobalSignOut", _callback )
+end
 
-
-
+function _M.getId (self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDENTITY", objDataTable, "GetId", _callback )
+end
 
 
 

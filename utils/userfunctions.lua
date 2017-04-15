@@ -2,6 +2,8 @@
 -- Loaded once in main, used to override variables and create some common functions
 -------------------------------------------------------
 local myApp = require( "myapp" ) 
+local aws_auth = require( myApp.utilsfld .. "aws_auth" )
+local json = require("json")  
 
 -------------------------------
 -- 
@@ -23,6 +25,30 @@ function myApp.fncUserLogInfo (event)
 
      local curLoggedin = myApp.authentication.loggedin or false
      myApp.authentication.loggedin =  true
+
+
+     local userDataTable = {}
+     userDataTable.IdentityPoolId = myApp.aws.IdentityPoolId 
+     userDataTable.Logins = {"cognito-idp.us-east-1.amazonaws.com/" .. myApp.aws.UserPoolId , myApp.authentication.IdToken}
+     local jed = json.encode(userDataTable)
+
+    --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
+     print ("getid jed  -  " .. jed)
+    ---------------------------
+    -- always login even if changing password
+    -----------------------------
+     local aws = aws_auth:new({
+                                aws_key     = myApp.aws.Key,
+                                aws_secret  = myApp.aws.Secret,
+                                aws_region  = myApp.aws.Region,
+                                aws_service = myApp.aws.Service,
+                                aws_request = myApp.aws.Request,
+                                aws_host    = myApp.aws.Host,
+                                content_type   = myApp.aws.ContentType,
+                                request_body    = jed,
+                              })    
+     aws:clearSessionToken()
+     aws:getId( myApp.aws, jed,  function(event) print ("Return from getid" .. json.encode(event)) end )
 
      -----------------------------
      -- dispatch event if login status changed
@@ -46,9 +72,33 @@ end
 -------------------------------
 function myApp.fncUserLoggedOut (event)
      print "fncUserLoggedOut  "
+
+     local userDataTable = {}
+     userDataTable.AccessToken = myApp.authentication.AccessToken 
+     local jed = json.encode(userDataTable)
+
+    --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
+     print ("logout ed  -  " .. jed)
+    ---------------------------
+    -- always login even if changing password
+    -----------------------------
+     local aws = aws_auth:new({
+                                aws_key     = myApp.aws.Key,
+                                aws_secret  = myApp.aws.Secret,
+                                aws_region  = myApp.aws.Region,
+                                aws_service = myApp.aws.Service,
+                                aws_request = myApp.aws.Request,
+                                aws_host    = myApp.aws.Host,
+                                content_type   = myApp.aws.ContentType,
+                                request_body    = jed,
+                              })    
+     aws:clearSessionToken()
+     aws:globalSignOut( myApp.aws, jed,  function(event) print ("Return from logout" .. json.encode(event)) end )
+
+
      myApp.authentication.email = "" 
      myApp.authentication.userid = ""          
-     myApp.authentication.SessionToken = ""    
+     myApp.authentication.AccessToken = ""    
      myApp.authentication.IdToken = ""    
      myApp.authentication.RefreshToken = "" 
 
@@ -58,4 +108,7 @@ function myApp.fncUserLoggedOut (event)
      if myApp.authentication.loggedin ~= curLoggedin then
          Runtime:dispatchEvent{ name="loginchanged", value=myApp.authentication.loggedin }
      end   
+
+
+                                             
 end

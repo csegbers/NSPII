@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = false,
+            debugMode = true,
             justLaunched = true,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
@@ -330,10 +330,25 @@ local M = {
                                                          ForgotPassword = {name = "ForgotPassword", httpaction="POST",authtype=false},
                                                          ConfirmForgotPassword = {name = "ConfirmForgotPassword", httpaction="POST",authtype=false},
                                                          ChangePassword = {name = "ChangePassword", httpaction="POST",authtype=false},
+                                                         GlobalSignOut = {name = "GlobalSignOut", httpaction="POST",authtype=false},
                                                         -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                       },
                                           },
-
+                                    IDENTITY = {
+                                            url = "https://cognito-idp.us-east-1.amazonaws.com/",
+                                            headers =   -- ordewr is important !
+                                                     {
+                                                       a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.model.AWSCognitoIdentityService.{actionname}"},
+                                                       b = {name = "X-AMZ-DATE", value = "{utc}"},
+                                                       c = {name = "Authorization", value = "{signature}", authtype=true},
+                                                       d = {name = "Content-Type", value = "{contenttype}"},
+                                                       e = {name = "Host",value="{host}"},
+                                                     },
+                                              Actions = {
+                                                         GetId = {name = "GetId", httpaction="POST",authtype=false},
+                                                        -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
+                                                      },
+                                          },
                                 },
             ------------------------------
             -- authentication
