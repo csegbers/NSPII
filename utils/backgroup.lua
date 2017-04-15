@@ -4,6 +4,8 @@ local assetmgr = require( myApp.utilsfld .. "assetmgr" )
 local composer = require( "composer" )
 local widget = require( "widget" )
 
+local myMoreList
+
 
 ---------------------------------------------
 -- used to slide out the major groups left and right
@@ -81,28 +83,30 @@ function myApp.BuildMoreInfoList(  )
       ---------------------------------------------
       -- create the list that will appear on the "more" button
       -----------------------------------------------
-      local myMoreList = widget.newTableView {
-         x = myApp.cW/2 + (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)/2 ,
-         y = myApp.cH/2 + myApp.tSbch/2 , 
-         hideBackground=true,
-         width = myApp.sceneWidth- (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)-10, 
-         height = myApp.cH - myApp.tSbch,
-         onRowTouch = onRowTouch,
-         onRowRender = 
-            function(event)
-                 local row = event.row
-                 row.nameText = display.newText( event.row.params.title, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
-                 row.nameText.anchorX = 0
-                 row.nameText.anchorY = 0.5
-                 row.nameText:setFillColor( myApp.moreinfo.row.textcolor )
-                 row.nameText.y = row.height / 2
-                 row.nameText.x = myApp.moreinfo.row.indent
-                 if row.isCategory then row.nameText.x = myApp.moreinfo.row.indent/2 end
-                 row:insert( row.nameText )
-                 return true
-            end
-         ,
-      }
+      if  myMoreList == nil then
+           myMoreList = widget.newTableView {
+             x = myApp.cW/2 + (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)/2 ,
+             y = myApp.cH/2 + myApp.tSbch/2 , 
+             hideBackground=true,
+             width = myApp.sceneWidth- (myApp.sceneWidth - myApp.cW/myApp.moreinfo.movefactor)-10, 
+             height = myApp.cH - myApp.tSbch,
+             onRowTouch = onRowTouch,
+             onRowRender = 
+                function(event)
+                     local row = event.row
+                     row.nameText = display.newText( event.row.params.title, 0, 0, myApp.fontBold, myApp.moreinfo.row.textfontsize )
+                     row.nameText.anchorX = 0
+                     row.nameText.anchorY = 0.5
+                     row.nameText:setFillColor( myApp.moreinfo.row.textcolor )
+                     row.nameText.y = row.height / 2
+                     row.nameText.x = myApp.moreinfo.row.indent
+                     if row.isCategory then row.nameText.x = myApp.moreinfo.row.indent/2 end
+                     row:insert( row.nameText )
+                     return true
+                end
+             ,
+          }
+      end
 
       myMoreList:deleteAllRows()
       ---------------------------------------------
