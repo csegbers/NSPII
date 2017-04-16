@@ -307,13 +307,13 @@ local M = {
                                     Key = "",                          -- from myappaws.lua
                                     Secret = "",                       -- from myappaws.lua
                                     UserPoolId = "",                   -- from myappaws.lua
-                                    Host = "cognito-idp.us-east-1.amazonaws.com",
                                     Region = "us-east-1",
                                     Service = "cognito-idp",
                                     Request = 'aws4_request',
                                     ContentType = "application/x-amz-json-1.1",
                                     IDP = {
                                             url = "https://cognito-idp.us-east-1.amazonaws.com/",
+                                            Host = "cognito-idp.us-east-1.amazonaws.com",
                                             headers =   -- ordewr is important !
                                                      {
                                                        a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService.{actionname}"},
@@ -335,7 +335,8 @@ local M = {
                                                       },
                                           },
                                     IDENTITY = {
-                                            url = "https://cognito-idp.us-east-1.amazonaws.com/",
+                                            url = "https://cognito-identity.us-east-1.amazonaws.com/",
+                                            Host = "cognito-identity.us-east-1.amazonaws.com",
                                             headers =   -- ordewr is important !
                                                      {
                                                        a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.model.AWSCognitoIdentityService.{actionname}"},
@@ -361,6 +362,7 @@ local M = {
                                   AccessToken="",
                                   IdToken="",
                                   RefreshToken="",
+                                  IdentityId="",        -- from identitiy pool after logging in
                                   --policies = {},
                                   --agencies = {},
                                   --agencycode = "",      -- will be first code if multiple policieis
@@ -522,6 +524,7 @@ M.aws.ClientId = awskey.ClientId
 M.aws.UserPoolId = awskey.UserPoolId
 M.aws.Key = awskey.Key
 M.aws.Secret = awskey.Secret
+M.aws.IdentityPoolId = awskey.IdentityPoolId
 return M
 
 -- print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappresourcedetails" )))

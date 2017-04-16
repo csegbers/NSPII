@@ -184,7 +184,7 @@ function scene:show( event )
                                                                         aws_region  = myApp.aws.Region,
                                                                         aws_service = myApp.aws.Service,
                                                                         aws_request = myApp.aws.Request,
-                                                                        aws_host    = myApp.aws.Host,
+                                                                        aws_host    = myApp.aws.IDP.Host,
                                                                         content_type   = myApp.aws.ContentType,
                                                                       })
                                             aws:clearSessionToken()

@@ -73,7 +73,7 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
       headvalue =  v.value 
       headvalue = string.gsub( headvalue, "{actionname}", objMetaTable[objMetaTableKey].Actions[awsAction].name)
       headvalue = string.gsub( headvalue, "{contenttype}", objMetaTable.ContentType)
-      headvalue = string.gsub( headvalue, "{host}", objMetaTable.Host)
+      headvalue = string.gsub( headvalue, "{host}", objMetaTable[objMetaTableKey].Host)
       headvalue = string.gsub( headvalue, "{utc}",iso_tz)
       ----------------------------------
       -- dont do all this logic if not needed

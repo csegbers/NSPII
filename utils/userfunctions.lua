@@ -18,7 +18,7 @@ function myApp.fncUserLogInfo (event)
      myApp.authentication.email = myApp.fncGetUD("email")
      myApp.authentication.userid = myApp.fncGetUD("userid")               -- for now this is email
     -- myApp.authentication.objectId = userObject.objectId                -- internal userid
-    local authResult =  event.AuthenticationResult 
+     local authResult =  event.AuthenticationResult 
      myApp.authentication.AccessToken = authResult.AccessToken
      myApp.authentication.IdToken = authResult.IdToken
      myApp.authentication.RefreshToken = authResult.RefreshToken
@@ -26,29 +26,38 @@ function myApp.fncUserLogInfo (event)
      local curLoggedin = myApp.authentication.loggedin or false
      myApp.authentication.loggedin =  true
 
-
+     print ("myApp.aws.IdentityPoolId   -  " .. myApp.aws.IdentityPoolId )
      local userDataTable = {}
      userDataTable.IdentityPoolId = myApp.aws.IdentityPoolId 
-     userDataTable.Logins = {"cognito-idp.us-east-1.amazonaws.com/" .. myApp.aws.UserPoolId , myApp.authentication.IdToken}
+     userDataTable.Logins = {}
+     userDataTable.Logins[myApp.aws.IDP.Host .. "/" .. myApp.aws.UserPoolId] =  myApp.authentication.IdToken 
      local jed = json.encode(userDataTable)
+
+    --     {
+    --    "IdentityPoolId": "us-east-1:xxxxxx",
+    --    "Logins": { 
+    --                    "cognito-idp.us-east-1.amazonaws.com/us-east-1_xxxx" : "xx" 
+    --              }
+  --  }
+
 
     --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
      print ("getid jed  -  " .. jed)
     ---------------------------
     -- always login even if changing password
     -----------------------------
-     local aws = aws_auth:new({
-                                aws_key     = myApp.aws.Key,
-                                aws_secret  = myApp.aws.Secret,
-                                aws_region  = myApp.aws.Region,
-                                aws_service = myApp.aws.Service,
-                                aws_request = myApp.aws.Request,
-                                aws_host    = myApp.aws.Host,
-                                content_type   = myApp.aws.ContentType,
-                                request_body    = jed,
-                              })    
+     myApp.authentication.IdentityId = ""     -- map user to identity pool in aws
+     local aws = aws_auth:new({})    
      aws:clearSessionToken()
-     aws:getId( myApp.aws, jed,  function(event) print ("Return from getid" .. json.encode(event)) end )
+     aws:getId( myApp.aws, jed,  
+                       function(event) 
+                          print ("Return from getid" .. json.encode(event)) 
+                          if (event.status ) == 200 then 
+                              myApp.authentication.IdentityId = json.decode(event.response).IdentityId
+                              print ("myApp.authentication.IdentityId " .. myApp.authentication.IdentityId) 
+                          end
+                       end 
+              )
 
      -----------------------------
      -- dispatch event if login status changed
@@ -88,7 +97,7 @@ function myApp.fncUserLoggedOut (event)
                                 aws_region  = myApp.aws.Region,
                                 aws_service = myApp.aws.Service,
                                 aws_request = myApp.aws.Request,
-                                aws_host    = myApp.aws.Host,
+                                aws_host    = myApp.aws.IDP.Host,
                                 content_type   = myApp.aws.ContentType,
                                 request_body    = jed,
                               })    
@@ -101,6 +110,7 @@ function myApp.fncUserLoggedOut (event)
      myApp.authentication.AccessToken = ""    
      myApp.authentication.IdToken = ""    
      myApp.authentication.RefreshToken = "" 
+     myApp.authentication.IdentityId = ""
 
      local curLoggedin = myApp.authentication.loggedin or false
      myApp.authentication.loggedin = false   
