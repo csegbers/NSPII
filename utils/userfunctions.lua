@@ -5,6 +5,111 @@ local myApp = require( "myapp" )
 local aws_auth = require( myApp.utilsfld .. "aws_auth" )
 local json = require("json")  
 
+function myApp.fncUserGetId (event)
+         ------------------------------------------
+     -- Identity
+     ------------------------------------------
+     print ("myApp.aws.IdentityPoolId   -  " .. myApp.aws.IdentityPoolId )
+     local userDataTable = {}
+     userDataTable.IdentityPoolId = myApp.aws.IdentityPoolId 
+     userDataTable.Logins = {}
+     userDataTable.Logins[myApp.aws.IDP.Host .. "/" .. myApp.aws.UserPoolId] =  myApp.authentication.IdToken 
+     local jed = json.encode(userDataTable)
+
+    --     {
+    --    "IdentityPoolId": "us-east-1:xxxxxx",
+    --    "Logins": { 
+    --                    "cognito-idp.us-east-1.amazonaws.com/us-east-1_xxxx" : "xx" 
+    --              }
+  --  }
+
+
+    --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
+     print ("getid jed  -  " .. jed)
+    ---------------------------
+    -- map user to identity pool in aws
+    -----------------------------
+     myApp.authentication.IdentityId = ""     -- map user to identity pool in aws
+     
+     local aws = aws_auth:new({})    
+     aws:clearSessionToken()
+     aws:getId( myApp.aws, jed,  
+                       function(event) 
+                          print ("Return from getid" .. json.encode(event)) 
+                          if (event.status ) == 200 then 
+                              myApp.authentication.IdentityId = json.decode(event.response).IdentityId
+                              print ("myApp.authentication.IdentityId " .. myApp.authentication.IdentityId) 
+                          end
+                       end 
+              )
+end
+function myApp.fncUserGetUser (event)
+         ------------------------------------------
+     -- Identity
+     ------------------------------------------
+     local userDataTable = {}
+     userDataTable.AccessToken = myApp.authentication.AccessToken
+     local jed = json.encode(userDataTable)
+    --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
+     print ("getUser jed  -  " .. jed)
+    ---------------------------
+    -- map user to identity pool in aws
+    -----------------------------
+     myApp.authentication.User = {}     -- User Info
+     myApp.authentication.Groups = {}     -- Groups Info    delete here incase fail on getuser
+
+     local aws = aws_auth:new({})    
+     aws:clearSessionToken()
+     aws:getUser( myApp.aws, jed,  
+                       function(event) 
+                          print ("Return from getuser" .. json.encode(event)) 
+                          if (event.status ) == 200 then 
+                              myApp.authentication.User = json.decode(event.response)
+                              print ("myApp.authentication.User " .. json.encode(myApp.authentication.User))
+                              myApp.fncUserGetUserGroups()
+                          end
+                       end 
+              )
+end
+
+function myApp.fncUserGetUserGroups (event)
+         ------------------------------------------
+     -- Identity
+     ------------------------------------------
+     local userDataTable = {}
+     userDataTable.Lilmit = 50
+     userDataTable.Username = myApp.authentication.userid
+     userDataTable.UserPoolId = myApp.aws.UserPoolId
+     local jed = json.encode(userDataTable)
+    --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
+     print ("getUserGroups jed  -  " .. jed)
+
+     myApp.authentication.Groups = {}     -- Groups Info
+    ---------------------------
+    -- map user to identity pool in aws
+    -----------------------------
+     
+     local aws = aws_auth:new({
+                                aws_key     = myApp.aws.Key,
+                                aws_secret  = myApp.aws.Secret,
+                                aws_region  = myApp.aws.Region,
+                                aws_service = myApp.aws.Service,
+                                aws_request = myApp.aws.Request,
+                                aws_host    = myApp.aws.IDP.Host,
+                                content_type   = myApp.aws.ContentType,
+                                request_body    = jed,
+                              }) 
+     aws:clearSessionToken()
+     aws:getUserGroups( myApp.aws, jed,  
+                       function(event) 
+                          print ("Return from getusergroups" .. json.encode(event)) 
+                          if (event.status ) == 200 then 
+                              myApp.authentication.Groups = json.decode(event.response)
+                              print ("myApp.authentication.Groups " .. json.encode(myApp.authentication.Groups))
+                          end
+                       end 
+              )
+end
 -------------------------------
 -- 
 -------------------------------
@@ -26,38 +131,9 @@ function myApp.fncUserLogInfo (event)
      local curLoggedin = myApp.authentication.loggedin or false
      myApp.authentication.loggedin =  true
 
-     print ("myApp.aws.IdentityPoolId   -  " .. myApp.aws.IdentityPoolId )
-     local userDataTable = {}
-     userDataTable.IdentityPoolId = myApp.aws.IdentityPoolId 
-     userDataTable.Logins = {}
-     userDataTable.Logins[myApp.aws.IDP.Host .. "/" .. myApp.aws.UserPoolId] =  myApp.authentication.IdToken 
-     local jed = json.encode(userDataTable)
 
-    --     {
-    --    "IdentityPoolId": "us-east-1:xxxxxx",
-    --    "Logins": { 
-    --                    "cognito-idp.us-east-1.amazonaws.com/us-east-1_xxxx" : "xx" 
-    --              }
-  --  }
-
-
-    --jed = "{\"AuthFlow\": \"ADMIN_NO_SRP_AUTH\", \"AuthParameters\":{\"USERNAME\:\".. inputemail .. \",\"PASSWORD\":\"gh%%3322SSsD\"},\"UserPoolId\":\"us-east-1_6p997uKVk\",\"ClientId\":\"7m7p7tk8ta4qlb4ai15nqmh8a1\"}"
-     print ("getid jed  -  " .. jed)
-    ---------------------------
-    -- always login even if changing password
-    -----------------------------
-     myApp.authentication.IdentityId = ""     -- map user to identity pool in aws
-     local aws = aws_auth:new({})    
-     aws:clearSessionToken()
-     aws:getId( myApp.aws, jed,  
-                       function(event) 
-                          print ("Return from getid" .. json.encode(event)) 
-                          if (event.status ) == 200 then 
-                              myApp.authentication.IdentityId = json.decode(event.response).IdentityId
-                              print ("myApp.authentication.IdentityId " .. myApp.authentication.IdentityId) 
-                          end
-                       end 
-              )
+     myApp.fncUserGetId()
+     myApp.fncUserGetUser()
 
      -----------------------------
      -- dispatch event if login status changed

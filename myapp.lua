@@ -331,6 +331,8 @@ local M = {
                                                          ConfirmForgotPassword = {name = "ConfirmForgotPassword", httpaction="POST",authtype=false},
                                                          ChangePassword = {name = "ChangePassword", httpaction="POST",authtype=false},
                                                          GlobalSignOut = {name = "GlobalSignOut", httpaction="POST",authtype=false},
+                                                         GetUser = {name = "GetUser", httpaction="POST",authtype=false},
+                                                         GetUserGroups = {name = "AdminListGroupsForUser", httpaction="POST",authtype=true},
                                                         -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                       },
                                           },
@@ -363,9 +365,9 @@ local M = {
                                   IdToken="",
                                   RefreshToken="",
                                   IdentityId="",        -- from identitiy pool after logging in
-                                  --policies = {},
-                                  --agencies = {},
-                                  --agencycode = "",      -- will be first code if multiple policieis
+                                  User = {},            -- will contain info from GetUser
+                                  Groups = {},            -- will contain info from AdminListGroupsForUser
+
                               },
 
             titleGradient = {

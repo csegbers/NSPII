@@ -160,9 +160,21 @@ function _M.globalSignOut( self, objMetaTable, objDataTable, _callback )
   return self:sendRequest( objMetaTable,"IDP", objDataTable, "GlobalSignOut", _callback )
 end
 
+function _M.getUser( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "GetUser", _callback )
+end
+
+function _M.getUserGroups( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "GetUserGroups", _callback )
+end
+
+
+
+
 function _M.getId (self, objMetaTable, objDataTable, _callback )
   return self:sendRequest( objMetaTable,"IDENTITY", objDataTable, "GetId", _callback )
 end
+
 
 
 

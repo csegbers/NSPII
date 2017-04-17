@@ -355,11 +355,16 @@ function scene:show( event )
                                                               function(event)
                                                                    native.setActivityIndicator( false )
                                                                    myApp.fncPutUD("email",inputemail)
+                                                                   myApp.fncPutUD("userid",inputemail)
 
                                                                    if (event.status ) == 200 then 
                                                                       print ("Return from login" .. json.encode(event))
                                                               
+                                                                      ------------------------------
+                                                                      -- do login stuff even if changing pwd
+                                                                      ------------------------------
                                                                       myApp.fncUserLogInfo(json.decode(event.response))    -- comes in as raw data
+
                                                                       if changepwd == false then
                                                                           btnpushed = true
                                                                           timer.performWithDelay(10,function () myApp.hideOverlay({callback=nil}) end)  
