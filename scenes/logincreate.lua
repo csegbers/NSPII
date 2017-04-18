@@ -157,12 +157,12 @@ function scene:show( event )
                                           --  local userDataTable = json.decode(jstr)
                                            -- print (json.encode(userDataTable))
                                             --parse:clearSessionToken ()
-
+                                            local newuserid = inputemail
                                             
                                             local userDataTable = {}
                                             userDataTable.ClientId = myApp.aws.ClientId
                                             userDataTable.Password = inputpwd
-                                            userDataTable.Username = inputemail
+                                            userDataTable.Username = newuserid
                                             userDataTable.UserAttributes = {}
 
                                             local userDataTableEmail = {}
@@ -174,6 +174,7 @@ function scene:show( event )
                                             userDataTableName.Name = "name"
                                             userDataTableName.Value = inputname
                                             table.insert (userDataTable.UserAttributes,userDataTableName)
+
 
                                             local jed = json.encode(userDataTable)
                                             print ("signUp  -  " .. jed)
@@ -193,7 +194,7 @@ function scene:show( event )
                                                               function(event)
                                                                    native.setActivityIndicator( false )
                                                                    if (event.status ) == 200 then 
-                                                                     myApp.fncPutUD("userid",inputemail)
+                                                                     myApp.fncPutUD("userid",newuserid)
                                                                      myApp.fncPutUD("email",inputemail)
                                                                      myApp.fncPutUD("name",inputname)
                                                                      myApp.fncPutUD("accountcreated",1)

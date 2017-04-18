@@ -181,7 +181,7 @@ function scene:show( event )
                                           
                                           local userDataTable = {}
                                           userDataTable.ClientId = myApp.aws.ClientId
-                                          userDataTable.Username = myApp.fncGetUD("email")
+                                          userDataTable.Username = inputemail    --myApp.fncGetUD("userid")
 
                                           local jed = json.encode(userDataTable)
                                           print ("ForgotPassword  -  " .. jed)
@@ -316,11 +316,13 @@ function scene:show( event )
                                            -- print (json.encode(userDataTable))
                                             --parse:clearSessionToken ()
 
+                                            local newuserid = inputemail
+
                                             
                                             local userDataTable = {}
                                             userDataTable.AuthFlow = "ADMIN_NO_SRP_AUTH"
                                             userDataTable.AuthParameters = {}
-                                            userDataTable.AuthParameters.USERNAME = inputemail                                
+                                            userDataTable.AuthParameters.USERNAME = newuserid                                
                                             userDataTable.AuthParameters.PASSWORD = inputpwd
                                             userDataTable.UserPoolId = myApp.aws.UserPoolId
                                             userDataTable.ClientId = myApp.aws.ClientId
@@ -355,7 +357,7 @@ function scene:show( event )
                                                               function(event)
                                                                    native.setActivityIndicator( false )
                                                                    myApp.fncPutUD("email",inputemail)
-                                                                   myApp.fncPutUD("userid",inputemail)
+                                                                   myApp.fncPutUD("userid",newuserid)    -- same for now
 
                                                                    if (event.status ) == 200 then 
                                                                       print ("Return from login" .. json.encode(event))

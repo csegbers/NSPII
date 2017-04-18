@@ -168,6 +168,11 @@ function _M.getUserGroups( self, objMetaTable, objDataTable, _callback )
   return self:sendRequest( objMetaTable,"IDP", objDataTable, "GetUserGroups", _callback )
 end
 
+function _M.updateUserAttributes( self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"IDP", objDataTable, "UpdateUserAttributes", _callback )
+end
+
+
 
 
 

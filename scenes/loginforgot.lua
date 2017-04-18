@@ -76,7 +76,7 @@ function scene:show( event )
              -------------------------------------------------
              -- userid text
              -------------------------------------------------
-             txtUserLabel = display.newText({text= myApp.fncGetUD("email"), font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
+             txtUserLabel = display.newText({text= myApp.fncGetUD("userid"), font= myApp.fontBold, fontSize=sceneinfo.textfontsize,align="left" })
              txtUserLabel:setFillColor( sceneinfo.textcolor.r,sceneinfo.textcolor.g,sceneinfo.textcolor.b,sceneinfo.textcolor.a )
              txtUserLabel.anchorX = 0
              txtUserLabel.anchorY = 0
@@ -146,7 +146,7 @@ function scene:show( event )
                                           
                                           local userDataTable = {}
                                           userDataTable.ClientId = myApp.aws.ClientId
-                                          userDataTable.Username = myApp.fncGetUD("email")
+                                          userDataTable.Username = myApp.fncGetUD("userid")
 
                                           local jed = json.encode(userDataTable)
                                           print ("resend-ForgotPassword  -  " .. jed)
@@ -206,7 +206,7 @@ function scene:show( event )
                                             userDataTable.ClientId = myApp.aws.ClientId
                                             userDataTable.ConfirmationCode = inputcode
                                             userDataTable.Password = inputpwd
-                                            userDataTable.Username = myApp.fncGetUD("email")
+                                            userDataTable.Username = myApp.fncGetUD("userid")
 
                                             local jed = json.encode(userDataTable)
                                             print ("ConfirmForgotPassword  -  " .. jed)

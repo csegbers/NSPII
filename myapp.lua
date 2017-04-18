@@ -333,6 +333,7 @@ local M = {
                                                          GlobalSignOut = {name = "GlobalSignOut", httpaction="POST",authtype=false},
                                                          GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                          GetUserGroups = {name = "AdminListGroupsForUser", httpaction="POST",authtype=true},
+                                                         UpdateUserAttributes = {name = "UpdateUserAttributes", httpaction="POST",authtype=false},
                                                         -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                       },
                                           },
