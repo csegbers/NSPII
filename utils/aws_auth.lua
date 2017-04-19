@@ -75,6 +75,25 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
       headvalue = string.gsub( headvalue, "{contenttype}", objMetaTable.ContentType)
       headvalue = string.gsub( headvalue, "{host}", objMetaTable[objMetaTableKey].Host)
       headvalue = string.gsub( headvalue, "{utc}",iso_tz)
+      headvalue = string.gsub( headvalue, "{appId}",objMetaTable.appId)
+      headvalue = string.gsub( headvalue, "{appNameSmall}",objMetaTable.appNameSmall)
+      headvalue = string.gsub( headvalue, "{appVersion}",objMetaTable.appVersion)
+      headvalue = string.gsub( headvalue, "{platform}",function() 
+                                                                 local awsplatname = "linux"    -- defualt to something, it is required
+                                                                 local cornplat = system.getInfo("platform") 
+                                                                 if cornplat == "android" then awsplatname = "android"  end
+                                                                 if cornplat == "ios" then awsplatname = "iphoneos"  end
+                                                                 if cornplat == "winphone" then awsplatname = "windowsphone"  end
+                                                                 if cornplat == "macos" then awsplatname = "macos"  end
+                                                                 if cornplat == "win32" then awsplatname = "windows"  end
+                                                                 return awsplatname
+                                                       end)
+      headvalue = string.gsub( headvalue, "{model}",system.getInfo("model")  or "" )
+      headvalue = string.gsub( headvalue, "{manufacturer}", system.getInfo("manufacturer") or "" )
+      headvalue = string.gsub( headvalue, "{platform_version}",system.getInfo("platformVersion") or "" )
+      headvalue = string.gsub( headvalue, "{analyticsappid}",objMetaTable.AnalyticsAppId)
+
+
       ----------------------------------
       -- dont do all this logic if not needed
       ----------------------------------
@@ -182,6 +201,9 @@ end
 
 
 
+function _M.analyticsSessionStart (self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"MOBILEANALYTICS", objDataTable, "SessionStart", _callback )
+end
 
 
 -- generate sha256 from the given string

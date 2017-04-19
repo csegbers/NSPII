@@ -5,6 +5,7 @@
 local M = { 
             debugMode = true,
             justLaunched = true,
+            appId = "NSPIIMobileApp" ,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
             appVersion = 0,
@@ -307,6 +308,10 @@ local M = {
                                     Key = "",                          -- from myappaws.lua
                                     Secret = "",                       -- from myappaws.lua
                                     UserPoolId = "",                   -- from myappaws.lua
+                                    appId = "" ,                       -- from myApp
+                                    appName = "" ,                     -- from myApp          
+                                    appNameSmall = "" ,                -- from myApp
+                                    appVersion = "",                   -- from myApp
                                     Region = "us-east-1",
                                     Service = "cognito-idp",
                                     Request = 'aws4_request',
@@ -353,6 +358,23 @@ local M = {
                                                         -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                       },
                                           },
+                                     MOBILEANALYTICS = {
+                                            url = "https://mobileanalytics.us-east-1.amazonaws.com/",
+                                            Host = "mobileanalytics.us-east-1.amazonaws.com",
+                                            headers =   -- ordewr is important !
+                                                     {
+                                                       a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.model.AWSCognitoIdentityService.{actionname}"},
+                                                       b = {name = "X-AMZ-DATE", value = "{utc}"},
+                                                       c = {name = "Authorization", value = "{signature}" },
+                                                       d = {name = "X-Amz-Client-Context", value = "{\"client\":{\"client_id\":\"{appId}\",\"app_title\":\"{appNameSmall}\",\"app_version_name\":\"{appVersion}\"},\"custom\":{},\"env\":{\"platform\":\"{platform}\",\"model\":\"{model}\",\"make\":\"{manufacturer}\",\"platform_version\":\"{platform_version}\"},\"services\":{\"mobile_analytics\":\"{\"app_id\":\"{analyticsappid}\"}}}" },
+                                                       e = {name = "Content-Type", value = "{contenttype}"},
+                                                       f = {name = "Host",value="{host}"},
+                                                     },
+                                              Actions = {
+                                                         SessionStart = {name = "SessionStart", httpaction="POST" },
+                                                        -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
+                                                      },                                                    
+                                          },                                         
                                 },
             ------------------------------
             -- authentication
@@ -427,7 +449,7 @@ local M = {
                             infoname = {name="name",title="Name"},
                             infoenvironment = {name="environment",title="Environment"},
                             infoplatform = {name="platform",title="PlatForm"},
-                            infoplatformName = {name="platformName",title="Plat Name"},
+                          
                             infoplatformVersion = {name="platformVersion",title="Plat Version"},
                             infoversion = {name="version",title="Version"},
                             infobuild = {name="build",title="Corona BLD"},
@@ -528,6 +550,12 @@ M.aws.UserPoolId = awskey.UserPoolId
 M.aws.Key = awskey.Key
 M.aws.Secret = awskey.Secret
 M.aws.IdentityPoolId = awskey.IdentityPoolId
+M.aws.AnalyticsAppName = awskey.AnalyticsAppName
+M.aws.AnalyticsAppId = awskey.AnalyticsAppId
+M.aws.appId = M.appId                       
+M.aws.appName = M.appName                            
+M.aws.appNameSmall = M.appNameSmall               
+M.aws.appVersion = M.appVersion                 
 return M
 
 -- print ("json  -  " .. require("json").encode(require( M.myappadds .. "myappresourcedetails" )))
