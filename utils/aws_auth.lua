@@ -20,6 +20,7 @@ local crypto  =  require("crypto")
 local json = require( "json" )
 local aws_key, aws_secret, aws_region, aws_service, aws_host, aws_request
 local iso_date, iso_tz, cont_type, req_method, req_path, req_body, req_querystr
+local signed_header= 'host;x-amz-date'
 local sessionToken
 
 local _M = {
@@ -93,11 +94,13 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
       headvalue = string.gsub( headvalue, "{platform_version}",system.getInfo("platformVersion") or "" )
       headvalue = string.gsub( headvalue, "{analyticsappid}",objMetaTable.AnalyticsAppId)
 
-
+     --                                                d = {name = "X-Amz-Client-Context", value = "{\"client\":{\"client_id\":\"{appId}\",\"app_title\":\"{appNameSmall}\",\"app_version_name\":\"{appVersion}\"},\"custom\":{},\"env\":{\"platform\":\"{platform}\",\"model\":\"{model}\",\"make\":\"{manufacturer}\",\"platform_version\":\"{platform_version}\"},\"services\":{\"mobile_analytics\":\"{\"app_id\":\"{analyticsappid}\"}}}" },
+ 
       ----------------------------------
       -- dont do all this logic if not needed
       ----------------------------------
       if string.find( headvalue, "{signature}" ) then
+          aws_service = objMetaTable[objMetaTableKey].Service
           headvalue = string.gsub( headvalue, "{signature}",self:get_authorization_header())
       end
       
@@ -201,8 +204,8 @@ end
 
 
 
-function _M.analyticsSessionStart (self, objMetaTable, objDataTable, _callback )
-  return self:sendRequest( objMetaTable,"MOBILEANALYTICS", objDataTable, "SessionStart", _callback )
+function _M.analyticsEvent (self, objMetaTable, objDataTable, _callback )
+  return self:sendRequest( objMetaTable,"MOBILEANALYTICS", objDataTable, "LogEvent", _callback )
 end
 
 
@@ -255,7 +258,7 @@ end
 -- https://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
 function _M.get_canonical_request(self)
   --local signed_header = 'content-type;host;x-amz-date'
-  local signed_header = 'host;x-amz-date'
+ -- local signed_header = 'host;x-amz-date'
   local canonical_header = self:get_canonical_header()
   local signed_body = self:get_signed_request_body()
   local param  = {
@@ -332,7 +335,7 @@ function _M.get_authorization_header(self)
   local header = {
     'AWS4-HMAC-SHA256 Credential=' .. table.concat(param, '/'),
     --'SignedHeaders=content-type;host;x-amz-date',
-    'SignedHeaders=host;x-amz-date',
+    'SignedHeaders=' .. signed_header,
     'Signature=' .. self:get_signature()
 
   }

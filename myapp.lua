@@ -313,12 +313,12 @@ local M = {
                                     appNameSmall = "" ,                -- from myApp
                                     appVersion = "",                   -- from myApp
                                     Region = "us-east-1",
-                                    Service = "cognito-idp",
                                     Request = 'aws4_request',
                                     ContentType = "application/x-amz-json-1.1",
                                     IDP = {
                                             url = "https://cognito-idp.us-east-1.amazonaws.com/",
                                             Host = "cognito-idp.us-east-1.amazonaws.com",
+                                            Service = "cognito-idp",
                                             headers =   -- ordewr is important !
                                                      {
                                                        a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.idp.model.AWSCognitoIdentityProviderService.{actionname}"},
@@ -345,6 +345,7 @@ local M = {
                                     IDENTITY = {
                                             url = "https://cognito-identity.us-east-1.amazonaws.com/",
                                             Host = "cognito-identity.us-east-1.amazonaws.com",
+                                            Service = "cognito-idp",
                                             headers =   -- ordewr is important !
                                                      {
                                                        a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.model.AWSCognitoIdentityService.{actionname}"},
@@ -361,17 +362,17 @@ local M = {
                                      MOBILEANALYTICS = {
                                             url = "https://mobileanalytics.us-east-1.amazonaws.com/",
                                             Host = "mobileanalytics.us-east-1.amazonaws.com",
+                                            Service = "mobileanalytics",
                                             headers =   -- ordewr is important !
                                                      {
-                                                       a = {name = "X-AMZ-TARGET", value = "com.amazonaws.cognito.identity.model.AWSCognitoIdentityService.{actionname}"},
                                                        b = {name = "X-AMZ-DATE", value = "{utc}"},
-                                                       c = {name = "Authorization", value = "{signature}" },
+                                                       c = {name = "Authorization", value = "{signature}" , authtype=true},
                                                        d = {name = "X-Amz-Client-Context", value = "{\"client\":{\"client_id\":\"{appId}\",\"app_title\":\"{appNameSmall}\",\"app_version_name\":\"{appVersion}\"},\"custom\":{},\"env\":{\"platform\":\"{platform}\",\"model\":\"{model}\",\"make\":\"{manufacturer}\",\"platform_version\":\"{platform_version}\"},\"services\":{\"mobile_analytics\":\"{\"app_id\":\"{analyticsappid}\"}}}" },
                                                        e = {name = "Content-Type", value = "{contenttype}"},
                                                        f = {name = "Host",value="{host}"},
                                                      },
                                               Actions = {
-                                                         SessionStart = {name = "SessionStart", httpaction="POST" },
+                                                         LogEvent = {name = "LogEvent", httpaction="POST" , authtype=true},
                                                         -- GetUser = {name = "GetUser", httpaction="POST",authtype=false},
                                                       },                                                    
                                           },                                         
@@ -383,6 +384,7 @@ local M = {
                                   loggedin = false,
                                   email="",
                                   userid = "",
+                                  sessionId = "",
                                   objectId = "",       -- internal userid key
                                   AccessToken="",
                                   IdToken="",

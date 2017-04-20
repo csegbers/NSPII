@@ -3,7 +3,7 @@
 -- Loaded once in main, used to override variables and create some common functions
 -------------------------------------------------------
 local myApp = require( "myapp" ) 
-local parse = require( myApp.utilsfld .. "mod_parse" )
+--local parse = require( myApp.utilsfld .. "mod_parse" )
 local dbmodule = require( myApp.utilsfld ..  "dbmodule")  
 require( myApp.utilsfld .. "dbfunctions" )     -- will do the actual db load
 require( myApp.utilsfld .. "userfunctions" ) 

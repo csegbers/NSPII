@@ -5,6 +5,42 @@ local myApp = require( "myapp" )
 local aws_auth = require( myApp.utilsfld .. "aws_auth" )
 local json = require("json")  
 
+function myApp.fncUserLogEvent (event)
+         ------------------------------------------
+     -- _session.start
+     ------------------------------------------
+      
+            local iso_dte = os.date('!%Y%m%dT%H%M%SZ', os.time())
+            local userDataTable = {}
+            userDataTable.events = {}
+
+            local userDataEvents = {}
+            userDataEvents.eventType = event.type
+            userDataEvents.timestamp = iso_dte
+            userDataEvents.session = {}
+            userDataEvents.session.startTimestamp = iso_dte
+            userDataEvents.session.id = myApp.authentication.sessionId
+            userDataEvents.attributes = event.attributes
+            userDataEvents.metrics = event.metrics
+            table.insert (userDataTable.events,userDataEvents)
+
+            local jed = json.encode(userDataTable)
+            print ("fncUserLogEVent  -  " .. jed)
+
+            local aws = aws_auth:new({aws_key = myApp.aws.Key,aws_secret  = myApp.aws.Secret,aws_region  =   myApp.aws.Region,
+                         aws_request = myApp.aws.Request,aws_host= myApp.aws.IDP.Host, content_type   = myApp.aws.ContentType, })
+            aws:analyticsEvent(   myApp.aws,
+                                  jed,  
+                                  function(event)
+                                       if (event.status ) == 200 then 
+                                          print ("return from  analyticsEvent  -  " .. json.encode(event))
+                                       else
+                                          print ("error on return analyticsEvent  -  " .. json.encode(event))
+                                       end
+                                  end   
+                             )             
+end
+
 function myApp.fncUserGetId (event)
          ------------------------------------------
      -- Identity
@@ -93,7 +129,6 @@ function myApp.fncUserGetUserGroups (event)
                                 aws_key     = myApp.aws.Key,
                                 aws_secret  = myApp.aws.Secret,
                                 aws_region  = myApp.aws.Region,
-                                aws_service = myApp.aws.Service,
                                 aws_request = myApp.aws.Request,
                                 aws_host    = myApp.aws.IDP.Host,
                                 content_type   = myApp.aws.ContentType,
@@ -171,7 +206,6 @@ function myApp.fncUserLoggedOut (event)
                                 aws_key     = myApp.aws.Key,
                                 aws_secret  = myApp.aws.Secret,
                                 aws_region  = myApp.aws.Region,
-                                aws_service = myApp.aws.Service,
                                 aws_request = myApp.aws.Request,
                                 aws_host    = myApp.aws.IDP.Host,
                                 content_type   = myApp.aws.ContentType,
