@@ -468,6 +468,7 @@ function myApp.onSystemEvent( event )
    print("onSystemEvent start - " .. event.type)
    if event.type == "applicationStart" then
     elseif event.type == "applicationExit" then
+        myApp.fncUserLogEvent({type="_session.stop"})    -- comes in as raw data
         myApp.ExitApp(true)
     elseif event.type == "applicationSuspend" then
         myApp.ExitApp(false)

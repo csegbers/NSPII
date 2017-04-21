@@ -316,8 +316,9 @@ local M = {
                                     Request = 'aws4_request',
                                     ContentType = "application/x-amz-json-1.1",
                                     IDP = {
-                                            url = "https://cognito-idp.us-east-1.amazonaws.com/",
+                                            url = "https://",
                                             Host = "cognito-idp.us-east-1.amazonaws.com",
+                                            Path = "/",
                                             Service = "cognito-idp",
                                             headers =   -- ordewr is important !
                                                      {
@@ -343,8 +344,9 @@ local M = {
                                                       },
                                           },
                                     IDENTITY = {
-                                            url = "https://cognito-identity.us-east-1.amazonaws.com/",
+                                            url = "https://",
                                             Host = "cognito-identity.us-east-1.amazonaws.com",
+                                            Path = "/",
                                             Service = "cognito-idp",
                                             headers =   -- ordewr is important !
                                                      {
@@ -360,14 +362,15 @@ local M = {
                                                       },
                                           },
                                      MOBILEANALYTICS = {
-                                            url = "https://mobileanalytics.us-east-1.amazonaws.com/",
+                                            url = "https://",
                                             Host = "mobileanalytics.us-east-1.amazonaws.com",
+                                            Path = "/2014-06-05/events",
                                             Service = "mobileanalytics",
                                             headers =   -- ordewr is important !
                                                      {
                                                        b = {name = "X-AMZ-DATE", value = "{utc}"},
                                                        c = {name = "Authorization", value = "{signature}" , authtype=true},
-                                                       d = {name = "X-Amz-Client-Context", value = "{\"client\":{\"client_id\":\"{appId}\",\"app_title\":\"{appNameSmall}\",\"app_version_name\":\"{appVersion}\"},\"custom\":{},\"env\":{\"platform\":\"{platform}\",\"model\":\"{model}\",\"make\":\"{manufacturer}\",\"platform_version\":\"{platform_version}\"},\"services\":{\"mobile_analytics\":\"{\"app_id\":\"{analyticsappid}\"}}}" },
+                                                       d = {name = "X-Amz-Client-Context", value = "{\"client\":{\"client_id\":\"{appId}\",\"app_title\":\"{appNameSmall}\",\"app_version_name\":\"{appVersion}\"},\"custom\":{},\"env\":{\"platform\":\"{platform}\",\"model\":\"{model}\",\"make\":\"{manufacturer}\",\"platform_version\":\"{platform_version}\"},\"services\":{\"mobile_analytics\":{\"app_id\":\"{analyticsappid}\"}}}" },
                                                        e = {name = "Content-Type", value = "{contenttype}"},
                                                        f = {name = "Host",value="{host}"},
                                                      },

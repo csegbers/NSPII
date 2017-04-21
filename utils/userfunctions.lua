@@ -10,7 +10,8 @@ function myApp.fncUserLogEvent (event)
      -- _session.start
      ------------------------------------------
       
-            local iso_dte = os.date('!%Y%m%dT%H%M%SZ', os.time())
+            local iso_dte = os.date('!%Y-%m-%dT%H:%M:%SZ', os.time())
+           
             local userDataTable = {}
             userDataTable.events = {}
 
@@ -28,11 +29,11 @@ function myApp.fncUserLogEvent (event)
             print ("fncUserLogEVent  -  " .. jed)
 
             local aws = aws_auth:new({aws_key = myApp.aws.Key,aws_secret  = myApp.aws.Secret,aws_region  =   myApp.aws.Region,
-                         aws_request = myApp.aws.Request,aws_host= myApp.aws.IDP.Host, content_type   = myApp.aws.ContentType, })
+                         aws_request = myApp.aws.Request, content_type   = myApp.aws.ContentType, request_body    = jed, })
             aws:analyticsEvent(   myApp.aws,
                                   jed,  
                                   function(event)
-                                       if (event.status ) == 200 then 
+                                       if (event.status ) == 200 or (event.status ) == 202 then 
                                           print ("return from  analyticsEvent  -  " .. json.encode(event))
                                        else
                                           print ("error on return analyticsEvent  -  " .. json.encode(event))
@@ -130,7 +131,6 @@ function myApp.fncUserGetUserGroups (event)
                                 aws_secret  = myApp.aws.Secret,
                                 aws_region  = myApp.aws.Region,
                                 aws_request = myApp.aws.Request,
-                                aws_host    = myApp.aws.IDP.Host,
                                 content_type   = myApp.aws.ContentType,
                                 request_body    = jed,
                               }) 
@@ -207,7 +207,6 @@ function myApp.fncUserLoggedOut (event)
                                 aws_secret  = myApp.aws.Secret,
                                 aws_region  = myApp.aws.Region,
                                 aws_request = myApp.aws.Request,
-                                aws_host    = myApp.aws.IDP.Host,
                                 content_type   = myApp.aws.ContentType,
                                 request_body    = jed,
                               })    

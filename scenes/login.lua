@@ -346,7 +346,6 @@ function scene:show( event )
                                                                         aws_secret  = myApp.aws.Secret,
                                                                         aws_region  = myApp.aws.Region,
                                                                         aws_request = myApp.aws.Request,
-                                                                        aws_host    = myApp.aws.IDP.Host,
                                                                         content_type   = myApp.aws.ContentType,
                                                                         request_body    = jed,
                                                                       })
@@ -385,7 +384,6 @@ function scene:show( event )
                                                                                 aws_secret  = myApp.aws.Secret,
                                                                                 aws_region  = myApp.aws.Region,
                                                                                 aws_request = myApp.aws.Request,
-                                                                                aws_host    = myApp.aws.IDP.Host,
                                                                                 content_type   = myApp.aws.ContentType,
                                                                                 request_body    = jed,
                                                                               })  

@@ -79,7 +79,8 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
       headvalue = string.gsub( headvalue, "{appId}",objMetaTable.appId)
       headvalue = string.gsub( headvalue, "{appNameSmall}",objMetaTable.appNameSmall)
       headvalue = string.gsub( headvalue, "{appVersion}",objMetaTable.appVersion)
-      headvalue = string.gsub( headvalue, "{platform}",function() 
+ 
+      headvalue = string.gsub( headvalue, "{platform}",function()    
                                                                  local awsplatname = "linux"    -- defualt to something, it is required
                                                                  local cornplat = system.getInfo("platform") 
                                                                  if cornplat == "android" then awsplatname = "android"  end
@@ -100,7 +101,10 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
       -- dont do all this logic if not needed
       ----------------------------------
       if string.find( headvalue, "{signature}" ) then
+          aws_host = objMetaTable[objMetaTableKey].Host
           aws_service = objMetaTable[objMetaTableKey].Service
+          req_path = objMetaTable[objMetaTableKey].Path
+          req_method = objMetaTable[objMetaTableKey].Actions[awsAction].httpaction
           headvalue = string.gsub( headvalue, "{signature}",self:get_authorization_header())
       end
       
@@ -135,7 +139,9 @@ function _M.sendRequest( self, objMetaTable, objMetaTableKey, requestParamsTbl, 
   local requestParams = self:buildRequestParams(objMetaTable,objMetaTableKey ,requestParamsTbl,awsAction)
   
   print ("network.request  -  " .. json.encode(requestParams))
-  requestId = network.request( objMetaTable[objMetaTableKey].url, objMetaTable[objMetaTableKey].Actions[awsAction].httpaction, _callback, requestParams )
+  local fullurl = objMetaTable[objMetaTableKey].url .. objMetaTable[objMetaTableKey].Host .. objMetaTable[objMetaTableKey].Path
+  print ("fullurl  -  " .. fullurl)
+  requestId = network.request( fullurl, objMetaTable[objMetaTableKey].Actions[awsAction].httpaction, _callback, requestParams )
   
   return  requestId
 
