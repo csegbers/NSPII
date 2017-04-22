@@ -101,7 +101,14 @@ function myApp.fncUserGetUser (event)
                        function(event) 
                           print ("Return from getuser" .. json.encode(event)) 
                           if (event.status ) == 200 then 
-                              myApp.authentication.User = json.decode(event.response)
+                              local retusertbl = json.decode(event.response)
+ 
+                              for index,value in ipairs(retusertbl.UserAttributes) do
+                                myApp.authentication.User[value.Name] = value.Value
+                                print ("value.Name .. " .. value.Name .. "   value.Value .. " .. value.Value )
+                              end
+
+                              myApp.fncPutUD("name",myApp.authentication.User.name)    -- just in case it changed
                               print ("myApp.authentication.User " .. json.encode(myApp.authentication.User))
                               myApp.fncUserGetUserGroups()
                           end
@@ -139,7 +146,11 @@ function myApp.fncUserGetUserGroups (event)
                        function(event) 
                           print ("Return from getusergroups" .. json.encode(event)) 
                           if (event.status ) == 200 then 
-                              myApp.authentication.Groups = json.decode(event.response)
+                              local retgrptbl = json.decode(event.response)
+                              for index,value in ipairs(retgrptbl.Groups) do
+                                  myApp.authentication.Groups[value.GroupName] = true
+                                  print ("value.Name .. " .. value.GroupName  )
+                              end
                               print ("myApp.authentication.Groups " .. json.encode(myApp.authentication.Groups))
                           end
                        end 

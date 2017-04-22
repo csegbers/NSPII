@@ -7,6 +7,7 @@ local scene = composer.newScene()
 local widget = require( "widget" )
 local myApp = require( "myapp" ) 
 local common = require( myApp.utilsfld .. "common" )
+local json = require("json")  
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")
 print ("In " .. currScene .. " Scene")
@@ -55,7 +56,19 @@ function scene:show( event )
 
             local function renderInfo(whatText)
                 starty = starty + 10
-                local disNt = display.newText( whatText, myApp.cCx, starty, native.systemFont, 12 )
+                local options = 
+                    {
+                        text = whatText,     
+                        x = myApp.cCx,
+                        y = starty,
+                        width = myApp.sceneWidth -20,
+                        height = 0,
+                        font = native.systemFont,   
+                        fontSize = 12,
+                        align = "left"  -- Alignment parameter
+                    }
+                local disNt = display.newText( options )
+                disNt.anchorY = 0
                 disNt:setFillColor( 1, 0, 0 )
                 scrollView:insert(disNt)
                 starty = starty + disNt.height
@@ -98,13 +111,28 @@ function scene:show( event )
                ------------
                -- user
                ----
+               renderInfo("loggedin " ..  tostring(( myApp.authentication.loggedin or "" )))
                renderInfo("email " ..  ( myApp.authentication.email or "" ))
-               renderInfo("emailVerified " ..  tostring(( myApp.authentication.emailVerified or "" )))
-               renderInfo("username " ..  ( myApp.authentication.username or "" ))
-               renderInfo("user objectId " ..  ( myApp.authentication.objectId or "" ))
-               renderInfo("sessionToken " ..  ( myApp.authentication.sessionToken or "" ))
-               renderInfo("agencycode " ..  ( myApp.authentication.agencycode or "" ))
-              
+               renderInfo("userid " ..  ( myApp.authentication.userid or "" ))
+               renderInfo("name " ..  ( myApp.authentication.User.name or "" ))
+               renderInfo("IdentityId " ..  ( myApp.authentication.IdentityId or "" ))
+               renderInfo("accountconfirmed " ..  tostring(( myApp.fncGetUD("accountconfirmed") or "" )))
+               renderInfo("accountcreated " ..  tostring(( myApp.fncGetUD("accountcreated") or "" )))
+               renderInfo("forgotpassword " ..  tostring(( myApp.fncGetUD("forgotpassword") or "" )))
+               renderInfo("UserTable " ..  json.encode(myApp.authentication.User))
+               renderInfo("GroupsTable " ..  json.encode(myApp.authentication.Groups))
+
+               
+
+               renderInfo("objectId " ..  ( myApp.authentication.objectId or "" ))
+               renderInfo("sessionId " ..  ( myApp.authentication.sessionId or "" ))
+               renderInfo("AccessToken " ..  ( myApp.authentication.AccessToken or "" ))
+               renderInfo("IdToken " ..  ( myApp.authentication.IdToken or "" ))
+               renderInfo("RefreshToken " ..  ( myApp.authentication.RefreshToken or "" ))
+               
+
+
+
 
                renderInfo(" ")
  
