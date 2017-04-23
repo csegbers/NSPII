@@ -388,7 +388,6 @@ local M = {
                                   email="",
                                   userid = "",
                                   sessionId = "",
-                                  objectId = "",       -- internal userid key
                                   AccessToken="",
                                   IdToken="",
                                   RefreshToken="",
@@ -419,32 +418,6 @@ local M = {
                               },
                         sheet = "ios7icons.png",
                 },
-
-            ------------------------------
-            -- parse
-            ------------------------------            
-           parse = {
-                        appId = 'nShcc7IgtlMjqroizNXtlVwjtwjfJgLsiRVgvUfA',
-                        restApikey = 'DeOzYBpk6bBSha0SJ9cRUc36EbWUmuseajSyBrlF',
-                        url = "https://api.parse.com/1",
-                        -- endpoints = {
-                        --                 config  = {
-                        --                              endpoint = "/config",
-                        --                              verb = "GET",
-                        --                           },
-                                 
-                        --                 appopened  = {
-                        --                              endpoint = "/events/AppOpened",
-                        --                              verb = "POST",
-                        --                           },
-                        --                 customevent  = {
-                        --                              endpoint = "/events",    -- pass in actual eventname
-                        --                              verb = "POST",
-                        --                           },
-
-
-                        --           },
-                    },
 
 
             --========================

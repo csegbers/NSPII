@@ -2,6 +2,25 @@
 -- NSPII App
 --====================================================================--
 local myApp = require( "myapp" ) 
+
+-------------------------------------------------------
+-- Override print function make global
+-------------------------------------------------------
+reallyPrint = print
+function print(...)
+    if myApp.debugMode then
+        reallyPrint("<-=====================->") 
+        pcall(function() reallyPrint(myApp.appName .. "-> " .. unpack(arg)) end)
+    end
+end
+
+-------------------------------------------------------
+-- pop up messgae
+------------------------------------------------------- 
+function debugpopup(whatstr) 
+  if myApp.debugMode then native.showAlert( myApp.appName ,whatstr ,{"ok"})  end
+end
+
 -----------------------------------------
 -- launched from somehwre else ?
 -----------------------------------------
@@ -13,6 +32,9 @@ if launchArgs and launchArgs.url then
    debugpopup("Launched in from another app - " .. launchURL)
 end
 
+-----------------------------------------
+-- Creat unique sessionid
+-----------------------------------------
 math.randomseed( os.time() + os.clock() )
 myApp.authentication.sessionId = string.gsub('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx', '[xy]', function (c)  local v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)   return string.format('%x', v)    end)
 print ("sessionId  ".. myApp.authentication.sessionId)
@@ -51,7 +73,7 @@ Runtime:addEventListener( "startup",
 		---------------------------------------------------
 		--  Splash and launch first page
 		----------------------------------------------------
-		require( myApp.utilsfld .. "splash" )      -- transtion from the initial image and launch the first page
+		require( myApp.utilsfld .. "splash" )             -- transtion from the initial image and launch the first page
 		myApp.fncUserLogEvent({type="_session.start"})    -- comes in as raw data
 
     end

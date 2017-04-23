@@ -341,15 +341,8 @@ function scene:show( event )
                                             ---------------------------
                                             -- always login even if changing password
                                             -----------------------------
-                                            local aws = aws_auth:new({
-                                                                        aws_key     = myApp.aws.Key,
-                                                                        aws_secret  = myApp.aws.Secret,
-                                                                        aws_region  = myApp.aws.Region,
-                                                                        aws_request = myApp.aws.Request,
-                                                                        content_type   = myApp.aws.ContentType,
-                                                                        request_body    = jed,
-                                                                      })
-                                            aws:clearSessionToken()
+                                            local aws = aws_auth:new({ })
+                                          
                                             aws:signIn(       myApp.aws,
                                                               jed,  
                                                               function(event)
@@ -379,15 +372,7 @@ function scene:show( event )
                                                                           userDataTable.PreviousPassword = inputpwd                                
                                                                           userDataTable.ProposedPassword = inputpwdnew
                                                                           jed = json.encode(userDataTable)
-                                                                          local awsnew = aws_auth:new({
-                                                                                aws_key     = myApp.aws.Key,
-                                                                                aws_secret  = myApp.aws.Secret,
-                                                                                aws_region  = myApp.aws.Region,
-                                                                                aws_request = myApp.aws.Request,
-                                                                                content_type   = myApp.aws.ContentType,
-                                                                                request_body    = jed,
-                                                                              })  
-                                                                              
+                                                                          local awsnew = aws_auth:new({})  
 
                                                                            awsnew:changePassword(  myApp.aws,
                                                                                                   jed,  

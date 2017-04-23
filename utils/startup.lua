@@ -46,27 +46,7 @@ function print_r ( t )
     print()
 end
 
--------------------------------------------------------
--- Override print function make global
--------------------------------------------------------
-reallyPrint = print
-function print(...)
-    if myApp.debugMode then
-        reallyPrint("<-==============================================->") 
-        --if type(arg[1]) == "table" then
-            --print_r(arg[1])
-        --else
-            pcall(function() reallyPrint(myApp.appName .. "-> " .. unpack(arg)) end)
-        --end
-    end
-end
 
--------------------------------------------------------
--- pop up messgae
-------------------------------------------------------- 
-function debugpopup(whatstr) 
-  if myApp.debugMode then native.showAlert( myApp.appName ,whatstr ,{"ok"})  end
-end
 
 print "In startup.lua"
 -------------------------------------------------------

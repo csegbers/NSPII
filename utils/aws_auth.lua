@@ -48,11 +48,7 @@ function _M.new(self, config)
   return setmetatable(_M, mt)
 end
 
----Clears the Parse sessionToken.
---
--- NOTE: This does not clear or reset a user session with Parse, it only clears the sessionToken internally, in case you need to apply a new sessionToken.
--- @usage
--- parse:clearSessionToken()
+
 function _M.clearSessionToken(self)
   print ("Clear Session")
   sessionToken = nil
@@ -101,10 +97,6 @@ function _M.newRequestParams(self, objMetaTable, objMetaTableKey, bodyData,awsAc
       -- dont do all this logic if not needed
       ----------------------------------
       if string.find( headvalue, "{signature}" ) then
-          aws_host = objMetaTable[objMetaTableKey].Host
-          aws_service = objMetaTable[objMetaTableKey].Service
-          req_path = objMetaTable[objMetaTableKey].Path
-          req_method = objMetaTable[objMetaTableKey].Actions[awsAction].httpaction
           headvalue = string.gsub( headvalue, "{signature}",self:get_authorization_header())
       end
       
@@ -135,6 +127,18 @@ end
 
 
 function _M.sendRequest( self, objMetaTable, objMetaTableKey, requestParamsTbl,  awsAction, _callback )
+ 
+  aws_key     = objMetaTable.Key 
+  aws_secret  = objMetaTable.Secret 
+  aws_region  = objMetaTable.Region 
+  aws_request = objMetaTable.Request 
+  cont_type   = objMetaTable.ContentType 
+  aws_host = objMetaTable[objMetaTableKey].Host
+  aws_service = objMetaTable[objMetaTableKey].Service
+  req_path = objMetaTable[objMetaTableKey].Path
+  req_method = objMetaTable[objMetaTableKey].Actions[awsAction].httpaction
+  req_body  = requestParamsTbl 
+
   print ("awsaction  " .. awsAction)
   local requestParams = self:buildRequestParams(objMetaTable,objMetaTableKey ,requestParamsTbl,awsAction)
   

@@ -28,8 +28,7 @@ function myApp.fncUserLogEvent (event)
             local jed = json.encode(userDataTable)
             print ("fncUserLogEVent  -  " .. jed)
 
-            local aws = aws_auth:new({aws_key = myApp.aws.Key,aws_secret  = myApp.aws.Secret,aws_region  =   myApp.aws.Region,
-                         aws_request = myApp.aws.Request, content_type   = myApp.aws.ContentType, request_body    = jed, })
+            local aws = aws_auth:new({})
             aws:analyticsEvent(   myApp.aws,
                                   jed,  
                                   function(event)
@@ -69,7 +68,6 @@ function myApp.fncUserGetId (event)
      myApp.authentication.IdentityId = ""     -- map user to identity pool in aws
      
      local aws = aws_auth:new({})    
-     aws:clearSessionToken()
      aws:getId( myApp.aws, jed,  
                        function(event) 
                           print ("Return from getid" .. json.encode(event)) 
@@ -96,7 +94,6 @@ function myApp.fncUserGetUser (event)
      myApp.authentication.Groups = {}     -- Groups Info    delete here incase fail on getuser
 
      local aws = aws_auth:new({})    
-     aws:clearSessionToken()
      aws:getUser( myApp.aws, jed,  
                        function(event) 
                           print ("Return from getuser" .. json.encode(event)) 
@@ -133,15 +130,7 @@ function myApp.fncUserGetUserGroups (event)
     -- map user to identity pool in aws
     -----------------------------
      
-     local aws = aws_auth:new({
-                                aws_key     = myApp.aws.Key,
-                                aws_secret  = myApp.aws.Secret,
-                                aws_region  = myApp.aws.Region,
-                                aws_request = myApp.aws.Request,
-                                content_type   = myApp.aws.ContentType,
-                                request_body    = jed,
-                              }) 
-     aws:clearSessionToken()
+     local aws = aws_auth:new({}) 
      aws:getUserGroups( myApp.aws, jed,  
                        function(event) 
                           print ("Return from getusergroups" .. json.encode(event)) 
@@ -168,7 +157,7 @@ function myApp.fncUserLogInfo (event)
  
      myApp.authentication.email = myApp.fncGetUD("email")
      myApp.authentication.userid = myApp.fncGetUD("userid")               -- for now this is email
-    -- myApp.authentication.objectId = userObject.objectId                -- internal userid
+
      local authResult =  event.AuthenticationResult 
      myApp.authentication.AccessToken = authResult.AccessToken
      myApp.authentication.IdToken = authResult.IdToken
@@ -213,15 +202,7 @@ function myApp.fncUserLoggedOut (event)
     ---------------------------
     -- always login even if changing password
     -----------------------------
-     local aws = aws_auth:new({
-                                aws_key     = myApp.aws.Key,
-                                aws_secret  = myApp.aws.Secret,
-                                aws_region  = myApp.aws.Region,
-                                aws_request = myApp.aws.Request,
-                                content_type   = myApp.aws.ContentType,
-                                request_body    = jed,
-                              })    
-     aws:clearSessionToken()
+     local aws = aws_auth:new({ })    
      aws:globalSignOut( myApp.aws, jed,  function(event) print ("Return from logout" .. json.encode(event)) end )
 
 
@@ -231,6 +212,8 @@ function myApp.fncUserLoggedOut (event)
      myApp.authentication.IdToken = ""    
      myApp.authentication.RefreshToken = "" 
      myApp.authentication.IdentityId = ""
+     myApp.authentication.User = {}    
+     myApp.authentication.Groups = {}      
 
      local curLoggedin = myApp.authentication.loggedin or false
      myApp.authentication.loggedin = false   

@@ -179,14 +179,8 @@ function scene:show( event )
                                             local jed = json.encode(userDataTable)
                                             print ("signUp  -  " .. jed)
 
-                                            local aws = aws_auth:new({
-                                                                        aws_key     = myApp.aws.Key,
-                                                                        aws_secret  = myApp.aws.Secret,
-                                                                        aws_region  = myApp.aws.Region,
-                                                                        aws_request = myApp.aws.Request,
-                                                                        content_type   = myApp.aws.ContentType,
-                                                                      })
-                                            aws:clearSessionToken()
+                                            local aws = aws_auth:new({  })
+                                          
                                             aws:signUp(       myApp.aws,
                                                               jed,  
                                                               function(event)
