@@ -1007,33 +1007,34 @@
       "street": "P.O. Box 123"
     },
     "hydec": {
-      "pic": "",
-      "originaliconwidth": 1,
-      "originaliconheight": 1,
-      "state": "x",
-      "name": "x",
-      "corp": "x",
+      "pic": "hydec.jpg",
+      "originaliconwidth": 300,
+      "originaliconheight": 507,
+      "state": "PA",
+      "name": "Charity C. Hyde",
+      "corp": "Bennett, Bricklin & Saltzburg LLC",
       "launchobjects": {
         "a": {
-          "field": "x",
+          "field": "(215) 665-3302",
           "type": "phone"
         },
         "b": {
-          "field": "x.com",
+          "field": "hyde@bbs-law.com",
           "type": "email"
         },
+        "c": {
+          "field": "(215) 561-6661",
+          "type": "fax"
+        },
         "d": {
-          "field": "http://www.x.com/",
+          "field": "http://www.bbs-law.com",
           "type": "web"
         }
       },
-      "zip": "x",
-      "city": "x",
-      "street": "x",
-      "geo": {
-        "latitude": 1,
-        "longitude": -1
-      }
+      "zip": "19103",
+      "city": "Philadelphia",
+      "street": "1601 Market Street",
+      "street2": "16th Floor"
     },
     "jacobsonc": {
       "pic": "jacobsonc.jpg",
@@ -1720,7 +1721,7 @@
       "pic": "",
       "originaliconwidth": 1,
       "originaliconheight": 1,
-      "state": "",
+      "state": "OH",
       "name": "Mary Beth Robinson",
       "corp": "NSPII",
       "launchobjects": {
@@ -1732,14 +1733,18 @@
           "field": "nspii@nspii.com",
           "type": "email"
         },
+        "c": {
+          "field": "(740) 369-7155",
+          "type": "fax"
+        },
         "d": {
           "field": "http://www.nspii.com",
           "type": "web"
         }
       },
-      "zip": "",
-      "city": "",
-      "street": ""
+      "zip": 43015,
+      "city": "Delaware",
+      "street": "P.O. Box 88"
     },
     "rottmuellerd": {
       "pic": "rottmuellerd.jpg",
