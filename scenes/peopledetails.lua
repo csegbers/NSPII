@@ -182,6 +182,11 @@ end
 local function buildMap( event )
       if  myObject   then   --  myObject = person
           if  myObject.geo  then
+          else
+              myObject.geo = {}
+          end
+
+          --if  myObject.geo  then
               native.setActivityIndicator( true ) 
 
               local mapheight = myApp.sceneHeight-myList.height-itemGrp.height-sceneinfo.edge*2
@@ -217,14 +222,15 @@ local function buildMap( event )
                             locationAddMarker()
                         end
                      
-                    end                  
+                    end     
+
                     myMap:requestLocation( (myObject.street or "") .. " " .. (myObject.city  or "") .. ", " .. (myObject.state  or "") .. " " .. (myObject.zip or ""), locationHandler )
                  end
                 
               end
 
               native.setActivityIndicator( false ) 
-          end
+          --end
       end
 end
 
@@ -476,7 +482,10 @@ function scene:show( event )
         if (runit or justcreated) then
            BuildTheScene(sceneparams.person)
         end
-        buildMap()    -- do regardsless
+
+       buildMap()     
+
+        
        
  
         justcreated = false
