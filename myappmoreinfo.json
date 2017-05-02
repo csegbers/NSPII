@@ -317,7 +317,8 @@
  "moreauth": {
   "textfontsize": 16,
   "groupheight": 25,
-  "headerfontsize": 16,
+  "xxgroupheaderheight": 50,
+  "hederfontsize": 16,
   "items": {
     "alogin": {
       "navigation": {

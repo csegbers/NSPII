@@ -88,6 +88,11 @@ function scene:show( event )
 
             container:insert(background)
 
+            function background:tap( event )
+                native.setKeyboardFocus( nil ) 
+            end
+            background:addEventListener("tap",background)
+
              -------------------------------------------------
              -- userid text
              -------------------------------------------------
@@ -458,12 +463,12 @@ function scene:show( event )
                 labelWidth = 0,
                 inputType = "email",
                 isVisible = changepwd,
-                listener = function()     if ( "began" == event.phase ) then
+                        })
+            userField:addEventListener( "userInput", function(event)     if ( "began" == event.phase ) then
                                           elseif ( "submitted" == event.phase ) then
                                              native.setKeyboardFocus( pwdField )
                                           end 
-                            end,
-                        })
+                            end )
             -- Hide the native part of this until we need to show it on the screen.
             
          --   local lbX, lbY = txtUserLabel:localToContent( txtUserLabel.width/2-sceneinfo.edge/2, 0 )
@@ -489,8 +494,17 @@ function scene:show( event )
                 font = myApp.fontBold,
                 labelWidth = 0,
                 isSecure = not showpwdSwitch.isOn,    -- note a border shows up... cannot get rid of when issecure
-                listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nil )end end,
+               -- listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nil )end end,
             })
+            pwdField:addEventListener( "userInput", function(event)   
+                     if ( "submitted" == event.phase ) then 
+                          if changepwd == true then
+                             native.setKeyboardFocus( pwdNewField ) 
+                          else
+                            native.setKeyboardFocus( nil ) 
+                          end
+                     end 
+                    end)
             -- Hide the native part of this until we need to show it on the screen.
             
             lbX, lbY = txtPWDLabel:localToContent( 0,0 )
@@ -516,8 +530,13 @@ function scene:show( event )
                 font = myApp.fontBold,
                 labelWidth = 0,
                 isSecure = not showpwdNewSwitch.isOn,    -- note a border shows up... cannot get rid of when issecure
-                listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nil )end end,
+                --listener = function()   if ( "submitted" == event.phase ) then native.setKeyboardFocus( nil )end end,
             })
+            pwdNewField:addEventListener( "userInput", function(event)   
+                     if ( "submitted" == event.phase ) then 
+                          native.setKeyboardFocus( nil ) 
+                     end 
+                    end)
             -- Hide the native part of this until we need to show it on the screen.
             
             lbX, lbY = txtPWDNewLabel:localToContent( 0,0 )
