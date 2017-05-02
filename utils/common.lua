@@ -112,13 +112,15 @@ function M.fitImage( displayObject, fitWidth, maxheight )
     --
     -- first determine which edge is out of bounds
     --
-    local scaleFactor = fitWidth / displayObject.width 
-    if maxheight then
-        if (displayObject.height * scaleFactor) > maxheight then
-            scaleFactor = scaleFactor * (maxheight / (displayObject.height * scaleFactor) )
+    if displayObject then
+        local scaleFactor = fitWidth / displayObject.width 
+        if maxheight then
+            if (displayObject.height * scaleFactor) > maxheight then
+                scaleFactor = scaleFactor * (maxheight / (displayObject.height * scaleFactor) )
+            end
         end
+        displayObject:scale( scaleFactor, scaleFactor )
     end
-    displayObject:scale( scaleFactor, scaleFactor )
 end
 
 function M.newTextField(options)

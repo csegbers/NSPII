@@ -55,7 +55,7 @@ local tabs = {
                                                scrollblockinfo = { },
                                                usage = { navigate = "mainscene"},
                                              },
-                        navigation = { composer = { id = "myaccount",lua="account" ,time=250, effect="crossFade" },},
+                        navigation = { composer = { id = "debug",lua="debugapp" ,time=250, effect="crossFade" },},
                     },
 
             zdebug = {
