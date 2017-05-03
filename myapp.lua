@@ -109,7 +109,7 @@ local M = {
 
             scenemaskFile = "",
             splash = {image = "splash.png", delay = 150, },
-            promptforphonecalls = true,
+            promptforphonecalls = false,
 
 
             composer = {
