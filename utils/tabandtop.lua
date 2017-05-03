@@ -505,6 +505,7 @@ function myApp.showSubScreen(parms)
             
             local currOverlay = (composer.getSceneName( "overlay" ))
             myApp.hideOverlay({callback= function () 
+
                     local tnt = parms.instructions or {}
                     if tnt.navigation.composer.otherscenes then
                         --debugpopup (myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation.composer.time)
@@ -512,6 +513,7 @@ function myApp.showSubScreen(parms)
                         tnt.sceneinfo = myApp.otherscenes[tnt.navigation.composer.otherscenes].sceneinfo
                         --print (myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation.composer.time)
                     end
+                     
                     if tnt.navigation.composer.overlay then
                         -------------------------------------
                         -- if we just were in an overlay, it was just closed

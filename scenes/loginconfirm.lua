@@ -269,7 +269,7 @@ function scene:show( event )
             -- allow buttons to be pushed
             -------------------
             btnpushed = false 
-            myApp.scenetransition = false
+           
  
     end
 	
@@ -293,6 +293,7 @@ function scene:hide( event )
         native.setKeyboardFocus( nil )
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+         myApp.scenetransition = false
     end
 
 end

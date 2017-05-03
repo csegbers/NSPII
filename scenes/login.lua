@@ -469,6 +469,7 @@ function scene:show( event )
                                              native.setKeyboardFocus( pwdField )
                                           end 
                             end )
+            
             -- Hide the native part of this until we need to show it on the screen.
             
          --   local lbX, lbY = txtUserLabel:localToContent( txtUserLabel.width/2-sceneinfo.edge/2, 0 )
@@ -554,7 +555,7 @@ function scene:show( event )
             -- allow buttons to be pushed
             -------------------
             btnpushed = false 
-            myApp.scenetransition = false
+            
  
     end
 	
@@ -583,6 +584,7 @@ function scene:hide( event )
         native.setKeyboardFocus( nil )
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+        myApp.scenetransition = false
     end
 
 end
@@ -603,7 +605,7 @@ end
 ---------------------------------------------------
 function scene:morebutton( parms )
      transition.to(  userField, {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
-     transition.to(  pwdField,  {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
+      transition.to(  pwdField,  {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
      transition.to(  pwdNewField,  {  time=parms.time,delta=true, x = parms.x , transition=parms.transition})
 
 end
