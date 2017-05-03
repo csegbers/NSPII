@@ -110,6 +110,10 @@
     "iconwidth": 60
   },
   "items": {
+   "a": {
+      "text": "A",
+      "isCategory": true
+    },
     "abbeyj": {
       "pic": "abbeyj.jpg",
       "originaliconwidth": 2288,
@@ -172,6 +176,10 @@
       "zip": "",
       "city": "",
       "street": ""
+    },
+   "b": {
+      "text": "B",
+      "isCategory": true
     },
     "barnaclej": {
       "pic": "",
@@ -318,10 +326,7 @@
           "field": "(615) 251-5581",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
+
         "d": {
           "field": "http://www.frostbrowntodd.com/",
           "type": "web"
@@ -416,6 +421,10 @@
       "street": "931 Village Blvd.",
       "street2": "Suite 905-395"
     },
+   "c": {
+      "text": "C",
+      "isCategory": true
+    },    
     "callahanm": {
       "pic": "",
       "originaliconwidth": 1,
@@ -640,6 +649,10 @@
       "city": "Wildwood",
       "street": "175 Cherry Hills Meadow Dr."
     },
+   "d": {
+      "text": "D",
+      "isCategory": true
+    },
     "davisj": {
       "pic": "davisj.jpg",
       "originaliconwidth": 858,
@@ -724,6 +737,14 @@
       "city": "Des Plaines",
       "street": "1111 E. Touhy Ave.",
       "street2": "Suite 400"
+    },
+   "e": {
+      "text": "E",
+      "isCategory": true
+    },
+   "f": {
+      "text": "F",
+      "isCategory": true
     },
     "ferrandj": {
       "pic": "ferrandj.jpg",
@@ -828,6 +849,10 @@
       "street": "771 Corporate Dr.",
       "street2": "Suite 900"
     },
+   "g": {
+      "text": "G",
+      "isCategory": true
+    },
     "gillmans": {
       "pic": "gillmans.jpg",
       "originaliconwidth": 150,
@@ -856,6 +881,10 @@
       "zip": "60610",
       "city": "Chicago",
       "street": "745 North Dearborn St."
+    },
+   "h": {
+      "text": "H",
+      "isCategory": true
     },
     "hagemanm": {
       "pic": "",
@@ -1036,6 +1065,14 @@
       "street": "1601 Market Street",
       "street2": "16th Floor"
     },
+   "i": {
+      "text": "I",
+      "isCategory": true
+    },
+   "j": {
+      "text": "J",
+      "isCategory": true
+    },
     "jacobsonc": {
       "pic": "jacobsonc.jpg",
       "originaliconwidth": 300,
@@ -1091,6 +1128,10 @@
       "city": "Cincinnati",
       "street": "P.O. Box 145496"
     },
+   "k": {
+      "text": "K",
+      "isCategory": true
+    },
     "kellerw": {
       "pic": "",
       "originaliconwidth": 1,
@@ -1136,6 +1177,10 @@
       "zip": "45822",
       "city": "Celina",
       "street": "One Insurance Square"
+    },
+   "l": {
+      "text": "L",
+      "isCategory": true
     },
     "lanxonm": {
       "pic": "",
@@ -1233,6 +1278,10 @@
       "city": "Atlanta",
       "street": "3340 Peachtree Rd., N.E.",
       "street2": "Suite 2100"
+    },
+   "m": {
+      "text": "M",
+      "isCategory": true
     },
     "mcdonaldc": {
       "pic": "",
@@ -1414,6 +1463,10 @@
       "street": "500 Chase Park South",
       "street2": "Suite 110"
     },
+   "n": {
+      "text": "N",
+      "isCategory": true
+    },
     "noceroa": {
       "pic": "noceroa.jpg",
       "originaliconwidth": 174,
@@ -1442,6 +1495,10 @@
       "zip": "32804",
       "city": "Orlando",
       "street": "1332 W. Colonial Dr."
+    },
+   "o": {
+      "text": "O",
+      "isCategory": true
     },
     "oswaldc": {
       "pic": "oswaldc.jpg",
@@ -1497,6 +1554,10 @@
       "city": "Indianapolis",
       "street": "5757 Decatur Blvd.",
       "street2": "Suite 260"
+    },
+   "p": {
+      "text": "P",
+      "isCategory": true
     },
     "padgettc": {
       "pic": "padgettc.jpg",
@@ -1611,10 +1672,7 @@
           "field": "(618) 401-4991",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
+
         "d": {
           "field": "https://www.libertymutual.com/",
           "type": "web"
@@ -1670,6 +1728,14 @@
       "city": "Nicholasville",
       "street": "1060 Elizabeth St.",
       "street2": "Suite 7"
+    },
+   "q": {
+      "text": "Q",
+      "isCategory": true
+    },
+   "r": {
+      "text": "R",
+      "isCategory": true
     },
     "reynoldsm": {
       "pic": "",
@@ -1770,6 +1836,10 @@
       "zip": "45424",
       "city": "Dayton",
       "street": "7490 Bridgewater Rd."
+    },
+   "s": {
+      "text": "S",
+      "isCategory": true
     },
     "schockmanb": {
       "pic": "",
@@ -1959,6 +2029,10 @@
       "street": "1660 W 2nd St",
       "street2": "#1100"
     },
+   "t": {
+      "text": "T",
+      "isCategory": true
+    },
     "tarchalas": {
       "pic": "tarchalas.jpg",
       "originaliconwidth": 106,
@@ -2040,6 +2114,14 @@
       "street": "9100 Purdue Road",
       "street2": "Suite 119"
     },
+   "u": {
+      "text": "U",
+      "isCategory": true
+    },
+   "v": {
+      "text": "V",
+      "isCategory": true
+    },
     "vergonm": {
       "pic": "vergonm.jpg",
       "originaliconwidth": 175,
@@ -2065,6 +2147,10 @@
       "city": "Fishers",
       "street": "11988 Fishers Crossing Dr.",
       "street2": "Suite 152"
+    },
+   "w": {
+      "text": "W",
+      "isCategory": true
     },
     "waggonerw": {
       "pic": "",
@@ -2221,10 +2307,7 @@
           "field": "(916) 218-6198, Ext. 591",
           "type": "phone"
         },
-        "b": {
-          "field": "x.com",
-          "type": "email"
-        },
+
         "c": {
           "field": "(877) 262-7439",
           "type": "fax"
@@ -2237,6 +2320,14 @@
       "zip": "85244",
       "city": "Chandler",
       "street": "P.O. Box 1595"
+    },
+   "x": {
+      "text": "X",
+      "isCategory": true
+    },
+   "y": {
+      "text": "Y",
+      "isCategory": true
     },
     "yeagerp": {
       "pic": "",
@@ -2259,6 +2350,10 @@
       "city": "Ada",
       "street": "4690 East Fulton Street",
       "street2": "Suite 102"
-    }
+    },
+   "z": {
+      "text": "Z",
+      "isCategory": true
+    },
   }
 }

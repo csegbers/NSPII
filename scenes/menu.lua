@@ -117,6 +117,7 @@ function scene:show( event )
         -- Called when the scene is still off screen (but is about to come on screen).
          params = event.params           -- params contains the item table 
     elseif ( phase == "did" ) then
+        myApp.scenetransition = false
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.

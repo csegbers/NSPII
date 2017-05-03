@@ -388,6 +388,7 @@ function scene:show( event )
          print ("end of did show")
          parse:logEvent( "Scene", { ["name"] = currScene} )
          justcreated = false
+         myApp.scenetransition = false
     end
     
 

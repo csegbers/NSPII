@@ -269,6 +269,7 @@ function scene:show( event )
             -- allow buttons to be pushed
             -------------------
             btnpushed = false 
+            myApp.scenetransition = false
  
     end
 	

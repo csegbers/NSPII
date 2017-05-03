@@ -374,6 +374,7 @@ function scene:show( event )
             end  -- end of runit or justcreated
         end    -- end of network connection check
         justcreated = false
+        myApp.scenetransition = false
 
     end
 	

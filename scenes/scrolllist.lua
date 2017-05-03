@@ -223,7 +223,7 @@ function scene:show( event )
                                   -------------------------------------------------
                                  -- Pic ?
                                  -------------------------------------------------
-                                 if p.items[personkey].pic and p.items[personkey].pic ~= "" then
+                                 if p.items[personkey].pic and p.items[personkey].pic ~= "" and common.fileexists(myApp.imgfld .. p.items[personkey].pic,system.ResourceDirectory) then
                                      row.myIcon = display.newImageRect(myApp.imgfld .. p.items[personkey].pic, p.items[personkey].originaliconwidth or sbi.iconwidth  ,p.items[personkey].originaliconheight or sbi.iconheight )
                                      common.fitImage( row.myIcon,   sbi.row.iconwidth ,row.height-10  )
                                      row.myIcon.anchorX = 0
@@ -367,6 +367,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
          print ("end of did show")
         --parse:logEvent( "Scene", { ["name"] = currScene} )
+         myApp.scenetransition = false
          myApp.launchlogin()
          justcreated = false
     end

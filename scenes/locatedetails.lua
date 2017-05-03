@@ -490,6 +490,7 @@ function scene:show( event )
             
         end    -- sceneparams.objectexisting
         justcreated = false
+        myApp.scenetransition = false
     end   -- phase check
 	
 

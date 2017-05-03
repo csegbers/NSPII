@@ -63,6 +63,7 @@ function scene:show( event )
                 videoView.isVisible = true
                 videoView:play()
             end
+            myApp.scenetransition = false
             
     end	
 

@@ -326,6 +326,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         parse:logEvent( "Scene", { ["name"] = currScene} )
         justcreated = false
+        myApp.scenetransition = false
     end   -- phase check
 end
 

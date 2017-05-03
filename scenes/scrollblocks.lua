@@ -398,6 +398,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
          print ("end of did show")
         --parse:logEvent( "Scene", { ["name"] = currScene} )
+         myApp.scenetransition = false
          myApp.launchlogin()
          justcreated = false
     end

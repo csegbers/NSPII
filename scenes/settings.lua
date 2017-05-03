@@ -40,6 +40,7 @@ function scene:show( event )
  
     elseif ( phase == "did" ) then
         parse:logEvent( "Scene", { ["name"] = currScene} )
+        myApp.scenetransition = false
         --sceneparams = event.params           -- params contains the item table
     end
   

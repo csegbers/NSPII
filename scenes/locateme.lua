@@ -172,6 +172,7 @@ function scene:show( event )
         parse:logEvent( "Scene", { ["name"] = currScene} )
         --sceneparams = event.params           -- params contains the item table
          buildMap()
+         myApp.scenetransition = false
 
     end
   

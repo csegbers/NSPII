@@ -521,6 +521,7 @@ function scene:show( event )
                
         print("show", feedName,feedURL)
         displayFeed(feedName, feedURL)
+        myApp.scenetransition = false
     end
 
 	

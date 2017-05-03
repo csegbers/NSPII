@@ -403,7 +403,7 @@ function scene:show( event )
                     transition.to(  itemGrp, { time=sceneinfo.animationtime, y = curitemGrpy , transition=easing.outQuint})
                     transition.to(  myList, { time=sceneinfo.animationtime, y = curmyListy , transition=easing.outQuint})
                 end
-                if myObject.pic and myObject.pic ~= "" then
+                if myObject.pic and myObject.pic ~= "" and common.fileexists(myApp.imgfld .. myObject.pic,system.ResourceDirectory) then
                    myIcon = display.newImageRect(myApp.imgfld .. myObject.pic, myObject.originaliconwidth or sceneinfo.iconwidth ,myObject.originaliconheight or sceneinfo.iconheight)
                    common.fitImage( myIcon,   sceneinfo.iconwidth ,myRoundedRect.height -sceneinfo.edge  )
                    itemGrp:insert(myIcon )
@@ -473,6 +473,7 @@ function scene:show( event )
                if haveitems then 
                   myList:scrollToIndex( 1 ) 
                end
+
         end 
 
      ------------------------------------------------------------
@@ -484,11 +485,9 @@ function scene:show( event )
         end
 
        buildMap()     
-
-        
-       
  
         justcreated = false
+        myApp.scenetransition = false
     end   -- phase check
 	
 

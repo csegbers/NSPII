@@ -102,6 +102,7 @@ function scene:show( event )
                     webView:request( temphtml , system.TemporaryDirectory )
 
             end
+            myApp.scenetransition = false
             
     end	
 

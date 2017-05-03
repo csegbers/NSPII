@@ -279,7 +279,7 @@ end
 --------------------------------------------------
 function myApp.showScreen(parms)
 
-    if myApp.moreinfo.direction  == "left" then 
+    if myApp.moreinfo.direction  == "left" and myApp.scenetransition == false then 
         myApp.hideOverlay({callback= function () 
                 local tnt = parms.instructions
                 myApp.tabCurrentKey = tnt.key
@@ -316,6 +316,7 @@ function myApp.showScreen(parms)
 
 
                 local function fncgotoScene ( event )
+                   myApp.scenetransition = true
                    composer.gotoScene(myApp.scenesfld .. tnt.navigation.composer.lua, {time=tnt.navigation.composer.time, effect=effect, params = tnt})
                 end
                  
@@ -352,6 +353,7 @@ end
 --         instructions table must have a composer table
 --------------------------------------------------
 function myApp.showSubScreenRegular(parms)
+     if   myApp.scenetransition == false  then
         local tnt = parms.instructions or {}
 
         ----------------------------------------------
@@ -466,6 +468,7 @@ function myApp.showSubScreenRegular(parms)
         end
 
         local function fncgotoSubScene ( event )
+           myApp.scenetransition = true
            composer.gotoScene(myApp.scenesfld .. tnt.navigation.composer.lua, {time=tnt.navigation.composer.time, effect=effect, params = tnt})
         end
 
@@ -487,7 +490,7 @@ function myApp.showSubScreenRegular(parms)
         else
             fncgotoSubScene()
         end
-  
+    end
     return true
 end
 
@@ -498,29 +501,33 @@ end
 --         instructions table must have a composer table
 --------------------------------------------------
 function myApp.showSubScreen(parms)
-        local currOverlay = (composer.getSceneName( "overlay" ))
-        myApp.hideOverlay({callback= function () 
-                local tnt = parms.instructions or {}
-                if tnt.navigation.composer.otherscenes then
-                    --debugpopup (myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation.composer.time)
-                    tnt.navigation = myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation
-                    tnt.sceneinfo = myApp.otherscenes[tnt.navigation.composer.otherscenes].sceneinfo
-                    --print (myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation.composer.time)
-                end
-                if tnt.navigation.composer.overlay then
-                    -------------------------------------
-                    -- if we just were in an overlay, it was just closed
-                    -- must select action again otherwise it gets 2 overlays 
-                    -- tripping on each other
-                    -------------------------------------
-                    if currOverlay == nil then
-                       myApp.composer.inoverlay = true
-                       composer.showOverlay(myApp.scenesfld .. tnt.navigation.composer.lua, {time=tnt.navigation.composer.time,effect=tnt.navigation.composer.effect,isModal=tnt.navigation.composer.isModal, params = tnt ,})
+       if   myApp.scenetransition == false  then
+            
+            local currOverlay = (composer.getSceneName( "overlay" ))
+            myApp.hideOverlay({callback= function () 
+                    local tnt = parms.instructions or {}
+                    if tnt.navigation.composer.otherscenes then
+                        --debugpopup (myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation.composer.time)
+                        tnt.navigation = myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation
+                        tnt.sceneinfo = myApp.otherscenes[tnt.navigation.composer.otherscenes].sceneinfo
+                        --print (myApp.otherscenes[tnt.navigation.composer.otherscenes].navigation.composer.time)
                     end
-                else
-                    myApp.showSubScreenRegular(parms)
-                end
-                end }) -- callback
+                    if tnt.navigation.composer.overlay then
+                        -------------------------------------
+                        -- if we just were in an overlay, it was just closed
+                        -- must select action again otherwise it gets 2 overlays 
+                        -- tripping on each other
+                        -------------------------------------
+                        if currOverlay == nil then
+                           myApp.composer.inoverlay = true
+                           myApp.scenetransition = true
+                           composer.showOverlay(myApp.scenesfld .. tnt.navigation.composer.lua, {time=tnt.navigation.composer.time,effect=tnt.navigation.composer.effect,isModal=tnt.navigation.composer.isModal, params = tnt ,})
+                        end
+                    else
+                        myApp.showSubScreenRegular(parms)
+                    end
+                    end }) -- callback
+       end
 end
 
 

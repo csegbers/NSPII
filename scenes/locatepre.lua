@@ -368,7 +368,7 @@ function scene:show( event )
             addressField.y = addressButton.y + addressButton.height + myApp.locatepre.edge*2 + container.y
      
             group:insert(addressField)      -- insertng into container messes up
-
+            myApp.scenetransition = false
     end
 	
 

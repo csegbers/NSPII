@@ -14,6 +14,7 @@ local M = {
             tabMyAccountKey = "",     -- will be key of myaccount if used
             tabCurrentKey = "",     -- will change as we tab
             urlScheme = "nspiiapp",
+            scenetransition = false,
             cW = display.contentWidth,
             cH = display.contentHeight,
             cCx = display.contentCenterX,
