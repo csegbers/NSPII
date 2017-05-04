@@ -48,15 +48,11 @@ local tabs = {
                     },
             daccount = {
                         label="My Account",  title="My Account" ,def="myaccount.png",over="myaccount-down.png",
-                         objecttype = "",  -- not used
-                         objectexisting = "myaccount",
-                         sceneinfo = { 
+                        sceneinfo = { 
                                                htmlinfo = {},
-                                               scrollblockinfo = { },
-                                               usage = { navigate = "mainscene"},
+                                               scrollblockinfo = { object="news" , navigate = "mainscene"},
                                              },
-                        navigation = { composer = { id = "debug",lua="debugapp" ,time=250, effect="crossFade" },},
-                    },
+                        navigation = { composer = { id = "account",lua="scrollblocks" ,time=250, effect="crossFade" },},                    },
 
             zdebug = {
                      label="Debug" ,title="Debug" ,def="nspii.png",over="nspii-down.png" ,showonlyindebugMode=true,
