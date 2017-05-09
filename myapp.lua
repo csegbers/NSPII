@@ -8,7 +8,7 @@ local M = {
             appId = "NSPIIMobileApp" ,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
-            appVersion = 0,
+            appVersion = 2,
             appVersionFileName = "appversion.json",
             tabMyAgentKey = "",     -- will be key of myagent if used
             tabMyAccountKey = "",     -- will be key of myaccount if used
@@ -450,7 +450,7 @@ local M = {
             --========================  
              files = {
                          config = { 
-                                       performdl= false,
+                                       performdl= true,
                                        url = "https://s3.amazonaws.com/nspii/config/",
                                        fileloc = system.TemporaryDirectory,    -- always override so put here
                                        timeout = 5,

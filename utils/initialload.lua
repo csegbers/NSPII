@@ -1,5 +1,7 @@
 local myApp = require( "myapp" ) 
 
+local physicalVersion = myApp.appVersion
+local physicalused = false
 
 local function fileexists(filename,filepath)
     local path = system.pathForFile( filename, filepath )
@@ -141,6 +143,37 @@ local function loadmyappfiles()
    -- print ("json  -  " .. require("json").encode(myApp.persondetails ))
 end
 
+local function removedlfiles()
+       ---------------------------------------
+       -- delete all previously downloaded config files
+       -- if the new version > than what we have
+       -- even though some config files may not have changed, no biggie
+       ---------------------------------------
+
+       local lfs = require( "lfs" )
+       local doc_path = system.pathForFile( "", myApp.files.download.fileloc )
+       local filedel = {}
+       local i,v
+
+       for file in lfs.dir( doc_path ) do
+            -----------------------------------------
+            -- exclude certain files
+            -----------------------------------------
+            if file == myApp.databasename or file == myApp.appVersionFileName or file == "." or file == ".." then
+            else
+               table.insert(filedel, file)
+            end
+       end
+
+       for i,v in ipairs(filedel) do
+            local result, reason = os.remove( system.pathForFile( v, myApp.files.download.fileloc ) )
+            if result then
+               print( v .. "   xxxxxxxxxxxxxxxxxxxxxxxxxxxx >>>>>File removed" )
+            else
+               print( v .. "  xxxxxxxxxxxxxxxxxxxxxxx >>>>>File does not exist", reason )  --> File does not exist    apple.txt: No such file or directory
+            end
+       end
+end
 
 -----------------------------
 -- get config file
@@ -158,35 +191,7 @@ local function loadconfigfile(event)
            if event.tableobject.appVersion then
               if event.tableobject.appVersion > myApp.appVersion then
                  require( myApp.utilsfld .. "loadsave" ).saveTable({appVersion=event.tableobject.appVersion},myApp.appVersionFileName,system.DocumentsDirectory)
-                 ---------------------------------------
-                 -- delete all previously downloaded config files
-                 -- if the new version > than what we have
-                 -- even though some config files may not have changed, no biggie
-                 ---------------------------------------
-
-                 local lfs = require( "lfs" )
-                 local doc_path = system.pathForFile( "", myApp.files.download.fileloc )
-                 local filedel = {}
-                 local i,v
- 
-                 for file in lfs.dir( doc_path ) do
-                      -----------------------------------------
-                      -- exclude certain files
-                      -----------------------------------------
-                      if file == myApp.databasename or file == myApp.appVersionFileName or file == "." or file == ".." then
-                      else
-                         table.insert(filedel, file)
-                      end
-                 end
-
-                 for i,v in ipairs(filedel) do
-                      local result, reason = os.remove( system.pathForFile( v, myApp.files.download.fileloc ) )
-                      if result then
-                         print( v .. "   xxxxxxxxxxxxxxxxxxxxxxxxxxxx >>>>>File removed" )
-                      else
-                         print( v .. "  xxxxxxxxxxxxxxxxxxxxxxx >>>>>File does not exist", reason )  --> File does not exist    apple.txt: No such file or directory
-                      end
-                 end
+                 removedlfiles()
               end
            end
            ----------------------
@@ -238,6 +243,15 @@ if fileexists(myApp.appVersionFileName,system.DocumentsDirectory) ~= true then
    require( myApp.utilsfld .. "loadsave" ).saveTable({appVersion=myApp.appVersion},myApp.appVersionFileName,system.DocumentsDirectory)
 end
 myApp.appVersion = require( myApp.utilsfld .. "loadsave" ).loadTable(myApp.appVersionFileName,system.DocumentsDirectory).appVersion
+--------------------------------------------
+-- current physical verion newer than what has been downloaded ?
+---------------------------------------------
+if physicalVersion > myApp.appVersion then
+   myApp.appVersion = physicalVersion
+   require( myApp.utilsfld .. "loadsave" ).saveTable({appVersion=physicalVersion},myApp.appVersionFileName,system.DocumentsDirectory)
+   physicalused = true
+   removedlfiles()
+end
 print ("APP Version - " .. myApp.appVersion)
 
 -----------------------------------
