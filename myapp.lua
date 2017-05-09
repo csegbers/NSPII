@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = true,
+            debugMode = false,
             justLaunched = true,
             appId = "NSPIIMobileApp" ,
             appName = "NSPII App" ,

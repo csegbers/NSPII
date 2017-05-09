@@ -84,7 +84,10 @@ function scene:show( event )
              txtUserLabel.y = background.y - background.height/2 + sceneinfo.edge/2
              
              container:insert(txtUserLabel)
-
+             function background:tap( event )
+                native.setKeyboardFocus( nil ) 
+             end
+             background:addEventListener("tap",background)
    
              -------------------------------------------------
              -- name text

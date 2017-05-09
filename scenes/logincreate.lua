@@ -73,6 +73,11 @@ function scene:show( event )
 
             container:insert(background)
 
+            function background:tap( event )
+                native.setKeyboardFocus( nil ) 
+            end
+            background:addEventListener("tap",background)
+
              -------------------------------------------------
              -- userid text
              -------------------------------------------------
