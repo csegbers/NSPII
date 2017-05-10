@@ -245,6 +245,7 @@ end
 myApp.appVersion = require( myApp.utilsfld .. "loadsave" ).loadTable(myApp.appVersionFileName,system.DocumentsDirectory).appVersion
 --------------------------------------------
 -- current physical verion newer than what has been downloaded ?
+-- should never happen if we keep /vx subfolders correctly matching software appVersion
 ---------------------------------------------
 if physicalVersion > myApp.appVersion then
    myApp.appVersion = physicalVersion

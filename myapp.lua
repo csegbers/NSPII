@@ -8,7 +8,7 @@ local M = {
             appId = "NSPIIMobileApp" ,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
-            appVersion = 2,
+            appVersion = 1,          -- be sure this suncs with the download subfolder
             appVersionFileName = "appversion.json",
             tabMyAgentKey = "",     -- will be key of myagent if used
             tabMyAccountKey = "",     -- will be key of myaccount if used
@@ -447,11 +447,12 @@ local M = {
                    -- 
             --========================
             --== additional files
+            -- whenever we deploy new app, change the vx subfolder on the urls' like v1, v2 etc..
             --========================  
              files = {
                          config = { 
                                        performdl= true,
-                                       url = "https://s3.amazonaws.com/nspii/config/",
+                                       url = "https://s3.amazonaws.com/nspii/config/v1/",
                                        fileloc = system.TemporaryDirectory,    -- always override so put here
                                        timeout = 5,
                                        name = "appconfig.json",
@@ -459,7 +460,7 @@ local M = {
                                     },
                          download = { 
                                        performdl= false,
-                                       url = "https://s3.amazonaws.com/nspii/myappadds/",
+                                       url = "https://s3.amazonaws.com/nspii/myappadds/v1/",
                                        origfileloc = system.ResourceDirectory,
                                        fileloc = system.DocumentsDirectory,
                                        timeout = 5,
