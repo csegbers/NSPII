@@ -1,376 +1,310 @@
 {
-  "includedsections":{
+    "direction": "left",
+    "morebutton": {
+      "overFile": "morebutton-down.png",
+      "defaultFile": "morebutton.png"
+    },
+    "imsliding": false,
+    "transitiontime": 700,
     "items": {
-       "moreauth": {}
-    }
-  },
-"moreinfo": {
-   "direction": "left",
-  "morebutton": {
-    "overFile": "morebutton-down.png",
-    "defaultFile": "morebutton.png"
-  },
-  "imsliding": false,
-  "transitiontime": 700,
-  "items": {
-    "AAAlogin": {
-      "title": "Authentication",
-      "isCategory": true
-    },
-    "aalogout": {
-      "iconwidth": 120,
-      "includeline": true,
-      "showonlyinloggedin": true,
-      "navigation": {
-        "execute": {
-          "method": "logout"
-        }
+      "AAAlogin": {
+        "title": "Authentication",
+        "isCategory": true
       },
-      "title": "Logout",
-      "backtext": "<",
-      "text": "xxxxx",
-      "originaliconwidth": 196,
-      "originaliconheight": 77,
-      "pic": "trustedchoice.png"
-    },
-    "aclogin": {
-      "title": "Auhentication",
-      "backtext": "<",
-      "sceneinfo": {
-        "scrollblockinfo": {
-          "object": "moreauth",
-          "navigate": "subscene"
+      "aalogout": {
+        "iconwidth": 120,
+        "includeline": true,
+        "showonlyinloggedin": true,
+        "navigation": {
+          "execute": {
+            "method": "logout"
+          }
         },
-        "htmlinfo": []
+        "title": "Logout",
+        "backtext": "<",
+        "text": "xxxxx",
+        "originaliconwidth": 196,
+        "originaliconheight": 77,
+        "pic": "trustedchoice.png"
       },
-      "includeline": false,
-      "navigation": {
-        "composer": {
-          "lua": "scrollblocks",
-          "effect": "slideLeft",
-          "id": "moreauth",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },      
-    },
-    "bb0head": {
-      "title": "About",
-      "isCategory": true
-    },
-    "bb1": {
-      "title": "Mission",
-      "backtext": "<",
-      "sceneinfo": {
-        "scrollblockinfo": [],
-        "htmlinfo": {
-          "htmlfile": "mission.html",
-          "dir": "r"
-        }
-      },
-      "text": "xx",
-      "navigation": {
-        "composer": {
-          "lua": "webview",
-          "effect": "slideLeft",
-          "id": "mission",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },
-      "pic": "xx.png"
-    },
-    "bb2": {
-      "title": "Antitrust",
-      "backtext": "<",
-      "sceneinfo": {
-        "scrollblockinfo": [],
-        "htmlinfo": {
-          "htmlfile": "antitrust.html",
-          "dir": "r"
-        }
-      },
-      "text": "xx",
-      "navigation": {
-        "composer": {
-          "lua": "webview",
-          "effect": "slideLeft",
-          "id": "antitrust",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },
-      "pic": "xx.png"
-    },
-    "bb3": {
-      "title": "Help",
-      "backtext": "<",
-      "sceneinfo": {
-        "scrollblockinfo": [],
-        "htmlinfo": {
-          "htmlfile": "help.html",
-          "dir": "r"
-        }
-      },
-      "text": "Flat tire, out of gas ? We can help",
-      "navigation": {
-        "composer": {
-          "lua": "webview",
-          "effect": "slideLeft",
-          "id": "help",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },
-      "pic": "truck.png"
-    },
-    "bb4": {
-      "title": "Contact NSPII",
-      "backtext": "<",
-      "sceneinfo": {
-        "scrollblockinfo": {
-          "object": "contactus",
-          "navigate": "subscene"
+      "aclogin": {
+        "title": "Auhentication",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": {
+            "object": "moreauth",
+            "navigate": "subscene"
+          },
+          "htmlinfo": []
         },
-        "htmlinfo": []
-      },
-      "includeline": false,
-      "navigation": {
-        "composer": {
-          "lua": "scrollblocks",
-          "effect": "slideLeft",
-          "id": "contactus",
-          "effectback": "slideRight",
-          "time": 250
+        "includeline": false,
+        "navigation": {
+          "composer": {
+            "lua": "scrollblocks",
+            "effect": "slideLeft",
+            "id": "moreauth",
+            "effectback": "slideRight",
+            "time": 250
+          }
         }
       },
-      "pic": "truck.png"
-    },
-    "xx0": {
-      "title": "Foundation",
-      "isCategory": true
-    },
-    "xx1": {
-      "sceneinfo": {
-        "scrollblockinfo": [],
-        "htmlinfo": {
-          "htmlfile": "foundation.html",
-          "dir": "r"
+      "bb0head": {
+        "title": "About",
+        "isCategory": true
+      },
+      "bb1": {
+        "title": "Mission",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "mission.html",
+            "dir": "r"
+          }
+        },
+        "text": "xx",
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "mission",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "pic": "xx.png"
+      },
+      "bb2": {
+        "title": "Antitrust",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "antitrust.html",
+            "dir": "r"
+          }
+        },
+        "text": "xx",
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "antitrust",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "pic": "xx.png"
+      },
+      "bb3": {
+        "title": "Help",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "help.html",
+            "dir": "r"
+          }
+        },
+        "text": "Flat tire, out of gas ? We can help",
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "help",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "pic": "truck.png"
+      },
+      "bb4": {
+        "title": "Contact NSPII",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": {
+            "object": "contactus",
+            "navigate": "subscene"
+          },
+          "htmlinfo": []
+        },
+        "includeline": false,
+        "navigation": {
+          "composer": {
+            "lua": "scrollblocks",
+            "effect": "slideLeft",
+            "id": "contactus",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "pic": "truck.png"
+      },
+      "xx0": {
+        "title": "Foundation",
+        "isCategory": true
+      },
+      "xx1": {
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "foundation.html",
+            "dir": "r"
+          }
+        },
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "foundation",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "NSPII Foundation",
+        "backtext": "<"
+      },
+      "xx2": {
+        "title": "Past Award Recipients",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": [],
+          "htmlinfo": {
+            "htmlfile": "pastawards.html",
+            "dir": "r"
+          }
+        },
+        "includeline": false,
+        "navigation": {
+          "composer": {
+            "lua": "webview",
+            "effect": "slideLeft",
+            "id": "pastawards",
+            "effectback": "slideRight",
+            "time": 250
+          }
         }
       },
-      "navigation": {
-        "composer": {
-          "lua": "webview",
-          "effect": "slideLeft",
-          "id": "foundation",
-          "effectback": "slideRight",
-          "time": 250
-        }
+      "zz0": {
+        "title": "Extras",
+        "isCategory": true
       },
-      "title": "NSPII Foundation",
-      "backtext": "<"
-    },
-    "xx2": {
-      "title": "Past Award Recipients",
-      "backtext": "<",
-      "sceneinfo": {
-        "scrollblockinfo": [],
-        "htmlinfo": {
-          "htmlfile": "pastawards.html",
-          "dir": "r"
-        }
+      "zz1": {
+        "navigation": {
+          "composer": {
+            "lua": "scrolllist",
+            "effect": "slideLeft",
+            "id": "peoplelist",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "textfontsize": 16,
+        "title": "Members",
+        "backtext": "<",
+        "sceneinfo": {
+          "scrollblockinfo": {
+            "object": "people",
+            "navigate": "subscene"
+          },
+          "htmlinfo": []
+        },
+        "text": "",
+        "doublewide": true
       },
-      "includeline": false,
-      "navigation": {
-        "composer": {
-          "lua": "webview",
-          "effect": "slideLeft",
-          "id": "pastawards",
-          "effectback": "slideRight",
-          "time": 250
-        }
+      "zz2": {
+        "sceneinfo": {
+          "scrollblockinfo": {
+            "object": "resources",
+            "navigate": "subscene"
+          },
+          "htmlinfo": []
+        },
+        "navigation": {
+          "composer": {
+            "lua": "scrollblocks",
+            "effect": "slideLeft",
+            "id": "resources",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "Resources",
+        "backtext": "<"
+      },
+      "zz3": {
+        "sceneinfo": {
+          "scrollblockinfo": {
+            "object": "social",
+            "navigate": "subscene"
+          },
+          "htmlinfo": []
+        },
+        "navigation": {
+          "composer": {
+            "lua": "scrollblocks",
+            "effect": "slideLeft",
+            "id": "social",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "Social Media",
+        "backtext": "<"
+      },
+      "zz4": {
+        "sceneinfo": {
+          "scrollblockinfo": {
+            "object": "awards",
+            "navigate": "subscene"
+          },
+          "htmlinfo": []
+        },
+        "navigation": {
+          "composer": {
+            "lua": "scrollblocks",
+            "effect": "slideLeft",
+            "id": "awards",
+            "effectback": "slideRight",
+            "time": 250
+          }
+        },
+        "title": "Awards",
+        "backtext": "<"
       }
     },
-    "zz0": {
-      "title": "Extras",
-      "isCategory": true
+    "transparentcolor": {
+      "a": 1,
+      "b": 1,
+      "g": 1,
+      "r": 1
     },
-     "zz1": {
-          "navigation": {
-            "composer": {
-              "lua": "scrolllist",
-              "effect": "slideLeft",
-              "id": "peoplelist",
-              "effectback": "slideRight",
-              "time": 250
-            }
-          },
-          "textfontsize": 16,
-          "title": "Members",
-          "backtext": "<",
-          "sceneinfo": {
-            "scrollblockinfo": {
-              "object": "people",
-              "navigate": "subscene"
-            },
-            "htmlinfo": []
-          },
-          "text": "",
-          "doublewide": true,
-
-        },    
-    "zz2": {
-      "sceneinfo": {
-        "scrollblockinfo": {
-          "object": "resources",
-          "navigate": "subscene"
-        },
-        "htmlinfo": []
-      },
-      "navigation": {
-        "composer": {
-          "lua": "scrollblocks",
-          "effect": "slideLeft",
-          "id": "resources",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },
-      "title": "Resources",
-      "backtext": "<"
+    "movefactor": 1.2,
+    "transitiontimealpha": 200,
+    "row": {
+      "indent": 25,
+      "textcolor": 1,
+      "catheight": 30,
+      "textfontsize": 16,
+      "linecolor": [
+        0.7843137254902
+      ],
+      "height": 38,
+      "over": [
+        1,
+        0.5,
+        0,
+        0.2
+      ],
+      "catcolor": {
+        "default": [
+          0.70588235294118,
+          0.7843137254902,
+          0.90196078431373,
+          0.7
+        ]
+      }
     },
-    "zz3": {
-      "sceneinfo": {
-        "scrollblockinfo": {
-          "object": "social",
-          "navigate": "subscene"
-        },
-        "htmlinfo": []
-      },
-      "navigation": {
-        "composer": {
-          "lua": "scrollblocks",
-          "effect": "slideLeft",
-          "id": "social",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },
-      "title": "Social Media",
-      "backtext": "<"
-    },
-    "zz4": {
-      "sceneinfo": {
-        "scrollblockinfo": {
-          "object": "awards",
-          "navigate": "subscene"
-        },
-        "htmlinfo": []
-      },
-      "navigation": {
-        "composer": {
-          "lua": "scrollblocks",
-          "effect": "slideLeft",
-          "id": "awards",
-          "effectback": "slideRight",
-          "time": 250
-        }
-      },
-      "title": "Awards",
-      "backtext": "<"
-    }
-  },
-  "transparentcolor": {
-    "a": 1,
-    "b": 1,
-    "g": 1,
-    "r": 1
-  },
-  "movefactor": 1.2,
-  "transitiontimealpha": 200,
-  "row": {
-    "indent": 25,
-    "textcolor": 1,
-    "catheight": 30,
-    "textfontsize": 16,
-    "linecolor": [
-      0.7843137254902
-    ],
-    "height": 38,
-    "over": [
-      1,
-      0.5,
-      0,
-      0.2
-    ],
-    "catcolor": {
-      "default": [
-        0.70588235294118,
-        0.7843137254902,
-        0.90196078431373,
-        0.7
-      ]
-    }
-  },
-  "transparentalpha": 0.7
- },
- "moreauth": {
-  "textfontsize": 16,
-  "groupheight": 25,
-  "xxgroupheaderheight": 50,
-  "hederfontsize": 16,
-  "items": {
-    "alogin": {
-      "navigation": {
-        "composer": {
-          "otherscenes": "login"
-        }
-      },
-      "text": "",
-      "headerfontsize": 16,
-      "title": "Login",
-      "backtext": "<",
-      "doublewide": true
-    },
-    "bloginforgot": {
-      "navigation": {
-        "composer": {
-          "otherscenes": "loginforgot"
-        }
-      },
-      "text": "",
-      "headerfontsize": 16,
-      "title": "Forgot/Reset Password Email",
-      "showonlyinforgotpassword": true,
-      "backtext": "<",
-      "doublewide": true
-    },    
-    "ccreate": {
-      "navigation": {
-        "composer": {
-          "otherscenes": "logincreate"
-        }
-      },
-      "text": "",
-      "headerfontsize": 16,
-      "title": "Create An Account",
-      "backtext": "<",
-      "doublewide": true
-    },
-   "dconfirm": {
-      "showwhennotconfirmed" : true,
-      "navigation": {
-        "composer": {
-          "otherscenes": "loginconfirm"
-        }
-      },
-      "text": "",
-      "headerfontsize": 16,
-      "title": "Confirm Account Creation Email",
-      "backtext": "<",
-      "doublewide": true
-    },    
-  }
- }
+    "transparentalpha": 0.7
 }
  

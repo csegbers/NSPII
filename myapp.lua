@@ -3,7 +3,7 @@
 -- Store variables used across the entire app 
 -------------------------------------------------------
 local M = { 
-            debugMode = false,
+            debugMode = true,
             justLaunched = true,
             appId = "NSPIIMobileApp" ,
             appName = "NSPII App" ,
@@ -459,7 +459,7 @@ local M = {
                                        errortitle = "Network Error",
                                     },
                          download = { 
-                                       performdl= false,
+                                       performdl= true,
                                        url = "https://s3.amazonaws.com/nspii/myappadds/v1/",
                                        origfileloc = system.ResourceDirectory,
                                        fileloc = system.DocumentsDirectory,
