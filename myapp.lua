@@ -8,7 +8,7 @@ local M = {
             appId = "NSPIIMobileApp" ,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
-            appVersion = 1,          -- be sure this suncs with the download subfolder
+            appVersion =4,          -- be sure this suncs with the download subfolder
             appVersionFileName = "appversion.json",
             tabMyAgentKey = "",     -- will be key of myagent if used
             tabMyAccountKey = "",     -- will be key of myaccount if used
@@ -469,8 +469,9 @@ local M = {
 
                          items = {
                                     tabs = {name="myapptabs" },
+                                    moreauth = {name="myappmoreauth" },
                                     moreinfo = {
-                                                  name="myappmoreinfo.json",download=true,json=true,section="moreinfo",
+                                                  name="myappmoreinfo.json",download=true,json=true,
                                                   initialload = { 
                                                                         imsliding = false,     -- will be updated in app
                                                                         transitiontime = 700,
