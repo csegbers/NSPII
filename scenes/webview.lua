@@ -75,6 +75,9 @@ function scene:show( event )
             elseif  sceneparams.sceneinfo.htmlinfo.htmlfile then
                 
                 local fnchavehtml = function( event )
+                   ------------------------------
+                   -- any issues or no file to dl just use one came with the app
+                   ------------------------------
                    if ( event.isError or (common.fileexists(sceneparams.sceneinfo.htmlinfo.htmlfile,myApp.files.html.fileloc) ~= true  ) ) then
                       webView:request( myApp.htmlfld .. sceneparams.sceneinfo.htmlinfo.htmlfile , myApp.directories[sceneparams.sceneinfo.htmlinfo.dir] )
                    else
@@ -83,6 +86,10 @@ function scene:show( event )
                    
                 end
 
+                -------------------------------------
+                -- is there a replcaement to download ?
+                --  
+                -------------------------------------
                 if myApp.files.html.performdl  then
                     assetmgr.getasset(
                                               {
