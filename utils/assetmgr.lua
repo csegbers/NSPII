@@ -83,5 +83,34 @@ function M.getjsonasset(parms)
 
 end
 
+function M.getasset(parms)
+
+        local networkListener = function( event )
+            native.setActivityIndicator(false)
+            if ( event.isError ) then
+                local alert = native.showAlert( parms.errortitle, event.response, { "Okay" } , onAlertComplete)
+            end
+            event.objectname = parms.objectname
+            event.name= parms.filename 
+            event.fileloc= parms.fileloc 
+            parms.callback(event)
+            return true
+        end
+
+        if (M.fileexists(parms.filename,parms.fileloc) ~= true or parms.overrideexistingfile) and parms.performdl == true then
+            print ("attempt asset dl")
+            if M.testNetworkConnection()  then
+                 
+                native.setActivityIndicator( parms.setActivityIndicator or true)
+                 
+                network.download(parms.networkurl .. parms.filename, "GET", networkListener,{timeout = parms.timeout}, parms.filename, parms.fileloc)
+            else
+                parms.callback({name= parms.filename,fileloc= parms.fileloc,objectname = parms.objectname,isError = true, response="Network Unreachable"})
+            end
+        else
+            parms.callback({name= parms.filename,fileloc= parms.fileloc,objectname = parms.objectname,isError = false, response="File already downloaded or no attempt"})
+        end
+
+end
 
 return M

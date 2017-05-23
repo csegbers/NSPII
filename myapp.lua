@@ -8,7 +8,7 @@ local M = {
             appId = "NSPIIMobileApp" ,
             appName = "NSPII App" ,
             appNameSmall = "NSPII App" ,
-            appVersion =4,          -- be sure this suncs with the download subfolder
+            appVersion =6,          -- be sure this suncs with the download subfolder
             appVersionFileName = "appversion.json",
             tabMyAgentKey = "",     -- will be key of myagent if used
             tabMyAccountKey = "",     -- will be key of myaccount if used
@@ -466,7 +466,13 @@ local M = {
                                        timeout = 5,
                                        errortitle = "Network Error",
                                     },
-
+                         html = { 
+                                       performdl= true,
+                                       url = "https://s3.amazonaws.com/nspii/html/v1/",
+                                       fileloc = system.DocumentsDirectory,
+                                       timeout = 5,
+                                       errortitle = "Network Error",
+                                    },
                          items = {
                                     tabs = {name="myapptabs" },
                                     moreauth = {name="myappmoreauth" },

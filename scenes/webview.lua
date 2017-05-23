@@ -10,6 +10,7 @@ local myApp = require( "myapp" )
 
 local parse = require( myApp.utilsfld .. "mod_parse" ) 
 local common = require( myApp.utilsfld .. "common" )
+local assetmgr = require( myApp.utilsfld .. "assetmgr" )
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")
 print ("Inxxxxxxxxxxxxxxxxxxxxxxxxxxxxx " .. currScene .. " Scene")
@@ -72,7 +73,39 @@ function scene:show( event )
                 native.setActivityIndicator( true )
                 webView:request( url )
             elseif  sceneparams.sceneinfo.htmlinfo.htmlfile then
-                webView:request( myApp.htmlfld .. sceneparams.sceneinfo.htmlinfo.htmlfile , myApp.directories[sceneparams.sceneinfo.htmlinfo.dir] )
+                
+                local fnchavehtml = function( event )
+                   if ( event.isError or (common.fileexists(sceneparams.sceneinfo.htmlinfo.htmlfile,myApp.files.html.fileloc) ~= true  ) ) then
+                      webView:request( myApp.htmlfld .. sceneparams.sceneinfo.htmlinfo.htmlfile , myApp.directories[sceneparams.sceneinfo.htmlinfo.dir] )
+                   else
+                      webView:request( sceneparams.sceneinfo.htmlinfo.htmlfile , myApp.files.html.fileloc)
+                   end
+                   
+                end
+
+                if myApp.files.html.performdl  then
+                    assetmgr.getasset(
+                                              {
+                                                errortitle = myApp.files.html.errortitle,
+                                                objectname = sceneparams.sceneinfo.htmlinfo.htmlfile,
+                                                filename = sceneparams.sceneinfo.htmlinfo.htmlfile,
+                                                fileloc = myApp.files.html.fileloc,
+                                                callback = fnchavehtml,
+                                                networkurl = myApp.files.html.url,
+                                                timeout = myApp.files.html.timeout,
+                                                performdl = myApp.files.html.performdl,
+
+                                                --------------------
+                                                -- cannot get reference to work so callback must update
+                                                -------------------------
+                                                --tableobject = myApp[sceneparams.sceneinfo.scrollblockinfo.object],
+                                              }
+                                          )
+                else
+                    fnchavehtml() 
+                end
+
+
             elseif sceneparams.sceneinfo.htmlinfo.youtubeid   then
 
                      local temphtml = "youtube.html"
