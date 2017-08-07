@@ -7,7 +7,7 @@ local scene = composer.newScene()
 
 local widget = require( "widget" )
 local myApp = require( "myapp" ) 
-local parse = require( myApp.utilsfld .. "mod_parse" )  
+--local parse = require( myApp.utilsfld .. "mod_parse" )  
 local common = require( myApp.utilsfld .. "common" )
 local login = require( myApp.classfld .. "classlogin" )
 
@@ -386,7 +386,7 @@ function scene:show( event )
        
     elseif ( phase == "did" ) then
          print ("end of did show")
-         parse:logEvent( "Scene", { ["name"] = currScene} )
+         --parse:logEvent( "Scene", { ["name"] = currScene} )
          justcreated = false
          myApp.scenetransition = false
     end

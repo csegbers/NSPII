@@ -8,7 +8,7 @@ local scene = composer.newScene()
 local widget = require( "widget" )
 local myApp = require( "myapp" ) 
 
-local parse = require( myApp.utilsfld .. "mod_parse" ) 
+--local parse = require( myApp.utilsfld .. "mod_parse" ) 
 local common = require( myApp.utilsfld .. "common" )
 local assetmgr = require( myApp.utilsfld .. "assetmgr" )
 
@@ -39,7 +39,7 @@ function scene:show( event )
     if ( phase == "will" ) then
         -- Called when the scene is still off screen (but is about to come on screen).
     elseif ( phase == "did" ) then
-            parse:logEvent( "Scene", { ["name"] = currScene} )
+            --parse:logEvent( "Scene", { ["name"] = currScene} )
             local pagewasloaded = false
 
             local function webListener( event )

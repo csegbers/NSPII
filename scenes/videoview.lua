@@ -8,7 +8,7 @@ local scene = composer.newScene()
 local widget = require( "widget" )
 local myApp = require( "myapp" ) 
 
-local parse = require( myApp.utilsfld .. "mod_parse" ) 
+--local parse = require( myApp.utilsfld .. "mod_parse" ) 
 local common = require( myApp.utilsfld .. "common" )
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")

@@ -9,7 +9,7 @@ local widget = require( "widget" )
 local widgetExtras = require( myApp.utilsfld .. "widget-extras" )
 local myApp = require( "myapp" ) 
 
-local parse = require( myApp.utilsfld .. "mod_parse" ) 
+--local parse = require( myApp.utilsfld .. "mod_parse" ) 
 local common = require( myApp.utilsfld .. "common" )
 
 local currScene = (composer.getSceneName( "current" ) or "unknown")
@@ -39,7 +39,7 @@ function scene:show( event )
     if ( phase == "will" ) then
  
     elseif ( phase == "did" ) then
-        parse:logEvent( "Scene", { ["name"] = currScene} )
+        --parse:logEvent( "Scene", { ["name"] = currScene} )
         myApp.scenetransition = false
         --sceneparams = event.params           -- params contains the item table
     end
